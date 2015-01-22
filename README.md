@@ -25,7 +25,7 @@ You can set any other native [map options](https://developers.google.com/maps/do
 }
 ```
 
-Once instantiated you can access the Google Instance via: 
+GMapsPlus gives you freedom. Once instantiated you can access directly like this:
 
 ```javascript
 GMP.maps.myMap.instance
