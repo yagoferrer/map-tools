@@ -17,4 +17,4 @@ var map = GMP({
 
 Once instanciated you can access the Google Instance via: `GMP.maps.myMap.instance`. 
 
-You can set any other native [map options](https://developers.google.com/maps/documentation/javascript/reference#MapOptions) it will just work. 
+You can set any other native [map options](https://developers.google.com/maps/documentation/javascript/reference#MapOptions). It will just work. 
