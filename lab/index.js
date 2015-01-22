@@ -2,6 +2,11 @@
 
 (function(global){
 
+
+    var defaults = {
+        version: 3.16
+    }
+
     /**
      * Injects Google API Javascript File and adds a callback to load the Google Maps Async
      * @type {{load: Function}}
@@ -9,7 +14,7 @@
      */
     var _googleMapsApi = {
         load: function(args) {
-            var version = args.version || '3.16';
+            var version = args.version || defaults.version;
             var script = document.createElement('script');
             script.type = 'text/javascript';
             script.src = '//maps.googleapis.com/maps/api/js?v=' + version + '&' +
