@@ -31,4 +31,19 @@ GMapsPlus gives you freedom. Once instantiated you can access directly like this
 GMP.maps.myMap.instance
 ```
 
+You can setup a callback to notify you if the Map was fully loaded.
+All you need is a little Javascript
+```javascript
+var map = GMP({
+    id: 'myMap',
+    lat: 41.3833,
+    lng: 2.1833
+}, function(err, instance) {
+
+  if (!err) {
+    console.log('Hey the Map was fully loaded!', instance);
+  }
+
+});
+```
 
