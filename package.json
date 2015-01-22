@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "browser-sync start --server --startPath lab/",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha-phantomjs test/runner.html"
   },
   "repository": {
     "type": "git",
@@ -19,8 +19,12 @@
   "homepage": "https://github.com/yagoferrer/gmaps-plus",
   "devDependencies": {
     "browser-sync": "^1.9.1",
+    "chai": "^1.10.0",
     "install": "^0.1.8",
     "jshint": "^2.6.0",
-    "npm": "^2.2.0"
+    "mocha": "^2.1.0",
+    "mocha-phantomjs": "^3.5.3",
+    "npm": "^2.2.0",
+    "phantomjs": "^1.9.13"
   }
 }
