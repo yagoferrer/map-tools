@@ -1,7 +1,4 @@
-### GMapsPlus.js
-
-Is a Google Maps Extension that allows you, with very little code, work with Maps, Markers and Clusters in a more fun and simpler way.
-
+### GMapsPlus.js 0.1.0-alpha
 
 You don't even need to include the Google Maps `<script>` tag. It will load the file for you **asynchronously**.
 
