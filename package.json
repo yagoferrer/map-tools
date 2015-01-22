@@ -1,0 +1,25 @@
+{
+  "name": "gmaps-plus",
+  "version": "0.1.0",
+  "description": "Google Maps",
+  "main": "index.js",
+  "scripts": {
+    "start": "browser-sync start --server --startPath lab/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yagoferrer/gmaps-plus.git"
+  },
+  "author": "Yago Ferrer <yago.ferrer@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yagoferrer/gmaps-plus/issues"
+  },
+  "homepage": "https://github.com/yagoferrer/gmaps-plus",
+  "devDependencies": {
+    "browser-sync": "^1.9.1",
+    "install": "^0.1.8",
+    "npm": "^2.2.0"
+  }
+}
