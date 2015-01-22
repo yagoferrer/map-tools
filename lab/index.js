@@ -2,41 +2,32 @@
 
 (function(global){
 
-    var options;
-
     var _googleMapsApi = {
-        load: function() {
+        load: function(args) {
+
+            var version = args.version || '3.16';
+
             var script = document.createElement('script');
             script.type = 'text/javascript';
-            script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&' +
-            'callback=GMP.maps.map.create';
+            script.src = '//maps.googleapis.com/maps/api/js?v=' + version + '&' +
+            'callback=GMP.maps.' + args.id + '.create';
             global.document.body.appendChild(script);
-        },
-        loaded: function() {
-            console.log('API Loaded');
         }
     };
 
     function newMap(args)
     {
-
         var mapOptions = {
             zoom: args.zoom,
             center: new global.google.maps.LatLng(args.center.lat, args.center.lng)
         };
-        global.GMP.maps[args.id].map = new global.google.maps.Map(document.getElementById(args.id),
-            mapOptions);
+        global.GMP.maps[args.id].map = new global.google.maps.Map(document.getElementById(args.id), mapOptions);
 
     }
 
-    function GMP(args)
+    function GMP(options)
     {
-        options = args;
-
-        if (typeof options === 'string') {
-            console.log('string', args);
-        } else {
-
+        if (typeof options == 'object') {
             if (options.id) {
                 global.GMP.maps = global.GMP.maps || {};
                 global.GMP.maps[options.id] = {
@@ -48,9 +39,8 @@
             }
 
             if (options.async) {
-                _googleMapsApi.load();
+                _googleMapsApi.load(options);
             }
-
         }
     }
 
