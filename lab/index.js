@@ -36,7 +36,7 @@
    * Creates a new Google Map Instance
    * @param args
    */
-  function newMap(args) {
+  function newMap(args, cb) {
 
     var mapOptions = clone(args); // To clone Array content
 
@@ -48,7 +48,12 @@
     mapOptions.lat = undefined;
     mapOptions.lng = undefined;
 
-    global.GMP.maps[args.id].instance = new global.google.maps.Map(document.getElementById(args.id), mapOptions);
+    var instance = new global.google.maps.Map(document.getElementById(args.id), mapOptions);
+    global.GMP.maps[args.id].instance = instance;
+
+    global.google.maps.event.addListenerOnce(instance, 'idle', function(){
+      cb(false, instance);
+    });
   }
 
   /**
@@ -56,13 +61,13 @@
    * @param options
    * @constructor
    */
-  function GMP(options) {
+  function GMP(options, cb) {
     if (typeof options == 'object') {
       if (options.id) {
         global.GMP.maps = global.GMP.maps || {};
         global.GMP.maps[options.id] = {
           create: function () {
-            newMap(this.arguments);
+            newMap(this.arguments, cb);
           },
           arguments: options
         };
