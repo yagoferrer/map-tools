@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+    html, body, #map {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+    }
+</style>
+<body>
+
+<script src="index.js"></script>
+<script>
+    var map = GMP({
+        id: 'map',
+        center: {
+            lat: 41.3833, lng: 2.1833
+        },
+        zoom: 8
+    });
+</script>
+<div id="map"></div>
+
+</body>
+</html>
