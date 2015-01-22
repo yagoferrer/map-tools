@@ -76,11 +76,11 @@
       if (options.async !== false) {
 
         if (!options.id) {
-          throw new Error("id not set!");
+          cb(new Error('id not set!'));
         }
 
         if (!options.lat || !options.lng) {
-          throw new Error("lat and lng not set!");
+          cb(new Error('lat and lng not set!'));
         }
 
         _googleMapsApi.load(options);
