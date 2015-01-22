@@ -13,4 +13,6 @@ You don't need to include Google Maps. It will do it for you asynchronously, the
 <div id="myMap"></div>
 ```
 
-You can access the Google Instance via: `GMP.maps.myMap.instance`. You can set any other native [map options](https://developers.google.com/maps/documentation/javascript/reference#MapOptions) it will just work. 
+You can access the Google Instance via: `GMP.maps.myMap.instance`. 
+
+You can set any other native [map options](https://developers.google.com/maps/documentation/javascript/reference#MapOptions) it will just work. 
