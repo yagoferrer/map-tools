@@ -1,6 +1,6 @@
 {
   "name": "gmaps-plus",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha",
   "description": "Google Maps",
   "main": "index.js",
   "scripts": {
@@ -20,6 +20,7 @@
   "devDependencies": {
     "browser-sync": "^1.9.1",
     "install": "^0.1.8",
+    "jshint": "^2.6.0",
     "npm": "^2.2.0"
   }
 }
