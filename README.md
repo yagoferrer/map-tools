@@ -1,4 +1,4 @@
-### GMaps Plus
+### GMaps+.js
 
 You don't need to include Google Maps. It will do it for you asynchronously, then it will load the Map with the settings that you had set.
 ```javascript
