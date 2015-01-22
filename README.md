@@ -15,7 +15,20 @@ and an HTML tag
 ```html
 <div id="myMap"></div>
 ```
+You can set any other native [map options](https://developers.google.com/maps/documentation/javascript/reference#MapOptions). It will just work. For example you can add:
+```javascript
+{
+    zoom: 15,
+    streetViewControl: false,
+    mapTypeControl: false,
+    disableDoubleClickZoom: true
+}
+```
 
-Once instantiated you can access the Google Instance via: `GMP.maps.myMap.instance`. 
+Once instantiated you can access the Google Instance via: 
 
-You can set any other native [map options](https://developers.google.com/maps/documentation/javascript/reference#MapOptions). It will just work. 
+```javascript
+GMP.maps.myMap.instance
+```
+
+
