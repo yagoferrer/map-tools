@@ -1,6 +1,6 @@
 ### GMapsPlus.js
 
-You don't need to include the Google Maps <script> tag. It will load the file **asynchronously**.
+You don't need to include the Google Maps `<script>` tag. It will load the file **asynchronously**.
 
 ```javascript
     var map = GMP({
