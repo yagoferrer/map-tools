@@ -11,7 +11,7 @@ var map = GMP({
     lng: 2.1833
 });
 ```
-and an HTML tag
+and a simple HTML tag
 ```html
 <div id="myMap"></div>
 ```
