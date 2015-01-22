@@ -1,6 +1,7 @@
 ### GMapsPlus.js
 
-You don't need to include Google Maps. It will do it for you asynchronously, then it will load the Map with the settings that you had set.
+You don't need to include the Google Maps <script> tag. It will load the file **asynchronously**.
+
 ```javascript
     var map = GMP({
         id: 'myMap',
