@@ -1,4 +1,4 @@
-### GMapsPlus.js 0.1.0-alpha
+### GMPlus.js 0.1.0-alpha
 
 #### How to load a simple Map.
 You don't even need to include the Google Maps `<script>` tag. It will load the file for you **asynchronously**.
@@ -25,7 +25,7 @@ You can set any other native [map options](https://developers.google.com/maps/do
 }
 ```
 
-GMapsPlus gives you freedom. Once instantiated you can access directly like this:
+GMPlus.js gives you freedom. Once instantiated you can access directly like this:
 
 ```javascript
 GMP.maps.myMap.instance
