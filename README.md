@@ -4,15 +4,13 @@ You don't need to include Google Maps. It will do it for you asynchronously, the
 ```javascript
     var map = GMP({
         id: 'myMap',
-        center: {
-            lat: 41.3833, lng: 2.1833
-        },
-        zoom: 8
+        lat: 41.3833,
+        lng: 2.1833
     });
 ```
 
 ```html
-<div id="map"></div>
+<div id="myMap"></div>
 ```
 
-You can access the Google Instance via: `GMP.maps.myMap.map`
+You can access the Google Instance via: `GMP.maps.myMap.instance`.

@@ -2,7 +2,8 @@
 (function (global) {
   "use strict";
   var defaults = {
-    version: 3.16
+    version: '3.exp',
+    zoom: 8
   };
 
   /**
@@ -21,17 +22,33 @@
     }
   };
 
+  function clone(o) {
+    var out, v, key;
+    out = Array.isArray(o) ? [] : {};
+    for (key in o) {
+      v = o[key];
+      out[key] = (typeof v === "object") ? clone(v) : v;
+    }
+    return out;
+  }
+
   /**
    * Creates a new Google Map Instance
    * @param args
    */
   function newMap(args) {
-    var mapOptions = {
-      zoom: args.zoom,
-      center: new global.google.maps.LatLng(args.center.lat, args.center.lng)
-    };
 
-    global.GMP.maps[args.id].map = new global.google.maps.Map(document.getElementById(args.id), mapOptions);
+    var mapOptions = clone(args); // To clone Array content
+
+    mapOptions.zoom = args.zoom || defaults.zoom;
+    mapOptions.center = new global.google.maps.LatLng(args.lat, args.lng);
+
+    // These are custom properties from GMP API that need to be unset.
+    mapOptions.id = undefined;
+    mapOptions.lat = undefined;
+    mapOptions.lng = undefined;
+
+    global.GMP.maps[args.id].instance = new global.google.maps.Map(document.getElementById(args.id), mapOptions);
   }
 
   /**
@@ -52,6 +69,15 @@
       }
 
       if (options.async !== false) {
+
+        if (!options.id) {
+          throw new Error("id not set!");
+        }
+
+        if (!options.lat || !options.lng) {
+          throw new Error("lat and lng not set!");
+        }
+
         _googleMapsApi.load(options);
       }
     }

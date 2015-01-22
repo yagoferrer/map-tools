@@ -5,7 +5,7 @@
     <title>Document</title>
 </head>
 <style>
-    html, body, #map {
+    html, body, #myMap {
         height: 100%;
         margin: 0px;
         padding: 0px
@@ -16,14 +16,12 @@
 <script src="index.js"></script>
 <script>
     var map = GMP({
-        id: 'map',
-        center: {
-            lat: 41.3833, lng: 2.1833
-        },
-        zoom: 8
+        id: 'myMap',
+        lat: 41.3833,
+        lng: 2.1833
     });
 </script>
-<div id="map"></div>
+<div id="myMap"></div>
 
 </body>
 </html>
