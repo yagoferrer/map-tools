@@ -2,6 +2,7 @@
 
 #### How to load a simple Map.
 You don't even need to include the Google Maps `<script>` tag. It will load the file for you **asynchronously**.
+
 All you need is a little Javascript
 ```javascript
 var map = GMP({
