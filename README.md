@@ -14,6 +14,6 @@ You don't need to include the Google Maps `<script>` tag. It will load the file 
 <div id="myMap"></div>
 ```
 
-You can access the Google Instance via: `GMP.maps.myMap.instance`. 
+Once instanciated you can access the Google Instance via: `GMP.maps.myMap.instance`. 
 
 You can set any other native [map options](https://developers.google.com/maps/documentation/javascript/reference#MapOptions) it will just work. 
