@@ -1,4 +1,4 @@
-### GMPlus.js 0.1.0 under development!
+### GMPlus.js 0.1.0 under development
 
 #### How to load a simple Map.
 You don't even need to include the Google Maps `<script>` tag. It will load the file for you **asynchronously**.
