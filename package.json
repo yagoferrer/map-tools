@@ -1,10 +1,10 @@
 {
   "name": "gmaps-plus",
-  "version": "0.1.0-alpha",
-  "description": "Google Maps",
+  "version": "0.0.0",
+  "description": "Google Maps make it simple",
   "main": "index.js",
   "scripts": {
-    "start": "browser-sync start --server --startPath lab/",
+    "start": "browser-sync start --server --startPath lib/",
     "test": "mocha-phantomjs test/runner.html"
   },
   "repository": {
