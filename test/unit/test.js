@@ -10,6 +10,23 @@ describe('Given GMPlus', function () {
         done();
       });
     });
+  });
+
+  xdescribe('when instantiating with a valid Id and coordinates', function () {
+
+    it('should create a map', function (done) {
+
+      GMP({
+        id: 'myMap',
+        lat: 41.3833,
+        lng: 2.1833
+      }, function(err, instance) {
+
+          expect(err).to.be.false;
+
+      })
+
+    });
 
   });
 });
