@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<style>
+  html, body, #myMap {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+  }
+</style>
+<body>
+<script src="../lib/index.js"></script>
+<script>
+  var map = new GMP({
+    id: 'myMap',
+    lat: 41.3833,
+    lng: 2.1833
+  }, function (err, instance) {
+    if (!err) {
+      addMarker();
+    }
+  });
+
+  function addMarker() {
+    map.addMarker({
+      lat: 41.3833,
+      lng: 2.1833,
+      title: 'Barcelona'
+    });
+  }
+</script>
+<div id="myMap"></div>
+</body>
+</html>
