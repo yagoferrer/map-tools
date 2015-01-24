@@ -60,5 +60,4 @@ describe('Given GMPlus', function () {
     });
 
   });
-
 });

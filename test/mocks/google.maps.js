@@ -28,7 +28,11 @@ window.google = {
       return {};
     },
     Marker: function() {
-      return {};
+      return {
+        setAnimation: function() {
+          return 'animation set';
+        }
+      };
     },
     MarkerImage: function() {
       return {};

@@ -33,14 +33,16 @@
     function addMarkers() {
 
       map.addMarker([{
-        lat: 41.3833,
-        lng: 2.1833,
-        title: 'barcelona'
+          lat: 41.3833,
+          lng: 2.1833,
+          title: 'barcelona',
+          move: map.bounce
       },
         {
           lat: 41.4489,
           lng: 2.2461,
-          title: 'badalona'
+          title: 'badalona',
+          move: map.drop
         }],
         {group: 'myGroup'});
     }
