@@ -7,10 +7,10 @@ You don't even need to include the Google Maps `<script>` tag. It will load the 
 You can setup a callback to notify you when the Map is fully loaded.
 ```javascript
 var map = new GMP({
-    id: 'myMap',
-    lat: 41.3833,
-    lng: 2.1833
-}, function(err, instance) {
+  id: 'myMap',
+  lat: 41.3833,
+  lng: 2.1833
+}, function (err, instance) {
 
   if (!err) {
     console.log('Hey! the Map was fully loaded :)');
@@ -40,14 +40,18 @@ You can add one or multiple markers to the Map and group them to control visibil
 
 ```javascript
 map.addMarker([
-    {lat: 41.3833,
-    lng: 2.1833,
-    title: 'barcelona'},
-    {lat: 41.4489,
-    lng: 2.2461,
-    title: 'badalona'}
-    ],
-{group: 'myGroup'});
+    {
+      lat: 41.3833,
+      lng: 2.1833,
+      title: 'barcelona'
+    },
+    {
+      lat: 41.4489,
+      lng: 2.2461,
+      title: 'badalona'
+    }
+  ],
+  {group: 'myGroup'});
 ```
 
 You can set any other native [Marker Options](https://developers.google.com/maps/documentation/javascript/reference#MarkerOptions)
@@ -59,8 +63,9 @@ Make your marker bounce `move: map.bounce` or drop `move: map.drop`
 
 ```javascript
 map.addMarker([{
-    lat: 41.3833,
-    lng: 2.1833,
-    title: 'barcelona',
-    move: map.bounce}]);
+  lat: 41.3833,
+  lng: 2.1833,
+  title: 'barcelona',
+  move: map.bounce
+}]);
 ```
