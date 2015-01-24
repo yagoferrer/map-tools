@@ -53,3 +53,14 @@ map.addMarker([
 You can set any other native [Marker Options](https://developers.google.com/maps/documentation/javascript/reference#MarkerOptions)
 
 Once the markers are created you can access directly like this: `GMP.maps.myMap.groups.myGroup`
+
+#### Animations
+Make your marker bounce `move: map.bounce` or drop `move: map.drop`
+
+```javascript
+map.addMarker([{
+    lat: 41.3833,
+    lng: 2.1833,
+    title: 'barcelona',
+    move: map.bounce}]);
+```
