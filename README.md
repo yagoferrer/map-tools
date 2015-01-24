@@ -25,7 +25,7 @@ var map = new GMP({
 }, function (err, instance) {
 
   if (!err) {
-    console.log('Hey! the Map was fully loaded :)');
+    console.log('Hey! the Map was fully loaded! Add some Markers :)');
   }
 
 });
@@ -37,14 +37,14 @@ Add a simple HTML tag
 You can set any other native [map options](https://developers.google.com/maps/documentation/javascript/reference#MapOptions). It just works. For example you can add:
 ```javascript
 {
-    zoom: 15,
-    streetViewControl: false,
+    disableDoubleClickZoom: true,
     mapTypeControl: false,
-    disableDoubleClickZoom: true
+    streetViewControl: false,
+    zoom: 15
 }
 ```
 
-Once instantiated you can access directly to the Google API like this: `GMP.maps.myMap.instance`
+Once instantiated: you can access directly to the Google API like this: `GMP.maps.myMap.instance`
 
 #### Markers
 
@@ -76,7 +76,7 @@ map.addMarker([
 
 You can set any other native [Marker Options](https://developers.google.com/maps/documentation/javascript/reference#MarkerOptions)
 
-Once the markers are created you can access directly like this: `GMP.maps.myMap.groups.myGroup`
+Once the markers are created you can access directly like this: `GMP.maps.myMap.groups.all`
 
 ##### Animate Markers
 Make your marker bounce `move: map.bounce` or drop `move: map.drop`
@@ -85,7 +85,7 @@ Make your marker bounce `move: map.bounce` or drop `move: map.drop`
 map.addMarker({
   lat: 41.3833,
   lng: 2.1833,
-  title: 'barcelona',
+  title: 'Barcelona',
   move: map.bounce
 });
 ```
