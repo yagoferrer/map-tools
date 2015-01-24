@@ -40,17 +40,16 @@ You can add one or multiple markers to the Map and group them to control visibil
 
 ```javascript
 map.addMarker([{
-lat: 41.3833,
-lng: 2.1833,
-title: 'barcelona'
-},
-{
-lat: 41.4489,
-lng: 2.2461,
-title: 'badalona'
-}],{group: 'myGroup'})
+    lat: 41.3833,
+    lng: 2.1833,
+    title: 'barcelona'
+    },{
+    lat: 41.4489,
+    lng: 2.2461,
+    title: 'badalona'
+    }],
+{group: 'myGroup'})
 ```
-
 
 You can set any other native [Marker Options](https://developers.google.com/maps/documentation/javascript/reference#MarkerOptions)
 
