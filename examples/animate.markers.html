@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<style>
+  html, body, #myMap {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+  }
+</style>
+<body>
+<script src="../lib/index.js"></script>
+<script>
+  var map = new GMP({
+    id: 'myMap',
+    lat: 41.3833,
+    lng: 2.1833,
+    zoom: 13
+  }, function (err, instance) {
+    if (!err) {
+      addMarkers();
+    }
+  });
+
+  function addMarkers() {
+    map.addMarker([{
+      lat: 41.387220,
+      lng: 2.169983,
+      title: 'Plaça Catalunya',
+      move: map.bounce
+
+    },
+      {
+        lat: 41.4036,
+        lng: 2.1744,
+        title: 'Sagrada Familia',
+        move: map.bounce
+      },
+      {
+        lat: 41.395571,
+        lng: 2.161961,
+        title: 'Casa Milà',
+        move: map.drop
+      },
+      {
+        lat: 41.385231,
+        lng: 2.180893,
+        title: 'Picasso Museum',
+        move: map.drop
+      }
+
+    ]);
+  }
+</script>
+<div id="myMap"></div>
+</body>
+</html>
