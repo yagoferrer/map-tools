@@ -32,11 +32,7 @@ You can set any other native [map options](https://developers.google.com/maps/do
 }
 ```
 
-GMPlus.js gives you freedom. Once instantiated you can access directly to the Google API like this:
-
-```javascript
-GMP.maps.myMap.instance
-```
+Once instantiated you can access directly to the Google API like this: `GMP.maps.myMap.instance`
 
 #### How to Add Markers
 
@@ -57,3 +53,5 @@ title: 'badalona'
 
 ```
 You can set any other native [Marker Options](https://developers.google.com/maps/documentation/javascript/reference#MarkerOptions)
+
+Once the markers are created you can access directly like this: `GMP.maps.myMap.groups.myGroup`
