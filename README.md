@@ -1,6 +1,6 @@
 ### GMPlus.js 0.0.0 [![Build Status](https://travis-ci.org/yagoferrer/gmplus.svg?branch=master)](https://travis-ci.org/yagoferrer/gmplus)
 
-Less Code, More Fun, More Doing! Easy to use, lots of features!
+Google Maps with: Less Code, More Fun, More Doing! Easy To Use, Extra Features, Frameworkless! 
 
 #### How to load a simple Map.
 You don't even need to include the Google Maps `<script>` tag. It will load the file for you **asynchronously**.
