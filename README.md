@@ -1,21 +1,22 @@
 ### GMPlus.js 0.0.0 [![Build Status](https://travis-ci.org/yagoferrer/gmplus.svg?branch=master)](https://travis-ci.org/yagoferrer/gmplus)
 
-Google Maps with: Less Code, More Fun, More Doing! Easy To Use, Extra Features, Frameworkless!
+Google Maps with: Less Code, More Fun, More Doing, Easy To Use, Extra Features and Frameworkless!
  
-#### How to install
-The `npm` and `bower` package has not been registered yet. you can pull the repo doing:
+#### How to test
+You can pull the repo:
 ```bash
 git pull https://github.com/yagoferrer/GMPlus.git
 ```
-Then run the examples doing:
+
+Then run the examples:
 
 ```
 npm start
 ```
 
 #### Load a simple Map.
-You don't even need to include the Google Maps `<script>` tag. It will load the file for you **asynchronously**.
-You can setup a callback to notify you when the Map is fully loaded.
+No need to include the Google Maps `<script>` tag. GMPlus will load the file for you **asynchronously**.
+Setup a callback to notify you when the Map is fully loaded.
 ```javascript
 var map = new GMP({
   id: 'myMap',
