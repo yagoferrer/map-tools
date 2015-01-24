@@ -37,9 +37,27 @@ describe('Given GMPlus', function () {
   });
 
 
+
   describe('when calling addMarker', function () {
 
-    it('should add Markers to the Map', function() {
+
+    it('should add one individual Marker to the Map', function() {
+
+
+      var map = new GMP({async: false, id: 'myMap', lat: 41.3833, lng: 2.1833}, function(){});
+
+      var result = map.addMarker({
+        lat: 42.5000,
+        lng: 1.5167,
+        title: 'Andorra'
+      });
+
+      expect(result.name).to.equal('marker');
+      expect(GMP.maps.myMap.groups.all).to.have.length.of(1);
+
+    });
+
+    it('should add multiple Markers to the Map', function() {
       var map = new GMP({async: false, id: 'myMap', lat: 41.3833, lng: 2.1833}, function(){});
 
       var result = map.addMarker([{
@@ -53,7 +71,6 @@ describe('Given GMPlus', function () {
             title: 'badalona'
           }],
         {group: 'myGroup'});
-
 
       expect(result).to.have.length.of(2);
       expect(GMP.maps.myMap.groups.myGroup).to.have.length.of(2);

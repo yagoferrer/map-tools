@@ -31,7 +31,8 @@ window.google = {
       return {
         setAnimation: function() {
           return 'animation set';
-        }
+        },
+        name: 'marker'
       };
     },
     MarkerImage: function() {
