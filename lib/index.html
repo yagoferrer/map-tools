@@ -15,15 +15,35 @@
 
 <script src="index.js"></script>
 <script>
-    var map = GMP({
+
+    var map = new GMP({
         id: 'myMap',
         lat: 41.3833,
         lng: 2.1833
     }, function(err, instance) {
 
+
+      addMarkers();
+
       console.log('Map Loaded!', instance);
 
     });
+
+
+    function addMarkers() {
+
+      map.addMarker([{
+        lat: 41.3833,
+        lng: 2.1833,
+        title: 'barcelona'
+      },
+        {
+          lat: 41.4489,
+          lng: 2.2461,
+          title: 'badalona'
+        }],
+        {group: 'myGroup'});
+    }
 </script>
 <div id="myMap"></div>
 

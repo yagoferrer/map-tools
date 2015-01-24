@@ -6,7 +6,7 @@ Less Code, More Fun, More Doing! Easy to use, lots of features!
 You don't even need to include the Google Maps `<script>` tag. It will load the file for you **asynchronously**.
 You can setup a callback to notify you when the Map is fully loaded.
 ```javascript
-var map = GMP({
+var map = new GMP({
     id: 'myMap',
     lat: 41.3833,
     lng: 2.1833
@@ -32,8 +32,26 @@ You can set any other native [map options](https://developers.google.com/maps/do
 }
 ```
 
-GMPlus.js gives you freedom. Once instantiated you can access directly to the Google API like this:
+Once instantiated you can access directly to the Google API like this: `GMP.maps.myMap.instance`
+
+#### How to Add Markers
+
+You can add one or multiple markers to the Map and group them to control visibility, filtering, clustering and other features
 
 ```javascript
-GMP.maps.myMap.instance
+map.addMarker([{
+lat: 41.3833,
+lng: 2.1833,
+title: 'barcelona'
+},
+{
+lat: 41.4489,
+lng: 2.2461,
+title: 'badalona'
+}],{group: 'myGroup'})
 ```
+
+```
+You can set any other native [Marker Options](https://developers.google.com/maps/documentation/javascript/reference#MarkerOptions)
+
+Once the markers are created you can access directly like this: `GMP.maps.myMap.groups.myGroup`
