@@ -28,6 +28,13 @@ describe('Given GMPlus', function () {
       });
     });
 
+    it('should return a Map instance when you pass: "id", "lat" and "lng"', function (done) {
+      GMP({async: false, id: 'myMap', lat: '41.3833', lng: '2.1833'}, function(err, instance) {
+        expect(instance.gm_bindings_).to.be.a('object');
+        done();
+
+      });
+    });
 
   });
 });
