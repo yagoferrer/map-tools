@@ -44,7 +44,7 @@ describe('Given GMPlus', function () {
     it('should add one individual Marker to the Map', function() {
 
 
-      var map = new GMP({async: false, id: 'myMap', lat: 41.3833, lng: 2.1833}, function(){});
+      var map = new GMP({async: false, id: 'myMap', lat: 41.3833, lng: 2.1833});
 
       var result = map.addMarker({
         lat: 42.5000,
@@ -58,7 +58,7 @@ describe('Given GMPlus', function () {
     });
 
     it('should add multiple Markers to the Map', function() {
-      var map = new GMP({async: false, id: 'myMap', lat: 41.3833, lng: 2.1833}, function(){});
+      var map = new GMP({async: false, id: 'myMap', lat: 41.3833, lng: 2.1833});
 
       var result = map.addMarker([{
           lat: 41.3833,
