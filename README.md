@@ -2,7 +2,7 @@
 
 Google Maps with: Less Code, More Fun, More Doing! Easy To Use, Extra Features, Frameworkless! 
 
-#### How to load a simple Map.
+#### Load a simple Map.
 You don't even need to include the Google Maps `<script>` tag. It will load the file for you **asynchronously**.
 You can setup a callback to notify you when the Map is fully loaded.
 ```javascript
@@ -34,7 +34,9 @@ You can set any other native [map options](https://developers.google.com/maps/do
 
 Once instantiated you can access directly to the Google API like this: `GMP.maps.myMap.instance`
 
-#### How to Add Markers
+#### Markers
+
+##### Add Markers
 
 You can add one or multiple markers to the Map and group them to control visibility, filtering, clustering and other features
 
@@ -58,7 +60,7 @@ You can set any other native [Marker Options](https://developers.google.com/maps
 
 Once the markers are created you can access directly like this: `GMP.maps.myMap.groups.myGroup`
 
-#### Animations
+##### Animate Markers
 Make your marker bounce `move: map.bounce` or drop `move: map.drop`
 
 ```javascript
