@@ -53,7 +53,7 @@ map.addMarker([
       title: 'badalona'
     }
   ],
-  {group: 'myGroup'});
+  {group: 'myGroup'}); // Settings that will affect all the Markers in the Array
 ```
 
 You can set any other native [Marker Options](https://developers.google.com/maps/documentation/javascript/reference#MarkerOptions)
