@@ -1,5 +1,6 @@
 ### GMPlus.js 0.0.0 [![Build Status](https://travis-ci.org/yagoferrer/gmplus.svg?branch=master)](https://travis-ci.org/yagoferrer/gmplus)
 
+Less Code, More Fun, More Doing! Easy to use, lots of features!
 
 #### How to load a simple Map.
 You don't even need to include the Google Maps `<script>` tag. It will load the file for you **asynchronously**.
@@ -17,11 +18,11 @@ var map = GMP({
 
 });
 ```
-and a simple HTML tag
+Add a simple HTML tag
 ```html
 <div id="myMap"></div>
 ```
-You can set any other native [map options](https://developers.google.com/maps/documentation/javascript/reference#MapOptions). It will just work. For example you can add:
+You can set any other native [map options](https://developers.google.com/maps/documentation/javascript/reference#MapOptions). It just works. For example you can add:
 ```javascript
 {
     zoom: 15,
