@@ -64,10 +64,10 @@ Once the markers are created you can access directly like this: `GMP.maps.myMap.
 Make your marker bounce `move: map.bounce` or drop `move: map.drop`
 
 ```javascript
-map.addMarker([{
+map.addMarker({
   lat: 41.3833,
   lng: 2.1833,
   title: 'barcelona',
   move: map.bounce
-}]);
+});
 ```

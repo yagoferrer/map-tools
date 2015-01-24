@@ -1,42 +1,43 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>Document</title>
 </head>
 <style>
-    html, body, #myMap {
-        height: 100%;
-        margin: 0px;
-        padding: 0px
-    }
+  html, body, #myMap {
+    height: 100%;
+    margin: 0px;
+    padding: 0px
+  }
 </style>
 <body>
 
 <script src="index.js"></script>
 <script>
 
-    var map = new GMP({
-        id: 'myMap',
+  var map = new GMP({
+    id: 'myMap',
+    lat: 41.3833,
+    lng: 2.1833
+  }, function (err, instance) {
+
+
+    addMarkers();
+
+    console.log('Map Loaded!', instance);
+
+  });
+
+
+  function addMarkers() {
+
+    // Testing Multiple Markers
+    map.addMarker([{
         lat: 41.3833,
-        lng: 2.1833
-    }, function(err, instance) {
-
-
-      addMarkers();
-
-      console.log('Map Loaded!', instance);
-
-    });
-
-
-    function addMarkers() {
-
-      map.addMarker([{
-          lat: 41.3833,
-          lng: 2.1833,
-          title: 'barcelona',
-          move: map.bounce
+        lng: 2.1833,
+        title: 'barcelona',
+        move: map.bounce
       },
         {
           lat: 41.4489,
@@ -44,8 +45,15 @@
           title: 'badalona',
           move: map.drop
         }],
-        {group: 'myGroup'});
-    }
+      {group: 'myGroup'});
+
+    // Testing adding one Marker
+    map.addMarker({
+      lat: 42.5000,
+      lng: 1.5167,
+      title: 'Andorra'
+    }, {});
+  }
 </script>
 <div id="myMap"></div>
 
