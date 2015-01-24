@@ -51,7 +51,7 @@ title: 'badalona'
 }],{group: 'myGroup'})
 ```
 
-```
+
 You can set any other native [Marker Options](https://developers.google.com/maps/documentation/javascript/reference#MarkerOptions)
 
 Once the markers are created you can access directly like this: `GMP.maps.myMap.groups.myGroup`
