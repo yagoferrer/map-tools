@@ -4,6 +4,7 @@
   "description": "Google Maps make it simple",
   "main": "index.js",
   "scripts": {
+    "prestart": "npm install",
     "start": "browser-sync start --server --index examples/index.html",
     "test": "mocha-phantomjs test/runner.html"
   },

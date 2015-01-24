@@ -1,6 +1,17 @@
 ### GMPlus.js 0.0.0 [![Build Status](https://travis-ci.org/yagoferrer/gmplus.svg?branch=master)](https://travis-ci.org/yagoferrer/gmplus)
 
-Google Maps with: Less Code, More Fun, More Doing! Easy To Use, Extra Features, Frameworkless! 
+Google Maps with: Less Code, More Fun, More Doing! Easy To Use, Extra Features, Frameworkless!
+ 
+#### How to install
+The `npm` and `bower` package has not been registered yet. you can pull the repo doing:
+```bash
+git pull https://github.com/yagoferrer/GMPlus.git
+```
+Then run the examples doing:
+
+```
+npm start
+```
 
 #### Load a simple Map.
 You don't even need to include the Google Maps `<script>` tag. It will load the file for you **asynchronously**.
@@ -36,24 +47,30 @@ Once instantiated you can access directly to the Google API like this: `GMP.maps
 
 #### Markers
 
-##### Add Markers
+##### Add One Marker
+```javascript
+map.addMarker({
+     lat: 41.3833,
+     lng: 2.1833,
+     title: 'Barcelona'
+     });
+```
 
-You can add one or multiple markers to the Map and group them to control visibility, filtering, clustering and other features
+##### Add Multiple Markers
 
 ```javascript
 map.addMarker([
     {
       lat: 41.3833,
       lng: 2.1833,
-      title: 'barcelona'
+      title: 'Barcelona'
     },
     {
-      lat: 41.4489,
-      lng: 2.2461,
-      title: 'badalona'
+      lat: 42.5000,
+      lng: 1.5167,
+      title: 'Andorra'
     }
-  ],
-  {group: 'myGroup'}); // List of options shared for all the Markers in this Array.
+  ]);
 ```
 
 You can set any other native [Marker Options](https://developers.google.com/maps/documentation/javascript/reference#MarkerOptions)
