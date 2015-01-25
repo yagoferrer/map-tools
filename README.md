@@ -26,11 +26,13 @@ var map = new GMP({
 
 });
 ```
+By default it will load the latest version of Google Maps. You can pass a specific version using the `version` option. For example: `{version: 3.17}`
+
 Add a simple HTML tag
 ```html
 <div id="myMap"></div>
 ```
-You can set any other native Map: [options](https://developers.google.com/maps/documentation/javascript/reference#MapOptions), [Full Reference](https://developers.google.com/maps/documentation/javascript/reference#Map). It just works. For example you can add:
+You can set any other native Map [Reference](https://developers.google.com/maps/documentation/javascript/reference#Map) option. It just works. For example:
 ```javascript
 {
     disableDoubleClickZoom: true,
