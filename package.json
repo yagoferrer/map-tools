@@ -1,7 +1,7 @@
 {
   "name": "gmaps-plus",
   "version": "0.0.0",
-  "description": "Google Maps make it simple",
+  "description": "Google Maps made it simple",
   "main": "index.js",
   "scripts": {
     "prestart": "npm install",
