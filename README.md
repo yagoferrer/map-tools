@@ -34,7 +34,7 @@ Add a simple HTML tag
 ```html
 <div id="myMap"></div>
 ```
-You can set any other native [map options](https://developers.google.com/maps/documentation/javascript/reference#MapOptions). It just works. For example you can add:
+You can set any other native Map: [options](https://developers.google.com/maps/documentation/javascript/reference#MapOptions), [Full Reference](https://developers.google.com/maps/documentation/javascript/reference#Map). It just works. For example you can add:
 ```javascript
 {
     disableDoubleClickZoom: true,
