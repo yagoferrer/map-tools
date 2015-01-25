@@ -1,8 +1,8 @@
-### GMPlus.js 0.0.0 [![Build Status](https://travis-ci.org/yagoferrer/GMPlus.svg?branch=master)](https://travis-ci.org/yagoferrer/GMPlus)
+## GMPlus.js 0.0.0 [![Build Status](https://travis-ci.org/yagoferrer/GMPlus.svg?branch=master)](https://travis-ci.org/yagoferrer/GMPlus)
 
 Google Maps Plus: Less Code, More Fun, More Doing, Easy To Use, Frameworkless, Crossfilter support and more!
  
-#### How to test
+## How to test
 You can pull the repo:
 ```bash
 git pull https://github.com/yagoferrer/GMPlus.git
@@ -14,7 +14,7 @@ Then run the examples:
 npm start
 ```
 
-#### Load a simple Map.
+## Load a simple Map.
 No need to include the Google Maps `<script>` tag. GMPlus will load the file for you **asynchronously**.
 Setup a callback to notify you when the Map is fully loaded.
 ```javascript
@@ -46,9 +46,9 @@ You can set any other native Map: [options](https://developers.google.com/maps/d
 
 Once instantiated: you can access directly to the Google API like this: `GMP.maps.myMap.instance`
 
-#### Markers
+## Markers
 
-##### Add One Marker
+#### Add One Marker
 ```javascript
 map.addMarker({
      lat: 41.3833,
@@ -57,7 +57,7 @@ map.addMarker({
      });
 ```
 
-##### Add Multiple Markers
+#### Add Multiple Markers
 
 ```javascript
 map.addMarker([
@@ -80,7 +80,7 @@ You can set any other native [Marker Options](https://developers.google.com/maps
 Once the Markers are created, you can access directly like this: `GMP.maps.myMap.markers`
 
 
-##### Animate Markers
+#### Animate Markers
 Make your marker bounce `move: map.bounce` or drop `move: map.drop`
 
 ```javascript
@@ -92,7 +92,7 @@ map.addMarker({
 });
 ```
 
-##### Marker Groups
+#### Marker Groups
 
 You can create Groups and then associate Markers. Groups are great to apply options to a set of Markers.  
 ```javascript
@@ -110,7 +110,7 @@ map.updateGroup('myGroup', {visible: true});
 // Updates all the Markers to be visible.
 ```
 
-##### Info Bubble
+#### Info Bubble
 
 Adds an info bubble with HTML content.
 ```javascript
@@ -129,7 +129,7 @@ You can set any other [infoWindow options](https://developers.google.com/maps/do
 The default **event** is `click` but you can change it with the `event` property.
 
 
-#### Crossfilter support.
+## Crossfilter support
 - Add Marker related data into the `data` property. 
 - Add a [Crossfilter](https://github.com/square/crossfilter) when instantiating the Map.
 - Create dimensions.
