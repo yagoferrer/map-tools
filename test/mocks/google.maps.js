@@ -27,13 +27,18 @@ window.google = {
     InfoWindow: function() {
       return {};
     },
-    Marker: function() {
-      return {
-        setAnimation: function() {
-          return 'animation set';
-        },
-        name: 'marker'
+    Marker: function(marker) {
+
+      marker.setAnimation = function() {
+        return 'animation set';
       };
+
+      marker.setVisible = function(value) {
+        marker.visible = value;
+      }
+
+      return marker;
+
     },
     MarkerImage: function() {
       return {};
