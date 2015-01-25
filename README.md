@@ -105,7 +105,7 @@ map.addMarker({
 // Markers are added to the Map but not visible.
 
 map.updateGroup('myGroup', {visible: true});
-// Updates all the Markers to have a visible state.
+// Updates all the Markers to be visible.
 ```
 
 
