@@ -49,7 +49,8 @@ describe('Given GMPlus', function () {
       });
 
       expect(result.title).to.equal('Andorra');
-      expect(GMP.maps.myMap.markers).to.have.length.of(1);
+
+      expect(Object.keys(GMP.maps.myMap.markers).length).to.equal(1);
 
     });
 
@@ -69,7 +70,7 @@ describe('Given GMPlus', function () {
       var result = map.addMarker(markers, {group: 'myGroup'});
 
       expect(result).to.have.length.of(2);
-      expect(GMP.maps.myMap.markers).to.have.length.of(2);
+      expect(Object.keys(GMP.maps.myMap.markers).length).to.equal(2);
     });
 
 
@@ -94,8 +95,8 @@ describe('Given GMPlus', function () {
         expect(result[0].myGroupProp).to.be.ok;
         expect(result[1].myGroupProp).to.be.ok;
 
-        expect(GMP.maps.myMap.markers[0].myGroupProp).to.be.ok;
-        expect(GMP.maps.myMap.markers[1].myGroupProp).to.be.ok;
+        expect(GMP.maps.myMap.markers[Object.keys(GMP.maps.myMap.markers)[0]].myGroupProp).to.be.ok;
+        expect(GMP.maps.myMap.markers[Object.keys(GMP.maps.myMap.markers)[1]].myGroupProp).to.be.ok;
 
       });
 
