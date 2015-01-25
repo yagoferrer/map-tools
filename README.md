@@ -169,7 +169,7 @@ The default **event** is `click` but you can change it with the `event` property
     ]);
   }
 ```
-Now you can use the power of Crossfilter to update Markers. In this example it finds the city with larger population and makes the marker to bounce.
+Now you can use the power of Crossfilter to update Markers. In this example it finds the city with larger population, Madrid, and makes the marker to bounce.
 ```javascript
 map.updateMarker(population.top(1), {move: map.bounce});
 ```
