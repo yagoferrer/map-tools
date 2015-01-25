@@ -1,6 +1,6 @@
 ### GMPlus.js 0.0.0 [![Build Status](https://travis-ci.org/yagoferrer/GMPlus.svg?branch=master)](https://travis-ci.org/yagoferrer/GMPlus)
 
-Google Maps with: Less Code, More Fun, More Doing, Easy To Use, Frameworkless, Crossfilter support and more!
+Google Maps Plus: Less Code, More Fun, More Doing, Easy To Use, Frameworkless, Crossfilter support and more!
  
 #### How to test
 You can pull the repo:
