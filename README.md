@@ -1,12 +1,11 @@
 ## GMPlus.js 0.0.0 [![Build Status](https://travis-ci.org/yagoferrer/GMPlus.svg?branch=master)](https://travis-ci.org/yagoferrer/GMPlus)
 
 Google Maps Plus: 
-- Less Code
-- More Fun
-- More Doing
-- Easy To Use
-- Frameworkless
-- [Crossfilter](https://github.com/square/crossfilter) support.
+- Less Code. Google Maps it's a compliated API, you'll be writing way less code with GMPlus.
+- More Fun. Add animations, custom icons and more!
+- Easy To Use. Intuitive APIs, easy to understand.
+- Frameworkless. I believe on Framework non dependent libraries. 
+- [Crossfilter](https://github.com/square/crossfilter) support. Query Markers and change properties using Crossfilter!
  
 ## Run examples
 We are in a development stage. For now, you can pull the repo and run the examples:
