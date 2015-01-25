@@ -73,7 +73,7 @@ map.addMarker([
     }
   ], {icon: 'images/city.png'});
 ```
-The 2nd parameter of `addMarker` allows you to add options that will apply to all the Markers that you are adding.
+The 2nd parameter of `addMarker` allows you to add options that apply to all the Markers within the Array.
 
 You can set any other native [Marker Options](https://developers.google.com/maps/documentation/javascript/reference#MarkerOptions)
 
