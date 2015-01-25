@@ -93,7 +93,7 @@ map.addMarker({
 ```
 
 #### Marker Groups
-
+Marker Groups are a persistent high level group that allows you to work with a set of Markers.
 You can create Groups and then associate Markers. Groups are great to apply options to a set of Markers.  
 ```javascript
 map.addGroup('myGroup', {visible: false});
