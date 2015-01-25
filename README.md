@@ -71,29 +71,12 @@ map.addMarker([
       lng: 1.5167,
       title: 'Andorra'
     }
-  ]);
+  ], {icon: 'images/city.png'});
 ```
-
+The 2nd parameter of `addMarker` allows you to add options that will apply to all the Markers that you are adding.
 You can set any other native [Marker Options](https://developers.google.com/maps/documentation/javascript/reference#MarkerOptions)
 
 Once the markers are created you can access directly like this: `GMP.maps.myMap.markers`
-
-##### Add Multiple Markers with shared options
-The 2nd parameter of `addMarker` allows you to add options that will apply to all the Markers that you are adding.
-```javascript
-map.addMarker([
-    {
-      lat: 41.3833,
-      lng: 2.1833,
-      title: 'Barcelona'
-    },
-    {
-      lat: 42.5000,
-      lng: 1.5167,
-      title: 'Andorra'
-    }
-  ],{icon: 'images/city.png'});
-```
 
 
 ##### Animate Markers
