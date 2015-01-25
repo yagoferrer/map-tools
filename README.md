@@ -123,7 +123,7 @@ map.addMarker({
 });
 ```
 
-You can set any other infoWindow native properties inside `bubble`.
-The default event is `click` but you can change it with the `event` property.
+You can set any other [infoWindow options](https://developers.google.com/maps/documentation/javascript/reference#InfoWindowOptions) inside `bubble`.
+The default **event** is `click` but you can change it with the `event` property.
 
 
