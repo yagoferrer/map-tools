@@ -129,7 +129,8 @@ The default **event** is `click` but you can change it with the `event` property
 
 ##### Crossfilter support.
 - Add Marker related data into the `data` property. 
-- Add a [Crossfilter](https://github.com/square/crossfilter) when instantiating the Map
+- Add a [Crossfilter](https://github.com/square/crossfilter) when instantiating the Map.
+- Create dimensions.
 
 ```javascript
   var markers = crossfilter([]);
@@ -168,7 +169,7 @@ The default **event** is `click` but you can change it with the `event` property
     ]);
   }
 ```
-Now you can use the power of Crossfilter to update Markers!
+Now you can use the power of Crossfilter to update Markers. In this example it finds the city with larger population and makes the marker to bounce.
 ```javascript
 map.updateMarker(population.top(1), {move: map.bounce});
 ```
