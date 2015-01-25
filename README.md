@@ -100,11 +100,12 @@ map.addMarker({
   lat: 41.3833,
   lng: 2.1833,
   title: 'Barcelona',
-  move: map.bounce,
   group: 'myGroup'
 });
+// Markers are added to the Map but not visible.
 
 map.updateGroup('myGroup', {visible: true});
+// Updates all the Markers to have a visible state.
 ```
 
 
