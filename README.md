@@ -108,4 +108,22 @@ map.updateGroup('myGroup', {visible: true});
 // Updates all the Markers to be visible.
 ```
 
+##### Info Bubble
+
+Adds an info bubble with HTML content.
+```javascript
+map.addMarker({
+  lat: 41.3833,
+  lng: 2.1833,
+  title: 'Barcelona',
+  bubble: {
+    event: 'mouseover',
+    content: '<p>Barcelona City</p>'
+  }
+});
+```
+
+You can set any other infoWindow native properties inside `bubble`.
+The default event is `click` but you can change it with the `event` property.
+
 
