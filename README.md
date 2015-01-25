@@ -10,8 +10,8 @@ cd GMPlus
 npm start
 ```
 
-## Load a simple Map.
-No need to include the Google Maps `<script>` tag. GMPlus will load the file for you **asynchronously**.
+## Load a simple Map async
+No need to include the Google Maps `<script>` tag. GMPlus will load the file for you.
 Setup a callback to notify you when the Map is fully loaded.
 ```javascript
 var map = new GMP({
