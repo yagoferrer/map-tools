@@ -76,7 +76,7 @@ map.addMarker([
 
 You can set any other native [Marker Options](https://developers.google.com/maps/documentation/javascript/reference#MarkerOptions)
 
-Once the markers are created you can access directly like this: `GMP.maps.myMap.groups.all`
+Once the markers are created you can access directly like this: `GMP.maps.myMap.markers`
 
 ##### Animate Markers
 Make your marker bounce `move: map.bounce` or drop `move: map.drop`
@@ -89,3 +89,22 @@ map.addMarker({
   move: map.bounce
 });
 ```
+
+##### Marker Groups
+
+You can create Groups and then associate Markers. Groups are great to apply options to a set of Markers.  
+```javascript
+map.addGroup('myGroup', {visible: false});
+
+map.addMarker({
+  lat: 41.3833,
+  lng: 2.1833,
+  title: 'Barcelona',
+  move: map.bounce,
+  group: 'myGroup'
+});
+
+map.updateGroup('myGroup', {visible: true});
+```
+
+
