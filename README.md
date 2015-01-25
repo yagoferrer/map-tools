@@ -5,7 +5,7 @@ Google Maps Plus:
 - More Fun. Add animations, custom icons and more!
 - Easy To Use. Intuitive APIs, easy to understand.
 - Frameworkless. I believe on Framework non dependent libraries. 
-- [Crossfilter](https://github.com/square/crossfilter) support. Query Markers and change properties using Crossfilter!
+- [Crossfilter support](#crossfilter-support). Query Markers and change properties using Crossfilter!
  
 ## Run examples
 We are in a development stage. For now, you can pull the repo and run the examples:
