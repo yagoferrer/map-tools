@@ -127,3 +127,48 @@ You can set any other [infoWindow options](https://developers.google.com/maps/do
 The default **event** is `click` but you can change it with the `event` property.
 
 
+##### Data querying 
+You can add support for Crossfilter. Here is an example:
+
+```javascript
+  var markers = crossfilter([]);
+  var population = markers.dimension(function(d) { return d.population; });
+
+  var map = new GMP({
+    id: 'myMap',
+    lat: 40.419795,
+    lng: -3.710436,
+    zoom: 6,
+    crossfilter: markers
+  }, function (err, instance) {
+    if (!err) {
+      addMarker();
+    }
+  });
+
+  function addMarker() {
+    map.addMarker([
+      {
+        lat: 41.3833,
+        lng: 2.1833,
+        data: {
+          name: 'Barcelona',
+          population: 1621000
+        }
+      },
+      {
+        lat: 40.419795,
+        lng: -3.710436,
+        data: {
+          name: 'Madrid',
+          population: 3234000
+        }
+      }
+    ]);
+  }
+```
+
+Now we can query what City has a larger population and make the Marker bounce
+```javascript
+map.updateMarker(population.top(1), {move: map.bounce});
+```
