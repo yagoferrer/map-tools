@@ -74,9 +74,10 @@ map.addMarker([
   ], {icon: 'images/city.png'});
 ```
 The 2nd parameter of `addMarker` allows you to add options that will apply to all the Markers that you are adding.
+
 You can set any other native [Marker Options](https://developers.google.com/maps/documentation/javascript/reference#MarkerOptions)
 
-Once the markers are created you can access directly like this: `GMP.maps.myMap.markers`
+Once the Markers are created, you can access directly like this: `GMP.maps.myMap.markers`
 
 
 ##### Animate Markers
