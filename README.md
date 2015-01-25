@@ -3,14 +3,10 @@
 Google Maps Plus: Less Code, More Fun, More Doing, Easy To Use, Frameworkless, Crossfilter support and more!
  
 ## How to test
-You can pull the repo:
+We are in a development stage. For now, you can pull the repo and run the tests:
 ```bash
 git pull https://github.com/yagoferrer/GMPlus.git
-```
-
-Then run the examples:
-
-```
+cd GMPlus
 npm start
 ```
 
