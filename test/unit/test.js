@@ -193,4 +193,20 @@ describe('Given GMPlus', function () {
   });
 
 
+  describe('when calling updateMarker()', function () {
+    it('should invoke the Marker options setter for each property passed', function () {
+      var map = new GMP({async: false, id: 'myMap', lat: 41.3833, lng: 2.1833});
+      var marker = {
+        lat: 41.3833,
+        lng: 2.1833,
+        title: 'Barcelona',
+        visible: false
+      };
+      var result = map.addMarker(marker);
+      var uid = result.data.uid;
+      expect(GMP.maps.myMap.markers[uid].visible).to.be.false;
+      map.updateMarker([{uid: uid}], {visible: true});
+      expect(GMP.maps.myMap.markers[uid].visible).to.be.true;
+    });
+  });
 });
