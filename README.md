@@ -140,7 +140,7 @@ map.addMarker({
   }
 });
 ```
-Use curly brackets to display variables from `data`
+Since 0.2.0 you can use curly brackets to display variables from `data`
 You can set any other [infoWindow options](https://developers.google.com/maps/documentation/javascript/reference#InfoWindowOptions) inside `bubble`.
 The default **event** is `click` but you can change it with the `event` property.
 
