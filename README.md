@@ -1,8 +1,8 @@
 ## gmplus.js 0.1.0 [![Build Status](https://travis-ci.org/yagoferrer/gmplus.svg?branch=master)](https://travis-ci.org/yagoferrer/gmplus)
 
 Google Maps Plus: 
-- Less Code. Google Maps it's a compliated API, you'll be writing way less code with gmplus.js
-- More Fun. Add animations, custom icons and more!
+- Less Code. The [Google Maps API](https://developers.google.com/maps/documentation/javascript/reference) is of considerable size, you'll be writing way **less** code with gmplus.js to achieve same results.
+- More Fun. Add Marker animations, use handlebars style like variables with no hassle!
 - Easy To Use. Intuitive APIs, easy to understand.
 - Frameworkless. No depenencies. 
 - [Crossfilter support](#crossfilter-support). Query Markers and change properties using Crossfilter!
