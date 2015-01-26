@@ -1,6 +1,6 @@
 {
   "name": "GMPlus",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Google Maps made it simple",
   "main": "lib/index.js",
   "scripts": {
