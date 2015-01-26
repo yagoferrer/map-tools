@@ -27,8 +27,8 @@ npm start
 ```
 
 ## Documentation
-This page reflects the latest documentation from the #master branch. 
-Please use the current tag for related docs: [0.1.0](https://github.com/yagoferrer/gmplus/tree/0.1.0)
+This page reflects the latest documentation from the #master branch PRs.
+Please use this page for the latest reference: [0.1.0](https://github.com/yagoferrer/gmplus/tree/0.1.0)
 
 
 
