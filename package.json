@@ -11,19 +11,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yagoferrer/GMPlus.git"
+    "url": "https://github.com/yagoferrer/gmplus.git"
   },
   "author": "Yago Ferrer <yago.ferrer@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yagoferrer/GMPlus/issues"
+    "url": "https://github.com/yagoferrer/gmplus/issues"
   },
   "keywords": [
     "google maps",
     "gmaps",
     "google"
   ],
-  "homepage": "https://github.com/yagoferrer/GMPlus",
+  "homepage": "https://github.com/yagoferrer/gmplus",
   "devDependencies": {
     "bower": "^1.3.12",
     "browser-sync": "^1.9.1",
