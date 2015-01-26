@@ -2,7 +2,7 @@
 
 Google Maps Plus: 
 - Less Code. The [Google Maps API](https://developers.google.com/maps/documentation/javascript/reference) is of considerable size, you'll be writing way **less** code with gmplus.js.
-- More Fun. Add Marker animations, use handlebars style like variables with no hassle!
+- More Fun. Add Marker animations, use handlebars style like variables, lots of helper functions.
 - Easy To Use. Intuitive APIs, easy to understand.
 - Frameworkless. No depenencies. 
 - [Crossfilter support](#crossfilter-support). Query Markers and change properties using Crossfilter!
