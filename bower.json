@@ -1,0 +1,25 @@
+{
+  "name": "GMPlus",
+  "version": "0.1.0",
+  "homepage": "https://github.com/yagoferrer/GMPlus",
+  "authors": [
+    "Yago Ferrer <yago.ferrer@gmail.com>"
+  ],
+  "description": "Google Maps made it simple",
+  "main": "dist/gmplus.min.js",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "google",
+    "maps"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
