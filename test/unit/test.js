@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Given GMPlus', function () {
+describe('Given gmplus.js', function () {
 
   describe('when instantiating', function () {
 

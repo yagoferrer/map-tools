@@ -1,4 +1,4 @@
-/* GMPlus.js 0.1.0 MIT License. 2015 Yago Ferrer <yago.ferrer@gmail.com> */
+/* gmplus.js 0.1.0 MIT License. 2015 Yago Ferrer <yago.ferrer@gmail.com> */
 /* global window, document */
 (function (global) {
   "use strict";
