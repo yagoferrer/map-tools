@@ -17,6 +17,11 @@
   "bugs": {
     "url": "https://github.com/yagoferrer/GMPlus/issues"
   },
+  "keywords": [
+    "google maps",
+    "gmaps",
+    "google"
+  ],
   "homepage": "https://github.com/yagoferrer/GMPlus",
   "devDependencies": {
     "browser-sync": "^1.9.1",
