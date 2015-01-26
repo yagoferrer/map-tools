@@ -22,7 +22,6 @@ npm install gmplus --save-dev
 Direct download: [gmplus.min.js](https://github.com/yagoferrer/gmplus/blob/0.1.0/dist/gmplus.min.js)
  
 ## Run examples
-You can pull the repo and run the examples:
 ```bash
 git pull https://github.com/yagoferrer/gmplus.git
 cd gmplus
