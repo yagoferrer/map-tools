@@ -1,5 +1,8 @@
 ## gmplus.js 0.1.0 [![Build Status](https://travis-ci.org/yagoferrer/gmplus.svg?branch=master)](https://travis-ci.org/yagoferrer/gmplus)
 
+This page reflects the **latest** documentation from the `master` branch.
+Please use this documentation page as a reference for: [release 0.1.0](https://github.com/yagoferrer/gmplus/tree/0.1.0)
+
 Google Maps Plus: 
 - Less Code: The [Google Maps API](https://developers.google.com/maps/documentation/javascript/reference) is of considerable size, you'll be writing way **less** code.
 - More Fun: Add Marker animations, use handlebars style like variables, lots of helper functions.
@@ -26,13 +29,6 @@ git pull https://github.com/yagoferrer/gmplus.git
 cd gmplus
 npm start
 ```
-
-## Documentation
-This page reflects the **latest** documentation from the `master` branch.
-
-Please use this documentation page as a reference for: [release 0.1.0](https://github.com/yagoferrer/gmplus/tree/0.1.0)
-
-
 
 ## Load a simple Map async
 No need to include the Google Maps `<script>` tag. gmplus.js will load the file for you.
