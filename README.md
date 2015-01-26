@@ -6,9 +6,13 @@ Google Maps Plus:
 - Easy To Use. Intuitive APIs, easy to understand.
 - Frameworkless. I believe on Framework non dependent libraries. 
 - [Crossfilter support](#crossfilter-support). Query Markers and change properties using Crossfilter!
+
+## Install
+- Bower: `bower install GMPlus --save-dev`
+- NPM: `npm install GMPlus --save-dev`
  
 ## Run examples
-We are in a development stage. For now, you can pull the repo and run the examples:
+You can pull the repo and run the examples:
 ```bash
 git pull https://github.com/yagoferrer/GMPlus.git
 cd GMPlus
