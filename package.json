@@ -1,8 +1,8 @@
 {
-  "name": "gmaps-plus",
+  "name": "GMPlus",
   "version": "0.0.0",
   "description": "Google Maps made it simple",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "prestart": "npm install",
     "start": "browser-sync start --server --index examples/index.html",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yagoferrer/gmaps-plus.git"
+    "url": "https://github.com/yagoferrer/GMPlus.git"
   },
   "author": "Yago Ferrer <yago.ferrer@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yagoferrer/gmaps-plus/issues"
+    "url": "https://github.com/yagoferrer/GMPlus/issues"
   },
-  "homepage": "https://github.com/yagoferrer/gmaps-plus",
+  "homepage": "https://github.com/yagoferrer/GMPlus",
   "devDependencies": {
     "browser-sync": "^1.9.1",
     "chai": "^1.10.0",
