@@ -1,5 +1,5 @@
 {
-  "name": "GMPlus",
+  "name": "gmplus",
   "version": "0.1.0",
   "description": "Google Maps made it simple",
   "main": "lib/index.js",
