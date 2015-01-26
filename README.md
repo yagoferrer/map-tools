@@ -29,7 +29,7 @@ npm start
 ## Documentation
 This page reflects the **latest** documentation from the `master` branch.
 
-Please use this documentation page for: [release 0.1.0](https://github.com/yagoferrer/gmplus/tree/0.1.0)
+Please use this documentation page as a reference for: [release 0.1.0](https://github.com/yagoferrer/gmplus/tree/0.1.0)
 
 
 
