@@ -1,4 +1,4 @@
-## GMPlus.js 0.0.0 [![Build Status](https://travis-ci.org/yagoferrer/GMPlus.svg?branch=master)](https://travis-ci.org/yagoferrer/GMPlus)
+## GMPlus.js 0.1.0 [![Build Status](https://travis-ci.org/yagoferrer/GMPlus.svg?branch=master)](https://travis-ci.org/yagoferrer/GMPlus)
 
 Google Maps Plus: 
 - Less Code. Google Maps it's a compliated API, you'll be writing way less code with GMPlus.
