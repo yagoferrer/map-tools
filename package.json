@@ -6,7 +6,8 @@
   "scripts": {
     "prestart": "npm install",
     "start": "browser-sync start --server --index examples/index.html",
-    "test": "mocha-phantomjs test/runner.html"
+    "test": "mocha-phantomjs test/runner.html",
+    "dist": "node ./scripts/dist.js"
   },
   "repository": {
     "type": "git",
@@ -33,6 +34,7 @@
     "mocha": "^2.1.0",
     "mocha-phantomjs": "^3.5.3",
     "npm": "^2.2.0",
-    "phantomjs": "^1.9.13"
+    "phantomjs": "^1.9.13",
+    "uglify-js": "^2.4.16"
   }
 }
