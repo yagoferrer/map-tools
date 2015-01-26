@@ -144,7 +144,7 @@ The default **event** is `click` but you can change it with the `event` property
 
 ## Crossfilter support
 - Add Marker related data into the `data` property. 
-- Add a [Crossfilter](https://github.com/square/crossfilter) when instantiating the Map.
+- Add a [Crossfilter](https://github.com/square/crossfilter) instance when instantiating the Map.
 - Create dimensions.
 
 ```javascript
@@ -155,7 +155,6 @@ The default **event** is `click` but you can change it with the `event` property
     id: 'myMap',
     lat: 40.419795,
     lng: -3.710436,
-    zoom: 6,
     crossfilter: markers
   }, function (err, instance) {
     if (!err) {
