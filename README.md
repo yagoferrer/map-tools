@@ -1,8 +1,6 @@
 ## gmplus.js 0.1.0 [![Build Status](https://travis-ci.org/yagoferrer/gmplus.svg?branch=master)](https://travis-ci.org/yagoferrer/gmplus)
 
-This page reflects the **latest** documentation from the `master` branch.
-
-Please use [this documentation page](https://github.com/yagoferrer/gmplus/tree/0.1.0) as a reference for the latest release: **0.1.0**
+This page reflects the **latest** documentation from the `master` branch. Please use [this documentation page](https://github.com/yagoferrer/gmplus/tree/0.1.0) as a reference for the latest release: **0.1.0**
 
 Google Maps Plus: 
 - Less Code: The [Google Maps API](https://developers.google.com/maps/documentation/javascript/reference) is of considerable size, you'll be writing way **less** code.
