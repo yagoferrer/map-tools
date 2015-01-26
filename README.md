@@ -5,8 +5,8 @@ Google Maps Plus:
 - More Fun: Add Marker animations, use handlebars style like variables, lots of helper functions.
 - Easy To Use: Intuitive APIs, easy to understand.
 - Frameworkless: No depenencies.
-- Non intrusive: extends the Google Maps API, you can use any other native methods, properties and events.
-- [Crossfilter support](#crossfilter-support): Query Markers and change properties using Crossfilter!
+- Non Intrusive: extends the Google Maps API, you can use any other native methods, properties and events.
+- [Crossfilter Support](#crossfilter-support): Query Markers and change properties using Crossfilter!
 
 ## Install
 Bower: 
