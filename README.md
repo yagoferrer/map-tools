@@ -4,7 +4,7 @@ Google Maps Plus:
 - Less Code. Google Maps it's a compliated API, you'll be writing way less code with gmplus.js
 - More Fun. Add animations, custom icons and more!
 - Easy To Use. Intuitive APIs, easy to understand.
-- Frameworkless. I believe on Framework non dependent libraries. 
+- Frameworkless. No depenencies. 
 - [Crossfilter support](#crossfilter-support). Query Markers and change properties using Crossfilter!
 
 ## Install
