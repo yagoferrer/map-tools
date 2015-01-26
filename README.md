@@ -8,19 +8,19 @@ Google Maps Plus:
 - [Crossfilter support](#crossfilter-support). Query Markers and change properties using Crossfilter!
 
 ## Install
-- Bower: `bower install GMPlus --save-dev`
-- NPM: `npm install GMPlus --save-dev`
+- Bower: `bower install gmplus --save-dev`
+- NPM: `npm install gmplus --save-dev`
  
 ## Run examples
 You can pull the repo and run the examples:
 ```bash
-git pull https://github.com/yagoferrer/GMPlus.git
-cd GMPlus
+git pull https://github.com/yagoferrer/gmplus.git
+cd gmplus
 npm start
 ```
 
 ## Load a simple Map async
-No need to include the Google Maps `<script>` tag. GMPlus will load the file for you.
+No need to include the Google Maps `<script>` tag. gmplus.js will load the file for you.
 Setup a callback to notify you when the Map is fully loaded.
 ```javascript
 var map = new GMP({
