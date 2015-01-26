@@ -8,8 +8,14 @@ Google Maps Plus:
 - [Crossfilter support](#crossfilter-support). Query Markers and change properties using Crossfilter!
 
 ## Install
-- Bower: `bower install gmplus --save-dev`
-- NPM: `npm install gmplus --save-dev`
+Bower: 
+```bash
+bower install gmplus --save-dev
+```
+NPM: 
+```bash
+npm install gmplus --save-dev
+```
  
 ## Run examples
 You can pull the repo and run the examples:
