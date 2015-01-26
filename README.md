@@ -7,7 +7,7 @@ This page reflects the **latest** documentation from the `master` branch. Please
 - More Fun: Add Marker animations, use handlebars style like variables, lots of helper functions.
 - Easy To Use: Intuitive APIs, easy to understand.
 - Frameworkless: No depenencies.
-- Non Intrusive: extends the Google Maps API, you can use any other native methods, properties and events anywhere.
+- Non Intrusive: extends the API, you can use any other native methods, properties and events anywhere.
 - [Crossfilter Support](#crossfilter-support): Query Markers and change properties using Crossfilter!
 
 ## Install
