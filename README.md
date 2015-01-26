@@ -8,7 +8,7 @@ This page reflects the **latest** documentation from the `master` branch. Please
 - Easy To Use: Intuitive APIs, easy to understand.
 - Frameworkless: No depenencies.
 - Non Intrusive: extends the API, you can use any other native methods, properties and events anywhere.
-- [Crossfilter Support](#crossfilter-support): Query Markers and change properties using Crossfilter!
+- [Crossfilter Support](#crossfilter-support): Query Markers and change properties using the power of Crossfilter.
 
 ## Install
 Bower: 
