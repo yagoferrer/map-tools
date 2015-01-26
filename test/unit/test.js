@@ -74,6 +74,28 @@ describe('Given gmplus.js', function () {
     });
 
 
+    describe('with a the "bubble" option witch "content" has a reference to a "data" variable', function () {
+
+
+      it('should replace the variable in "content" using the "data" variable', function () {
+        var map = new GMP({async: false, id: 'myMap', lat: 41.3833, lng: 2.1833});
+        var marker = {
+          lat: 41.3833,
+          lng: 2.1833,
+          bubble: {
+            content: '{city}'
+          },
+          data: {
+            city: 'barcelona'
+          }
+        };
+        var result = map.addMarker(marker);
+        expect(result.bubble.content).to.equal('barcelona');
+      });
+    });
+
+
+
     describe('with extra options as a second parameter', function () {
 
       it('should merge the options with the Marker options', function () {

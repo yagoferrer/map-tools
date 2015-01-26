@@ -4,6 +4,10 @@ window.google = {
       addListenerOnce: function(instance, event, cb)
       {
         cb()
+      },
+      addListener: function(instance, event, cb)
+      {
+
       }
     },
     LatLng: function(lat, lng) {
