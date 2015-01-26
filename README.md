@@ -192,3 +192,6 @@ Now you can use the power of Crossfilter to update Markers. In this example it f
 ```javascript
 map.updateMarker(population.top(1), {move: map.bounce});
 ```
+
+## How can you contribute?
+Get involved! Check out the list of [feature requests](https://github.com/yagoferrer/gmplus/issues). All PRs and ideas are welcome.
