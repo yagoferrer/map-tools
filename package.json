@@ -7,7 +7,8 @@
     "prestart": "npm install",
     "start": "browser-sync start --server --index examples/index.html",
     "test": "mocha-phantomjs test/runner.html",
-    "dist": "node ./scripts/dist.js"
+    "dist": "node ./scripts/dist.js",
+    "check": "jshint lib/index.js"
   },
   "repository": {
     "type": "git",
