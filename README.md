@@ -10,7 +10,7 @@ This page reflects the **latest** documentation from the `master` branch. Please
 - Non Intrusive: extends the API, you can use any other native methods, properties and events anywhere.
 - [Crossfilter Support](#crossfilter-support): Query Markers and change properties using the power of Crossfilter.
 
-## Install
+## Get Started
 Bower: 
 ```bash
 bower install gmplus --save-dev
