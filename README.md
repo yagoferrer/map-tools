@@ -1,7 +1,6 @@
 ## gmplus.js 0.1.0 [![Build Status](https://travis-ci.org/yagoferrer/gmplus.svg?branch=master)](https://travis-ci.org/yagoferrer/gmplus)
-gmplus.js is a Google Maps Feature-rich Javascript wrapper that makes things like Marker filtering, [asynchronous loading](#load-a-simple-map-async) and animation much simpler with an easy-to-use API.
+gmplus.js is a Google Maps Feature-rich Javascript wrapper that makes things like [Marker filtering](#crossfilter-support), [asynchronous loading](#load-a-simple-map-async) and animation much simpler with an easy-to-use API.
 
-It provides helpers to do advance [Marker filtering](#crossfilter-support) and [grouping](#marker-groups) with very simple code.
 
 ## Benefits of using gmplus.js: 
 - Less Code: The [Google Maps API](https://developers.google.com/maps/documentation/javascript/reference) is of considerable size, you'll be writing way **less** code.
