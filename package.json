@@ -1,7 +1,7 @@
 {
   "name": "gmplus",
   "version": "0.1.0",
-  "description": "Google Maps JS wrapper that simplifies the way you work with the API and provides advanced Marker filtering",
+  "description": "Google Maps Feature-rich Javascript wrapper that makes things like Marker filtering, asynchronous loading much simpler with an easy-to-use API",
   "main": "lib/index.js",
   "scripts": {
     "prestart": "npm install",
