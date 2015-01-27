@@ -5,11 +5,11 @@ It provides helpers to do advance Marker filtering and grouping with very simple
 
 ## Benefits of using gmplus.js: 
 - Less Code: The [Google Maps API](https://developers.google.com/maps/documentation/javascript/reference) is of considerable size, you'll be writing way **less** code.
-- More Fun: Add [Marker animations](#animate-markers), use handlebars style like variables, lots of helper functions.
+- More Fun: Add [Marker animations](#animate-markers), use [handlebars style](#info-bubble) variables.
 - Easy To Use: Intuitive APIs, easy to understand.
 - Frameworkless: No depenencies.
 - Non Intrusive: extends the API, you can use any other native methods, properties and events anywhere.
-- [Crossfilter Support](#crossfilter-support): Query Markers and change properties using the power of Crossfilter.
+- [Crossfilter Support](#crossfilter-support): Query Markers and change visibility using the power of Crossfilter.
 
 This page reflects the **latest** documentation from the `master` branch. Please use [this documentation page](https://github.com/yagoferrer/gmplus/tree/0.1.0) as a reference for the latest release: [0.1.0](https://github.com/yagoferrer/gmplus/releases)
 
