@@ -5,7 +5,7 @@
   "authors": [
     "Yago Ferrer <yago.ferrer@gmail.com>"
   ],
-  "description": "Google Maps JS wrapper that simplifies the way you work with the API and provides advanced Marker filtering",
+  "description": "Google Maps Feature-rich Javascript wrapper that makes things like Marker filtering, asynchronous loading much simpler with an easy-to-use API",
   "main": "dist/gmplus.min.js",
   "moduleType": [
     "amd"
