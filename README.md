@@ -1,6 +1,7 @@
 ## gmplus.js 0.1.0 [![Build Status](https://travis-ci.org/yagoferrer/gmplus.svg?branch=master)](https://travis-ci.org/yagoferrer/gmplus)
+gmplus.js is a Google Maps Javascript wrapper that simplifies the way you work with the API. 
 
-This page reflects the **latest** documentation from the `master` branch. Please use [this documentation page](https://github.com/yagoferrer/gmplus/tree/0.1.0) as a reference for the latest release: [0.1.0](https://github.com/yagoferrer/gmplus/releases)
+It provides helpers to do advance Marker filtering and grouping with very simple code.
 
 ## Benefits of using gmplus.js: 
 - Less Code: The [Google Maps API](https://developers.google.com/maps/documentation/javascript/reference) is of considerable size, you'll be writing way **less** code.
@@ -9,6 +10,8 @@ This page reflects the **latest** documentation from the `master` branch. Please
 - Frameworkless: No depenencies.
 - Non Intrusive: extends the API, you can use any other native methods, properties and events anywhere.
 - [Crossfilter Support](#crossfilter-support): Query Markers and change properties using the power of Crossfilter.
+
+This page reflects the **latest** documentation from the `master` branch. Please use [this documentation page](https://github.com/yagoferrer/gmplus/tree/0.1.0) as a reference for the latest release: [0.1.0](https://github.com/yagoferrer/gmplus/releases)
 
 ## Get Started
 Bower: 
