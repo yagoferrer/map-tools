@@ -5,7 +5,7 @@ It provides helpers to do advance Marker filtering and grouping with very simple
 
 ## Benefits of using gmplus.js: 
 - Less Code: The [Google Maps API](https://developers.google.com/maps/documentation/javascript/reference) is of considerable size, you'll be writing way **less** code.
-- More Fun: Add Marker animations, use handlebars style like variables, lots of helper functions.
+- More Fun: Add [Marker animations](#animate-markers), use handlebars style like variables, lots of helper functions.
 - Easy To Use: Intuitive APIs, easy to understand.
 - Frameworkless: No depenencies.
 - Non Intrusive: extends the API, you can use any other native methods, properties and events anywhere.
