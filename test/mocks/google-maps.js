@@ -1,4 +1,4 @@
-window.google = {
+module.exports = {
   maps: {
     event: {
       addListenerOnce: function(instance, event, cb)
