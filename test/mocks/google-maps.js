@@ -7,7 +7,7 @@ module.exports = {
       },
       addListener: function(instance, event, cb)
       {
-
+        cb()
       }
     },
     LatLng: function(lat, lng) {
@@ -29,7 +29,7 @@ module.exports = {
       return {};
     },
     InfoWindow: function() {
-      return {};
+      return {open: function(){}};
     },
     Marker: function(marker) {
 
