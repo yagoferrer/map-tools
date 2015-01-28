@@ -12,6 +12,7 @@ gmplus.js is a Google Maps Feature-rich Javascript wrapper that makes things lik
 - Easy To Use: Intuitive APIs, easy to understand.
 - Non Intrusive: it extends the API, you can use any other native methods, properties and events anywhere.
 - [Crossfilter Support](#crossfilter-support): Query Markers and change visibility using the power of Crossfilter.
+- 100% tested
 
 This page reflects the **latest** documentation from the `master` branch. Please use [this documentation page](https://github.com/yagoferrer/gmplus/tree/0.1.0) as a reference for the latest release: [0.1.0](https://github.com/yagoferrer/gmplus/releases)
 
