@@ -6,7 +6,6 @@ gmplus.js is a Google Maps Feature-rich Javascript wrapper that makes things lik
 - Less Code: The [Google Maps API](https://developers.google.com/maps/documentation/javascript/reference) is of considerable size, you'll be writing way **less** code.
 - More Fun: Add [Marker animations](#animate-markers), use [handlebars style](#info-bubble) variables.
 - Easy To Use: Intuitive APIs, easy to understand.
-- Frameworkless: No depenencies.
 - Non Intrusive: it extends the API, you can use any other native methods, properties and events anywhere.
 - [Crossfilter Support](#crossfilter-support): Query Markers and change visibility using the power of Crossfilter.
 
