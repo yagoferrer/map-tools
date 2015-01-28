@@ -2,6 +2,6 @@ language: node_js
 node_js:
     - "0.10"
 script:
-    - ./node_modules/.bin/istanbul cover --report lcov node_modules/.bin/_mocha -r ./test/bootstrap.js test/unit
+    - NODE_PATH=lib ./node_modules/.bin/istanbul cover --report lcov node_modules/.bin/_mocha -r ./test/bootstrap.js test/unit
 after_success:
     - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js

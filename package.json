@@ -6,9 +6,9 @@
   "scripts": {
     "prestart": "npm install",
     "start": "browser-sync start --server --index examples/index.html",
-    "test": "mocha -r ./test/bootstrap.js test/unit",
-    "coverage": "istanbul cover --report lcov node_modules/.bin/_mocha -r ./test/bootstrap.js test/unit",
-    "predist": "browserify lib/index.js > dist/gmplus.js",
+    "test": "NODE_PATH=lib mocha -r ./test/bootstrap.js test/unit",
+    "coverage": "NODE_PATH=lib istanbul cover --report html node_modules/.bin/_mocha -r ./test/bootstrap.js test/unit; cd coverage; python -m SimpleHTTPServer 8000",
+    "predist": "NODE_PATH=lib browserify lib/index.js > dist/gmplus.js",
     "dist": "node ./scripts/dist.js",
     "pretest": "jshint lib/index.js"
   },
@@ -40,6 +40,8 @@
     "jshint": "^2.6.0",
     "mocha": "^2.1.0",
     "npm": "^2.2.0",
+    "sinon": "^1.12.2",
+    "sinon-chai": "^2.6.0",
     "uglify-js": "^2.4.16"
   }
 }

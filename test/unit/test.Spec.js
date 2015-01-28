@@ -28,12 +28,39 @@ describe('Given gmplus.js', function () {
       });
     });
 
-    it('should return a Map instance when you pass: "id", "lat" and "lng"', function (done) {
+    it('should return a Map instance when you pass: "id", "lat" and "lng" and async:false', function (done) {
       var map = new GMP({async: false, id: 'myMap', lat: 41.3833, lng: 2.1833}, function (err, instance) {
         expect(instance.gm_bindings_).to.be.a('object');
         done();
       });
     });
+
+    it('should append a  Map instance when you pass: "id", "lat" and "lng" and async:true', function (done) {
+      var map = new GMP({id: 'myMap', lat: 41.3833, lng: 2.1833}, function (err, instance) {
+        expect(instance.gm_bindings_).to.be.a('object');
+        done();
+      });
+    });
+
+    describe('with crossfilter', function () {
+
+
+      it('should add the marker data to the crossfilter', function () {
+        var spy = sinon.spy();
+        var map = new GMP({async:false, id: 'myMap', lat: 41.3833, lng: 2.1833, crossfilter: {add: spy}});
+
+        var result = map.addMarker({
+          lat: 42.5000,
+          lng: 1.5167,
+          title: 'Andorra'
+        });
+
+          expect(result.title).to.equal('Andorra');
+          expect(Object.keys(GMP.maps.myMap.markers).length).to.equal(1);
+          expect(spy).to.have.been.called;
+        });
+    });
+
   });
 
 
@@ -64,7 +91,8 @@ describe('Given gmplus.js', function () {
       },{
         lat: 41.4489,
         lng: 2.2461,
-        title: 'Badalona'
+        title: 'Badalona',
+        move: map.bounce
       }];
 
       var result = map.addMarker(markers, {group: 'myGroup'});
@@ -166,9 +194,7 @@ describe('Given gmplus.js', function () {
     describe('with the same option in the Marker, the 2nd parameter and the Group', function () {
 
       it('should take preference whatever is set in the Group', function () {
-
         var map = new GMP({async: false, id: 'myMap', lat: 41.3833, lng: 2.1833});
-
         map.addGroup('myGroup', {myGroupProp: '3'});
 
         var markers = {
@@ -178,9 +204,7 @@ describe('Given gmplus.js', function () {
           myGroupProp: '1'
         };
         map.addMarker(markers, {myGroupProp: '2', group: 'myGroup'});
-
         expect(GMP.maps.myMap.groups.myGroup[0].myGroupProp).to.equal('3');
-
       });
 
     });
@@ -190,9 +214,7 @@ describe('Given gmplus.js', function () {
   describe('when calling updateGroup()', function () {
 
     it('should invoke the setter of the Marker option with the new value', function() {
-
       var map = new GMP({async: false, id: 'myMap', lat: 41.3833, lng: 2.1833});
-
       map.addGroup('myGroup', {visible : true});
 
       var marker = {
@@ -203,31 +225,38 @@ describe('Given gmplus.js', function () {
       };
 
       var result = map.addMarker(marker);
-
       expect(result.visible).to.be.true;
-
       map.updateGroup('myGroup', {visible: false});
-
       expect(GMP.maps.myMap.groups.myGroup[0].visible).to.be.false;
-
     });
 
   });
 
 
   describe('when calling updateMarker()', function () {
+
     it('should invoke the Marker options setter for each property passed', function () {
       var map = new GMP({async: false, id: 'myMap', lat: 41.3833, lng: 2.1833});
-      var marker = {
+
+      var markers = [{
         lat: 41.3833,
         lng: 2.1833,
         title: 'Barcelona',
         visible: false
-      };
-      var result = map.addMarker(marker);
-      var uid = result.data.uid;
+      },
+        {
+          lat: 42.5000,
+          lng: 1.5167,
+          title: 'Andorra',
+          group: 'myGroup',
+          visible: false
+        }
+      ];
+
+      var result = map.addMarker(markers);
+      var uid = result[0].data.uid;
       expect(GMP.maps.myMap.markers[uid].visible).to.be.false;
-      map.updateMarker([{uid: uid}], {visible: true});
+      map.updateMarker([{uid: uid}], {visible: true, move: map.bounce});
       expect(GMP.maps.myMap.markers[uid].visible).to.be.true;
     });
   });
