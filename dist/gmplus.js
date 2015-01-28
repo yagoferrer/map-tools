@@ -1,15 +1,47 @@
 /* gmplus.js 0.1.0 MIT License. 2015 Yago Ferrer <yago.ferrer@gmail.com> */
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+module.exports = {
+  version: '3.exp',
+  zoom: 8
+};
+
+},{}],2:[function(require,module,exports){
+(function (global){
+'use strict';
+
+var defaults = require('../gmplus/defaults');
+
+/**
+ * Injects Google API Javascript File and adds a callback to load the Google Maps Async.
+ * @type {{load: Function}}
+ * @private
+ *
+ * @returns the element appended
+ */
+function load (args) {
+  var version = args.version || defaults.version;
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = '//maps.googleapis.com/maps/api/js?v=' + version +
+  '&callback=GMP.maps.' + args.id + '.create';
+  return global.document.body.appendChild(script);
+}
+
+module.exports = {
+  load: load
+}
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"../gmplus/defaults":1}],3:[function(require,module,exports){
 var utils = require('../gmplus/utils');
+var defaults = require('../gmplus/defaults');
+var gmaps = require('../gmplus/gmaps.js');
 
 'use strict';
 module.exports = function(global) {
 
 
-  var defaults = {
-    version: '3.exp',
-    zoom: 8
-  };
+
 
   /**
    * Creates a new Google Map Instance
@@ -65,24 +97,6 @@ module.exports = function(global) {
     return true;
   }
 
-  /**
-   * Injects Google API Javascript File and adds a callback to load the Google Maps Async.
-   * @type {{load: Function}}
-   * @private
-   *
-   * @returns the element appended
-   */
-  var _googleMapsApi = {
-    load: function (args) {
-      var version = args.version || defaults.version;
-      var script = document.createElement('script');
-      script.type = 'text/javascript';
-      script.src = '//maps.googleapis.com/maps/api/js?v=' + version +
-      '&callback=GMP.maps.' + args.id + '.create';
-      return global.document.body.appendChild(script);
-    }
-  };
-
 
   var that;
 
@@ -105,7 +119,7 @@ module.exports = function(global) {
 
 
       if (options.async !== false) {
-        _googleMapsApi.load(options);
+        gmaps.load(options);
       } else {
         global.GMP.maps[options.id].create();
       }
@@ -116,7 +130,6 @@ module.exports = function(global) {
 
   // a GMP Instance
   GMP.prototype.instance = false;
-
 
 
   // Animations
@@ -148,9 +161,9 @@ module.exports = function(global) {
   };
 
   GMP.prototype.updateMarker = function(args, options) {
-    var s = _createSetters(options);
+    var s = utils.createSetters(options);
     if (Object.prototype.toString.call(args) === '[object Array]') {
-      var uid, marker;
+      var uid;
       for (var item in args) {
         uid = args[item].uid;
         if (GMP.maps[that.id].markers[uid]) {
@@ -194,14 +207,7 @@ module.exports = function(global) {
     });
   }
 
-  function _createUid() {
-    return 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-      var r, v;
-      r = Math.random() * 16 | 0;
-      v = c === 'x' ? r : r & 0x3 | 0x8;
-      return v.toString(16);
-    });
-  }
+
 
   function _addMarker(marker, options)
   {
@@ -232,7 +238,7 @@ module.exports = function(global) {
     marker.data = marker.data || {};
 
     if (marker.data) {
-      marker.data.uid = _createUid();
+      marker.data.uid = utils.createUid();
     }
 
     if (that.options.crossfilter) {
@@ -278,33 +284,6 @@ module.exports = function(global) {
     GMP.maps[that.id].groupOptions[name] = options;
   };
 
-  /**
-   * Transforms flat keys to Setters. For example visible becomes: setVisible.
-   * @param options
-   * @returns {{count: number, setterKey: *, setters: {}}}
-   * @private
-   */
-  function _createSetters(options)
-  {
-    var setters = {};
-    var count = 0;
-    var setterKey;
-
-
-    for (var key in options) {
-      setterKey = 'set' + key[0].toUpperCase() + key.slice(1);
-      setters[setterKey] = options[key];
-      count++;
-    }
-
-    var result = {
-      count: count,
-      setterKey: setterKey,
-      setters: setters
-    };
-
-    return result;
-  }
 
   /**
    * Updates all the Markers of a Group to have specific Properties
@@ -312,7 +291,7 @@ module.exports = function(global) {
    * @param options
    */
   GMP.prototype.updateGroup = function(name, options) {
-    var s = _createSetters(options);
+    var s = utils.createSetters(options);
     if (GMP.maps[that.id].groups && GMP.maps[that.id].groups[name]) {
       for (var item in GMP.maps[that.id].groups[name]) {
         _updateMarker(GMP.maps[that.id].groups[name][item], s);
@@ -325,7 +304,7 @@ module.exports = function(global) {
 
 };
 
-},{"../gmplus/utils":2}],2:[function(require,module,exports){
+},{"../gmplus/defaults":1,"../gmplus/gmaps.js":2,"../gmplus/utils":4}],4:[function(require,module,exports){
 function clone(o) {
   var out, v, key;
   out = Array.isArray(o) ? [] : {};
@@ -336,11 +315,50 @@ function clone(o) {
   return out;
 }
 
-module.exports = {
-  clone: clone
+function createUid() {
+  return 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r, v;
+    r = Math.random() * 16 | 0;
+    v = c === 'x' ? r : r & 0x3 | 0x8;
+    return v.toString(16);
+  });
 }
 
-},{}],3:[function(require,module,exports){
+/**
+ * Transforms flat keys to Setters. For example visible becomes: setVisible.
+ * @param options
+ * @returns {{count: number, setterKey: *, setters: {}}}
+ * @private
+ */
+function createSetters(options)
+{
+  var setters = {};
+  var count = 0;
+  var setterKey;
+
+
+  for (var key in options) {
+    setterKey = 'set' + key[0].toUpperCase() + key.slice(1);
+    setters[setterKey] = options[key];
+    count++;
+  }
+
+  var result = {
+    count: count,
+    setterKey: setterKey,
+    setters: setters
+  };
+
+  return result;
+}
+
+module.exports = {
+  clone: clone,
+  createUid: createUid,
+  createSetters: createSetters
+}
+
+},{}],5:[function(require,module,exports){
 window.GMP = require('./gmplus/map')(window);
 
-},{"./gmplus/map":1}]},{},[3]);
+},{"./gmplus/map":3}]},{},[5]);
