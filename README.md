@@ -1,4 +1,7 @@
-## gmplus.js 0.1.0 [![Build Status](https://travis-ci.org/yagoferrer/gmplus.svg?branch=master)](https://travis-ci.org/yagoferrer/gmplus) [![Coverage Status](https://coveralls.io/repos/yagoferrer/gmplus/badge.svg?branch=master)](https://coveralls.io/r/yagoferrer/gmplus?branch=master)
+## gmplus.js 0.1.0 
+[![Build Status](https://travis-ci.org/yagoferrer/gmplus.svg?branch=master)](https://travis-ci.org/yagoferrer/gmplus) 
+[![Coverage Status](https://coveralls.io/repos/yagoferrer/gmplus/badge.svg?branch=master)](https://coveralls.io/r/yagoferrer/gmplus?branch=master)
+[![devDependency Status](https://david-dm.org/yagoferrer/gmplus/dev-status.svg)](https://david-dm.org/yagoferrer/gmplus#info=devDependencies)
 gmplus.js is a Google Maps Feature-rich Javascript wrapper that makes things like [Marker filtering](#crossfilter-support), [asynchronous loading](#load-a-simple-map-async) and [animation](#animate-markers) much simpler with an easy-to-use API.
 
 
