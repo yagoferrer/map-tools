@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+    html, body, #myMap {
+      height: 100%;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+<div id="myMap"></div>
+
+<script src="../node_modules/jquery/dist/jquery.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+<script src="../dist/gmplus.js"></script>
+<script>
+
+  map = new GMP({
+    id: 'myMap',
+    lat: 35,
+    lng: -105,
+    zoom: 4
+    //mapTypeId: google.maps.MapTypeId.ROADMAP
+  }, function (err, instance) {
+    $.getJSON('../node_modules/topojson/examples/us-10m.json', function (data) {
+      var states = topojson.feature(data, data.objects.states);
+      var stateInstances = instance.data.addGeoJson(states);
+      $.each(stateInstances, function(key, feature) {
+        feature.setProperty('type', 'state');
+        instance.data.overrideStyle(feature, {fillColor: 'red'})
+      });
+    });
+  });
+
+</script>
+</body>
+</html>
