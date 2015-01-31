@@ -96,9 +96,9 @@ map.addMarker([
     }
   ], {icon: 'images/city.png'});
 ```
-The 2nd parameter of `addMarker`, allows you to add options that apply to all the Markers within the Array.
-
 Add more [Marker Options](https://developers.google.com/maps/documentation/javascript/reference#MarkerOptions)
+
+The 2nd parameter of `addMarker`, allows you to add options that apply to all the Markers within the Array.
 
 Once the Markers are created, you can access directly like this: `GMP.maps.myMap.markers`
 
