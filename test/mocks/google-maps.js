@@ -48,7 +48,14 @@ module.exports = {
       return {};
     },
     Map: function() {
-      return {gm_bindings_: {}};
+      return {gm_bindings_: {}, data: {
+        addGeoJson: function(json) {
+          return [{ag: {D: 53}}, {ag: {D: 30}}]
+        },
+        overrideStyle: function(feature, style) {
+          return feature.style = style;
+        }
+      }};
     },
     Point: function() {
       return {};
