@@ -57,7 +57,7 @@ Add a simple HTML tag
 ```html
 <div id="myMap"></div>
 ```
-You can set any other native Map [Reference](https://developers.google.com/maps/documentation/javascript/reference#Map) option. It just works. For example:
+Add more [Map Options](https://developers.google.com/maps/documentation/javascript/reference#MapOptions). It just works. For example:
 ```javascript
 {
     disableDoubleClickZoom: true,
@@ -98,7 +98,7 @@ map.addMarker([
 ```
 The 2nd parameter of `addMarker`, allows you to add options that apply to all the Markers within the Array.
 
-You can set any other native [Marker Options](https://developers.google.com/maps/documentation/javascript/reference#MarkerOptions)
+Add more [Marker Options](https://developers.google.com/maps/documentation/javascript/reference#MarkerOptions)
 
 Once the Markers are created, you can access directly like this: `GMP.maps.myMap.markers`
 
@@ -150,7 +150,7 @@ map.addMarker({
 });
 ```
 Since [0.2.0](https://github.com/yagoferrer/gmplus/releases/tag/0.2.0) you can use curly brackets to display variables from `data`
-You can set any other [infoWindow options](https://developers.google.com/maps/documentation/javascript/reference#InfoWindowOptions) inside `bubble`.
+Add more [infoWindow options](https://developers.google.com/maps/documentation/javascript/reference#InfoWindowOptions) inside `bubble`.
 The default **event** is `click` but you can change it with the `event` property.
 
 
