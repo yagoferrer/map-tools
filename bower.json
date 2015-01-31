@@ -5,7 +5,7 @@
   "authors": [
     "Yago Ferrer <yago.ferrer@gmail.com>"
   ],
-  "description": "Google Maps Feature-rich Javascript wrapper that makes things like Marker filtering, asynchronous loading and animation much simpler with an easy-to-use API",
+  "description": "Google Maps Feature-rich Javascript wrapper that makes things like Marker filtering, asynchronous loading and importing TopoJSON much simpler with an easy-to-use API",
   "main": "dist/gmplus.min.js",
   "moduleType": [
     "amd"
