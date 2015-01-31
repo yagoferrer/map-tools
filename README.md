@@ -199,5 +199,31 @@ Now you can use the power of Crossfilter to update Markers. In this example it f
 map.updateMarker(population.top(1), {move: map.bounce});
 ```
 
+## TopoJSON support
+
+Once the Map is loaded, you can load a TopoJSON file. Pass an Array of objects containing the **object** to load into the Map.
+
+```javascript
+map.loadTopoJson(<parsed JSON>, [{object: 'states'}, {object: 'counties'}]);
+```
+
+#### Apply styles to Features
+
+You can set `style` options to specify the way a Feature should appear when displayed on a map.
+
+```javascript
+{
+  object: 'states',
+  style: {
+    strokeColor: 'red',
+    strokeWeight: 2,
+    fillOpacity: 0
+  }
+}
+      
+```
+Check out the API Reference to add more [Style Options](https://developers.google.com/maps/documentation/javascript/reference#Data.StyleOptions)
+
+
 ## How can you contribute?
 Get involved! Check out the list of [feature requests](https://github.com/yagoferrer/gmplus/issues). All PRs and ideas are welcome.

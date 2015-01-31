@@ -47,7 +47,7 @@ describe('Given gmplus.js', function () {
 
       it('should add the marker data to the crossfilter', function () {
         var spy = sinon.spy();
-        var map = new GMP({async:false, id: 'myMap', lat: 41.3833, lng: 2.1833, crossfilter: {add: spy}});
+        var map = new GMP({async: false, id: 'myMap', lat: 41.3833, lng: 2.1833, crossfilter: {add: spy}});
 
         var result = map.addMarker({
           lat: 42.5000,
@@ -55,10 +55,10 @@ describe('Given gmplus.js', function () {
           title: 'Andorra'
         });
 
-          expect(result.title).to.equal('Andorra');
-          expect(Object.keys(GMP.maps.myMap.markers).length).to.equal(1);
-          expect(spy).to.have.been.called;
-        });
+        expect(result.title).to.equal('Andorra');
+        expect(Object.keys(GMP.maps.myMap.markers).length).to.equal(1);
+        expect(spy).to.have.been.called;
+      });
     });
 
   });
@@ -88,7 +88,7 @@ describe('Given gmplus.js', function () {
         lat: 41.3833,
         lng: 2.1833,
         title: 'Barcelona'
-      },{
+      }, {
         lat: 41.4489,
         lng: 2.2461,
         title: 'Badalona',
@@ -123,7 +123,6 @@ describe('Given gmplus.js', function () {
     });
 
 
-
     describe('with extra options as a second parameter', function () {
 
       it('should merge the options with the Marker options', function () {
@@ -134,7 +133,7 @@ describe('Given gmplus.js', function () {
           lat: 41.3833,
           lng: 2.1833,
           title: 'Barcelona'
-        },{
+        }, {
           lat: 41.4489,
           lng: 2.2461,
           title: 'Badalona'
@@ -213,9 +212,9 @@ describe('Given gmplus.js', function () {
 
   describe('when calling updateGroup()', function () {
 
-    it('should invoke the setter of the Marker option with the new value', function() {
+    it('should invoke the setter of the Marker option with the new value', function () {
       var map = new GMP({async: false, id: 'myMap', lat: 41.3833, lng: 2.1833});
-      map.addGroup('myGroup', {visible : true});
+      map.addGroup('myGroup', {visible: true});
 
       var marker = {
         lat: 41.3833,
@@ -260,4 +259,63 @@ describe('Given gmplus.js', function () {
       expect(GMP.maps.myMap.markers[uid].visible).to.be.true;
     });
   });
+
+
+  describe('when calling loadTopoJson()', function () {
+
+    it('should convert TopoJSON to GeoJSON and load the file into the Map', function () {
+
+      var map = new GMP({async: false, id: 'myMap', lat: 41.3833, lng: 2.1833});
+
+      var topojson = {
+        objects: {
+          'states': {}
+        }
+      };
+
+      var options = [{object: 'states'}];
+
+      var result = map.loadTopoJson(topojson, options);
+
+      expect(result).to.eql([{ag: {D: 53}}, {ag: {D: 30}}]);
+
+    });
+
+
+    describe('with styles', function () {
+
+      it('should apply the styles to each Feature', function () {
+
+        var map = new GMP({async: false, id: 'myMap', lat: 41.3833, lng: 2.1833});
+
+
+
+        var topojson = {
+          objects: {
+            'states': {}
+          }
+        };
+
+        var options = [
+          {
+            object: 'states',
+            style: {
+              strokeWeight: 2,
+              fillOpacity: 0
+            }
+          }
+        ];
+
+
+        var result = map.loadTopoJson(topojson, options);
+
+        expect(result[0].style).to.eql(options[0].style)
+
+
+      });
+
+    });
+
+  });
+
 });
