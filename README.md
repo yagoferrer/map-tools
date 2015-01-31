@@ -223,7 +223,7 @@ You can set `style` options to specify the way a Feature should appear when disp
 }
       
 ```
-Check out the API Reference to add more [Style Options](https://developers.google.com/maps/documentation/javascript/reference#Data.StyleOptions)
+Add more [Style Options](https://developers.google.com/maps/documentation/javascript/reference#Data.StyleOptions)
 
 
 ## How can you contribute?
