@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<style>
+  html, body, #myMap {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  #myMap {
+    width: 800px;
+    height: 500px;
+  }
+
+</style>
+<body>
+
+<h4><a href="#" class="update-crossfilter">Update Marker by using Crossfilter</a></h4>
+
+<h4><a href="#" class="update-reference">Update Marker by using it's own reference</a></h4>
+
+<script src="../node_modules/crossfilter/crossfilter.js"></script>
+<script src="../node_modules/jquery/dist/jquery.js"></script>
+<script src="../dist/gmplus.js"></script>
+
+<script>
+
+  var markers = crossfilter([]);
+  var cityName = markers.dimension(function(d) { return d.cityName; });
+
+
+  var map = new GMP({
+    id: 'myMap',
+    lat: 41.3833,
+    lng: 2.1833,
+    crossfilter: markers
+  }, function (err, instance) {
+    if (!err) {
+      addMarker();
+    }
+  });
+
+  var markerInstance;
+
+  function addMarker() {
+    markerInstance = map.addMarker({
+      lat: 41.3833,
+      lng: 2.1833,
+      title: 'Barcelona',
+      data: {
+        cityName: 'barcelona'
+      }
+    });
+  }
+
+  $(function() {
+
+    $('.update-crossfilter').click(function(e) {
+      var marker = cityName.filterExact('barcelona').top(1);
+      map.updateMarker(marker, {move: map.drop});
+      e.preventDefault();
+    });
+
+
+    $('.update-reference').click(function(e) {
+      map.updateMarker([markerInstance], {move: map.drop});
+      e.preventDefault();
+    });
+
+  });
+
+</script>
+<div id="myMap"></div>
+</body>
+</html>
