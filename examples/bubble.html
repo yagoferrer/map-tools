@@ -10,10 +10,17 @@
     margin: 0px;
     padding: 0px;
   }
+
+  #myMap {
+    width: 800px;
+    height: 500px;
+  }
 </style>
 <body>
 <script src="../dist/gmplus.js"></script>
+<script src="../node_modules/jquery/dist/jquery.js"></script>
 <script>
+
   var map = new GMP({
     id: 'myMap',
     lat: 41.3833,
@@ -24,8 +31,10 @@
     }
   });
 
+  var marker;
+
   function addMarker() {
-    map.addMarker({
+    marker = map.addMarker({
       lat: 41.3833,
       lng: 2.1833,
       title: 'Barcelona',
@@ -38,7 +47,16 @@
       }
     });
   }
+
+  $(function() {
+    $('.update').click(function(e) {
+      map.updateMarker(marker, {bubble: {content: '<p>Click Me!</p>'}});
+      e.preventDefault();
+
+    });
+  })
 </script>
+<h4><a href="#" class="update">Update Bubble text to: "Click Me!"</a></h4>
 <div id="myMap"></div>
 </body>
 </html>
