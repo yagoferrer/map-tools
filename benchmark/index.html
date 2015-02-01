@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    html, body, #gmplus, #gmaps {
+      height: 100%;
+      margin: 0px;
+      padding: 0px;
+    }
+
+    #gmplus {
+      float: left;
+      width: 300px;
+      height: 300px;
+    }
+
+    #gmaps {
+      float: left;
+      width: 300px;
+      height: 300px;
+    }
+
+    .table {
+      border: 1px solid grey;
+      width: 600px;
+    }
+
+  </style>
+</head>
+<body>
+<script src="../node_modules/lodash/index.js"></script>
+<script src="../node_modules/platform/platform.js"></script>
+<script src="../node_modules/benchmark/benchmark.js"></script>
+
+
+
+<script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=true"></script>
+<script src="../dist/gmplus.js"></script>
+<script src="../node_modules/gmaps/gmaps.js"></script>
+
+<script src="../node_modules/angular/angular.js"></script>
+
+
+<script>
+
+  function getHz(bench) {
+    return 1 / (bench.stats.mean + bench.stats.moe);
+  }
+
+  function percentage(number)
+  {
+    var result = number < 1 ? number .toFixed(2) : Math.round(number)
+    return result;
+  }
+
+  var app = angular.module('app', []);
+  app.controller('resultsCtrl', function($scope) {
+
+    $scope.results = [{title: 'addMarker()'}];
+
+    var gmplusMap = new GMP({
+      async: false,
+      id: 'gmplus',
+      lat: 41.3833,
+      lng: 2.1833,
+      zoom: 8
+    });
+    var gmapsMap = new GMaps({
+      div: '#gmaps',
+      lat: 41.3833,
+      lng: 2.1833,
+      zoom: 8
+    });
+
+    function init()
+    {
+      suite = new Benchmark.Suite;
+
+      // add tests
+      suite.add('gmplus.js', function() {
+        gmplusMap.addMarker({
+          lat: 41.3833,
+          lng: 2.1833,
+          title: 'Barcelona'
+        });
+      })
+        /*
+        .add('Native Google Maps: addMarker()', function() {
+          new google.maps.Marker({
+            position: new google.maps.LatLng(41.3833,2.1833),
+            map: GMP.maps.gmplus.instance,
+            title: 'Barcelona'
+          });
+        })
+        */
+        .add('GMaps.js', function() {
+          gmapsMap.addMarker({
+            lat: 41.3833,
+            lng: 2.1833,
+            title: 'Barcelona'
+          });
+        })
+
+        // add listeners
+        .on('cycle', function(event) {
+          //target = String(event.target);
+          //$scope.results[0].target = String(event.target);
+          //$scope.$apply();
+        })
+        .on('complete', function() {
+
+          benches = this.filter('successful');
+
+          fastest = this.filter('fastest')[0];
+          slowest = this.filter('slowest')[0];
+
+          var fastestHz = getHz(fastest);
+          var slowestHz = getHz(slowest);
+          var percent = (1 - (slowestHz / fastestHz)) * 100;
+          $scope.results[0].fastest = fastest.name + ' ' + percentage(percent) + '% faster';
+          $scope.results[0].slowest = slowest.name + ' ' + percentage(percent) + '% slower';
+          $scope.$apply();
+        })
+        // run async
+        .run({ 'async': true });
+    }
+
+    init();
+
+  });
+
+
+</script>
+
+
+<div class="results" ng-controller="resultsCtrl">
+  <table class="table">
+    <tr>
+      <td>Target</td>
+      <td>Fastest</td>
+      <td>Slowest</td>
+    </tr>
+  <tr ng-repeat="result in results">
+    <td>{{result.title}}</td>
+    <td>{{result.fastest}}</td>
+    <td>{{result.slowest}}</td>
+  <tr>
+  </table>
+</div>
+
+<div id="gmplus"></div>
+<div id="gmaps"></div>
+<div id="native"></div>
+
+</body>
+</html>
