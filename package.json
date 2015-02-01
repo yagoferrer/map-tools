@@ -1,6 +1,6 @@
 {
   "name": "gmplus",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Google Maps Feature-rich Javascript wrapper that makes things like Marker filtering, asynchronous loading and importing TopoJSON much simpler with an easy-to-use API",
   "main": "lib/index.js",
   "scripts": {

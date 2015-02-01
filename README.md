@@ -1,4 +1,4 @@
-## gmplus.js 0.2.0 
+## gmplus.js 0.2.1 
 [![Build](https://travis-ci.org/yagoferrer/gmplus.svg)](https://travis-ci.org/yagoferrer/gmplus) 
 [![Coverage](https://coveralls.io/repos/yagoferrer/gmplus/badge.svg)](https://coveralls.io/r/yagoferrer/gmplus)
 [![devDependency](https://david-dm.org/yagoferrer/gmplus/dev-status.svg)](https://david-dm.org/yagoferrer/gmplus#info=devDependencies)
@@ -15,7 +15,7 @@ gmplus.js is a Google Maps Feature-rich Javascript wrapper that makes things lik
 - [TopoJSON Support](#topojson-support): Import TopoJSON files, set styles and more!
 - 100% tested
 
-This page reflects the **latest** documentation from the `master` branch. Please use [this documentation page](https://github.com/yagoferrer/gmplus/tree/0.2.0) as a reference for the latest release: [0.2.0](https://github.com/yagoferrer/gmplus/releases)
+This page reflects the **latest** documentation from the `master` branch. Please use [this documentation page](https://github.com/yagoferrer/gmplus/tree/0.2.1) as a reference for the latest release: [0.2.1](https://github.com/yagoferrer/gmplus/releases)
 
 ## Get Started
 Bower: 
@@ -26,7 +26,7 @@ NPM:
 ```bash
 npm install gmplus --save-dev
 ```
-Direct download: [gmplus.min.js](https://github.com/yagoferrer/gmplus/blob/0.1.0/dist/gmplus.min.js)
+Direct download: [gmplus.min.js](https://github.com/yagoferrer/gmplus/blob/0.2.1/dist/gmplus.min.js)
  
 ## Run examples
 ```bash
