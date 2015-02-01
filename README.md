@@ -102,6 +102,12 @@ The 2nd parameter of `addMarker`, allows you to add options that apply to all th
 
 Once the Markers are created, you can access directly like this: `GMP.maps.myMap.markers`
 
+#### Update Marker
+Allows you to update one or multiple marker options. The 1st parameter can be: a result of crossfilter, a Marker reference or the uid like this: `{uuid: '<uuid>'}`
+
+```javascript
+map.updateMarker(<marker>, {visible: false})
+```
 
 #### Animate Markers
 Make your marker bounce `move: map.bounce` or drop `move: map.drop`
