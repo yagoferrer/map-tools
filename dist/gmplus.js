@@ -164,11 +164,8 @@ module.exports = function(global) {
   };
 
 
+  var customMarkerOptions = ['lat', 'lng', 'move'];
 
-
-
-
-  var customMarkerOptions = ['lat', 'long', 'move'];
 
   function _prepareOptions(options, custom)
   {
@@ -206,10 +203,12 @@ module.exports = function(global) {
 
   function _updateMarker(marker, options) {
     if (options.custom) {
-      for (var option in options.custom) {
-        if (option === 'move') {
-          marker.setAnimation(options.custom[option]);
-        }
+      if (options.custom.move) {
+        marker.setAnimation(options.custom.move);
+      }
+
+      if (options.custom.lat && options.custom.lng) {
+        marker.setPosition(new global.google.maps.LatLng(options.custom.lat, options.custom.lng));
       }
     }
 

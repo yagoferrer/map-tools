@@ -248,8 +248,10 @@ describe('Given gmplus.js', function () {
       var result = map.addMarker(options);
       var uid = result.data.uid;
       expect(GMP.maps.myMap.markers[uid].visible).to.be.false;
-      map.updateMarker({uid: uid}, {visible: true, move: map.bounce});
+      map.updateMarker({uid: uid}, {visible: true, move: map.bounce, lat: 100, lng: 30});
       expect(GMP.maps.myMap.markers[uid].visible).to.be.true;
+      expect(GMP.maps.myMap.markers[uid].position.lat()).to.eql(100);
+      expect(GMP.maps.myMap.markers[uid].position.lng()).to.eql(30);
 
     });
 

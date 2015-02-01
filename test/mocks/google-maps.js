@@ -39,7 +39,11 @@ module.exports = {
 
       marker.setVisible = function(value) {
         marker.visible = value;
-      }
+      };
+
+      marker.setPosition = function(value) {
+        marker.position = value;
+      };
 
       return marker;
 
