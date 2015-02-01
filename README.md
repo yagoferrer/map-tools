@@ -105,11 +105,14 @@ Once the Markers are created, you can access directly like this: `GMP.maps.myMap
 #### Update Marker
 Allows you to update one or multiple marker options. The 1st parameter can be: a result of crossfilter, a Marker reference or the uid like this: `{uuid: '<uuid>'}`
 
-The 2nd parameter is an object with a list of options. For example: `lat` and `lng` to change the position of the Marker.
+The 2nd parameter is an object with a list of options. For example: `visible` to change the Marker visibilty.
 
 ```javascript
 map.updateMarker(<marker>, {visible: false})
 ```
+
+You can also use `lat` and `lng` to change the position of the Marker.
+
 
 #### Animate Markers
 Make your marker bounce `move: map.bounce` or drop `move: map.drop`
