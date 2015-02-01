@@ -164,7 +164,7 @@ module.exports = function(global) {
   };
 
 
-  var customMarkerOptions = ['lat', 'lng', 'move'];
+  var customMarkerOptions = ['lat', 'lng', 'move', 'bubble'];
 
 
   function _prepareOptions(options, custom)
@@ -210,6 +210,11 @@ module.exports = function(global) {
       if (options.custom.lat && options.custom.lng) {
         marker.setPosition(new global.google.maps.LatLng(options.custom.lat, options.custom.lng));
       }
+
+      if (options.custom.bubble && options.custom.bubble.content) {
+        marker.bubble.instance.setContent(options.custom.bubble.content);
+      }
+
     }
 
     if (options.setters) {
@@ -250,10 +255,10 @@ module.exports = function(global) {
       return (marker.data[variable]) ? marker.data[variable] : '';
     });
 
-    var infowindow = new global.google.maps.InfoWindow(options);
+    marker.bubble.instance = new global.google.maps.InfoWindow(options);
 
     global.google.maps.event.addListener(marker, event, function() {
-      infowindow.open(that.instance, marker);
+      marker.bubble.instance.open(that.instance, marker);
     });
   }
 
