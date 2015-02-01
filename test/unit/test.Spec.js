@@ -47,7 +47,7 @@ describe('Given gmplus.js', function () {
 
       it('should add the marker data to the crossfilter', function () {
         var spy = sinon.spy();
-        var map = new GMP({async: false, id: 'myMap', lat: 41.3833, lng: 2.1833, crossfilter: {add: spy}});
+        var map = new GMP({sync: true, id: 'myMap', lat: 41.3833, lng: 2.1833, crossfilter: {add: spy}});
 
         var result = map.addMarker({
           lat: 42.5000,
