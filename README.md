@@ -111,7 +111,7 @@ The 2nd parameter is an object with a list of options. For example: `visible` to
 map.updateMarker(<marker>, {visible: false})
 ```
 
-You can also use `lat` and `lng` to change the position of the Marker.
+You can also use `lat` and `lng` to change the position of the Marker and many other options.
 
 
 #### Animate Markers
