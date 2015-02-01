@@ -1,6 +1,6 @@
 {
   "name": "gmplus",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Google Maps Feature-rich Javascript wrapper that makes things like Marker filtering, asynchronous loading and importing TopoJSON much simpler with an easy-to-use API",
   "main": "lib/index.js",
   "scripts": {
@@ -24,7 +24,13 @@
   "keywords": [
     "google maps",
     "gmaps",
-    "google"
+    "google",
+    "topojson",
+    "geojson",
+    "markers",
+    "maps",
+    "gmaps",
+    "gmplus"
   ],
   "homepage": "https://github.com/yagoferrer/gmplus",
   "devDependencies": {
