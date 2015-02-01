@@ -15,7 +15,7 @@ gmplus.js is a Google Maps Feature-rich Javascript wrapper that makes things lik
 - [TopoJSON Support](#topojson-support): Import TopoJSON files, set styles and more!
 - 100% tested
 
-This page reflects the **latest** documentation from the `master` branch. Please use [this documentation page](https://github.com/yagoferrer/gmplus/tree/0.1.0) as a reference for the latest release: [0.1.0](https://github.com/yagoferrer/gmplus/releases)
+This page reflects the **latest** documentation from the `master` branch. Please use [this documentation page](https://github.com/yagoferrer/gmplus/tree/0.2.0) as a reference for the latest release: [0.2.0](https://github.com/yagoferrer/gmplus/releases)
 
 ## Get Started
 Bower: 
