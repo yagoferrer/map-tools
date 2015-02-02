@@ -7,7 +7,7 @@ var utils = require('gmplus/utils');
 module.exports = function (global, that) {
   var bubble = require('gmplus/bubble')(global);
 
-  function _addMarker(marker, options) {
+  function addMarker(marker, options) {
     var i;
     marker.map = that.instance;
     marker.position = new global.google.maps.LatLng(marker.lat, marker.lng);
@@ -79,12 +79,12 @@ module.exports = function (global, that) {
    * @param options things like groups etc
    * @returns {Array} all the instances of the markers.
    */
-  function addMarker(args, options) {
+  function addMarkers(args, options) {
     if (args.length && args.length >= 1) {
       var markers = [];
       var marker;
       for (var i in args) {
-        marker = _addMarker(args[i], options);
+        marker = addMarker(args[i], options);
         markers.push(marker);
 
       }
@@ -92,10 +92,10 @@ module.exports = function (global, that) {
       return markers;
     }
 
-    return _addMarker(args, options);
+    return addMarker(args, options);
   };
 
-  return addMarker;
+  return addMarkers;
 
 };
 
@@ -137,21 +137,6 @@ module.exports = {
 /*jslint node: true */
 "use strict";
 module.exports = function (global, that) {
-  /**
-   * Transforms flat keys to Setters. For example visible becomes: setVisible.
-   * @param options
-   * @returns {{count: number, setterKey: *, setters: {}}}
-   * @private
-   */
-  function findAndUpdateMarker(marker, options) {
-    if (marker.data && marker.data.uid) {
-      return updateMarker(marker, options);
-    }
-
-    if (marker.uid && GMP.maps[that.id].markers[marker.uid]) {
-      return updateMarker(GMP.maps[that.id].markers[marker.uid], options);
-    }
-  }
 
   function updateMarker(marker, options) {
     var setter;
@@ -172,11 +157,29 @@ module.exports = function (global, that) {
 
     if (options.setters) {
       for (setter in options.setters) {
-        marker[setter](options.setters[setter]);
+        if (options.setters.hasOwnProperty(setter)) {
+          marker[setter](options.setters[setter]);
+        }
       }
     }
     return marker;
   }
+  /**
+   * Transforms flat keys to Setters. For example visible becomes: setVisible.
+   * @param options
+   * @returns {{count: number, setterKey: *, setters: {}}}
+   * @private
+   */
+  function findAndUpdateMarker(marker, options) {
+    if (marker.data && marker.data.uid) {
+      return updateMarker(marker, options);
+    }
+
+    if (marker.uid && GMP.maps[that.id].markers[marker.uid]) {
+      return updateMarker(GMP.maps[that.id].markers[marker.uid], options);
+    }
+  }
+
 
   return findAndUpdateMarker;
 };
@@ -235,15 +238,17 @@ module.exports = function (global, that) {
    */
   function updateGroup(name, options) {
     var result = [], instance, item;
-    var _options =  utils.prepareOptions(options, config.customMarkerOptions);
+    var preparedOptions =  utils.prepareOptions(options, config.customMarkerOptions);
     if (GMP.maps[that.id].groups && GMP.maps[that.id].groups[name]) {
       for (item in GMP.maps[that.id].groups[name]) {
-        instance = findAndUpdateMarker(GMP.maps[that.id].groups[name][item], _options);
-        result.push(instance);
+        if (GMP.maps[that.id].groups[name].hasOwnProperty(item)) {
+          instance = findAndUpdateMarker(GMP.maps[that.id].groups[name][item], preparedOptions);
+          result.push(instance);
+        }
       }
     }
     return result;
-  };
+  }
 
   return {
     addGroup: addGroup,
@@ -432,17 +437,19 @@ module.exports = function (global, that) {
 
   function updateMarker(args, options) {
     var type = Object.prototype.toString.call(args);
-    var _options = utils.prepareOptions(options, config.customMarkerOptions);
+    var preparedOptions = utils.prepareOptions(options, config.customMarkerOptions);
 
     if (type === '[object Object]') {
       return findAndUpdateMarker(args, _options);
-    } else if (type === '[object Array]') {
-      var marker;
-      var results = [], instance;
-      for (var x in args) {
-        marker = args[x];
-        instance = findAndUpdateMarker(marker, _options);
-        results.push(instance);
+    }
+    if (type === '[object Array]') {
+      var marker, results = [], instance, x;
+      for (x in args) {
+        if (args.hasOwnProperty(x)) {
+          marker = args[x];
+          instance = findAndUpdateMarker(marker, preparedOptions);
+          results.push(instance);
+        }
       }
       return results;
     }
@@ -478,7 +485,6 @@ function createUid() {
 
 function prepareOptions(options, custom) {
   var result = {}, option;
-
   for (option in options) {
     if (options.hasOwnProperty(option)) {
       if (custom.indexOf(option) > -1) {
@@ -490,7 +496,6 @@ function prepareOptions(options, custom) {
       }
     }
   }
-
   return result;
 }
 
