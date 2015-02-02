@@ -1,13 +1,13 @@
 /* gmplus.js 0.2.1 MIT License. 2015 Yago Ferrer <yago.ferrer@gmail.com> */
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+/*jslint node: true */
+"use strict";
 var utils = require('gmplus/utils');
 
-module.exports = function(global, that) {
-
+module.exports = function (global, that) {
   var bubble = require('gmplus/bubble')(global);
 
-  function _addMarker(marker, options)
-  {
+  function _addMarker(marker, options) {
     marker.map = that.instance;
     marker.position = new global.google.maps.LatLng(marker.lat, marker.lng);
 
@@ -77,7 +77,6 @@ module.exports = function(global, that) {
    * @returns {Array} all the instances of the markers.
    */
   function addMarker(args, options) {
-
     if (args.length && args.length >= 1) {
       var markers = [];
       var marker;
@@ -91,39 +90,35 @@ module.exports = function(global, that) {
     }
 
     return _addMarker(args, options);
-
   };
 
   return addMarker;
 
-}
+};
 
 },{"gmplus/bubble":2,"gmplus/utils":11}],2:[function(require,module,exports){
-
-
-
-module.exports = function(global) {
+/*jslint node: true */
+"use strict";
+module.exports = function (global) {
 
   function create(marker, options, map) {
-
     var event = options.event || 'click';
 
-    options.content = options.content.replace(/\{(\w+)\}/g, function(m, variable) {
+    options.content = options.content.replace(/\{(\w+)\}/g, function (m, variable) {
       return (marker.data[variable]) ? marker.data[variable] : '';
     });
 
     marker.bubble.instance = new global.google.maps.InfoWindow(options);
 
-    global.google.maps.event.addListener(marker, event, function() {
+    global.google.maps.event.addListener(marker, event, function () {
       marker.bubble.instance.open(map, marker);
     });
   }
 
   return {
     create: create
-  }
-
-}
+  };
+};
 
 
 },{}],3:[function(require,module,exports){
@@ -134,25 +129,26 @@ module.exports = {
 };
 
 },{}],4:[function(require,module,exports){
-module.exports = function(global, that) {
+/*jslint node: true */
+"use strict";
+module.exports = function (global, that) {
   /**
    * Transforms flat keys to Setters. For example visible becomes: setVisible.
    * @param options
    * @returns {{count: number, setterKey: *, setters: {}}}
    * @private
    */
-  function findAndUpdateMarker(marker, options)
-  {
-
+  function findAndUpdateMarker(marker, options) {
     if (marker.data && marker.data.uid) {
-      return _updateMarker(marker, options);
-    } else if (marker.uid && GMP.maps[that.id].markers[marker.uid]) {
-      return _updateMarker(GMP.maps[that.id].markers[marker.uid], options);
+      return updateMarker(marker, options);
     }
 
+    if (marker.uid && GMP.maps[that.id].markers[marker.uid]) {
+      return updateMarker(GMP.maps[that.id].markers[marker.uid], options);
+    }
   }
 
-  function _updateMarker(marker, options) {
+  function updateMarker(marker, options) {
     if (options.custom) {
       if (options.custom.move) {
         marker.setAnimation(options.custom.move);
@@ -165,7 +161,6 @@ module.exports = function(global, that) {
       if (options.custom.bubble && options.custom.bubble.content) {
         marker.bubble.instance.setContent(options.custom.bubble.content);
       }
-
     }
 
     if (options.setters) {
@@ -177,11 +172,12 @@ module.exports = function(global, that) {
   }
 
   return findAndUpdateMarker;
-}
+};
 
 },{}],5:[function(require,module,exports){
 (function (global){
-'use strict';
+/*jslint node: true */
+"use strict";
 
 var config = require('gmplus/config');
 
@@ -192,27 +188,26 @@ var config = require('gmplus/config');
  *
  * @returns the element appended
  */
-function load (args) {
+function load(args) {
   var version = args.version || config.version;
   var script = global.window.document.createElement('script');
   script.type = 'text/javascript';
-  script.src = '//maps.googleapis.com/maps/api/js?v=' + version +
-  '&callback=GMP.maps.' + args.id + '.create';
+  script.src = '//maps.googleapis.com/maps/api/js?v=' + version + '&callback=GMP.maps.' + args.id + '.create';
   return global.window.document.body.appendChild(script);
 }
 
 module.exports = {
   load: load
-}
+};
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"gmplus/config":3}],6:[function(require,module,exports){
+/*jslint node: true */
+"use strict";
 var utils = require('gmplus/utils');
 var config = require('gmplus/config');
 
-module.exports = function(global, that) {
-
-
+module.exports = function (global, that) {
   var findAndUpdateMarker = require('gmplus/findUpdateMarker')(global, that);
 
   /**
@@ -224,8 +219,7 @@ module.exports = function(global, that) {
     GMP.maps[that.id].groups = GMP.maps[that.id].groups || [];
     GMP.maps[that.id].groupOptions = GMP.maps[that.id].groupOptions || {};
     GMP.maps[that.id].groupOptions[name] = options;
-  };
-
+  }
 
   /**
    * Updates all the Markers of a Group to have specific Properties
@@ -249,12 +243,12 @@ module.exports = function(global, that) {
     updateGroup: updateGroup
   };
 
-}
+};
 
 },{"gmplus/config":3,"gmplus/findUpdateMarker":4,"gmplus/utils":11}],7:[function(require,module,exports){
-module.exports = function(global) {
-  'use strict';
-
+/*jslint node: true */
+"use strict";
+module.exports = function (global) {
 
   /**
    * Creates a new GMaps Plus instance
@@ -279,7 +273,6 @@ module.exports = function(global) {
   // a GMP Instance
   GMP.prototype.instance = false;
 
-
   // Animations
   GMP.prototype.bounce = 1;
   GMP.prototype.drop = 2;
@@ -288,11 +281,13 @@ module.exports = function(global) {
 };
 
 },{"gmplus/addMarker":1,"gmplus/groups":6,"gmplus/map":8,"gmplus/topojson":9,"gmplus/updateMarker":10}],8:[function(require,module,exports){
+/*jslint node: true */
+"use strict";
 var utils = require('gmplus/utils');
 var config = require('gmplus/config');
 var gmaps = require('gmplus/gmaps.js');
 
-module.exports = function(global, that) {
+module.exports = function (global, that) {
 
   /**
    * Creates a new Google Map Instance
@@ -301,7 +296,7 @@ module.exports = function(global, that) {
    */
   function create(args, cb) {
 
-    cb = cb || function(){};
+    cb = cb || function () {};
 
     var mapOptions = utils.clone(args); // To clone Array content
 
@@ -330,7 +325,7 @@ module.exports = function(global, that) {
    * @returns {boolean} true/false
    */
   function validOptions(options, cb) {
-    if (!options || options && typeof options !== 'object') {
+    if (!options || (options && typeof options !== 'object')) {
       cb(new Error('You must pass a valid first parameter: options'));
       return false;
     }
@@ -368,15 +363,16 @@ module.exports = function(global, that) {
 
   return {
     load: load
-  }
+  };
 
-}
+};
 
 },{"gmplus/config":3,"gmplus/gmaps.js":5,"gmplus/utils":11}],9:[function(require,module,exports){
+/*jslint node: true */
+"use strict";
 var topojson = require('topojson');
 
-module.exports = function(global, that) {
-
+module.exports = function (global, that) {
 
   /**
    * Adds GeoJSON Feature Options like: style
@@ -384,12 +380,14 @@ module.exports = function(global, that) {
    * @param options
    * @private
    */
-  function _addFeatureOptions(features, options) {
-    var feature;
-    for (var x in features) {
-      feature = features[x];
-      if (options.style) {
-        that.instance.data.overrideStyle(feature, options.style);
+  function addFeatureOptions(features, options) {
+    var feature, x;
+    for (x in features) {
+      if (features.hasOwnProperty(x)) {
+        feature = features[x];
+        if (options.style) {
+          that.instance.data.overrideStyle(feature, options.style);
+        }
       }
     }
   }
@@ -399,28 +397,29 @@ module.exports = function(global, that) {
    * @param data The parsed JSON File
    * @param options
    */
-  function loadTopoJson(data, options)
-  {
-    var item, geoJson, features;
-    for (var x in options) {
-      item = options[x];
-      geoJson = topojson.feature(data, data.objects[item.object]);
-      features = that.instance.data.addGeoJson(geoJson);
-      _addFeatureOptions(features, item);
+  function loadTopoJson(data, options) {
+    var item, geoJson, features,  x;
+    for (x in options) {
+      if (options.hasOwnProperty(x)) {
+        item = options[x];
+        geoJson = topojson.feature(data, data.objects[item.object]);
+        features = that.instance.data.addGeoJson(geoJson);
+        addFeatureOptions(features, item);
+      }
     }
-
     return features;
-  };
+  }
 
   return loadTopoJson;
-}
+};
 
 },{"topojson":13}],10:[function(require,module,exports){
+/*jslint node: true */
+"use strict";
 var utils = require('gmplus/utils');
 var config = require('gmplus/config');
 
-module.exports = function(global, that) {
-
+module.exports = function (global, that) {
 
   var findAndUpdateMarker = require('gmplus/findUpdateMarker')(global, that);
 
@@ -440,14 +439,15 @@ module.exports = function(global, that) {
       }
       return results;
     }
-
   }
 
   return updateMarker;
 
-}
+};
 
 },{"gmplus/config":3,"gmplus/findUpdateMarker":4,"gmplus/utils":11}],11:[function(require,module,exports){
+/*jslint node: true */
+"use strict";
 function clone(o) {
   var out, v, key;
   out = Array.isArray(o) ? [] : {};
@@ -467,17 +467,19 @@ function createUid() {
   });
 }
 
-function prepareOptions(options, custom)
-{
+function prepareOptions(options, custom) {
   var result = {};
 
   for (var option in options) {
-    if (custom.indexOf(option) > -1) {
-      result.custom = result.custom || {};
-      result.custom[option] = options[option];
-    } else {
-      result.setters = result.setters || {};
-      result.setters['set' + option[0].toUpperCase() + option.slice(1)] = options[option];
+
+    if (options.hasOwnProperty(option)) {
+      if (custom.indexOf(option) > -1) {
+        result.custom = result.custom || {};
+        result.custom[option] = options[option];
+      } else {
+        result.setters = result.setters || {};
+        result.setters['set' + option[0].toUpperCase() + option.slice(1)] = options[option];
+      }
     }
   }
 
@@ -491,6 +493,9 @@ module.exports = {
 }
 
 },{}],12:[function(require,module,exports){
+/* global: window */
+/*jslint node: true */
+"use strict";
 window.GMP = require('gmplus/index')(window);
 
 },{"gmplus/index":7}],13:[function(require,module,exports){
