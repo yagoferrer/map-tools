@@ -8,6 +8,7 @@ module.exports = function (global, that) {
   var bubble = require('gmplus/bubble')(global);
 
   function _addMarker(marker, options) {
+    var i;
     marker.map = that.instance;
     marker.position = new global.google.maps.LatLng(marker.lat, marker.lng);
 
@@ -19,8 +20,10 @@ module.exports = function (global, that) {
 
     // Adds options set via 2nd parameter. Overwrites any Marker options already set.
     if (options) {
-      for (var i in options) {
-        marker[i] = options[i];
+      for (i in options) {
+        if (options.hasOwnProperty(i)) {
+          marker[i] = options[i];
+        }
       }
     }
 
@@ -105,7 +108,7 @@ module.exports = function (global) {
     var event = options.event || 'click';
 
     options.content = options.content.replace(/\{(\w+)\}/g, function (m, variable) {
-      return (marker.data[variable]) ? marker.data[variable] : '';
+      return marker.data[variable] || '';
     });
 
     marker.bubble.instance = new global.google.maps.InfoWindow(options);
@@ -122,6 +125,8 @@ module.exports = function (global) {
 
 
 },{}],3:[function(require,module,exports){
+/*jslint node: true */
+"use strict";
 module.exports = {
   version: '3.exp',
   zoom: 8,
@@ -149,6 +154,8 @@ module.exports = function (global, that) {
   }
 
   function updateMarker(marker, options) {
+    var setter;
+
     if (options.custom) {
       if (options.custom.move) {
         marker.setAnimation(options.custom.move);
@@ -164,7 +171,7 @@ module.exports = function (global, that) {
     }
 
     if (options.setters) {
-      for (var setter in options.setters) {
+      for (setter in options.setters) {
         marker[setter](options.setters[setter]);
       }
     }
@@ -227,10 +234,10 @@ module.exports = function (global, that) {
    * @param options
    */
   function updateGroup(name, options) {
-    var result = [], instance;
+    var result = [], instance, item;
     var _options =  utils.prepareOptions(options, config.customMarkerOptions);
     if (GMP.maps[that.id].groups && GMP.maps[that.id].groups[name]) {
-      for (var item in GMP.maps[that.id].groups[name]) {
+      for (item in GMP.maps[that.id].groups[name]) {
         instance = findAndUpdateMarker(GMP.maps[that.id].groups[name][item], _options);
         result.push(instance);
       }
@@ -452,14 +459,16 @@ function clone(o) {
   var out, v, key;
   out = Array.isArray(o) ? [] : {};
   for (key in o) {
-    v = o[key];
-    out[key] = (typeof v === "object") ? clone(v) : v;
+    if (o.hasOwnProperty(key)) {
+      v = o[key];
+      out[key] = (typeof v === "object") ? clone(v) : v;
+    }
   }
   return out;
 }
 
 function createUid() {
-  return 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+  return 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
     var r, v;
     r = Math.random() * 16 | 0;
     v = c === 'x' ? r : r & 0x3 | 0x8;
@@ -468,10 +477,9 @@ function createUid() {
 }
 
 function prepareOptions(options, custom) {
-  var result = {};
+  var result = {}, option;
 
-  for (var option in options) {
-
+  for (option in options) {
     if (options.hasOwnProperty(option)) {
       if (custom.indexOf(option) > -1) {
         result.custom = result.custom || {};
@@ -490,7 +498,7 @@ module.exports = {
   clone: clone,
   createUid: createUid,
   prepareOptions: prepareOptions
-}
+};
 
 },{}],12:[function(require,module,exports){
 /* global: window */
