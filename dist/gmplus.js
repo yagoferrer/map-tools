@@ -1,267 +1,10 @@
 /* gmplus.js 0.2.1 MIT License. 2015 Yago Ferrer <yago.ferrer@gmail.com> */
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-module.exports = {
-  version: '3.exp',
-  zoom: 8
-};
-
-},{}],2:[function(require,module,exports){
-(function (global){
-'use strict';
-
-var defaults = require('gmplus/defaults');
-
-/**
- * Injects Google API Javascript File and adds a callback to load the Google Maps Async.
- * @type {{load: Function}}
- * @private
- *
- * @returns the element appended
- */
-function load (args) {
-  var version = args.version || defaults.version;
-  var script = global.window.document.createElement('script');
-  script.type = 'text/javascript';
-  script.src = '//maps.googleapis.com/maps/api/js?v=' + version +
-  '&callback=GMP.maps.' + args.id + '.create';
-  return global.window.document.body.appendChild(script);
-}
-
-module.exports = {
-  load: load
-}
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"gmplus/defaults":1}],3:[function(require,module,exports){
-'use strict';
-
 var utils = require('gmplus/utils');
-var defaults = require('gmplus/defaults');
-var gmaps = require('gmplus/gmaps.js');
-var topojson = require('topojson');
 
-'use strict';
-module.exports = function(global) {
+module.exports = function(global, that) {
 
-
-
-
-  /**
-   * Creates a new Google Map Instance
-   * @param args Arguments to instantiate a Google Maps
-   *
-   */
-  function newMap(args, cb) {
-
-    cb = cb || function(){};
-
-    var mapOptions = utils.clone(args); // To clone Array content
-
-    mapOptions.zoom = args.zoom || defaults.zoom;
-    mapOptions.center = new global.google.maps.LatLng(args.lat, args.lng);
-
-    // These are custom properties from GMP API that need to be unset.
-    mapOptions.id = undefined;
-    mapOptions.lat = undefined;
-    mapOptions.lng = undefined;
-
-    that.id = args.id;
-    that.options = args;
-    that.instance = new global.google.maps.Map(global.document.getElementById(args.id), mapOptions);
-    global.GMP.maps[args.id].instance = that.instance;
-
-    global.google.maps.event.addListenerOnce(that.instance, 'idle', function(){
-      cb(false, that.instance);
-    });
-  }
-
-  /**
-   * Validates GMP Options
-   * @param options to validate
-   * @param cb Only used when something goes wrong
-   * @returns {boolean} true/false
-   */
-  function validOptions(options, cb) {
-    if (!options || options && typeof options !== 'object') {
-      cb(new Error('You must pass a valid first parameter: options'));
-      return false;
-    }
-
-    if (!options.id && !options.class) {
-      cb(new Error('You must pass an "id" or a "class" property values'));
-      return false;
-    }
-
-    if (!options.lat || !options.lng) {
-      cb(new Error('You must pass valid "lat" (latitude) and "lng" (longitude) values'));
-      return false;
-    }
-
-    return true;
-  }
-
-
-  var that;
-
-  /**
-   * Creates a new GMaps Plus instance
-   * @param options
-   * @constructor
-   */
-  function GMP(options, cb) {
-    that = this;
-
-    if (validOptions(options, cb)) {
-      global.GMP.maps = GMP.maps || {};
-      global.GMP.maps[options.id] = {
-        create: function () {
-          newMap(this.arguments, cb);
-        },
-        arguments: options
-      };
-
-
-      if (options.async !== false || options.sync === true) {
-        gmaps.load(options);
-      } else {
-        global.GMP.maps[options.id].create();
-      }
-    }
-
-    return this;
-  }
-
-  // a GMP Instance
-  GMP.prototype.instance = false;
-
-
-  // Animations
-  GMP.prototype.bounce = 1;
-  GMP.prototype.drop = 2;
-
-  /**
-   * Adds Markers to the Map
-   * @param args Array or Markers
-   * @param options things like groups etc
-   * @returns {Array} all the instances of the markers.
-   */
-  GMP.prototype.addMarker = function(args, options) {
-    if (Object.prototype.toString.call(args) === '[object Array]') {
-      var markers = [];
-      var marker;
-      for (var i in args) {
-        marker = _addMarker(args[i], options);
-        markers.push(marker);
-
-      }
-
-      return markers;
-    }
-
-    if (typeof args === 'object') {
-      return _addMarker(args, options);
-    }
-  };
-
-
-  var customMarkerOptions = ['lat', 'lng', 'move', 'bubble'];
-
-
-  function _prepareOptions(options, custom)
-  {
-    var result = {};
-
-    for (var option in options) {
-      if (custom.indexOf(option) > -1) {
-        result.custom = result.custom || {};
-        result.custom[option] = options[option];
-      } else {
-        result.setters = result.setters || {};
-        result.setters['set' + option[0].toUpperCase() + option.slice(1)] = options[option];
-      }
-    }
-
-    return result;
-  }
-
-  /**
-   * Transforms flat keys to Setters. For example visible becomes: setVisible.
-   * @param options
-   * @returns {{count: number, setterKey: *, setters: {}}}
-   * @private
-   */
-  function _findAndUpdateMarker(marker, options)
-  {
-
-    if (marker.data && marker.data.uid) {
-      return _updateMarker(marker, options);
-    } else if (marker.uid && GMP.maps[that.id].markers[marker.uid]) {
-      return _updateMarker(GMP.maps[that.id].markers[marker.uid], options);
-    }
-
-  }
-
-  function _updateMarker(marker, options) {
-    if (options.custom) {
-      if (options.custom.move) {
-        marker.setAnimation(options.custom.move);
-      }
-
-      if (options.custom.lat && options.custom.lng) {
-        marker.setPosition(new global.google.maps.LatLng(options.custom.lat, options.custom.lng));
-      }
-
-      if (options.custom.bubble && options.custom.bubble.content) {
-        marker.bubble.instance.setContent(options.custom.bubble.content);
-      }
-
-    }
-
-    if (options.setters) {
-      for (var setter in options.setters) {
-        marker[setter](options.setters[setter]);
-      }
-    }
-    return marker;
-  }
-
-
-  GMP.prototype.updateMarker = function(args, options) {
-    var type = Object.prototype.toString.call(args);
-    var _options = _prepareOptions(options, customMarkerOptions);
-
-    if (type === '[object Object]') {
-      return _findAndUpdateMarker(args, _options);
-    } else if (type === '[object Array]') {
-      var marker;
-      var results = [], instance;
-      for (var x in args) {
-        marker = args[x];
-        instance = _findAndUpdateMarker(marker, _options);
-        results.push(instance);
-      }
-      return results;
-    }
-
-  };
-
-
-
-  function _bubble(marker, options) {
-
-    var event = options.event || 'click';
-
-    options.content = options.content.replace(/\{(\w+)\}/g, function(m, variable) {
-      return (marker.data[variable]) ? marker.data[variable] : '';
-    });
-
-    marker.bubble.instance = new global.google.maps.InfoWindow(options);
-
-    global.google.maps.event.addListener(marker, event, function() {
-      marker.bubble.instance.open(that.instance, marker);
-    });
-  }
-
+  var bubble = require('gmplus/bubble')(global);
 
   function _addMarker(marker, options)
   {
@@ -306,7 +49,7 @@ module.exports = function(global) {
     }
 
     if (marker.bubble) {
-      _bubble(instance, marker.bubble);
+      bubble.create(instance, marker.bubble, that.instance);
     }
 
 
@@ -328,11 +71,156 @@ module.exports = function(global) {
 
 
   /**
+   * Adds Markers to the Map
+   * @param args Array or Markers
+   * @param options things like groups etc
+   * @returns {Array} all the instances of the markers.
+   */
+  function addMarker(args, options) {
+
+    if (args.length && args.length >= 1) {
+      var markers = [];
+      var marker;
+      for (var i in args) {
+        marker = _addMarker(args[i], options);
+        markers.push(marker);
+
+      }
+
+      return markers;
+    }
+
+    return _addMarker(args, options);
+
+  };
+
+  return addMarker;
+
+}
+
+},{"gmplus/bubble":2,"gmplus/utils":11}],2:[function(require,module,exports){
+
+
+
+module.exports = function(global) {
+
+  function create(marker, options, map) {
+
+    var event = options.event || 'click';
+
+    options.content = options.content.replace(/\{(\w+)\}/g, function(m, variable) {
+      return (marker.data[variable]) ? marker.data[variable] : '';
+    });
+
+    marker.bubble.instance = new global.google.maps.InfoWindow(options);
+
+    global.google.maps.event.addListener(marker, event, function() {
+      marker.bubble.instance.open(map, marker);
+    });
+  }
+
+  return {
+    create: create
+  }
+
+}
+
+
+},{}],3:[function(require,module,exports){
+module.exports = {
+  version: '3.exp',
+  zoom: 8,
+  customMarkerOptions: ['lat', 'lng', 'move', 'bubble']
+};
+
+},{}],4:[function(require,module,exports){
+module.exports = function(global, that) {
+  /**
+   * Transforms flat keys to Setters. For example visible becomes: setVisible.
+   * @param options
+   * @returns {{count: number, setterKey: *, setters: {}}}
+   * @private
+   */
+  function findAndUpdateMarker(marker, options)
+  {
+
+    if (marker.data && marker.data.uid) {
+      return _updateMarker(marker, options);
+    } else if (marker.uid && GMP.maps[that.id].markers[marker.uid]) {
+      return _updateMarker(GMP.maps[that.id].markers[marker.uid], options);
+    }
+
+  }
+
+  function _updateMarker(marker, options) {
+    if (options.custom) {
+      if (options.custom.move) {
+        marker.setAnimation(options.custom.move);
+      }
+
+      if (options.custom.lat && options.custom.lng) {
+        marker.setPosition(new global.google.maps.LatLng(options.custom.lat, options.custom.lng));
+      }
+
+      if (options.custom.bubble && options.custom.bubble.content) {
+        marker.bubble.instance.setContent(options.custom.bubble.content);
+      }
+
+    }
+
+    if (options.setters) {
+      for (var setter in options.setters) {
+        marker[setter](options.setters[setter]);
+      }
+    }
+    return marker;
+  }
+
+  return findAndUpdateMarker;
+}
+
+},{}],5:[function(require,module,exports){
+(function (global){
+'use strict';
+
+var config = require('gmplus/config');
+
+/**
+ * Injects Google API Javascript File and adds a callback to load the Google Maps Async.
+ * @type {{load: Function}}
+ * @private
+ *
+ * @returns the element appended
+ */
+function load (args) {
+  var version = args.version || config.version;
+  var script = global.window.document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = '//maps.googleapis.com/maps/api/js?v=' + version +
+  '&callback=GMP.maps.' + args.id + '.create';
+  return global.window.document.body.appendChild(script);
+}
+
+module.exports = {
+  load: load
+}
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"gmplus/config":3}],6:[function(require,module,exports){
+var utils = require('gmplus/utils');
+var config = require('gmplus/config');
+
+module.exports = function(global, that) {
+
+
+  var findAndUpdateMarker = require('gmplus/findUpdateMarker')(global, that);
+
+  /**
    * Adds a New Group
    * @param name Name of the Group
    * @param options That Apply to all the Group
    */
-  GMP.prototype.addGroup = function(name, options) {
+  function addGroup(name, options) {
     GMP.maps[that.id].groups = GMP.maps[that.id].groups || [];
     GMP.maps[that.id].groupOptions = GMP.maps[that.id].groupOptions || {};
     GMP.maps[that.id].groupOptions[name] = options;
@@ -344,36 +232,151 @@ module.exports = function(global) {
    * @param name
    * @param options
    */
-  GMP.prototype.updateGroup = function(name, options) {
+  function updateGroup(name, options) {
     var result = [], instance;
-    var _options =  _prepareOptions(options, customMarkerOptions);
+    var _options =  utils.prepareOptions(options, config.customMarkerOptions);
     if (GMP.maps[that.id].groups && GMP.maps[that.id].groups[name]) {
       for (var item in GMP.maps[that.id].groups[name]) {
-        instance = _findAndUpdateMarker(GMP.maps[that.id].groups[name][item], _options);
+        instance = findAndUpdateMarker(GMP.maps[that.id].groups[name][item], _options);
         result.push(instance);
       }
     }
     return result;
   };
 
-  //region TopoJSON
+  return {
+    addGroup: addGroup,
+    updateGroup: updateGroup
+  };
+
+}
+
+},{"gmplus/config":3,"gmplus/findUpdateMarker":4,"gmplus/utils":11}],7:[function(require,module,exports){
+module.exports = function(global) {
+  'use strict';
+
+
   /**
-   * Loads a Topo JSON file into a Map
-   * @param data The parsed JSON File
+   * Creates a new GMaps Plus instance
    * @param options
+   * @constructor
    */
-  GMP.prototype.loadTopoJson = function(data, options)
-  {
-    var item, geoJson, features;
-    for (var x in options) {
-        item = options[x];
-        geoJson = topojson.feature(data, data.objects[item.object]);
-        features = that.instance.data.addGeoJson(geoJson);
-        _addFeatureOptions(features, item);
+  function GMP(options, cb) {
+    var that = this;
+
+    this.addMarker = require('gmplus/addMarker')(global, that);
+    this.loadTopoJson = require('gmplus/topojson')(global, that);
+    this.updateMarker = require('gmplus/updateMarker')(global, that);
+    this.addGroup = require('gmplus/groups')(global, that).addGroup;
+    this.updateGroup = require('gmplus/groups')(global, that).updateGroup;
+
+    var map = require('gmplus/map')(global, that);
+    map.load(options, cb);
+
+    return this;
+  }
+
+  // a GMP Instance
+  GMP.prototype.instance = false;
+
+
+  // Animations
+  GMP.prototype.bounce = 1;
+  GMP.prototype.drop = 2;
+
+  return GMP;
+};
+
+},{"gmplus/addMarker":1,"gmplus/groups":6,"gmplus/map":8,"gmplus/topojson":9,"gmplus/updateMarker":10}],8:[function(require,module,exports){
+var utils = require('gmplus/utils');
+var config = require('gmplus/config');
+var gmaps = require('gmplus/gmaps.js');
+
+module.exports = function(global, that) {
+
+  /**
+   * Creates a new Google Map Instance
+   * @param args Arguments to instantiate a Google Maps
+   *
+   */
+  function create(args, cb) {
+
+    cb = cb || function(){};
+
+    var mapOptions = utils.clone(args); // To clone Array content
+
+    mapOptions.zoom = args.zoom || config.zoom;
+    mapOptions.center = new global.google.maps.LatLng(args.lat, args.lng);
+
+    // These are custom properties from GMP API that need to be unset.
+    mapOptions.id = undefined;
+    mapOptions.lat = undefined;
+    mapOptions.lng = undefined;
+
+    that.id = args.id;
+    that.options = args;
+    that.instance = new global.google.maps.Map(global.document.getElementById(args.id), mapOptions);
+    global.GMP.maps[args.id].instance = that.instance;
+
+    global.google.maps.event.addListenerOnce(that.instance, 'idle', function(){
+      cb(false, that.instance);
+    });
+  }
+
+  /**
+   * Validates GMP Options
+   * @param options to validate
+   * @param cb Only used when something goes wrong
+   * @returns {boolean} true/false
+   */
+  function validOptions(options, cb) {
+    if (!options || options && typeof options !== 'object') {
+      cb(new Error('You must pass a valid first parameter: options'));
+      return false;
     }
 
-    return features;
-  };
+    if (!options.id && !options.class) {
+      cb(new Error('You must pass an "id" or a "class" property values'));
+      return false;
+    }
+
+    if (!options.lat || !options.lng) {
+      cb(new Error('You must pass valid "lat" (latitude) and "lng" (longitude) values'));
+      return false;
+    }
+
+    return true;
+  }
+
+  function load(options, cb) {
+    if (validOptions(options, cb)) {
+      global.GMP.maps = GMP.maps || {};
+      global.GMP.maps[options.id] = {
+        create: function () {
+          create(this.arguments, cb);
+        },
+        arguments: options
+      };
+
+      if (options.async !== false || options.sync === true) {
+        gmaps.load(options);
+      } else {
+        global.GMP.maps[options.id].create();
+      }
+    }
+  }
+
+  return {
+    load: load
+  }
+
+}
+
+},{"gmplus/config":3,"gmplus/gmaps.js":5,"gmplus/utils":11}],9:[function(require,module,exports){
+var topojson = require('topojson');
+
+module.exports = function(global, that) {
+
 
   /**
    * Adds GeoJSON Feature Options like: style
@@ -390,13 +393,61 @@ module.exports = function(global) {
       }
     }
   }
-  //endregion
 
-  return GMP;
+  /**
+   * Loads a Topo JSON file into a Map
+   * @param data The parsed JSON File
+   * @param options
+   */
+  function loadTopoJson(data, options)
+  {
+    var item, geoJson, features;
+    for (var x in options) {
+      item = options[x];
+      geoJson = topojson.feature(data, data.objects[item.object]);
+      features = that.instance.data.addGeoJson(geoJson);
+      _addFeatureOptions(features, item);
+    }
 
-};
+    return features;
+  };
 
-},{"gmplus/defaults":1,"gmplus/gmaps.js":2,"gmplus/utils":4,"topojson":6}],4:[function(require,module,exports){
+  return loadTopoJson;
+}
+
+},{"topojson":13}],10:[function(require,module,exports){
+var utils = require('gmplus/utils');
+var config = require('gmplus/config');
+
+module.exports = function(global, that) {
+
+
+  var findAndUpdateMarker = require('gmplus/findUpdateMarker')(global, that);
+
+  function updateMarker(args, options) {
+    var type = Object.prototype.toString.call(args);
+    var _options = utils.prepareOptions(options, config.customMarkerOptions);
+
+    if (type === '[object Object]') {
+      return findAndUpdateMarker(args, _options);
+    } else if (type === '[object Array]') {
+      var marker;
+      var results = [], instance;
+      for (var x in args) {
+        marker = args[x];
+        instance = findAndUpdateMarker(marker, _options);
+        results.push(instance);
+      }
+      return results;
+    }
+
+  }
+
+  return updateMarker;
+
+}
+
+},{"gmplus/config":3,"gmplus/findUpdateMarker":4,"gmplus/utils":11}],11:[function(require,module,exports){
 function clone(o) {
   var out, v, key;
   out = Array.isArray(o) ? [] : {};
@@ -416,15 +467,33 @@ function createUid() {
   });
 }
 
-module.exports = {
-  clone: clone,
-  createUid: createUid
+function prepareOptions(options, custom)
+{
+  var result = {};
+
+  for (var option in options) {
+    if (custom.indexOf(option) > -1) {
+      result.custom = result.custom || {};
+      result.custom[option] = options[option];
+    } else {
+      result.setters = result.setters || {};
+      result.setters['set' + option[0].toUpperCase() + option.slice(1)] = options[option];
+    }
+  }
+
+  return result;
 }
 
-},{}],5:[function(require,module,exports){
-window.GMP = require('gmplus/map')(window);
+module.exports = {
+  clone: clone,
+  createUid: createUid,
+  prepareOptions: prepareOptions
+}
 
-},{"gmplus/map":3}],6:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
+window.GMP = require('gmplus/index')(window);
+
+},{"gmplus/index":7}],13:[function(require,module,exports){
 !function() {
   var topojson = {
     version: "1.6.18",
@@ -960,4 +1029,4 @@ window.GMP = require('gmplus/map')(window);
   else this.topojson = topojson;
 }();
 
-},{}]},{},[5]);
+},{}]},{},[12]);
