@@ -252,12 +252,9 @@ module.exports = function(global, that) {
 }
 
 },{"gmplus/config":3,"gmplus/findUpdateMarker":4,"gmplus/utils":11}],7:[function(require,module,exports){
-var gmaps = require('gmplus/gmaps.js');
-
 module.exports = function(global) {
   'use strict';
-  var that;
-  var updateMarker;
+
 
   /**
    * Creates a new GMaps Plus instance
@@ -265,34 +262,16 @@ module.exports = function(global) {
    * @constructor
    */
   function GMP(options, cb) {
-    that = this;
+    var that = this;
 
     this.addMarker = require('gmplus/addMarker')(global, that);
     this.loadTopoJson = require('gmplus/topojson')(global, that);
     this.updateMarker = require('gmplus/updateMarker')(global, that);
-
-    var groups = require('gmplus/groups')(global, that);
-    this.addGroup = groups.addGroup;
-    this.updateGroup = groups.updateGroup;
-
+    this.addGroup = require('gmplus/groups')(global, that).addGroup;
+    this.updateGroup = require('gmplus/groups')(global, that).updateGroup;
 
     var map = require('gmplus/map')(global, that);
-
-    if (map.validOptions(options, cb)) {
-      global.GMP.maps = GMP.maps || {};
-      global.GMP.maps[options.id] = {
-        create: function () {
-          map.create(this.arguments, cb);
-        },
-        arguments: options
-      };
-
-      if (options.async !== false || options.sync === true) {
-        gmaps.load(options);
-      } else {
-        global.GMP.maps[options.id].create();
-      }
-    }
+    map.load(options, cb);
 
     return this;
   }
@@ -306,12 +285,12 @@ module.exports = function(global) {
   GMP.prototype.drop = 2;
 
   return GMP;
-
 };
 
-},{"gmplus/addMarker":1,"gmplus/gmaps.js":5,"gmplus/groups":6,"gmplus/map":8,"gmplus/topojson":9,"gmplus/updateMarker":10}],8:[function(require,module,exports){
+},{"gmplus/addMarker":1,"gmplus/groups":6,"gmplus/map":8,"gmplus/topojson":9,"gmplus/updateMarker":10}],8:[function(require,module,exports){
 var utils = require('gmplus/utils');
 var config = require('gmplus/config');
+var gmaps = require('gmplus/gmaps.js');
 
 module.exports = function(global, that) {
 
@@ -369,16 +348,31 @@ module.exports = function(global, that) {
     return true;
   }
 
+  function load(options, cb) {
+    if (validOptions(options, cb)) {
+      global.GMP.maps = GMP.maps || {};
+      global.GMP.maps[options.id] = {
+        create: function () {
+          create(this.arguments, cb);
+        },
+        arguments: options
+      };
 
-  return {
-    create: create,
-    validOptions: validOptions
+      if (options.async !== false || options.sync === true) {
+        gmaps.load(options);
+      } else {
+        global.GMP.maps[options.id].create();
+      }
+    }
   }
 
+  return {
+    load: load
+  }
 
 }
 
-},{"gmplus/config":3,"gmplus/utils":11}],9:[function(require,module,exports){
+},{"gmplus/config":3,"gmplus/gmaps.js":5,"gmplus/utils":11}],9:[function(require,module,exports){
 var topojson = require('topojson');
 
 module.exports = function(global, that) {
