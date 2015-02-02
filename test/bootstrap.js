@@ -10,7 +10,7 @@ global.sinon = require('sinon');
 var window = require('../test/mocks/window');
 window.google = require('../test/mocks/google-maps');
 
-var GMP = require('gmplus/map')(window);
+var GMP = require('gmplus/index')(window);
 window.GMP = GMP;
 global.GMP = window.GMP;
 
