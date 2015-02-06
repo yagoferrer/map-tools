@@ -238,4 +238,4 @@ Add more [Style Options](https://developers.google.com/maps/documentation/javasc
 
 
 ## How can you contribute?
-Get involved! Check out the list of [feature requests](https://github.com/yagoferrer/gmplus/issues). All PRs and ideas are welcome.
+Get involved! Check out the list of [feature requests](https://github.com/yagoferrer/gmplus/issues). All PRs and ideas are welcome
