@@ -5,7 +5,7 @@ describe('Given the Map Module', function () {
     var map;
 
     beforeEach(function () {
-      map = require('gmplus/gmaps');
+      map = require('gmplus/gmaps')(window);
     });
 
     it('should load a Google Maps Instance', function () {
