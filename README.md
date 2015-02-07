@@ -62,6 +62,9 @@ default map types are : ROADMAP, SATELLITE, HYBRID and TERRAIN
 example:
 ```javascript
 {
+ id: 'myMap',
+ lat: 41.3833,
+ lng: 2.1833
  type: 'TERRAIN'
 }
 ```
