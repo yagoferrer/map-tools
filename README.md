@@ -58,7 +58,7 @@ Add a simple HTML tag
 <div id="myMap"></div>
 ```
 ### Map Types
-default map types are : ROADMAP, SATELLITE, HYBRID and TERRAIN
+Default map types are : ROADMAP, SATELLITE, HYBRID and TERRAIN
 example:
 ```javascript
 {
