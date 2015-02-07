@@ -28,10 +28,10 @@ module.exports = function (global, that) {
     }
 
     // Adds additional options from the Group and overwrites any Marker options already set.
-    if (group && global.GMP.maps[that.id].groupOptions && global.GMP.maps[that.id].groupOptions[group]) {
+    if (group && global.GMP.maps[that.id].markers && global.GMP.maps[that.id].markers.groupOptions && global.GMP.maps[that.id].markers.groupOptions[group]) {
 
-      for (var j in global.GMP.maps[that.id].groupOptions[group]) {
-        marker[j] = global.GMP.maps[that.id].groupOptions[group][j];
+      for (var j in global.GMP.maps[that.id].markers.groupOptions[group]) {
+        marker[j] = global.GMP.maps[that.id].markers.groupOptions[group][j];
       }
     }
 
@@ -55,18 +55,19 @@ module.exports = function (global, that) {
       bubble.create(instance, marker.bubble, that.instance);
     }
 
+    global.GMP.maps[that.id].markers = global.GMP.maps[that.id].markers || {};
 
     // Adds Marker Reference to specific Group
     if (group) {
-      global.GMP.maps[that.id].groups = global.GMP.maps[that.id].groups || {};
-      global.GMP.maps[that.id].groups[group] = global.GMP.maps[that.id].groups[group] || [];
-      global.GMP.maps[that.id].groups[group].push(instance);
+      global.GMP.maps[that.id].markers.groups = global.GMP.maps[that.id].markers.groups || {};
+      global.GMP.maps[that.id].markers.groups[group] = global.GMP.maps[that.id].markers.groups[group] || [];
+      global.GMP.maps[that.id].markers.groups[group].push(instance);
     }
 
 
     // Adds Marker Reference of each Marker to "markers"
-    global.GMP.maps[that.id].markers = global.GMP.maps[that.id].markers || {};
-    global.GMP.maps[that.id].markers[marker.data.uid] = instance;
+    global.GMP.maps[that.id].markers.all = global.GMP.maps[that.id].markers.all || {};
+    global.GMP.maps[that.id].markers.all[marker.data.uid] = instance;
 
 
     return instance;
@@ -172,8 +173,8 @@ module.exports = function (global, that) {
       return updateMarker(marker, options);
     }
 
-    if (marker.uid && global.GMP.maps[that.id].markers[marker.uid]) {
-      return updateMarker(global.GMP.maps[that.id].markers[marker.uid], options);
+    if (marker.uid && global.GMP.maps[that.id].markers.all[marker.uid]) {
+      return updateMarker(global.GMP.maps[that.id].markers.all[marker.uid], options);
     }
   }
 
@@ -223,9 +224,10 @@ module.exports = function (global, that) {
    * @param options That Apply to all the Group
    */
   function addGroup(name, options) {
-    global.GMP.maps[that.id].groups = global.GMP.maps[that.id].groups || [];
-    global.GMP.maps[that.id].groupOptions = global.GMP.maps[that.id].groupOptions || {};
-    global.GMP.maps[that.id].groupOptions[name] = options;
+    global.GMP.maps[that.id].markers = global.GMP.maps[that.id].markers || {};
+    global.GMP.maps[that.id].markers.groups = global.GMP.maps[that.id].markers.groups || [];
+    global.GMP.maps[that.id].markers.groupOptions = global.GMP.maps[that.id].markers.groupOptions || {};
+    global.GMP.maps[that.id].markers.groupOptions[name] = options;
   }
 
   /**
@@ -236,10 +238,10 @@ module.exports = function (global, that) {
   function updateGroup(name, options) {
     var result = [], instance, item;
     var preparedOptions =  utils.prepareOptions(options, config.customMarkerOptions);
-    if (global.GMP.maps[that.id].groups && global.GMP.maps[that.id].groups[name]) {
-      for (item in global.GMP.maps[that.id].groups[name]) {
-        if (global.GMP.maps[that.id].groups[name].hasOwnProperty(item)) {
-          instance = findAndUpdateMarker(global.GMP.maps[that.id].groups[name][item], preparedOptions);
+    if (global.GMP.maps[that.id].markers.groups && global.GMP.maps[that.id].markers.groups[name]) {
+      for (item in global.GMP.maps[that.id].markers.groups[name]) {
+        if (global.GMP.maps[that.id].markers.groups[name].hasOwnProperty(item)) {
+          instance = findAndUpdateMarker(global.GMP.maps[that.id].markers.groups[name][item], preparedOptions);
           result.push(instance);
         }
       }
