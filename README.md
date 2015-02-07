@@ -57,6 +57,15 @@ Add a simple HTML tag
 ```html
 <div id="myMap"></div>
 ```
+### Map Types
+default map types are : ROADMAP, SATELLITE, HYBRID and TERRAIN
+example:
+```javascript
+{
+ type: 'TERRAIN'
+}
+```
+
 Add more [Map Options](https://developers.google.com/maps/documentation/javascript/reference#MapOptions). It just works. For example:
 ```javascript
 {
