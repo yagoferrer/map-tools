@@ -274,7 +274,8 @@ module.exports = function (global) {
     this.updateGroup = require('gmplus/groups')(global, that).updateGroup;
 
     var map = require('gmplus/map')(global, that);
-    map.load(options, cb);
+
+    global.onload = map.load(options, cb);
 
     return this;
   }
@@ -506,6 +507,7 @@ module.exports = {
 /* global: window */
 /*jslint node: true */
 "use strict";
+
 window.GMP = require('gmplus/index')(window);
 
 },{"gmplus/index":7}],13:[function(require,module,exports){

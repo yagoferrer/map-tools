@@ -17,5 +17,8 @@ module.exports = {
       }
     },
     getElementById: function() {}
+  },
+  onload: function(cb) {
+    return cb();
   }
 };
