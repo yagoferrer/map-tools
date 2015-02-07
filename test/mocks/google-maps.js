@@ -68,6 +68,9 @@ module.exports = {
     },
     Size: function() {
       return {};
+    },
+    MapTypeId: {
+      ROADMAP: 1
     }
   }
 };
