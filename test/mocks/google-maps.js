@@ -37,13 +37,15 @@ module.exports = {
         return 'animation set';
       };
 
-      marker.setVisible = function(value) {
-        marker.visible = value;
-      };
-
       marker.setPosition = function(value) {
         marker.position = value;
       };
+
+      marker.setOptions = function(options) {
+        for (var option in options) {
+          marker[option] = options[option];
+        }
+      }
 
       return marker;
 

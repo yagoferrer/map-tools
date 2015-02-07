@@ -155,13 +155,10 @@ module.exports = function (global, that) {
       }
     }
 
-    if (options.setters) {
-      for (setter in options.setters) {
-        if (options.setters.hasOwnProperty(setter)) {
-          marker[setter](options.setters[setter]);
-        }
-      }
+    if (options.defaults) {
+      marker.setOptions(options.defaults);
     }
+
     return marker;
   }
   /**
@@ -491,8 +488,8 @@ function prepareOptions(options, custom) {
         result.custom = result.custom || {};
         result.custom[option] = options[option];
       } else {
-        result.setters = result.setters || {};
-        result.setters['set' + option[0].toUpperCase() + option.slice(1)] = options[option];
+        result.defaults = result.defaults || {};
+        result.defaults[option] = options[option];
       }
     }
   }
