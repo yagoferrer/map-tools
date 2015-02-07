@@ -82,7 +82,7 @@ Add more [Map Options](https://developers.google.com/maps/documentation/javascri
 ### Update Map 
 Update any option by calling the updateMap method like this example:
 ```javavascript
-map.updateMap({type: 'TERRAIN', zoomControl: false});
+map.updateMap({zoom: 6});
 ```
 
 Once instantiated: you can access directly to the Google API like this: `GMP.maps.myMap.instance`
