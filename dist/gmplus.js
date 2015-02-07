@@ -275,7 +275,7 @@ module.exports = function (global) {
 
     var map = require('gmplus/map')(global, that);
 
-    global.onload = map.load(options, cb);
+    global.onload = map.load(options, cb); // Wait until the DOM is ready before attempting to load the Map
 
     return this;
   }
@@ -415,6 +415,8 @@ module.exports = function (global, that) {
         geoJson = topojson.feature(data, data.objects[item.object]);
         features = that.instance.data.addGeoJson(geoJson);
         addFeatureOptions(features, item);
+        global.GMP.maps[that.id].json = global.GMP.maps[that.id].json || {};
+        global.GMP.maps[that.id].json[item.object] = features;
       }
     }
     return features;
@@ -507,7 +509,6 @@ module.exports = {
 /* global: window */
 /*jslint node: true */
 "use strict";
-
 window.GMP = require('gmplus/index')(window);
 
 },{"gmplus/index":7}],13:[function(require,module,exports){
