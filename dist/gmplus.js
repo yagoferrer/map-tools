@@ -3,6 +3,91 @@
 /*jslint node: true */
 "use strict";
 var utils = require('gmplus/utils');
+var config = require('gmplus/config');
+var gmaps = require('gmplus/gmaps.js');
+
+module.exports = function (global, that) {
+
+  /**
+   * Creates a new Google Map Instance
+   * @param args Arguments to instantiate a Google Maps
+   *
+   */
+  function create(args, cb) {
+
+    cb = cb || function () {};
+
+    var mapOptions = utils.clone(args, config.customMapOptions); // To clone Array content
+
+    mapOptions.zoom = args.zoom || config.zoom;
+    mapOptions.center = new global.google.maps.LatLng(args.lat, args.lng);
+
+    if (args.type) {
+      mapOptions.mapTypeId = global.google.maps.MapTypeId[args.type] || false;
+    }
+
+    that.id = args.id;
+    that.options = args;
+    that.instance = new global.google.maps.Map(global.document.getElementById(args.id), mapOptions);
+    global.GMP.maps[args.id].instance = that.instance;
+
+    global.google.maps.event.addListenerOnce(that.instance, 'idle', function (){
+      cb(false, that.instance);
+    });
+  }
+  /**
+   * Validates GMP Options
+   * @param options to validate
+   * @param cb Only used when something goes wrong
+   * @returns {boolean} true/false
+   */
+  function validOptions(options, cb) {
+    if (!options || (options && typeof options !== 'object')) {
+      cb(new Error('You must pass a valid first parameter: options'));
+      return false;
+    }
+
+    if (!options.id && !options.class) {
+      cb(new Error('You must pass an "id" or a "class" property values'));
+      return false;
+    }
+
+    if (!options.lat || !options.lng) {
+      cb(new Error('You must pass valid "lat" (latitude) and "lng" (longitude) values'));
+      return false;
+    }
+
+    return true;
+  }
+
+  function load(options, cb) {
+    if (validOptions(options, cb)) {
+      global.GMP.maps = global.GMP.maps || {};
+      global.GMP.maps[options.id] = {
+        create: function () {
+          create(this.arguments, cb);
+        },
+        arguments: options
+      };
+
+      if (options.async !== false || options.sync === true) {
+        gmaps.load(options);
+      } else {
+        global.GMP.maps[options.id].create();
+      }
+    }
+  }
+
+  return {
+    load: load
+  };
+
+};
+
+},{"gmplus/config":4,"gmplus/gmaps.js":6,"gmplus/utils":11}],2:[function(require,module,exports){
+/*jslint node: true */
+"use strict";
+var utils = require('gmplus/utils');
 
 module.exports = function (global, that) {
   var bubble = require('gmplus/bubble')(global);
@@ -100,7 +185,7 @@ module.exports = function (global, that) {
 
 };
 
-},{"gmplus/bubble":2,"gmplus/utils":11}],2:[function(require,module,exports){
+},{"gmplus/bubble":3,"gmplus/utils":11}],3:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 module.exports = function (global) {
@@ -125,16 +210,17 @@ module.exports = function (global) {
 };
 
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 module.exports = {
   version: '3.exp',
   zoom: 8,
+  customMapOptions: ['id', 'lat', 'lng', 'type'],
   customMarkerOptions: ['lat', 'lng', 'move', 'bubble']
 };
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 module.exports = function (global, that) {
@@ -182,7 +268,7 @@ module.exports = function (global, that) {
   return findAndUpdateMarker;
 };
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 (function (global){
 /*jslint node: true */
 "use strict";
@@ -209,7 +295,7 @@ module.exports = {
 };
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"gmplus/config":3}],6:[function(require,module,exports){
+},{"gmplus/config":4}],7:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 var utils = require('gmplus/utils');
@@ -256,7 +342,7 @@ module.exports = function (global, that) {
 
 };
 
-},{"gmplus/config":3,"gmplus/findUpdateMarker":4,"gmplus/utils":11}],7:[function(require,module,exports){
+},{"gmplus/config":4,"gmplus/findUpdateMarker":5,"gmplus/utils":11}],8:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 module.exports = function (global) {
@@ -275,7 +361,7 @@ module.exports = function (global) {
     this.addGroup = require('gmplus/groups')(global, that).addGroup;
     this.updateGroup = require('gmplus/groups')(global, that).updateGroup;
 
-    var map = require('gmplus/map')(global, that);
+    var map = require('gmplus/addMap')(global, that);
 
     global.onload = map.load(options, cb); // Wait until the DOM is ready before attempting to load the Map
 
@@ -292,94 +378,7 @@ module.exports = function (global) {
   return GMP;
 };
 
-},{"gmplus/addMarker":1,"gmplus/groups":6,"gmplus/map":8,"gmplus/topojson":9,"gmplus/updateMarker":10}],8:[function(require,module,exports){
-/*jslint node: true */
-"use strict";
-var utils = require('gmplus/utils');
-var config = require('gmplus/config');
-var gmaps = require('gmplus/gmaps.js');
-
-module.exports = function (global, that) {
-
-  /**
-   * Creates a new Google Map Instance
-   * @param args Arguments to instantiate a Google Maps
-   *
-   */
-  function create(args, cb) {
-
-    cb = cb || function () {};
-
-    var mapOptions = utils.clone(args); // To clone Array content
-
-    mapOptions.zoom = args.zoom || config.zoom;
-    mapOptions.center = new global.google.maps.LatLng(args.lat, args.lng);
-
-    // These are custom properties from GMP API that need to be unset.
-    mapOptions.id = undefined;
-    mapOptions.lat = undefined;
-    mapOptions.lng = undefined;
-
-    that.id = args.id;
-    that.options = args;
-    that.instance = new global.google.maps.Map(global.document.getElementById(args.id), mapOptions);
-    global.GMP.maps[args.id].instance = that.instance;
-
-    global.google.maps.event.addListenerOnce(that.instance, 'idle', function(){
-      cb(false, that.instance);
-    });
-  }
-
-  /**
-   * Validates GMP Options
-   * @param options to validate
-   * @param cb Only used when something goes wrong
-   * @returns {boolean} true/false
-   */
-  function validOptions(options, cb) {
-    if (!options || (options && typeof options !== 'object')) {
-      cb(new Error('You must pass a valid first parameter: options'));
-      return false;
-    }
-
-    if (!options.id && !options.class) {
-      cb(new Error('You must pass an "id" or a "class" property values'));
-      return false;
-    }
-
-    if (!options.lat || !options.lng) {
-      cb(new Error('You must pass valid "lat" (latitude) and "lng" (longitude) values'));
-      return false;
-    }
-
-    return true;
-  }
-
-  function load(options, cb) {
-    if (validOptions(options, cb)) {
-      global.GMP.maps = global.GMP.maps || {};
-      global.GMP.maps[options.id] = {
-        create: function () {
-          create(this.arguments, cb);
-        },
-        arguments: options
-      };
-
-      if (options.async !== false || options.sync === true) {
-        gmaps.load(options);
-      } else {
-        global.GMP.maps[options.id].create();
-      }
-    }
-  }
-
-  return {
-    load: load
-  };
-
-};
-
-},{"gmplus/config":3,"gmplus/gmaps.js":5,"gmplus/utils":11}],9:[function(require,module,exports){
+},{"gmplus/addMap":1,"gmplus/addMarker":2,"gmplus/groups":7,"gmplus/topojson":9,"gmplus/updateMarker":10}],9:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 var topojson = require('topojson');
@@ -462,16 +461,18 @@ module.exports = function (global, that) {
 
 };
 
-},{"gmplus/config":3,"gmplus/findUpdateMarker":4,"gmplus/utils":11}],11:[function(require,module,exports){
+},{"gmplus/config":4,"gmplus/findUpdateMarker":5,"gmplus/utils":11}],11:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
-function clone(o) {
+function clone(o, exceptionKeys) {
   var out, v, key;
   out = Array.isArray(o) ? [] : {};
   for (key in o) {
     if (o.hasOwnProperty(key)) {
-      v = o[key];
-      out[key] = (typeof v === "object") ? clone(v) : v;
+      if (!exceptionKeys || (exceptionKeys && exceptionKeys.indexOf(key) === -1)) {
+        v = o[key];
+        out[key] = (typeof v === "object") ? clone(v) : v;
+      }
     }
   }
   return out;
@@ -514,7 +515,7 @@ module.exports = {
 "use strict";
 window.GMP = require('gmplus/index')(window);
 
-},{"gmplus/index":7}],13:[function(require,module,exports){
+},{"gmplus/index":8}],13:[function(require,module,exports){
 !function() {
   var topojson = {
     version: "1.6.18",
