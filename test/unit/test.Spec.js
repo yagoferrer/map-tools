@@ -173,7 +173,7 @@ describe('Given gmplus.js', function () {
     it('should save the "Group Options"', function () {
       var map = new GMP({async: false, id: 'myMap', lat: 41.3833, lng: 2.1833});
       map.addGroup('myGroup', {myGroupProp: true});
-      expect(GMP.maps.myMap.groupOptions.myGroup).to.eql({myGroupProp: true});
+      expect(GMP.maps.myMap.markers.groupOptions.myGroup).to.eql({myGroupProp: true});
     });
 
 
