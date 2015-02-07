@@ -100,7 +100,7 @@ Since [0.3.0](https://github.com/yagoferrer/gmplus/releases/tag/0.3.0) add any o
 
 The 2nd parameter of `addMarker`, allows you to add options that apply to all the Markers within the Array.
 
-Once the Markers are created, you can access directly like this: `GMP.maps.myMap.markers`
+Once the Markers are created, you can access directly like this: `GMP.maps.myMap.markers.all`
 
 #### Update Marker
 Allows you to update one or multiple marker options. The 1st parameter can be: a result of crossfilter, a Marker reference or the uid like this: `{uuid: '<uuid>'}`

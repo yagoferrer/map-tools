@@ -56,7 +56,7 @@ describe('Given gmplus.js', function () {
         });
 
         expect(result.title).to.equal('Andorra');
-        expect(Object.keys(GMP.maps.myMap.markers).length).to.equal(1);
+        expect(Object.keys(GMP.maps.myMap.markers.all).length).to.equal(1);
         expect(spy).to.have.been.called;
       });
     });
@@ -77,7 +77,7 @@ describe('Given gmplus.js', function () {
 
       expect(result.title).to.equal('Andorra');
 
-      expect(Object.keys(GMP.maps.myMap.markers).length).to.equal(1);
+      expect(Object.keys(GMP.maps.myMap.markers.all).length).to.equal(1);
 
     });
 
@@ -98,7 +98,7 @@ describe('Given gmplus.js', function () {
       var result = map.addMarker(markers, {group: 'myGroup'});
 
       expect(result).to.have.length.of(2);
-      expect(Object.keys(GMP.maps.myMap.markers).length).to.equal(2);
+      expect(Object.keys(GMP.maps.myMap.markers.all).length).to.equal(2);
     });
 
 
@@ -144,8 +144,8 @@ describe('Given gmplus.js', function () {
         expect(result[0].myGroupProp).to.be.ok;
         expect(result[1].myGroupProp).to.be.ok;
 
-        expect(GMP.maps.myMap.markers[Object.keys(GMP.maps.myMap.markers)[0]].myGroupProp).to.be.ok;
-        expect(GMP.maps.myMap.markers[Object.keys(GMP.maps.myMap.markers)[1]].myGroupProp).to.be.ok;
+        expect(GMP.maps.myMap.markers.all[Object.keys(GMP.maps.myMap.markers.all)[0]].myGroupProp).to.be.ok;
+        expect(GMP.maps.myMap.markers.all[Object.keys(GMP.maps.myMap.markers.all)[1]].myGroupProp).to.be.ok;
 
       });
 
@@ -162,7 +162,7 @@ describe('Given gmplus.js', function () {
           group: 'myGroup'
         });
 
-        expect(GMP.maps.myMap.groups.myGroup).to.have.length.of(1);
+        expect(GMP.maps.myMap.markers.groups.myGroup).to.have.length.of(1);
       });
     });
   });
@@ -186,7 +186,7 @@ describe('Given gmplus.js', function () {
         title: 'Barcelona'
       };
       map.addMarker(markers, {group: 'myGroup'});
-      expect(GMP.maps.myMap.groups.myGroup[0].myGroupProp).to.be.true;
+      expect(GMP.maps.myMap.markers.groups.myGroup[0].myGroupProp).to.be.true;
     });
 
 
@@ -203,7 +203,7 @@ describe('Given gmplus.js', function () {
           myGroupProp: '1'
         };
         map.addMarker(markers, {myGroupProp: '2', group: 'myGroup'});
-        expect(GMP.maps.myMap.groups.myGroup[0].myGroupProp).to.equal('3');
+        expect(GMP.maps.myMap.markers.groups.myGroup[0].myGroupProp).to.equal('3');
       });
 
     });
@@ -226,7 +226,7 @@ describe('Given gmplus.js', function () {
       var result = map.addMarker(marker);
       expect(result.visible).to.be.true;
       map.updateGroup('myGroup', {visible: false});
-      expect(GMP.maps.myMap.groups.myGroup[0].visible).to.be.false;
+      expect(GMP.maps.myMap.markers.groups.myGroup[0].visible).to.be.false;
     });
 
   });
@@ -248,14 +248,14 @@ describe('Given gmplus.js', function () {
 
       var result = map.addMarker(options);
       var uid = result.data.uid;
-      expect(GMP.maps.myMap.markers[uid].visible).to.be.false;
+      expect(GMP.maps.myMap.markers.all[uid].visible).to.be.false;
 
       map.updateMarker({uid: uid}, {visible: true, move: map.bounce, lat: 100, lng: 30, bubble: {content: 'click me'}});
 
-      expect(GMP.maps.myMap.markers[uid].visible).to.be.true;
-      expect(GMP.maps.myMap.markers[uid].position.lat()).to.eql(100);
-      expect(GMP.maps.myMap.markers[uid].position.lng()).to.eql(30);
-      expect(GMP.maps.myMap.markers[uid].bubble.instance.content).to.eql('click me');
+      expect(GMP.maps.myMap.markers.all[uid].visible).to.be.true;
+      expect(GMP.maps.myMap.markers.all[uid].position.lat()).to.eql(100);
+      expect(GMP.maps.myMap.markers.all[uid].position.lng()).to.eql(30);
+      expect(GMP.maps.myMap.markers.all[uid].bubble.instance.content).to.eql('click me');
     });
 
     it('should invoke multiple Markers options setters for each property passed', function () {
@@ -278,9 +278,9 @@ describe('Given gmplus.js', function () {
 
       var result = map.addMarker(markers);
       var uid = result[0].data.uid;
-      expect(GMP.maps.myMap.markers[uid].visible).to.be.false;
+      expect(GMP.maps.myMap.markers.all[uid].visible).to.be.false;
       map.updateMarker([{uid: uid}], {visible: true, move: map.bounce});
-      expect(GMP.maps.myMap.markers[uid].visible).to.be.true;
+      expect(GMP.maps.myMap.markers.all[uid].visible).to.be.true;
     });
   });
 
