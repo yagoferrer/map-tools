@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="../node_modules/jquery/dist/jquery.js"></script>
+  <script src="../dist/gmplus.js"></script>
+</head>
+<style>
+  html, body, #myMap {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  #myMap {
+    width: 800px;
+    height: 500px;
+  }
+</style>
+<body>
+<script>
+  var map = new GMP({
+    id: 'myMap',
+    lat: 41.3833,
+    lng: 2.1833
+  }, function (err, instance) {
+
+  });
+
+
+  $(function() {
+
+    $('.update-terrain').click(function(e) {
+      e.preventDefault();
+      map.updateMap({type: 'TERRAIN', mapTypeControl: false, zoomControl: false, streetViewControl: false, panControl: false});
+    });
+
+    $('.update-roadmap').click(function(e) {
+      e.preventDefault();
+      map.updateMap({type: 'ROADMAP', mapTypeControl: true, zoomControl: true, streetViewControl: true, panControl: true});
+    });
+
+  });
+
+</script>
+<h4><a href class="update-terrain">Update Map View to: TERRAIN and Disable: all controls</a></h4>
+<h4><a href class="update-roadmap">Update Map View to: ROADMAP and Enable: all controls</a></h4>
+<div id="myMap"></div>
+</body>
+</html>

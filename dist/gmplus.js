@@ -3,10 +3,11 @@
 /*jslint node: true */
 "use strict";
 var utils = require('gmplus/utils');
-var config = require('gmplus/config');
-var gmaps = require('gmplus/gmaps.js');
 
 module.exports = function (global, that) {
+
+  var gmaps = require('gmplus/gmaps.js')(global);
+
 
   /**
    * Creates a new Google Map Instance
@@ -17,14 +18,8 @@ module.exports = function (global, that) {
 
     cb = cb || function () {};
 
-    var mapOptions = utils.clone(args, config.customMapOptions); // To clone Array content
-
-    mapOptions.zoom = args.zoom || config.zoom;
-    mapOptions.center = new global.google.maps.LatLng(args.lat, args.lng);
-
-    if (args.type) {
-      mapOptions.mapTypeId = global.google.maps.MapTypeId[args.type] || false;
-    }
+    var mapOptions = gmaps.mapOptions(args);
+    console.log('mapOptions', mapOptions)
 
     that.id = args.id;
     that.options = args;
@@ -84,7 +79,7 @@ module.exports = function (global, that) {
 
 };
 
-},{"gmplus/config":4,"gmplus/gmaps.js":6,"gmplus/utils":11}],2:[function(require,module,exports){
+},{"gmplus/gmaps.js":6,"gmplus/utils":12}],2:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 var utils = require('gmplus/utils');
@@ -185,7 +180,7 @@ module.exports = function (global, that) {
 
 };
 
-},{"gmplus/bubble":3,"gmplus/utils":11}],3:[function(require,module,exports){
+},{"gmplus/bubble":3,"gmplus/utils":12}],3:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 module.exports = function (global) {
@@ -269,33 +264,50 @@ module.exports = function (global, that) {
 };
 
 },{}],6:[function(require,module,exports){
-(function (global){
 /*jslint node: true */
 "use strict";
 
 var config = require('gmplus/config');
+var utils = require('gmplus/utils');
 
-/**
- * Injects Google API Javascript File and adds a callback to load the Google Maps Async.
- * @type {{load: Function}}
- * @private
- *
- * @returns the element appended
- */
-function load(args) {
-  var version = args.version || config.version;
-  var script = global.window.document.createElement('script');
-  script.type = 'text/javascript';
-  script.src = '//maps.googleapis.com/maps/api/js?v=' + version + '&callback=GMP.maps.' + args.id + '.create';
-  return global.window.document.body.appendChild(script);
-}
+module.exports = function (global) {
 
-module.exports = {
-  load: load
+  /**
+   * Injects Google API Javascript File and adds a callback to load the Google Maps Async.
+   * @type {{load: Function}}
+   * @private
+   *
+   * @returns the element appended
+   */
+  function load(args) {
+    var version = args.version || config.version;
+    var script = global.document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = '//maps.googleapis.com/maps/api/js?v=' + version + '&callback=GMP.maps.' + args.id + '.create';
+    return global.document.body.appendChild(script);
+  }
+
+  function mapOptions(args) {
+    // To clone Arguments excluding customMapOptions
+    var mapOptions = utils.clone(args, config.customMapOptions);
+    mapOptions.zoom = args.zoom || config.zoom;
+    if (args.lat && args.lng) {
+      mapOptions.center = new global.google.maps.LatLng(args.lat, args.lng);
+    }
+    if (args.type) {
+      mapOptions.mapTypeId = global.google.maps.MapTypeId[args.type] || false;
+    }
+
+    return mapOptions;
+  }
+
+  return {
+    load: load,
+    mapOptions: mapOptions
+  };
 };
 
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"gmplus/config":4}],7:[function(require,module,exports){
+},{"gmplus/config":4,"gmplus/utils":12}],7:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 var utils = require('gmplus/utils');
@@ -342,7 +354,7 @@ module.exports = function (global, that) {
 
 };
 
-},{"gmplus/config":4,"gmplus/findUpdateMarker":5,"gmplus/utils":11}],8:[function(require,module,exports){
+},{"gmplus/config":4,"gmplus/findUpdateMarker":5,"gmplus/utils":12}],8:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 module.exports = function (global) {
@@ -360,6 +372,7 @@ module.exports = function (global) {
     this.updateMarker = require('gmplus/updateMarker')(global, that);
     this.addGroup = require('gmplus/groups')(global, that).addGroup;
     this.updateGroup = require('gmplus/groups')(global, that).updateGroup;
+    this.updateMap = require('gmplus/updateMap')(global, that);
 
     var map = require('gmplus/addMap')(global, that);
 
@@ -378,7 +391,7 @@ module.exports = function (global) {
   return GMP;
 };
 
-},{"gmplus/addMap":1,"gmplus/addMarker":2,"gmplus/groups":7,"gmplus/topojson":9,"gmplus/updateMarker":10}],9:[function(require,module,exports){
+},{"gmplus/addMap":1,"gmplus/addMarker":2,"gmplus/groups":7,"gmplus/topojson":9,"gmplus/updateMap":10,"gmplus/updateMarker":11}],9:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 var topojson = require('topojson');
@@ -427,7 +440,26 @@ module.exports = function (global, that) {
   return loadTopoJson;
 };
 
-},{"topojson":13}],10:[function(require,module,exports){
+},{"topojson":14}],10:[function(require,module,exports){
+"use strict";
+module.exports = function (global, that) {
+
+  var gmaps = require('gmplus/gmaps.js')(global);
+
+  function updateMap(args) {
+
+    var mapOptions = gmaps.mapOptions(args);
+
+    return that.instance.setOptions(mapOptions);
+
+  }
+
+
+  return updateMap;
+
+}
+
+},{"gmplus/gmaps.js":6}],11:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 var utils = require('gmplus/utils');
@@ -461,7 +493,7 @@ module.exports = function (global, that) {
 
 };
 
-},{"gmplus/config":4,"gmplus/findUpdateMarker":5,"gmplus/utils":11}],11:[function(require,module,exports){
+},{"gmplus/config":4,"gmplus/findUpdateMarker":5,"gmplus/utils":12}],12:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 function clone(o, exceptionKeys) {
@@ -509,13 +541,13 @@ module.exports = {
   prepareOptions: prepareOptions
 };
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 /* global: window */
 /*jslint node: true */
 "use strict";
 window.GMP = require('gmplus/index')(window);
 
-},{"gmplus/index":8}],13:[function(require,module,exports){
+},{"gmplus/index":8}],14:[function(require,module,exports){
 !function() {
   var topojson = {
     version: "1.6.18",
@@ -1051,4 +1083,4 @@ window.GMP = require('gmplus/index')(window);
   else this.topojson = topojson;
 }();
 
-},{}]},{},[12]);
+},{}]},{},[13]);
