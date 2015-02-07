@@ -28,10 +28,10 @@ module.exports = function (global, that) {
     }
 
     // Adds additional options from the Group and overwrites any Marker options already set.
-    if (group && GMP.maps[that.id].groupOptions && GMP.maps[that.id].groupOptions[group]) {
+    if (group && global.GMP.maps[that.id].groupOptions && global.GMP.maps[that.id].groupOptions[group]) {
 
-      for (var j in GMP.maps[that.id].groupOptions[group]) {
-        marker[j] = GMP.maps[that.id].groupOptions[group][j];
+      for (var j in global.GMP.maps[that.id].groupOptions[group]) {
+        marker[j] = global.GMP.maps[that.id].groupOptions[group][j];
       }
     }
 
@@ -58,15 +58,15 @@ module.exports = function (global, that) {
 
     // Adds Marker Reference to specific Group
     if (group) {
-      GMP.maps[that.id].groups = GMP.maps[that.id].groups || {};
-      GMP.maps[that.id].groups[group] = GMP.maps[that.id].groups[group] || [];
-      GMP.maps[that.id].groups[group].push(instance);
+      global.GMP.maps[that.id].groups = global.GMP.maps[that.id].groups || {};
+      global.GMP.maps[that.id].groups[group] = global.GMP.maps[that.id].groups[group] || [];
+      global.GMP.maps[that.id].groups[group].push(instance);
     }
 
 
     // Adds Marker Reference of each Marker to "markers"
-    GMP.maps[that.id].markers = GMP.maps[that.id].markers || {};
-    GMP.maps[that.id].markers[marker.data.uid] = instance;
+    global.GMP.maps[that.id].markers = global.GMP.maps[that.id].markers || {};
+    global.GMP.maps[that.id].markers[marker.data.uid] = instance;
 
 
     return instance;
@@ -175,8 +175,8 @@ module.exports = function (global, that) {
       return updateMarker(marker, options);
     }
 
-    if (marker.uid && GMP.maps[that.id].markers[marker.uid]) {
-      return updateMarker(GMP.maps[that.id].markers[marker.uid], options);
+    if (marker.uid && global.GMP.maps[that.id].markers[marker.uid]) {
+      return updateMarker(global.GMP.maps[that.id].markers[marker.uid], options);
     }
   }
 
@@ -226,9 +226,9 @@ module.exports = function (global, that) {
    * @param options That Apply to all the Group
    */
   function addGroup(name, options) {
-    GMP.maps[that.id].groups = GMP.maps[that.id].groups || [];
-    GMP.maps[that.id].groupOptions = GMP.maps[that.id].groupOptions || {};
-    GMP.maps[that.id].groupOptions[name] = options;
+    global.GMP.maps[that.id].groups = global.GMP.maps[that.id].groups || [];
+    global.GMP.maps[that.id].groupOptions = global.GMP.maps[that.id].groupOptions || {};
+    global.GMP.maps[that.id].groupOptions[name] = options;
   }
 
   /**
@@ -239,10 +239,10 @@ module.exports = function (global, that) {
   function updateGroup(name, options) {
     var result = [], instance, item;
     var preparedOptions =  utils.prepareOptions(options, config.customMarkerOptions);
-    if (GMP.maps[that.id].groups && GMP.maps[that.id].groups[name]) {
-      for (item in GMP.maps[that.id].groups[name]) {
-        if (GMP.maps[that.id].groups[name].hasOwnProperty(item)) {
-          instance = findAndUpdateMarker(GMP.maps[that.id].groups[name][item], preparedOptions);
+    if (global.GMP.maps[that.id].groups && global.GMP.maps[that.id].groups[name]) {
+      for (item in global.GMP.maps[that.id].groups[name]) {
+        if (global.GMP.maps[that.id].groups[name].hasOwnProperty(item)) {
+          instance = findAndUpdateMarker(global.GMP.maps[that.id].groups[name][item], preparedOptions);
           result.push(instance);
         }
       }
@@ -357,7 +357,7 @@ module.exports = function (global, that) {
 
   function load(options, cb) {
     if (validOptions(options, cb)) {
-      global.GMP.maps = GMP.maps || {};
+      global.GMP.maps = global.GMP.maps || {};
       global.GMP.maps[options.id] = {
         create: function () {
           create(this.arguments, cb);
@@ -440,7 +440,7 @@ module.exports = function (global, that) {
     var preparedOptions = utils.prepareOptions(options, config.customMarkerOptions);
 
     if (type === '[object Object]') {
-      return findAndUpdateMarker(args, _options);
+      return findAndUpdateMarker(args, preparedOptions);
     }
     if (type === '[object Array]') {
       var marker, results = [], instance, x;
