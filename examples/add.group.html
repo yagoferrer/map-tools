@@ -17,6 +17,7 @@
   }
 </style>
 <body>
+<script src="../node_modules/jquery/dist/jquery.js"></script>
 <script src="../dist/gmplus.js"></script>
 <script>
   var map = new GMP({
@@ -29,8 +30,6 @@
       addMarkers();
     }
   });
-
-
 
   function addMarkers() {
 
@@ -87,34 +86,24 @@
   var placesVisible = false;
   var parksVisible  = true;
 
-  function myHandler(e) {
-    e = e || window.event;
-    var target;
-    target = e.target || e.srcElement;
+  $(function(){
 
-    if (target.className.match(/\bplaces\b/)) {
+    $('.places').click(function(e) {
+      e.preventDefault();
       placesVisible = !placesVisible;
       map.updateGroup('places', {visible: placesVisible});
-    }
+    });
 
-    if (target.className.match(/\bparks\b/)) {
+    $('.parks').click(function(e) {
+      e.preventDefault();
       parksVisible = !parksVisible;
       map.updateGroup('parks', {visible: parksVisible});
-    }
-
-    e.preventDefault();
-    return false;
-  }
-
-  if (document.body.addEventListener) {
-    document.body.addEventListener('click', myHandler, false);
-  } else {
-    document.body.attachEvent('onclick', myHandler);
-  }
+    });
+  });
 
 </script>
-<div><h4><a href="#" class="places">Click to toggle Markers visibility Group: Places</a></h4></div>
-<div><h4><a href="#" class="parks">Click to toggle Markers visibility Group: Parks</a></h4></div>
+<div><h4><a href class="places">Click to toggle Markers visibility Group: Places</a></h4></div>
+<div><h4><a href class="parks">Click to toggle Markers visibility Group: Parks</a></h4></div>
 <div id="myMap"></div>
 
 </body>
