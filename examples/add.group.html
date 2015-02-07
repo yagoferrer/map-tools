@@ -1,3 +1,6 @@
+<!--
+Icons generated using: http://mapicons.nicolasmollet.com/
+-->
 <!doctype html>
 <html lang="en">
 <head>
@@ -38,28 +41,32 @@
     var places = [{
       lat: 41.387220,
       lng: 2.169983,
-      title: 'Plaça Catalunya'
+      title: 'Plaça Catalunya',
+      icon: 'images/citysquare.png'
     },
       {
         lat: 41.4036,
         lng: 2.1744,
-        title: 'Sagrada Familia'
+        title: 'Sagrada Familia',
+        icon: 'images/icon-sevilla.png'
       },
       {
         lat: 41.395571,
         lng: 2.161961,
-        title: 'Casa Milà'
+        title: 'Casa Milà',
+        icon: 'images/palace-2.png'
       },
       {
         lat: 41.385231,
         lng: 2.180893,
-        title: 'Picasso Museum'
+        title: 'Picasso Museum',
+        icon: 'images/art-museum-2.png'
       }
     ];
 
     map.addMarker(places, {group: 'places'});
 
-    map.addGroup('parks', {visible: true});
+    map.addGroup('parks', {visible: true, icon: 'images/forest2.png'});
 
     var parks = [
       {
