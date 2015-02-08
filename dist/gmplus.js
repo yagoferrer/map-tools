@@ -379,7 +379,7 @@ module.exports = function (global) {
     var that = this;
 
     this.addMarker = require('gmplus/addMarker')(global, that);
-    this.loadTopoJson = require('gmplus/topojson')(global, that);
+    this.addTopoJson = require('gmplus/topojson')(global, that);
     this.addGeoJson = require('gmplus/geojson')(global, that);
     this.updateMarker = require('gmplus/updateMarker')(global, that);
     this.addGroup = require('gmplus/groups')(global, that).addGroup;
@@ -429,11 +429,11 @@ module.exports = function (global, that) {
   }
 
   /**
-   * Loads a Topo JSON file into a Map
+   * Adds a Topo JSON file into a Map
    * @param data The parsed JSON File
    * @param options
    */
-  function loadTopoJson(data, options) {
+  function addTopoJson(data, options) {
     var item, geoJson, features,  x;
     for (x in options) {
       if (options.hasOwnProperty(x)) {
@@ -449,7 +449,7 @@ module.exports = function (global, that) {
     return features;
   }
 
-  return loadTopoJson;
+  return addTopoJson;
 };
 
 },{"topojson":15}],11:[function(require,module,exports){
