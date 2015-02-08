@@ -4,7 +4,7 @@
 [![devDependency](https://david-dm.org/yagoferrer/gmplus/dev-status.svg)](https://david-dm.org/yagoferrer/gmplus#info=devDependencies)
 
 Gmplus.js is a Google Maps Feature-rich Javascript wrapper that makes things like: 
-[Marker filtering](#crossfilter-support), [asynchronous loading](#load-a-simple-map-async), working with [TopoJSON](#topojson-support) or [GeoJSON](#geojson-support), [animation](#animate-markers) much simpler with an easy-to-use API.
+[Marker filtering](#crossfilter-support), [asynchronous loading](#load-a-simple-map-async), working with [TopoJSON](#topojson-support) or [GeoJSON](#geojson-support), [animation](#animate-markers) and more. Much simpler with an easy-to-use API.
 
 
 ## Benefits of using Gmplus.js: 
@@ -113,7 +113,7 @@ map.addMarker([
     }
   ], {icon: 'images/city.png'});
 ```
-Since [0.3.0](https://github.com/yagoferrer/gmplus/releases/tag/0.3.0) add any other [Marker Options](https://developers.google.com/maps/documentation/javascript/reference#MarkerOptions)
+Add any other [Marker Options](https://developers.google.com/maps/documentation/javascript/reference#MarkerOptions)
 
 The 2nd parameter of `addMarker`, allows you to add options that apply to all the Markers within the Array.
 
@@ -177,7 +177,8 @@ map.addMarker({
   }
 });
 ```
-Since [0.2.0](https://github.com/yagoferrer/gmplus/releases/tag/0.2.0) you can use curly brackets to display variables from `data`
+Use curly brackets to display variables from `data` 
+
 Add more [infoWindow options](https://developers.google.com/maps/documentation/javascript/reference#InfoWindowOptions) inside `bubble`.
 The default **event** is `click` but you can change it with the `event` property.
 
