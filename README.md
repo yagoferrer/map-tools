@@ -1,21 +1,20 @@
-## gmplus.js 0.2.1 
+## Gmplus.js 0.2.1 
 [![Build](https://travis-ci.org/yagoferrer/gmplus.svg)](https://travis-ci.org/yagoferrer/gmplus) 
 [![Coverage](https://coveralls.io/repos/yagoferrer/gmplus/badge.svg)](https://coveralls.io/r/yagoferrer/gmplus)
 [![devDependency](https://david-dm.org/yagoferrer/gmplus/dev-status.svg)](https://david-dm.org/yagoferrer/gmplus#info=devDependencies)
 
-gmplus.js is a Google Maps Feature-rich Javascript wrapper that makes things like [Marker filtering](#crossfilter-support), [asynchronous loading](#load-a-simple-map-async) and [animation](#animate-markers) much simpler with an easy-to-use API.
+Gmplus.js is a Google Maps Feature-rich Javascript wrapper that makes things like: 
+[Marker filtering](#crossfilter-support), [asynchronous loading](#load-a-simple-map-async), working with [TopoJSON](#topojson-support) or [GeoJSON](#geojson-support), [animation](#animate-markers) much simpler with an easy-to-use API.
 
 
-## Benefits of using gmplus.js: 
+## Benefits of using Gmplus.js: 
 - Less Code: The [Google Maps API](https://developers.google.com/maps/documentation/javascript/reference) is of considerable size, you'll be writing way **less** code.
 - More Fun: Add [Marker animations](#animate-markers), use [handlebars style](#info-bubble) variables.
 - Easy To Use: Intuitive APIs, easy to understand.
 - Non Intrusive: it extends the API, you can use any other native methods, properties and events anywhere.
 - [Crossfilter Support](#crossfilter-support): Query Markers and change visibility using the power of Crossfilter.
-- [TopoJSON Support](#topojson-support): Import TopoJSON files, set styles and more!
+- [TopoJSON Support](#topojson-support): Import TopoJSON files, set styles and find references easier. 
 - 100% tested
-
-This page reflects the **latest** documentation from the `master` branch. Please use [this documentation page](https://github.com/yagoferrer/gmplus/tree/0.2.1) as a reference for the latest release: [0.2.1](https://github.com/yagoferrer/gmplus/releases)
 
 ## Get Started
 Bower: 
@@ -36,7 +35,7 @@ npm start
 ```
 
 ## Load a simple Map async
-No need to include the Google Maps `<script>` tag. gmplus.js will load the file for you.
+No need to include the Google Maps `<script>` tag. Gmplus.js will load the file for you.
 Setup a callback to notify you when the Map is fully loaded.
 ```javascript
 var map = new GMP({
@@ -44,14 +43,14 @@ var map = new GMP({
   lat: 41.3833,
   lng: 2.1833
 }, function (err, instance) {
-
   if (!err) {
     console.log('Hey! the Map was fully loaded! Add some Markers :)');
   }
-
 });
 ```
-By default it will load the latest version of Google Maps. You can pass a specific version using the `version` option. For example: `{version: 3.17}`
+You can also use: `el: '.myMap'`, instead of `id` to specify a query selector.
+
+By default it will load version [3.18](https://github.com/yagoferrer/gmplus/blob/0.2.1/lib/gmplus/defaults.js) of Google Maps. You can pass a specific version using the `version` option.
 
 Add a simple HTML tag
 ```html
@@ -229,9 +228,15 @@ Now you can use the power of Crossfilter to update Markers. In this example it f
 map.updateMarker(population.top(1), {move: map.bounce});
 ```
 
+## GeoJSON support
+You can add a GeoJSON file like this:
+```javascript
+map.addGeoJson(<parsed JSON>)
+```
+
 ## TopoJSON support
 
-Once the Map is loaded, you can load a TopoJSON file. Pass an Array of objects containing the **object** to load into the Map.
+Once the Map is loaded, you can add a TopoJSON file. Pass an Array of objects containing the **object** to load into the Map.
 
 ```javascript
 map.addTopoJson(<parsed JSON>, [{object: 'states'}, {object: 'counties'}]);
