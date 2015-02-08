@@ -19,7 +19,6 @@ module.exports = function (global, that) {
     cb = cb || function () {};
 
     var mapOptions = gmaps.mapOptions(args);
-    console.log('mapOptions', mapOptions)
 
     that.id = args.id;
     that.options = args;
