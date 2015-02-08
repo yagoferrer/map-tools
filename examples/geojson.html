@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+    html, body, #myMap {
+      height: 100%;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+<div id="myMap"></div>
+
+<script src="../node_modules/jquery/dist/jquery.js"></script>
+<script src="../dist/gmplus.js"></script>
+<script>
+
+  var map = new GMP({
+    id: 'myMap',
+    lat: 35,
+    lng: -105,
+    zoom: 4
+  }, function (err, instance) {
+    $.getJSON('http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson', function (data) {
+      result = map.addGeoJson(data);
+    });
+  });
+
+</script>
+</body>
+</html>
