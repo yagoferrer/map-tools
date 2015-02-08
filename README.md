@@ -1,12 +1,12 @@
-## gmplus.js 0.2.1 
+## Gmplus.js 0.2.1 
 [![Build](https://travis-ci.org/yagoferrer/gmplus.svg)](https://travis-ci.org/yagoferrer/gmplus) 
 [![Coverage](https://coveralls.io/repos/yagoferrer/gmplus/badge.svg)](https://coveralls.io/r/yagoferrer/gmplus)
 [![devDependency](https://david-dm.org/yagoferrer/gmplus/dev-status.svg)](https://david-dm.org/yagoferrer/gmplus#info=devDependencies)
 
-gmplus.js is a Google Maps Feature-rich Javascript wrapper that makes things like [Marker filtering](#crossfilter-support), [asynchronous loading](#load-a-simple-map-async) and [animation](#animate-markers) much simpler with an easy-to-use API.
+Gmplus.js is a Google Maps Feature-rich Javascript wrapper that makes things like [Marker filtering](#crossfilter-support), [asynchronous loading](#load-a-simple-map-async) and [animation](#animate-markers) much simpler with an easy-to-use API.
 
 
-## Benefits of using gmplus.js: 
+## Benefits of using Gmplus.js: 
 - Less Code: The [Google Maps API](https://developers.google.com/maps/documentation/javascript/reference) is of considerable size, you'll be writing way **less** code.
 - More Fun: Add [Marker animations](#animate-markers), use [handlebars style](#info-bubble) variables.
 - Easy To Use: Intuitive APIs, easy to understand.
@@ -36,7 +36,7 @@ npm start
 ```
 
 ## Load a simple Map async
-No need to include the Google Maps `<script>` tag. gmplus.js will load the file for you.
+No need to include the Google Maps `<script>` tag. Gmplus.js will load the file for you.
 Setup a callback to notify you when the Map is fully loaded.
 ```javascript
 var map = new GMP({
@@ -231,9 +231,15 @@ Now you can use the power of Crossfilter to update Markers. In this example it f
 map.updateMarker(population.top(1), {move: map.bounce});
 ```
 
+## GeoJSON support
+You can add a GeoJSON file like this:
+```javascript
+map.addGeoJson(<parsed JSON>)
+```
+
 ## TopoJSON support
 
-Once the Map is loaded, you can load a TopoJSON file. Pass an Array of objects containing the **object** to load into the Map.
+Once the Map is loaded, you can add a TopoJSON file. Pass an Array of objects containing the **object** to load into the Map.
 
 ```javascript
 map.addTopoJson(<parsed JSON>, [{object: 'states'}, {object: 'counties'}]);
