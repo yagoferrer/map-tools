@@ -5,13 +5,13 @@
   <title>Document</title>
 </head>
 <style>
-  html, body, #myMap {
+  html, body, #mymap {
     height: 100%;
     margin: 0px;
     padding: 0px;
   }
 
-  #myMap {
+  #mymap {
     width: 800px;
     height: 500px;
   }
@@ -26,7 +26,7 @@
   var population = markers.dimension(function(d) { return d.population; });
 
   var map = new GMP({
-    id: 'myMap',
+    id: 'mymap',
     lat: 40.419795,
     lng: -3.710436,
     zoom: 6,
@@ -77,6 +77,6 @@
 
 </script>
 <h4><a href="#" class="top">Top Populated City</a></h4>
-<div id="myMap"></div>
+<div id="mymap"></div>
 </body>
 </html>
