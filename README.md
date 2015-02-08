@@ -234,7 +234,7 @@ map.updateMarker(population.top(1), {move: map.bounce});
 Once the Map is loaded, you can load a TopoJSON file. Pass an Array of objects containing the **object** to load into the Map.
 
 ```javascript
-map.loadTopoJson(<parsed JSON>, [{object: 'states'}, {object: 'counties'}]);
+map.addTopoJson(<parsed JSON>, [{object: 'states'}, {object: 'counties'}]);
 ```
 
 #### Apply styles to Features

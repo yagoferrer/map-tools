@@ -12,7 +12,7 @@ describe('when calling loadTopoJson()', function () {
 
     var options = [{object: 'states'}];
 
-    var result = map.loadTopoJson(topojson, options);
+    var result = map.addTopoJson(topojson, options);
 
     expect(result).to.eql([{ag: {D: 53}}, {ag: {D: 30}}]);
 
@@ -44,9 +44,9 @@ describe('when calling loadTopoJson()', function () {
       ];
 
 
-      var result = map.loadTopoJson(topojson, options);
+      var result = map.addTopoJson(topojson, options);
 
-      expect(result[0].style).to.eql(options[0].style)
+      expect(result[0].style).to.eql(options[0].style);
 
 
     });

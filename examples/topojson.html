@@ -24,7 +24,7 @@
   }, function (err, instance) {
 
     $.getJSON('../node_modules/topojson/examples/us-10m.json', function (data) {
-      map.loadTopoJson(data, [{
+      map.addTopoJson(data, [{
         object: 'states',
         style: {
           strokeColor: 'red',
