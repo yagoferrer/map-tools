@@ -7,13 +7,13 @@
   <script src="../dist/gmplus.js"></script>
 </head>
 <style>
-  html, body, #myMap {
+  html, body, .myMap {
     height: 100%;
     margin: 0px;
     padding: 0px;
   }
 
-  #myMap {
+  .myMap {
     width: 800px;
     height: 500px;
   }
@@ -21,7 +21,7 @@
 <body>
 <script>
   var map = new GMP({
-    id: 'myMap',
+    el: '.myMap',
     lat: 41.3833,
     lng: 2.1833
   }, function (err, instance) {
@@ -46,6 +46,6 @@
 </script>
 <h4><a href class="update-terrain">Update Map View to: TERRAIN and Disable: all controls</a></h4>
 <h4><a href class="update-roadmap">Update Map View to: ROADMAP and Enable: all controls</a></h4>
-<div id="myMap"></div>
+<div class="myMap"></div>
 </body>
 </html>

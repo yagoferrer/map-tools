@@ -14,16 +14,31 @@ module.exports = function (global, that) {
    * @param args Arguments to instantiate a Google Maps
    *
    */
+
+  function getElement(args) {
+
+    if (args.id) {
+      return global.document.getElementById(args.id);
+    }
+
+    if (args.el) {
+      return global.document.querySelector(args.el);
+    }
+
+  }
+
   function create(args, cb) {
 
     cb = cb || function () {};
 
     var mapOptions = gmaps.mapOptions(args);
 
+    args.id = args.id || args.el.substring(1);
     that.id = args.id;
     that.options = args;
-    that.instance = new global.google.maps.Map(global.document.getElementById(args.id), mapOptions);
-    global.GMP.maps[args.id].instance = that.instance;
+    that.instance = new global.google.maps.Map(getElement(args), mapOptions);
+
+    global.GMP.maps[that.id].instance = that.instance;
 
     global.google.maps.event.addListenerOnce(that.instance, 'idle', function (){
       cb(false, that.instance);
@@ -41,8 +56,8 @@ module.exports = function (global, that) {
       return false;
     }
 
-    if (!options.id && !options.class) {
-      cb(new Error('You must pass an "id" or a "class" property values'));
+    if (!options.id && !options.el) {
+      cb(new Error('You must pass an "id" or a "el" property values'));
       return false;
     }
 
@@ -55,9 +70,13 @@ module.exports = function (global, that) {
   }
 
   function load(options, cb) {
+
     if (validOptions(options, cb)) {
+
+      var id = options.id || options.el.substring(1);
+
       global.GMP.maps = global.GMP.maps || {};
-      global.GMP.maps[options.id] = {
+      global.GMP.maps[id] = {
         create: function () {
           create(this.arguments, cb);
         },
@@ -67,7 +86,7 @@ module.exports = function (global, that) {
       if (options.async !== false || options.sync === true) {
         gmaps.load(options);
       } else {
-        global.GMP.maps[options.id].create();
+        global.GMP.maps[id].create();
       }
     }
   }

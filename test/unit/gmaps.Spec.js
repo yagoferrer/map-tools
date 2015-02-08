@@ -13,9 +13,9 @@ describe('Given gmplus.js', function () {
     });
 
 
-    it('should return an error if you don\'t pass a valid "id" or "class" property value', function (done) {
+    it('should return an error if you don\'t pass a valid "id" or "el" property value', function (done) {
       var map = new GMP({}, function (err) {
-        expect(err.message).to.equals('You must pass an "id" or a "class" property values');
+        expect(err.message).to.equals('You must pass an "id" or a "el" property values');
         done();
       });
     });
