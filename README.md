@@ -186,8 +186,7 @@ The default **event** is `click` but you can change it with the `event` property
 
 ## Crossfilter support
 - Add Marker related data into the `data` property. 
-- Add a [Crossfilter](https://github.com/square/crossfilter) instance when instantiating the Map.
-- Create dimensions.
+- Add dimensions into the 'filters' option.
 
 ```javascript
   var map = new GMP({
