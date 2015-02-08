@@ -39,7 +39,7 @@ No need to include the Google Maps `<script>` tag. Gmplus.js will load the file 
 Setup a callback to notify you when the Map is fully loaded.
 ```javascript
 var map = new GMP({
-  id: 'myMap',
+  id: 'mymap',
   lat: 41.3833,
   lng: 2.1833
 }, function (err, instance) {
@@ -48,20 +48,20 @@ var map = new GMP({
   }
 });
 ```
-You can also use: `el: '.myMap'`, instead of `id` to specify a query selector.
+You can also use: `el: '.mymap'`, instead of `id` to specify a query selector.
 
 By default it will load version [3.18](https://github.com/yagoferrer/gmplus/blob/0.2.1/lib/gmplus/defaults.js) of Google Maps. You can pass a specific version using the `version` option.
 
 Add a simple HTML tag
 ```html
-<div id="myMap"></div>
+<div id="mymap"></div>
 ```
 ### Map Types
 Default map types are : ROADMAP, SATELLITE, HYBRID and TERRAIN
 example:
 ```javascript
 {
- id: 'myMap',
+ el: '.mymap',
  lat: 41.3833,
  lng: 2.1833
  type: 'TERRAIN'
@@ -84,7 +84,7 @@ Update any option by calling the updateMap method like this example:
 map.updateMap({zoom: 6});
 ```
 
-Once instantiated: you can access directly to the Google API like this: `GMP.maps.myMap.instance`
+Once instantiated: you can access directly to the Google API like this: `GMP.maps.mymap.instance`
 
 ## Markers
 
@@ -117,7 +117,7 @@ Add any other [Marker Options](https://developers.google.com/maps/documentation/
 
 The 2nd parameter of `addMarker`, allows you to add options that apply to all the Markers within the Array.
 
-Once the Markers are created, you can access directly like this: `GMP.maps.myMap.markers.all`
+Once the Markers are created, you can access directly like this: `GMP.maps.mymap.markers.all`
 
 #### Update Marker
 Allows you to update one or multiple marker options. The 1st parameter can be: a result of crossfilter, a Marker reference or the uid like this: `{uuid: '<uuid>'}`
@@ -193,7 +193,7 @@ The default **event** is `click` but you can change it with the `event` property
   var population = markers.dimension(function(d) { return d.population; });
 
   var map = new GMP({
-    id: 'myMap',
+    id: 'mymap',
     lat: 40.419795,
     lng: -3.710436,
     crossfilter: markers
