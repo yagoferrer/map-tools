@@ -79,7 +79,7 @@ module.exports = function (global, that) {
 
 };
 
-},{"gmplus/gmaps.js":6,"gmplus/utils":12}],2:[function(require,module,exports){
+},{"gmplus/gmaps.js":7,"gmplus/utils":13}],2:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 var utils = require('gmplus/utils');
@@ -180,7 +180,7 @@ module.exports = function (global, that) {
 
 };
 
-},{"gmplus/bubble":3,"gmplus/utils":12}],3:[function(require,module,exports){
+},{"gmplus/bubble":3,"gmplus/utils":13}],3:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 module.exports = function (global) {
@@ -266,6 +266,18 @@ module.exports = function (global, that) {
 },{}],6:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
+module.exports = function (global, that) {
+  function addGeoJson(data, options) {
+    var result = that.instance.data.addGeoJson(data, options);
+    return result;
+
+  }
+  return addGeoJson;
+};
+
+},{}],7:[function(require,module,exports){
+/*jslint node: true */
+"use strict";
 
 var config = require('gmplus/config');
 var utils = require('gmplus/utils');
@@ -307,7 +319,7 @@ module.exports = function (global) {
   };
 };
 
-},{"gmplus/config":4,"gmplus/utils":12}],7:[function(require,module,exports){
+},{"gmplus/config":4,"gmplus/utils":13}],8:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 var utils = require('gmplus/utils');
@@ -354,7 +366,7 @@ module.exports = function (global, that) {
 
 };
 
-},{"gmplus/config":4,"gmplus/findUpdateMarker":5,"gmplus/utils":12}],8:[function(require,module,exports){
+},{"gmplus/config":4,"gmplus/findUpdateMarker":5,"gmplus/utils":13}],9:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 module.exports = function (global) {
@@ -369,6 +381,7 @@ module.exports = function (global) {
 
     this.addMarker = require('gmplus/addMarker')(global, that);
     this.loadTopoJson = require('gmplus/topojson')(global, that);
+    this.addGeoJson = require('gmplus/geojson')(global, that);
     this.updateMarker = require('gmplus/updateMarker')(global, that);
     this.addGroup = require('gmplus/groups')(global, that).addGroup;
     this.updateGroup = require('gmplus/groups')(global, that).updateGroup;
@@ -391,7 +404,7 @@ module.exports = function (global) {
   return GMP;
 };
 
-},{"gmplus/addMap":1,"gmplus/addMarker":2,"gmplus/groups":7,"gmplus/topojson":9,"gmplus/updateMap":10,"gmplus/updateMarker":11}],9:[function(require,module,exports){
+},{"gmplus/addMap":1,"gmplus/addMarker":2,"gmplus/geojson":6,"gmplus/groups":8,"gmplus/topojson":10,"gmplus/updateMap":11,"gmplus/updateMarker":12}],10:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 var topojson = require('topojson');
@@ -440,26 +453,21 @@ module.exports = function (global, that) {
   return loadTopoJson;
 };
 
-},{"topojson":14}],10:[function(require,module,exports){
+},{"topojson":15}],11:[function(require,module,exports){
 "use strict";
 module.exports = function (global, that) {
 
   var gmaps = require('gmplus/gmaps.js')(global);
 
   function updateMap(args) {
-
     var mapOptions = gmaps.mapOptions(args);
-
     return that.instance.setOptions(mapOptions);
-
   }
 
-
   return updateMap;
+};
 
-}
-
-},{"gmplus/gmaps.js":6}],11:[function(require,module,exports){
+},{"gmplus/gmaps.js":7}],12:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 var utils = require('gmplus/utils');
@@ -493,7 +501,7 @@ module.exports = function (global, that) {
 
 };
 
-},{"gmplus/config":4,"gmplus/findUpdateMarker":5,"gmplus/utils":12}],12:[function(require,module,exports){
+},{"gmplus/config":4,"gmplus/findUpdateMarker":5,"gmplus/utils":13}],13:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 function clone(o, exceptionKeys) {
@@ -541,13 +549,13 @@ module.exports = {
   prepareOptions: prepareOptions
 };
 
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 /* global: window */
 /*jslint node: true */
 "use strict";
 window.GMP = require('gmplus/index')(window);
 
-},{"gmplus/index":8}],14:[function(require,module,exports){
+},{"gmplus/index":9}],15:[function(require,module,exports){
 !function() {
   var topojson = {
     version: "1.6.18",
@@ -1083,4 +1091,4 @@ window.GMP = require('gmplus/index')(window);
   else this.topojson = topojson;
 }();
 
-},{}]},{},[13]);
+},{}]},{},[14]);
