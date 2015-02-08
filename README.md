@@ -189,14 +189,13 @@ The default **event** is `click` but you can change it with the `event` property
 - Create dimensions.
 
 ```javascript
-  var markers = crossfilter([]);
-  var population = markers.dimension(function(d) { return d.population; });
-
   var map = new GMP({
     id: 'mymap',
     lat: 40.419795,
     lng: -3.710436,
-    crossfilter: markers
+    filters: {
+     population: function(d) { return d.population; }
+    }
   }, function (err, instance) {
     if (!err) {
       addMarker();
@@ -226,7 +225,7 @@ The default **event** is `click` but you can change it with the `event` property
 ```
 Now you can use the power of Crossfilter to update Markers. In this example it finds the city with larger population, Madrid, and makes the marker to bounce.
 ```javascript
-map.updateMarker(population.top(1), {move: map.bounce});
+map.updateMarker(map.markers.filter.population.top(1), {move: map.bounce});
 ```
 
 ## GeoJSON support
