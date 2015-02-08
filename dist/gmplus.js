@@ -17,12 +17,12 @@ module.exports = function (global, that) {
 
   function getElement(args) {
 
-    if (args.id) {
-      return global.document.getElementById(args.id);
-    }
-
     if (args.el) {
       return global.document.querySelector(args.el);
+    }
+
+    if (args.id) {
+      return global.document.getElementById(args.id);
     }
 
   }
@@ -84,7 +84,7 @@ module.exports = function (global, that) {
       };
 
       if (options.async !== false || options.sync === true) {
-        gmaps.load(options);
+        gmaps.load(id, options);
       } else {
         global.GMP.maps[id].create();
       }
@@ -309,11 +309,14 @@ module.exports = function (global) {
    *
    * @returns the element appended
    */
-  function load(args) {
+  function load(id, args) {
+
+
+
     var version = args.version || config.version;
     var script = global.document.createElement('script');
     script.type = 'text/javascript';
-    script.src = '//maps.googleapis.com/maps/api/js?v=' + version + '&callback=GMP.maps.' + args.id + '.create';
+    script.src = '//maps.googleapis.com/maps/api/js?v=' + version + '&callback=GMP.maps.' + id + '.create';
     return global.document.body.appendChild(script);
   }
 
