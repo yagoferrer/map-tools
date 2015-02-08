@@ -51,6 +51,7 @@ var map = new GMP({
 
 });
 ```
+Also use: ```el: '.myMap'``` to specify a query selector.
 By default it will load the latest version of Google Maps. You can pass a specific version using the `version` option. For example: `{version: 3.17}`
 
 Add a simple HTML tag
