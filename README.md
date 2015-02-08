@@ -12,7 +12,7 @@ Gmplus.js is a Google Maps Feature-rich Javascript wrapper that makes things lik
 - More Fun: Add [Marker animations](#animate-markers), use [handlebars style](#info-bubble) variables.
 - Easy To Use: Intuitive APIs, easy to understand.
 - Non Intrusive: it extends the API, you can use any other native methods, properties and events anywhere.
-- [Crossfilter Support](#crossfilter-support): Query Markers and change visibility using the power of Crossfilter.
+- [Crossfilter Support](#crossfilter-support): Query Markers and change any options using the power of Crossfilter.
 - [TopoJSON Support](#topojson-support): Import TopoJSON files, set styles and find references easier. 
 - 100% tested
 
