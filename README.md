@@ -12,7 +12,7 @@ Gmplus.js is a Google Maps Feature-rich Javascript wrapper that makes things lik
 - Easy To Use: Intuitive APIs, easy to understand.
 - Non Intrusive: it extends the API, you can use any other native methods, properties and events anywhere.
 - [Crossfilter Support](#crossfilter-support): Query Markers and change visibility using the power of Crossfilter.
-- [TopoJSON Support](#topojson-support): Import TopoJSON files, set styles and more!
+- [TopoJSON Support](#topojson-support): Import TopoJSON files, set styles and find references easier. 
 - 100% tested
 
 ## Get Started
@@ -42,11 +42,9 @@ var map = new GMP({
   lat: 41.3833,
   lng: 2.1833
 }, function (err, instance) {
-
   if (!err) {
     console.log('Hey! the Map was fully loaded! Add some Markers :)');
   }
-
 });
 ```
 You can also use: `el: '.myMap'`, instead of `id` to specify a query selector.
