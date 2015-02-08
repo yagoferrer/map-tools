@@ -1,4 +1,4 @@
-## Gmplus.js 0.2.1 
+## Gmplus.js 0.3.0 
 [![Build](https://travis-ci.org/yagoferrer/gmplus.svg)](https://travis-ci.org/yagoferrer/gmplus) 
 [![Coverage](https://coveralls.io/repos/yagoferrer/gmplus/badge.svg)](https://coveralls.io/r/yagoferrer/gmplus)
 [![devDependency](https://david-dm.org/yagoferrer/gmplus/dev-status.svg)](https://david-dm.org/yagoferrer/gmplus#info=devDependencies)
@@ -25,7 +25,7 @@ NPM:
 ```bash
 npm install gmplus --save-dev
 ```
-Direct download: [gmplus.min.js](https://github.com/yagoferrer/gmplus/blob/0.2.1/dist/gmplus.min.js)
+Direct download: [gmplus.min.js](https://github.com/yagoferrer/gmplus/blob/0.3.0/dist/gmplus.min.js)
  
 ## Run examples
 ```bash
@@ -50,7 +50,7 @@ var map = new GMP({
 ```
 You can also use: `el: '.mymap'`, instead of `id` to specify a query selector.
 
-By default it will load version [3.18](https://github.com/yagoferrer/gmplus/blob/0.2.1/lib/gmplus/defaults.js) of Google Maps. You can pass a specific version using the `version` option.
+By default it will load version [3.18](https://github.com/yagoferrer/gmplus/blob/0.3.0/lib/gmplus/defaults.js) of Google Maps. You can pass a specific version using the `version` option.
 
 Add a simple HTML tag
 ```html
