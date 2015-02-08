@@ -1,6 +1,7 @@
 ## Gmplus.js 0.3.0 
-[![Build](https://travis-ci.org/yagoferrer/gmplus.svg)](https://travis-ci.org/yagoferrer/gmplus) 
+[![Build](https://travis-ci.org/yagoferrer/gmplus.svg?branch=master)](https://travis-ci.org/yagoferrer/gmplus) 
 [![Coverage](https://coveralls.io/repos/yagoferrer/gmplus/badge.svg)](https://coveralls.io/r/yagoferrer/gmplus)
+[![Dependency Status](https://david-dm.org/yagoferrer/gmplus.svg)](https://david-dm.org/yagoferrer/gmplus)
 [![devDependency](https://david-dm.org/yagoferrer/gmplus/dev-status.svg)](https://david-dm.org/yagoferrer/gmplus#info=devDependencies)
 
 Gmplus.js is a Google Maps Feature-rich Javascript wrapper that makes things like: 
