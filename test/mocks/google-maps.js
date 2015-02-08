@@ -61,7 +61,11 @@ module.exports = {
         overrideStyle: function(feature, style) {
           return feature.style = style;
         }
-      }};
+      },
+        setOptions: function(options) {
+          this.options = options;
+        }
+      };
     },
     Point: function() {
       return {};
@@ -70,7 +74,8 @@ module.exports = {
       return {};
     },
     MapTypeId: {
-      ROADMAP: 1
+      ROADMAP: 'ROADMAP',
+      TERRAIN: 'TERRAIN'
     }
   }
 };

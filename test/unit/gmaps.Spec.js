@@ -60,7 +60,6 @@ describe('Given gmplus.js', function () {
         expect(spy).to.have.been.called;
       });
     });
-
   });
 
 });
