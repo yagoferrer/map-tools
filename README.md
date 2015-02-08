@@ -4,7 +4,7 @@
 [![devDependency](https://david-dm.org/yagoferrer/gmplus/dev-status.svg)](https://david-dm.org/yagoferrer/gmplus#info=devDependencies)
 
 Gmplus.js is a Google Maps Feature-rich Javascript wrapper that makes things like: 
-[Marker filtering](#crossfilter-support), [asynchronous loading](#load-a-simple-map-async), working with [TopoJSON](#topojson-support) or GeoJSON, [animation](#animate-markers) much simpler with an easy-to-use API.
+[Marker filtering](#crossfilter-support), [asynchronous loading](#load-a-simple-map-async), working with [TopoJSON](#topojson-support) or [GeoJSON](#geojson-support), [animation](#animate-markers) much simpler with an easy-to-use API.
 
 
 ## Benefits of using Gmplus.js: 
