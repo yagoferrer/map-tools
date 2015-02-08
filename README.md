@@ -259,7 +259,7 @@ You can set `style` options to specify the way a Feature should appear when disp
 ```
 Add more [Style Options](https://developers.google.com/maps/documentation/javascript/reference#Data.StyleOptions)
 
-Once the Shapes are created, you can access directly like this: `GMP.maps.mymap.json.groups.states` and `GMP.maps.mymap.json.groups.counties`
+Once the Features are created, you can access directly like this: `GMP.maps.mymap.json.groups.states` and `GMP.maps.mymap.json.groups.counties`
 
 
 ## How can you contribute?
