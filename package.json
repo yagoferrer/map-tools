@@ -11,7 +11,8 @@
     "predist": "NODE_PATH=lib browserify lib/index.js > dist/gmplus.js",
     "dist": "node ./scripts/dist.js",
     "pretest": "jshint lib/index.js",
-    "benchmark": "browser-sync start --server --index benchmark/index.html"
+    "benchmark": "browser-sync start --server --index benchmark/index.html",
+    "release": "node ./scripts/release.js"
   },
   "repository": {
     "type": "git",
