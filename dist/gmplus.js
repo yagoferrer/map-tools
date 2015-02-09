@@ -111,7 +111,7 @@ module.exports = function (global, that) {
 
 };
 
-},{"crossfilter":16,"gmplus/gmaps.js":7,"gmplus/utils":13}],2:[function(require,module,exports){
+},{"crossfilter":15,"gmplus/gmaps.js":6,"gmplus/utils":12}],2:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 var utils = require('gmplus/utils');
@@ -140,7 +140,7 @@ module.exports = function (global, that) {
     }
 
     // Adds additional options from the Group and overwrites any Marker options already set.
-    if (group && global.GMP.maps[that.id].markers && global.GMP.maps[that.id].markers.groupOptions && global.GMP.maps[that.id].markers.groupOptions[group]) {
+    if (group && that.markers && that.markers.groupOptions && that.markers.groupOptions[group]) {
 
       for (var j in that.markers.groupOptions[group]) {
         marker[j] = that.markers.groupOptions[group][j];
@@ -211,7 +211,7 @@ module.exports = function (global, that) {
 
 };
 
-},{"gmplus/bubble":3,"gmplus/utils":13}],3:[function(require,module,exports){
+},{"gmplus/bubble":3,"gmplus/utils":12}],3:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 module.exports = function (global) {
@@ -297,18 +297,6 @@ module.exports = function (global, that) {
 },{}],6:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
-module.exports = function (global, that) {
-  function addGeoJson(data, options) {
-    var result = that.instance.data.addGeoJson(data, options);
-    return result;
-
-  }
-  return addGeoJson;
-};
-
-},{}],7:[function(require,module,exports){
-/*jslint node: true */
-"use strict";
 
 var config = require('gmplus/config');
 var utils = require('gmplus/utils');
@@ -350,7 +338,7 @@ module.exports = function (global) {
   };
 };
 
-},{"gmplus/config":4,"gmplus/utils":13}],8:[function(require,module,exports){
+},{"gmplus/config":4,"gmplus/utils":12}],7:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 var utils = require('gmplus/utils');
@@ -397,7 +385,7 @@ module.exports = function (global, that) {
 
 };
 
-},{"gmplus/config":4,"gmplus/findUpdateMarker":5,"gmplus/utils":13}],9:[function(require,module,exports){
+},{"gmplus/config":4,"gmplus/findUpdateMarker":5,"gmplus/utils":12}],8:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 module.exports = function (global) {
@@ -411,8 +399,8 @@ module.exports = function (global) {
     var that = this;
 
     this.addMarker = require('gmplus/addMarker')(global, that);
-    this.addTopoJson = require('gmplus/topojson')(global, that);
-    this.addGeoJson = require('gmplus/geojson')(global, that);
+    this.addTopoJson = require('gmplus/topojson')(global, that).addTopoJson;
+    this.addGeoJson = require('gmplus/topojson')(global, that).addGeoJson;
     this.updateMarker = require('gmplus/updateMarker')(global, that);
     this.addGroup = require('gmplus/groups')(global, that).addGroup;
     this.updateGroup = require('gmplus/groups')(global, that).updateGroup;
@@ -435,10 +423,12 @@ module.exports = function (global) {
   return GMP;
 };
 
-},{"gmplus/addMap":1,"gmplus/addMarker":2,"gmplus/geojson":6,"gmplus/groups":8,"gmplus/topojson":10,"gmplus/updateMap":11,"gmplus/updateMarker":12}],10:[function(require,module,exports){
+},{"gmplus/addMap":1,"gmplus/addMarker":2,"gmplus/groups":7,"gmplus/topojson":9,"gmplus/updateMap":10,"gmplus/updateMarker":11}],9:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 var topojson = require('topojson');
+var utils = require('gmplus/utils');
+var crossfilter = require('crossfilter');
 
 module.exports = function (global, that) {
 
@@ -453,11 +443,29 @@ module.exports = function (global, that) {
     for (x in features) {
       if (features.hasOwnProperty(x)) {
         feature = features[x];
-        if (options.style) {
+        feature.data = {};
+        //feature.data = feature.k;
+        feature.forEachProperty(function(value, property) {
+          feature.data[property] = value;
+        });
+        
+
+        feature.data.uid = utils.createUid();
+
+        if (options && options.style) {
           that.instance.data.overrideStyle(feature, options.style);
         }
+        global.GMP.maps[that.id].json.all[feature.data.uid] = feature;
+        global.GMP.maps[that.id].json.crossfilter.add(feature.data);
       }
     }
+  }
+
+  function init() {
+    global.GMP.maps[that.id].json = global.GMP.maps[that.id].json || {};
+    global.GMP.maps[that.id].json.all = global.GMP.maps[that.id].json.all || {};
+    global.GMP.maps[that.id].json.groups = global.GMP.maps[that.id].json.groups || {};
+    global.GMP.maps[that.id].json.crossfilter = global.GMP.maps[that.id].json.crossfilter || crossfilter([]);
   }
 
   /**
@@ -466,6 +474,7 @@ module.exports = function (global, that) {
    * @param options
    */
   function addTopoJson(data, options) {
+    init();
     var item, geoJson, features,  x;
     for (x in options) {
       if (options.hasOwnProperty(x)) {
@@ -473,18 +482,27 @@ module.exports = function (global, that) {
         geoJson = topojson.feature(data, data.objects[item.object]);
         features = that.instance.data.addGeoJson(geoJson);
         addFeatureOptions(features, item);
-        global.GMP.maps[that.id].json = global.GMP.maps[that.id].json || {};
-        global.GMP.maps[that.id].json.groups = global.GMP.maps[that.id].json.groups || {};
         global.GMP.maps[that.id].json.groups[item.object] = features;
       }
     }
     return features;
   }
 
-  return addTopoJson;
+  function addGeoJson(data, options) {
+    init();
+    var features = that.instance.data.addGeoJson(data, options);
+    addFeatureOptions(features, options);
+    return features;
+
+  }
+
+  return {
+    addGeoJson: addGeoJson,
+    addTopoJson: addTopoJson
+  };
 };
 
-},{"topojson":17}],11:[function(require,module,exports){
+},{"crossfilter":15,"gmplus/utils":12,"topojson":16}],10:[function(require,module,exports){
 "use strict";
 module.exports = function (global, that) {
 
@@ -498,7 +516,7 @@ module.exports = function (global, that) {
   return updateMap;
 };
 
-},{"gmplus/gmaps.js":7}],12:[function(require,module,exports){
+},{"gmplus/gmaps.js":6}],11:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 var utils = require('gmplus/utils');
@@ -532,7 +550,7 @@ module.exports = function (global, that) {
 
 };
 
-},{"gmplus/config":4,"gmplus/findUpdateMarker":5,"gmplus/utils":13}],13:[function(require,module,exports){
+},{"gmplus/config":4,"gmplus/findUpdateMarker":5,"gmplus/utils":12}],12:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 function clone(o, exceptionKeys) {
@@ -580,13 +598,13 @@ module.exports = {
   prepareOptions: prepareOptions
 };
 
-},{}],14:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 /* global: window */
 /*jslint node: true */
 "use strict";
 window.GMP = require('gmplus/index')(window);
 
-},{"gmplus/index":9}],15:[function(require,module,exports){
+},{"gmplus/index":8}],14:[function(require,module,exports){
 (function(exports){
 crossfilter.version = "1.3.11";
 function crossfilter_identity(d) {
@@ -1989,10 +2007,10 @@ function crossfilter_capacity(w) {
 }
 })(typeof exports !== 'undefined' && exports || this);
 
-},{}],16:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 module.exports = require("./crossfilter").crossfilter;
 
-},{"./crossfilter":15}],17:[function(require,module,exports){
+},{"./crossfilter":14}],16:[function(require,module,exports){
 !function() {
   var topojson = {
     version: "1.6.18",
@@ -2528,4 +2546,4 @@ module.exports = require("./crossfilter").crossfilter;
   else this.topojson = topojson;
 }();
 
-},{}]},{},[14]);
+},{}]},{},[13]);
