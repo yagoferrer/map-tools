@@ -6,7 +6,7 @@ describe('When calling addGeoJson()', function () {
 
     var result = map.addGeoJson({});
 
-    expect(result).to.eql([{ag: {D: 53}}, {ag: {D: 30}}]);
+    expect(result[0].ag.D).to.eql(53);
 
   });
 
