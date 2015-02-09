@@ -5,3 +5,4 @@ script:
     - NODE_PATH=lib ./node_modules/.bin/istanbul cover --report lcov node_modules/.bin/_mocha -r ./test/bootstrap.js test/unit
 after_success:
     - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+    - cat ./coverage/lcov.info | ./node_modules/.bin/codeclimate

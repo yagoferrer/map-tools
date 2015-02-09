@@ -42,6 +42,7 @@
     "browser-sync": "^1.9.1",
     "browserify": "^8.1.1",
     "chai": "^1.10.0",
+    "codeclimate-test-reporter": "0.0.4",
     "coveralls": "^2.11.2",
     "gmaps": "^0.4.12",
     "install": "^0.1.8",
