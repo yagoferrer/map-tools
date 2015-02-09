@@ -184,7 +184,7 @@ Add more [infoWindow options](https://developers.google.com/maps/documentation/j
 The default **event** is `click` but you can change it with the `event` property.
 
 
-## Crossfilter support
+## Crossfilter support for Markers
 - Add Marker related data into the `data` property. 
 - Add [dimensions](https://github.com/square/crossfilter/wiki/API-Reference#dimension) into the 'filters' option.
 
