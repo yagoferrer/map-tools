@@ -5,7 +5,7 @@
 [![devDependency](https://david-dm.org/yagoferrer/gmplus/dev-status.svg)](https://david-dm.org/yagoferrer/gmplus#info=devDependencies)
 
 Gmplus.js is a Google Maps Feature-rich Javascript wrapper that makes things like: 
-[Marker filtering](#crossfilter-support), [asynchronous loading](#load-a-simple-map-async), working with [TopoJSON](#topojson-support) or [GeoJSON](#geojson-support), [animation](#animate-markers) and more. Much simpler with an easy-to-use API.
+[Marker filtering](#crossfilter-support-for-markers), [asynchronous loading](#load-a-simple-map-async), working with [TopoJSON](#topojson-support) or [GeoJSON](#geojson-support), [animation](#animate-markers) and more. Much simpler with an easy-to-use API.
 
 
 ## Benefits
@@ -13,8 +13,8 @@ Gmplus.js is a Google Maps Feature-rich Javascript wrapper that makes things lik
 - More Fun: Add [Marker animations](#animate-markers), use [handlebars style](#info-bubble) variables.
 - Easy To Use: Intuitive APIs, easy to understand.
 - Non Intrusive: it extends the API, you can use any other native methods, properties and events anywhere.
-- [Crossfilter Support](#crossfilter-support): Query Markers and change any options using the power of Crossfilter.
-- [TopoJSON Support](#topojson-support): Import TopoJSON files, set styles and find references easier. 
+- [Crossfilter Support for Markers](#crossfilter-support-for-markers): Query Markers and change any options using the power of Crossfilter.
+- [TopoJSON Support](#topojson-support): Add Topo/GeoJSON files, set styles and find references easier. 
 - 100% tested
 
 ## Get Started
@@ -184,9 +184,9 @@ Add more [infoWindow options](https://developers.google.com/maps/documentation/j
 The default **event** is `click` but you can change it with the `event` property.
 
 
-## Crossfilter support
+## Crossfilter support for Markers
 - Add Marker related data into the `data` property. 
-- Add dimensions into the 'filters' option.
+- Add [dimensions](https://github.com/square/crossfilter/wiki/API-Reference#dimension) into the 'filters' option.
 
 ```javascript
   var map = new GMP({
