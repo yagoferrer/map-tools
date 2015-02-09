@@ -1,6 +1,7 @@
 ## Gmplus.js 0.3.0 
 [![Build](https://travis-ci.org/yagoferrer/gmplus.svg?branch=master)](https://travis-ci.org/yagoferrer/gmplus) 
 [![Coverage](https://coveralls.io/repos/yagoferrer/gmplus/badge.svg)](https://coveralls.io/r/yagoferrer/gmplus)
+[![Code Climate](https://codeclimate.com/github/yagoferrer/gmplus/badges/gpa.svg)](https://codeclimate.com/github/yagoferrer/gmplus)
 [![Dependency Status](https://david-dm.org/yagoferrer/gmplus.svg)](https://david-dm.org/yagoferrer/gmplus)
 [![devDependency](https://david-dm.org/yagoferrer/gmplus/dev-status.svg)](https://david-dm.org/yagoferrer/gmplus#info=devDependencies)
 
