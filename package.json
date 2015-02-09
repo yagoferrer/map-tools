@@ -4,7 +4,7 @@
   "description": "Gmplus.js is a Google Maps Feature-rich Javascript wrapper that makes things like: Marker filtering, asynchronous loading, working with TopoJSON or GeoJSON, animation and more. Much simpler with an easy-to-use API.",
   "main": "lib/index.js",
   "scripts": {
-    "prestart": "npm install",
+    "prestart": "npm install; npm run dist",
     "start": "browser-sync start --server --index examples/index.html",
     "test": "NODE_PATH=lib mocha -r ./test/bootstrap.js test/unit",
     "coverage": "NODE_PATH=lib istanbul cover --report html node_modules/.bin/_mocha -r ./test/bootstrap.js test/unit; browser-sync start --server --startPath coverage/ --index index.html",
