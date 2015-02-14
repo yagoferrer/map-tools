@@ -46,7 +46,7 @@ describe('Given gmplus.js', function () {
 
       it('should add the marker data to the filters', function () {
         var spy = sinon.spy();
-        var map = new GMP({sync: true, id: 'mymap', type: 'ROADMAP', lat: 41.3833, lng: 2.1833, filters: {add: spy}});
+        var map = new GMP({sync: true, id: 'mymap', type: 'ROADMAP', lat: 41.3833, lng: 2.1833, indexes: [{add: spy}]});
 
         var result = map.addMarker({
           lat: 42.5000,

@@ -27,9 +27,7 @@
     lat: 40.419795,
     lng: -3.710436,
     zoom: 6,
-    filters: {
-      population: function(d) { return d.population; }
-    }
+    indexes: ['population']
   }, function (err, instance) {
     if (!err) {
       addMarker();
