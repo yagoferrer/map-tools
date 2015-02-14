@@ -23,20 +23,20 @@
 <h4><a href="#" class="update-reference">Update Marker by using it's own reference</a></h4>
 <h4><a href="#" class="update-reference-location">Update Marker to another location</a></h4>
 
-<script src="../node_modules/crossfilter/crossfilter.js"></script>
 <script src="../node_modules/jquery/dist/jquery.js"></script>
 <script src="../dist/gmplus.js"></script>
 
 <script>
-  var markers = crossfilter([]);
-  var cityName = markers.dimension(function(d) { return d.cityName; });
+
   var positions = [{lat: 41.3833, lng:2.1833}, {lat: 42.263177, lng: 3.178188}];
 
   var map = new GMP({
     id: 'mymap',
     lat: 41.3833,
     lng: 2.1833,
-    crossfilter: markers
+    filters: {
+      cityName: function(d) { return d.cityName; }
+    }
   }, function (err, instance) {
     if (!err) {
       addMarker();
@@ -58,13 +58,13 @@
 
   $(function() {
     $('.update-crossfilter').click(function(e) {
-      var marker = cityName.filterExact('barcelona').top(1);
-      map.updateMarker(marker, {move: map.drop});
+      var marker = map.markers.filter.cityName.filterExact('barcelona').top(1);
+      map.updateMarker(marker, {move: 'drop'});
       e.preventDefault();
     });
 
     $('.update-reference').click(function(e) {
-      map.updateMarker([markerInstance], {move: map.drop});
+      map.updateMarker([markerInstance], {move: 'drop'});
       e.preventDefault();
     });
 
