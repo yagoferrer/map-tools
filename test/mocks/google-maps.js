@@ -1,5 +1,9 @@
 module.exports = {
   maps: {
+    Animation: {
+      BOUNCE: 1,
+      DROP: 2
+    },
     event: {
       addListenerOnce: function(instance, event, cb)
       {

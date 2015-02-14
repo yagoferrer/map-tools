@@ -67,7 +67,7 @@
 
   $(function() {
     $('.top').click(function(e) {
-        map.updateMarker(map.markers.filter.population.top(1), {move: map.bounce});
+        map.updateMarker(map.markers.filter.population.top(1), {move: 'bounce'});
         e.preventDefault();
     });
 
