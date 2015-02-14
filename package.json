@@ -6,8 +6,8 @@
   "scripts": {
     "prestart": "npm install; npm run dist",
     "start": "browser-sync start --server --index examples/index.html",
-    "test": "NODE_PATH=lib mocha -r ./test/bootstrap.js test/unit",
-    "coverage": "NODE_PATH=lib istanbul cover --report html node_modules/.bin/_mocha -r ./test/bootstrap.js test/unit; browser-sync start --server --startPath coverage/ --index index.html",
+    "test": "NODE_PATH=lib mocha -r ./test/bootstrap.js --recursive test",
+    "coverage": "NODE_PATH=lib istanbul cover --report html node_modules/.bin/_mocha -r ./test/bootstrap.js --recursive test; browser-sync start --server --startPath coverage/ --index index.html",
     "predist": "NODE_PATH=lib browserify lib/index.js > dist/gmplus.js",
     "dist": "node ./scripts/dist.js",
     "pretest": "jshint lib/index.js",
