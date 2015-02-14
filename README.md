@@ -122,7 +122,7 @@ The 2nd parameter of `addMarker`, allows you to add options that apply to all th
 Once the Markers are created, you can access directly like this: `GMP.maps.mymap.markers.all`
 
 #### Update Marker
-Allows you to update one or multiple marker options. The 1st parameter can be: a result of crossfilter, a Marker reference or the uid like this: `{uuid: '<uuid>'}`
+Allows you to update one or multiple marker options. The 1st parameter can be: a result of Crossfilter, a Marker reference or the uid like this: `{uuid: '<uuid>'}`
 
 The 2nd parameter is an object with a list of options. For example: `visible` to change the Marker visibilty.
 
@@ -187,16 +187,14 @@ The default **event** is `click` but you can change it with the `event` property
 
 ## Crossfilter support for Markers
 - Add Marker related data into the `data` property. 
-- Add [dimensions](https://github.com/square/crossfilter/wiki/API-Reference#dimension) into the 'filters' option.
-
+- Add what data properties you want to index into the `indexes` option. That will generate default Crossfilter [dimensions](https://github.com/square/crossfilter/wiki/API-Reference#dimension).
+ 
 ```javascript
   var map = new GMP({
     id: 'mymap',
     lat: 40.419795,
     lng: -3.710436,
-    filters: {
-     population: function(d) { return d.population; }
-    }
+    indexes: ['population']
   }, function (err, instance) {
     if (!err) {
       addMarker();
@@ -227,6 +225,12 @@ The default **event** is `click` but you can change it with the `event` property
 Now you can use the power of Crossfilter to update Markers. In this example it finds the city with larger population, Madrid, and makes the marker to bounce.
 ```javascript
 map.updateMarker(map.markers.filter.population.top(1), {move: 'bounce'});
+```
+
+You can also pass custom Crossfilter dimensions to the `indexes` option:
+```javascript
+indexes: [{population: function(d) { /* special calculation here */ }]
+
 ```
 
 ## GeoJSON support

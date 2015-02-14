@@ -34,9 +34,7 @@
     id: 'mymap',
     lat: 41.3833,
     lng: 2.1833,
-    filters: {
-      cityName: function(d) { return d.cityName; }
-    }
+    indexes: ['cityName']
   }, function (err, instance) {
     if (!err) {
       addMarker();
