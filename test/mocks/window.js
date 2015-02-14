@@ -2,7 +2,7 @@ module.exports = {
   document: {
     createElement: function()
     {
-      return {}
+      return {};
     },
 
     body: {
@@ -10,13 +10,14 @@ module.exports = {
       appendChild: function(script) {
         this.appended = script;
         if (global.GMP.maps) {
-          global.GMP.maps.myMap.create();
+          global.GMP.maps.mymap.create();
         }
 
         return script;
       }
     },
-    getElementById: function() {}
+    getElementById: function() {},
+    querySelector: function() {}
   },
   onload: function(cb) {
     return cb();
