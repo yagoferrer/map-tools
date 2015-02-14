@@ -19,4 +19,3 @@ global.GMP = window.GMP;
 global.window = window;
 
 
-
