@@ -16,7 +16,7 @@ Gmplus.js is a Google Maps Feature-rich Javascript wrapper that makes things lik
 - Non Intrusive: it extends the API, you can use any other native methods, properties and events anywhere.
 - [Crossfilter Support for Markers](#crossfilter-support-for-markers): Query Markers and change any options using the power of Crossfilter.
 - [TopoJSON Support](#topojson-support): Add Topo/GeoJSON files, set styles and find references easier. 
-- 100% tested
+- 100% tested. GPA 4.0
 
 ## Get Started
 Bower: 
