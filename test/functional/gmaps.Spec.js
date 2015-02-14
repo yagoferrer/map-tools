@@ -1,6 +1,5 @@
-'use strict';
-
 describe('Given gmplus.js', function () {
+  "use strict";
 
   describe('when instantiating', function () {
 
@@ -22,21 +21,21 @@ describe('Given gmplus.js', function () {
 
 
     it('should return an error if you don\'t pass a valid "lat" or "lng" values', function (done) {
-      var map = new GMP({id: 'myMap'}, function (err) {
+      var map = new GMP({id: 'mymap'}, function (err) {
         expect(err.message).to.equals('You must pass valid "lat" (latitude) and "lng" (longitude) values');
         done();
       });
     });
 
     it('should return a Map instance when you pass: "id", "lat" and "lng" and async:false', function (done) {
-      var map = new GMP({async: false, id: 'myMap', lat: 41.3833, lng: 2.1833}, function (err, instance) {
+      var map = new GMP({async: false, id: 'mymap', lat: 41.3833, lng: 2.1833}, function (err, instance) {
         expect(instance.gm_bindings_).to.be.a('object');
         done();
       });
     });
 
     it('should append a  Map instance when you pass: "id", "lat" and "lng" and async:true', function (done) {
-      var map = new GMP({id: 'myMap', lat: 41.3833, lng: 2.1833}, function (err, instance) {
+      var map = new GMP({id: 'mymap', lat: 41.3833, lng: 2.1833}, function (err, instance) {
         expect(instance.gm_bindings_).to.be.a('object');
         done();
       });
@@ -47,7 +46,7 @@ describe('Given gmplus.js', function () {
 
       it('should add the marker data to the filters', function () {
         var spy = sinon.spy();
-        var map = new GMP({sync: true, id: 'myMap', type: 'ROADMAP', lat: 41.3833, lng: 2.1833, filters: {add: spy}});
+        var map = new GMP({sync: true, id: 'mymap', type: 'ROADMAP', lat: 41.3833, lng: 2.1833, filters: {add: spy}});
 
         var result = map.addMarker({
           lat: 42.5000,
@@ -56,7 +55,7 @@ describe('Given gmplus.js', function () {
         });
 
         expect(result.title).to.equal('Andorra');
-        expect(Object.keys(GMP.maps.myMap.markers.all).length).to.equal(1);
+        expect(Object.keys(GMP.maps.mymap.markers.all).length).to.equal(1);
         expect(spy).to.have.been.called;
       });
     });
