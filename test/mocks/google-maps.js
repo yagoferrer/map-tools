@@ -60,7 +60,7 @@ module.exports = {
     Map: function() {
       return {gm_bindings_: {}, data: {
         addGeoJson: function(json) {
-          return [{ag: {D: 53}, forEachProperty: function(){}}, {ag: {D: 30}, forEachProperty: function(){}}]
+          return [{ag: {D: 53}, forEachProperty: function(){}, k: {}}, {ag: {D: 30}, forEachProperty: function(){}, k: {}}]
         },
         overrideStyle: function(feature, style) {
           return feature.style = style;
