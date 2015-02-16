@@ -26,8 +26,7 @@
     id: 'mymap',
     lat: 40.419795,
     lng: -3.710436,
-    zoom: 6,
-    indexes: ['population']
+    zoom: 6
   }, function (err, instance) {
     if (!err) {
       addMarker();
@@ -60,7 +59,7 @@
           population: 679624
         }
       }
-    ]);
+    ], {filters: ['population']});
   }
 
   $(function() {
