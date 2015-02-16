@@ -122,7 +122,7 @@ The 2nd parameter of `addMarker`, allows you to add options that apply to all th
 Once the Markers are created, you can access directly like this: `GMP.maps.mymap.markers.all`
 
 #### Update Marker
-Allows you to update one or multiple marker options. The 1st parameter can be: a result of Crossfilter, a Marker reference or the uid like this: `{uuid: '<uuid>'}`
+Allows you to update one or multiple marker options. The 1st parameter can be: a result of Crossfilter, a Marker reference or the uid like this: `{uid: '<uid>'}`
 
 The 2nd parameter is an object with a list of options. For example: `visible` to change the Marker visibilty.
 
