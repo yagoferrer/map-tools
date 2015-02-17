@@ -22,7 +22,7 @@
     zoom: 4
   }, function (err, instance) {
     $.getJSON('http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson', function (data) {
-      result = map.addGeoJson(data);
+      result = map.addGeoJson(data, {style: { fillColor: '#2c2c2c'}});
     });
   });
 
