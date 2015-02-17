@@ -1,4 +1,4 @@
-## Gmplus.js 0.3.0 
+## map-tools 0.3.0 
 [![Build](https://travis-ci.org/yagoferrer/gmplus.svg?branch=master)](https://travis-ci.org/yagoferrer/gmplus) 
 [![Coverage](https://coveralls.io/repos/yagoferrer/gmplus/badge.svg)](https://coveralls.io/r/yagoferrer/gmplus)
 [![Code Climate](https://codeclimate.com/github/yagoferrer/gmplus/badges/gpa.svg)](https://codeclimate.com/github/yagoferrer/gmplus)
