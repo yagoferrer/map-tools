@@ -33,8 +33,7 @@
   var map = new GMP({
     id: 'mymap',
     lat: 41.3833,
-    lng: 2.1833,
-    indexes: ['cityName']
+    lng: 2.1833
   }, function (err, instance) {
     if (!err) {
       addMarker();
@@ -51,6 +50,8 @@
       data: {
         cityName: 'barcelona'
       }
+    }, {
+      filters: ['cityName']
     });
   }
 

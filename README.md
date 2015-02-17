@@ -187,14 +187,13 @@ The default **event** is `click` but you can change it with the `event` property
 
 ## Crossfilter support for Markers
 - Add Marker related data into the `data` property. 
-- Add what data properties you want to index into the `indexes` option. That will generate default Crossfilter [dimensions](https://github.com/square/crossfilter/wiki/API-Reference#dimension).
+- Add what data properties you want to index into the `filters` option. That will generate default Crossfilter [dimensions](https://github.com/square/crossfilter/wiki/API-Reference#dimension).
  
 ```javascript
   var map = new GMP({
     id: 'mymap',
     lat: 40.419795,
-    lng: -3.710436,
-    indexes: ['population']
+    lng: -3.710436
   }, function (err, instance) {
     if (!err) {
       addMarker();
@@ -219,7 +218,9 @@ The default **event** is `click` but you can change it with the `event` property
           population: 3234000
         }
       }
-    ]);
+    ], {
+      filters: ['population']
+    });
   }
 ```
 Now you can use the power of Crossfilter to update Markers. In this example it finds the city with larger population, Madrid, and makes the marker to bounce.
@@ -227,9 +228,9 @@ Now you can use the power of Crossfilter to update Markers. In this example it f
 map.updateMarker(map.markers.filter.population.top(1), {move: 'bounce'});
 ```
 
-You can also pass custom Crossfilter dimensions to the `indexes` option:
+You can also pass custom Crossfilter dimensions to the `filters` option:
 ```javascript
-indexes: [{population: function(d) { /* special calculation here */ }]
+filters: [{population: function(d) { /* special calculation here */ }]
 
 ```
 
