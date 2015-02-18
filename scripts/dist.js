@@ -1,6 +1,6 @@
 var UglifyJS = require('uglify-js');
 var fs = require('fs');
-var file = 'dist/gmplus.js';
+var file = 'dist/map-tools.js';
 var result = UglifyJS.minify(file, {
   mangle: true,
   compress: {
@@ -16,9 +16,9 @@ var result = UglifyJS.minify(file, {
 });
 
 var pjson = require('../package.json');
-var credits = '/* gmplus.js ' + pjson.version + ' MIT License. ' + new Date().getFullYear() + ' Yago Ferrer <yago.ferrer@gmail.com> */\n';
-fs.writeFileSync('dist/gmplus.min.js', credits + result.code);
+var credits = '/* map-tools.js ' + pjson.version + ' MIT License. ' + new Date().getFullYear() + ' Yago Ferrer <yago.ferrer@gmail.com> */\n';
+fs.writeFileSync('dist/map-tools.min.js', credits + result.code);
 
 var data = fs.readFileSync(file, 'utf-8');
-fs.writeFileSync('dist/gmplus.js', credits + data, 'utf-8');
+fs.writeFileSync('dist/map-tools.js', credits + data, 'utf-8');
 

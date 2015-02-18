@@ -1,14 +1,14 @@
 {
-  "name": "gmplus",
+  "name": "map-tools",
   "version": "0.3.0",
-  "description": "Gmplus.js is a Google Maps Feature-rich Javascript wrapper that makes things like: Marker filtering, asynchronous loading, working with TopoJSON or GeoJSON, animation and more. Much simpler with an easy-to-use API.",
+  "description": "map-tools.js is a Google Maps Feature-rich Javascript wrapper that makes things like: Marker filtering, asynchronous loading, working with TopoJSON or GeoJSON, animation and more. Much simpler with an easy-to-use API.",
   "main": "lib/index.js",
   "scripts": {
     "prestart": "npm install; npm run dist",
     "start": "browser-sync start --server --index examples/index.html",
     "test": "NODE_PATH=lib mocha -r ./test/bootstrap.js --recursive test",
     "coverage": "NODE_PATH=lib istanbul cover --report html node_modules/.bin/_mocha -r ./test/bootstrap.js test/**/*.Spec.js; browser-sync start --server --startPath coverage/ --index index.html",
-    "predist": "NODE_PATH=lib browserify lib/index.js > dist/gmplus.js",
+    "predist": "NODE_PATH=lib browserify lib/index.js > dist/map-tools.js",
     "dist": "node ./scripts/dist.js",
     "pretest": "jshint lib/index.js",
     "benchmark": "browser-sync start --server --index benchmark/index.html",
@@ -16,12 +16,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yagoferrer/gmplus.git"
+    "url": "https://github.com/yagoferrer/map-tools.git"
   },
   "author": "Yago Ferrer <yago.ferrer@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yagoferrer/gmplus/issues"
+    "url": "https://github.com/yagoferrer/map-tools/issues"
   },
   "keywords": [
     "google maps",
@@ -32,9 +32,9 @@
     "markers",
     "maps",
     "gmaps",
-    "gmplus"
+    "map-tools"
   ],
-  "homepage": "https://github.com/yagoferrer/gmplus",
+  "homepage": "https://github.com/yagoferrer/map-tools",
   "devDependencies": {
     "angular": "^1.3.11",
     "benchmark": "^1.0.0",

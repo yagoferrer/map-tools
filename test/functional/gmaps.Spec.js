@@ -1,4 +1,4 @@
-describe('Given gmplus.js', function () {
+describe('Given map-tools.js', function () {
   "use strict";
 
   describe('when instantiating', function () {

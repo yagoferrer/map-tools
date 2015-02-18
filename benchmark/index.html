@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <title>Document</title>
   <style>
-    html, body, #gmplus, #gmaps {
+    html, body, #map-tools, #gmaps {
       height: 100%;
       margin: 0px;
       padding: 0px;
     }
 
-    #gmplus {
+    #map-tools {
       float: left;
       width: 300px;
       height: 300px;
@@ -37,7 +37,7 @@
 
 
 <script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=true"></script>
-<script src="../dist/gmplus.js"></script>
+<script src="../dist/map-tools.js"></script>
 <script src="../node_modules/gmaps/gmaps.js"></script>
 
 <script src="../node_modules/angular/angular.js"></script>
@@ -60,9 +60,9 @@
 
     $scope.results = [{title: 'addMarker()'}];
 
-    var gmplusMap = new GMP({
+    var map-toolsMap = new GMP({
       async: false,
-      id: 'gmplus',
+      id: 'map-tools',
       lat: 41.3833,
       lng: 2.1833,
       zoom: 8
@@ -79,8 +79,8 @@
       suite = new Benchmark.Suite;
 
       // add tests
-      suite.add('gmplus.js', function() {
-        gmplusMap.addMarker({
+      suite.add('map-tools.js', function() {
+        map-toolsMap.addMarker({
           lat: 41.3833,
           lng: 2.1833,
           title: 'Barcelona'
@@ -90,7 +90,7 @@
         .add('Native Google Maps: addMarker()', function() {
           new google.maps.Marker({
             position: new google.maps.LatLng(41.3833,2.1833),
-            map: GMP.maps.gmplus.instance,
+            map: GMP.maps.map-tools.instance,
             title: 'Barcelona'
           });
         })
@@ -150,7 +150,7 @@
   </table>
 </div>
 
-<div id="gmplus"></div>
+<div id="map-tools"></div>
 <div id="gmaps"></div>
 <div id="native"></div>
 
