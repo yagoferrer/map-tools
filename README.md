@@ -1,6 +1,6 @@
 ## map-tools 0.3.0 
 [![Build](https://travis-ci.org/yagoferrer/map-tools.svg?branch=master)](https://travis-ci.org/yagoferrer/map-tools) 
-[![Coverage](https://coveralls.io/repos/yagoferrer/map-tools/badge.svg)](https://coveralls.io/r/yagoferrer/map-tools)
+[![Coverage](https://coveralls.io/repos/yagoferrer/map-tools/badge.svg?branch=master)](https://coveralls.io/r/yagoferrer/map-tools)
 [![Code Climate](https://codeclimate.com/github/yagoferrer/map-tools/badges/gpa.svg)](https://codeclimate.com/github/yagoferrer/map-tools)
 [![Dependency Status](https://david-dm.org/yagoferrer/map-tools.svg)](https://david-dm.org/yagoferrer/map-tools)
 [![devDependency](https://david-dm.org/yagoferrer/map-tools/dev-status.svg)](https://david-dm.org/yagoferrer/map-tools#info=devDependencies)
