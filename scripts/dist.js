@@ -1,6 +1,7 @@
 var UglifyJS = require('uglify-js');
 var fs = require('fs');
 var file = 'dist/map-tools.js';
+
 var result = UglifyJS.minify(file, {
   mangle: true,
   compress: {
