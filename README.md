@@ -17,6 +17,7 @@ map-tools.js is a Google Maps Feature-rich Javascript wrapper that makes things 
 - [Crossfilter Support for Markers](#crossfilter-support-for-markers): Query Markers and change any options using the power of Crossfilter.
 - [TopoJSON Support](#topojson-support): Add Topo/GeoJSON files, set styles and find references easier. 
 - 100% tested. GPA 4.0
+- Framework agnostic
 
 ## Get Started
 Bower: 
