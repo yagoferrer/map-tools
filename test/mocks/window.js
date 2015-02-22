@@ -2,7 +2,7 @@ module.exports = {
   document: {
     createElement: function()
     {
-      return {};
+      return { style:{}};
     },
 
     body: {
