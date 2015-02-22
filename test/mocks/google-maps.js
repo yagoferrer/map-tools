@@ -12,6 +12,10 @@ module.exports = {
       addListener: function(instance, event, cb)
       {
         cb()
+      },
+			addDomListener: function(instance, event, cb)
+      {
+        cb()
       }
     },
     LatLng: function(lat, lng) {

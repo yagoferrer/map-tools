@@ -25,8 +25,22 @@ describe('when calling addControl()', function () {
 			}
 
 		});
-		console.log(panel);
-		expect(panel).to.eql({style: {backgroundColor: '#fff', marginBottom: '22px'},innerHTML: '<div><button id="clickMe">ctrl 1</button></div>' })
+
+		expect(panel.style).to.eql({backgroundColor: '#fff', marginBottom: '22px'})
+
+	});
+
+	it('should add a single panel with the specified events options', function () {
+		var map = new GMP({async: false, id: 'mymap', lat: 41.3833, lng: 2.1833});
+		var spy = sinon.spy();
+
+		var panel = map.addControl({
+			template: '<div><button id="clickMe">ctrl 1</button></div>',
+			events: {
+				'#clickMe click' : spy
+			}});
+
+		expect(spy).to.have.been.called;
 
 	});
 
