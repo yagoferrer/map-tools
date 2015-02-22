@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+    html, body, #mymap {
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+</style>
+<body>
+<script src="../dist/map-tools.js"></script>
+<script>
+    var map = new GMP({
+        id: 'mymap',
+        lat: 41.3833,
+        lng: 2.1833
+    }, function (err, instance) {
+        if (!err) {
+            addControl();
+        }
+    });
+
+    function addControl() {
+        map.addControl({
+            template:'<div id="custom-control"><button>custom control</button></div>',
+            position:'left center'
+        });
+    }
+</script>
+<div id="mymap"></div>
+</body>
+</html>
