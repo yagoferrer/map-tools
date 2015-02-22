@@ -54,7 +54,7 @@ describe('Given the updateFeature Module', function() {
 
 		that.instance.data.overrideStyle = spy;
 
-		var updateFeature = require('gmplus/updateFeature')(global, that);
+		var updateFeature = require('map-tools/updateFeature')(global, that);
 
 		updateFeature({uid:1}, {style: spyStyling});
 

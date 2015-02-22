@@ -57,7 +57,7 @@
     $('.single').click(function (e) {
       var feature1 = GMP.maps.mymap.json.all[Object.keys(GMP.maps.mymap.json.all)[23]]; //Colorado
       var feature2 = GMP.maps.mymap.json.all[Object.keys(GMP.maps.mymap.json.all)[4]]; //Nevada
-      map.updateFeature([feature1,feature2], {style: {fillOpacity: 0.9, fillColor:'black', strokeColor: 'black'}});
+      map.updateFeature([feature1,feature2], {style: {fillOpacity: 0.4, fillColor:'black', strokeColor: 'black'}});
       e.preventDefault();
     });
 
