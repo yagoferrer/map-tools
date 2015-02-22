@@ -6,7 +6,7 @@ describe('Given the Utils Class', function () {
         property1: 'value1'
       };
 
-      var utils = require('gmplus/utils');
+      var utils = require('map-tools/utils');
       var output = utils.clone(obj);
       expect(output).to.eql(obj);
       obj.property1 = 'value2';
@@ -22,7 +22,7 @@ describe('Given the Utils Class', function () {
           property3: 'value3'
         };
 
-        var utils = require('gmplus/utils');
+        var utils = require('map-tools/utils');
         var output = utils.clone(obj, ['property2', 'property3']);
         expect(output).to.eql({property1: 'value1'});
       });

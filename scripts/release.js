@@ -1,8 +1,8 @@
 'use strict';
 
-var current = new RegExp(/0.2.\d+/g);
-var next = '0.3.0';
-var description = "Gmplus.js is a Google Maps Feature-rich Javascript wrapper that makes things like: Marker filtering, asynchronous loading, working with TopoJSON or GeoJSON, animation and more. Much simpler with an easy-to-use API.";
+var current = new RegExp(/0.3.\d+/g);
+var next = '0.4.0';
+var description = "map-tools.js is a Google Maps Feature-rich Javascript wrapper that makes things like: Marker filtering, asynchronous loading, working with TopoJSON or GeoJSON, animation and more. Much simpler with an easy-to-use API.";
 
 var fs = require('fs');
 

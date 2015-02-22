@@ -1,12 +1,12 @@
 {
-  "name": "gmplus",
-  "version": "0.3.0",
-  "homepage": "https://github.com/yagoferrer/gmplus",
+  "name": "map-tools",
+  "version": "0.4.0",
+  "homepage": "https://github.com/yagoferrer/map-tools",
   "authors": [
     "Yago Ferrer <yago.ferrer@gmail.com>"
   ],
-  "description": "Gmplus.js is a Google Maps Feature-rich Javascript wrapper that makes things like: Marker filtering, asynchronous loading, working with TopoJSON or GeoJSON, animation and more. Much simpler with an easy-to-use API.",
-  "main": "dist/gmplus.min.js",
+  "description": "map-tools.js is a Google Maps Feature-rich Javascript wrapper that makes things like: Marker filtering, asynchronous loading, working with TopoJSON or GeoJSON, animation and more. Much simpler with an easy-to-use API.",
+  "main": "dist/map-tools.min.js",
   "moduleType": [
     "amd",
     "node"
@@ -18,7 +18,7 @@
     "geojson",
     "markers",
     "gmaps",
-    "gmplus"
+    "map-tools"
   ],
   "license": "MIT",
   "ignore": [
