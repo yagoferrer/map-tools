@@ -17,5 +17,4 @@ global.GMP = window.GMP;
 
 // To test independent modules.
 global.window = window;
-
-
+global.google = window.google;

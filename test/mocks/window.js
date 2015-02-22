@@ -2,7 +2,14 @@ module.exports = {
   document: {
     createElement: function()
     {
-      return {};
+      return {
+				style:{},
+				querySelectorAll: function(selector) {
+					return [{}];
+				},
+				querySelector: function(selector) {
+					return {};
+				}};
     },
 
     body: {
