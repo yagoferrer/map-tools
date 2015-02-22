@@ -10,7 +10,8 @@
 </head>
 <body>
 
-<h4><a href="#" class="top">Update Feature</a></h4>
+<h4><a href="#" class="single">Update Single Feature (Select Nevada & Colorado)</a></h4>
+<h4><a href="#" class="choro">Show  Census choropleth Data </a></h4>
 
 <div id="mymap"></div>
 
@@ -25,13 +26,13 @@
     zoom: 4
     //mapTypeId: google.maps.MapTypeId.ROADMAP
   }, function (err, instance) {
-
-    $.getJSON('../node_modules/topojson/examples/us-10m.json', function (data) {
+    // topojson data example with data, (http://eric.clst.org/Stuff/USGeoJSON)
+    $.getJSON('./json/us-country.json', function (data) {
       map.addTopoJson(data, [{
-        object: 'states',
+        object: 'us_country',
         style: {
-          strokeColor: 'red',
-          strokeWeight: 2,
+          strokeColor: '#2c2c2c',
+          strokeWeight: 0.5,
           fillOpacity: 0
         }
       },
@@ -52,10 +53,30 @@
 
 
   $(function() {
-    $('.top').click(function (e) {
-      var feature1 = GMP.maps.mymap.json.all[Object.keys(GMP.maps.mymap.json.all)[0]]
-      var feature2 = GMP.maps.mymap.json.all[Object.keys(GMP.maps.mymap.json.all)[4]]
-      map.updateFeature([feature1,feature2], {style: {fillOpacity: 0.4}});
+
+    $('.single').click(function (e) {
+      var feature1 = GMP.maps.mymap.json.all[Object.keys(GMP.maps.mymap.json.all)[23]]; //Colorado
+      var feature2 = GMP.maps.mymap.json.all[Object.keys(GMP.maps.mymap.json.all)[4]]; //Nevada
+      map.updateFeature([feature1,feature2], {style: {fillOpacity: 0.9, fillColor:'black', strokeColor: 'black'}});
+      e.preventDefault();
+    });
+
+    $('.choro').click(function (e) {
+      var color = function() {
+        // Simple choropleth function based on the CENSUSAREA data
+        var value = (this.data.CENSUSAREA/570640.95);
+        var alpha = 5;
+        var h = 210,
+        s = 100,
+        l = (Math.pow((1 - value), alpha) * 50)+50; // this is just to increase the difference on the data for much different color
+
+       return {
+          fillColor: 'hsl('+h+','+s+'%,'+l+'%)',
+          fillOpacity:0.7
+        }
+
+      };
+      map.updateFeature(Object.keys(GMP.maps.mymap.json.all).map(function(k) { return GMP.maps.mymap.json.all[k] }), {style: color});
       e.preventDefault();
     });
 
