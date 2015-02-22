@@ -26,8 +26,8 @@
     zoom: 4
     //mapTypeId: google.maps.MapTypeId.ROADMAP
   }, function (err, instance) {
-
-    $.getJSON('../dist/us-country.json', function (data) {
+    // topojson data example with data, (http://eric.clst.org/Stuff/USGeoJSON)
+    $.getJSON('./json/us-country.json', function (data) {
       map.addTopoJson(data, [{
         object: 'us_country',
         style: {
@@ -68,7 +68,7 @@
         var alpha = 5;
         var h = 210,
         s = 100,
-        l = (Math.pow((1 - value), alpha) * 50)+50;
+        l = (Math.pow((1 - value), alpha) * 50)+50; // this is just to increase the difference on the data for much different color
 
        return {
           fillColor: 'hsl('+h+','+s+'%,'+l+'%)',
