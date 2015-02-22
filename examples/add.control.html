@@ -26,8 +26,21 @@
 
     function addControl() {
         map.addControl({
-            template:'<div id="custom-control"><button>custom control</button></div>',
-            position:'left center'
+            template:   '<div>' +
+                        '<button id="clickMe" class="test-button">ctrl 1</button>' +
+                        '<button class="test-button">ctrl 2</button>' +
+                        '</div>',
+            position:'left center',
+            style:'',
+            events: {
+                '#clickMe mouseover' : function (e) {
+                    console.log('mouseover on clickMe');
+                    },
+
+                '.test-button click' : function (e) {
+                    alert('Clicked on custom control');
+                }
+            }
         });
     }
 </script>
