@@ -47,6 +47,22 @@ describe('Given the updateFeature Module', function() {
 
   });
 
+	it('should update the Features based on the styling function', function() {
+
+		var spy = sinon.spy();
+		var spyStyling = sinon.spy();
+
+		that.instance.data.overrideStyle = spy;
+
+		var updateFeature = require('gmplus/updateFeature')(global, that);
+
+		updateFeature({uid:1}, {style: spyStyling});
+
+		expect(spyStyling).to.have.been.called;
+
+
+	});
+
 
 
 });
