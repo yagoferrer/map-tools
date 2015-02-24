@@ -1,21 +1,121 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
-<body>
-<h4><a href="examples/simple.map.html">Simple Map</a></h4>
-<h4><a href="examples/update.map.html">Update Map</a></h4>
-<h4><a href="examples/add.marker.html">Add One Marker</a></h4>
-<h4><a href="examples/update.marker.html">Update Marker</a></h4>
-<h4><a href="examples/add.multiple.markers.html">Add Multiple Markers</a></h4>
-<h4><a href="examples/animate.markers.html">Animate Markers</a></h4>
-<h4><a href="examples/add.group.html">Add Group</a></h4>
-<h4><a href="examples/bubble.html">Add Info Bubble</a></h4>
-<h4><a href="examples/crossfilter.html">Data querying with Crossfilter</a></h4>
-<h4><a href="examples/geojson.html">GeoJSON</a></h4>
-<h4><a href="examples/topojson.html">TopoJSON</a></h4>
-<h4><a href="examples/add.control.html">Controls</a></h4>
-</body>
+	<head>
+	 	<meta charset="UTF-8">
+	 	<title>map-tools.js</title>
+
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+		<style>
+			*{
+				font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial;
+				font-weight: 100;
+			}
+			body{
+				background-color: #f2f2f2;
+				padding: 0 20px;
+				margin: 0;
+				color: #333;
+			}
+			#map{
+				background-image: url(examples/images/map.png);
+				background-repeat: no-repeat;
+				opacity: .1;
+				position: absolute;
+				top: 175px;
+				left: 50%;
+				width: 600px;
+				height: 371px;
+				margin-left: -300px;
+				background-size: cover;
+			}
+			#links{
+				padding-top:125px;
+				width: 800px;
+				margin: 0 auto;
+				text-align: center;
+			}
+			h1{
+				text-align: center;
+				font-size: 4.5rem;
+				margin:0;
+			}
+			h2{
+				text-align: center;
+				font-size: 2rem;
+				margin:0;
+				color:#f90;
+			}
+			a{
+				text-decoration: none
+			}
+			a:hover{
+				text-decoration: underline;
+			}
+			h4{
+				display:inline-block;
+				margin:0 30px 70px 0;
+			}			
+			h4 a {
+				font-weight: 200;
+				color: #333;
+				display: inline-block;
+				position: relative;
+				background: #fff;
+				border: 1px solid #DDD;
+				margin-left: 10px;
+				padding: 10px;
+				border-radius: 3px;
+			}
+			h4 a:after, h4 a:before {
+				right: 100%;
+				top: 43%;
+				border: solid transparent;
+				content: " ";
+				height: 0;
+				width: 0;
+				position: absolute;
+				pointer-events: none;
+			}
+
+			h4 a:after {
+				border-color: rgba(255, 255, 255, 0);
+				border-right-color: #fff;
+				border-width: 8px;
+				margin-top: -8px;
+			}
+			h4 a:before {
+				border-color: rgba(221, 221, 221, 0);
+				border-right-color: #DDD;
+				border-width: 9px;
+				margin-top: -9px;
+			}
+			.fa{
+				font-size:1.5rem;
+				color: #f90;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="map"></div>
+		<a href="https://github.com/yagoferrer/map-tools"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
+
+		<h1>map-tools.js</h1>
+		<h2>easy tools for Google maps</h2>
+
+		<div id="links">
+			<h4><i class="fa fa-map-marker"></i><a href="examples/simple.map.html">Simple Map</a></h4>
+			<h4><i class="fa fa-map-marker"></i><a href="examples/update.map.html">Update Map</a></h4>
+			<h4><i class="fa fa-map-marker"></i><a href="examples/add.marker.html">Add One Marker</a></h4>
+			<h4><i class="fa fa-map-marker"></i><a href="examples/update.marker.html">Update Marker</a></h4>
+			<h4><i class="fa fa-map-marker"></i><a href="examples/add.multiple.markers.html">Add Multiple Markers</a></h4>
+			<h4><i class="fa fa-map-marker"></i><a href="examples/animate.markers.html">Animate Markers</a></h4>
+			<h4><i class="fa fa-map-marker"></i><a href="examples/add.group.html">Add Group</a></h4>
+			<h4><i class="fa fa-map-marker"></i><a href="examples/bubble.html">Add Info Bubble</a></h4>
+			<h4><i class="fa fa-map-marker"></i><a href="examples/crossfilter.html">Data querying with Crossfilter</a></h4>
+			<h4><i class="fa fa-map-marker"></i><a href="examples/geojson.html">GeoJSON</a></h4>
+			<h4><i class="fa fa-map-marker"></i><a href="examples/topojson.html">TopoJSON</a></h4>
+			<h4><i class="fa fa-map-marker"></i><a href="examples/add.control.html">Controls</a></h4>
+		</div>
+	</body>
 </html>
