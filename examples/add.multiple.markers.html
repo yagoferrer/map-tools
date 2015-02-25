@@ -10,6 +10,17 @@
     margin: 0px;
     padding: 0px;
   }
+
+  #mymap {
+    float: left;
+    width: 600px;
+    height: 500px;
+  }
+
+  pre {
+    float: left;
+  }
+
 </style>
 <body>
 <script src="../dist/map-tools.js"></script>
@@ -38,5 +49,29 @@
   }
 </script>
 <div id="mymap"></div>
+<pre>
+    var map = new GMP({
+    id: 'mymap',
+    lat: 41.3833,
+    lng: 2.1833
+  }, function (err, instance) {
+    if (!err) {
+      addMarkers();
+    }
+  });
+
+  function addMarkers() {
+    map.addMarker([{
+      lat: 41.3833,
+      lng: 2.1833,
+      title: 'Barcelona'
+    },
+      {
+        lat: 42.5000,
+        lng: 1.5167,
+        title: 'Andorra'
+      }]);
+  }
+</pre>
 </body>
 </html>

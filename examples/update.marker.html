@@ -12,8 +12,13 @@
   }
 
   #mymap {
-    width: 800px;
+    float: left;
+    width: 600px;
     height: 500px;
+  }
+
+  pre {
+    float: left;
   }
 
 </style>
@@ -79,5 +84,9 @@
 
 </script>
 <div id="mymap"></div>
+<pre>
+  var marker = map.markers.filter.cityName.filterExact('barcelona').top(1);
+  map.updateMarker(marker, {move: 'drop'});
+</pre>
 </body>
 </html>

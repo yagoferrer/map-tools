@@ -12,8 +12,13 @@
   }
 
   #mymap {
-    width: 800px;
+    float: left;
+    width: 500px;
     height: 500px;
+  }
+
+  pre {
+    float: right;
   }
 </style>
 <body>
@@ -74,5 +79,36 @@
 </script>
 <h4><a href="#" class="top">Top Populated City</a></h4>
 <div id="mymap"></div>
+<pre>
+   map.addMarker([
+      {
+        lat: 41.3833,
+        lng: 2.1833,
+        data: {
+          name: 'Barcelona',
+          population: 1621000
+        }
+      },
+      {
+        lat: 40.419795,
+        lng: -3.710436,
+        data: {
+          name: 'Madrid',
+          population: 3234000
+        }
+      },
+      {
+        lat: 41.648821,
+        lng: -0.889086,
+        data: {
+          name: 'Zaragoza',
+          population: 679624
+        }
+      }
+    ], {filters: ['population']});
+  }
+  ...
+  map.updateMarker(map.markers.filter.population.top(1), {move: 'bounce'});
+</pre>
 </body>
 </html>

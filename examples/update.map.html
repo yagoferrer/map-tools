@@ -14,8 +14,13 @@
   }
 
   .mymap {
-    width: 800px;
+    float: left;
+    width: 600px;
     height: 500px;
+  }
+
+  pre {
+    float: left;
   }
 </style>
 <body>
@@ -33,12 +38,25 @@
 
     $('.update-terrain').click(function(e) {
       e.preventDefault();
-      map.updateMap({type: 'TERRAIN', mapTypeControl: false, zoomControl: false, streetViewControl: false, panControl: false});
+      map.updateMap(
+        {
+          type: 'TERRAIN',
+          mapTypeControl: false,
+          zoomControl: false,
+          streetViewControl: false,
+          panControl: false
+        });
     });
 
     $('.update-roadmap').click(function(e) {
       e.preventDefault();
-      map.updateMap({type: 'ROADMAP', mapTypeControl: true, zoomControl: true, streetViewControl: true, panControl: true});
+      map.updateMap({
+        type: 'ROADMAP',
+        mapTypeControl: true,
+        zoomControl: true,
+        streetViewControl: true,
+        panControl: true
+      });
     });
 
   });
@@ -47,5 +65,24 @@
 <h4><a href class="update-terrain">Update Map View to: TERRAIN and Disable: all controls</a></h4>
 <h4><a href class="update-roadmap">Update Map View to: ROADMAP and Enable: all controls</a></h4>
 <div class="mymap"></div>
+<pre>
+  // Update Terrain
+  map.updateMap({
+  type: 'TERRAIN',
+  mapTypeControl: false,
+  zoomControl: false,
+  streetViewControl: false,
+  panControl: false
+  });
+
+  // Update RoadMap
+  map.updateMap({
+  type: 'ROADMAP',
+  mapTypeControl: true,
+  zoomControl: true,
+  streetViewControl: true,
+  panControl: true
+  });
+</pre>
 </body>
 </html>

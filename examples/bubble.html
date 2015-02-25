@@ -12,8 +12,13 @@
   }
 
   #mymap {
-    width: 800px;
+    float: left;
+    width: 600px;
     height: 500px;
+  }
+
+  pre {
+    float: left;
   }
 </style>
 <body>
@@ -58,5 +63,21 @@
 </script>
 <h4><a href="#" class="update">Update Bubble text to: "Click Me!"</a></h4>
 <div id="mymap"></div>
+<pre>
+   marker = map.addMarker({
+      lat: 41.3833,
+      lng: 2.1833,
+      title: 'Barcelona',
+      bubble: {
+        event: 'mouseover',
+        content: '<p>{city}</p>'
+      },
+      data: {
+        city: 'Barcelona!'
+      }
+    });
+    ...
+    map.updateMarker(marker, {bubble: {content: '<p>Click Me!</p>'}});
+</pre>
 </body>
 </html>
