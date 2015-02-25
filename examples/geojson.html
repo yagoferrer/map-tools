@@ -6,6 +6,16 @@
       height: 100%;
       margin: 0;
     }
+
+    #mymap {
+      float: left;
+      width: 600px;
+      height: 500px;
+    }
+
+    pre {
+      float: left;
+    }
   </style>
 </head>
 <body>
@@ -22,10 +32,16 @@
     zoom: 4
   }, function (err, instance) {
     $.getJSON('http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson', function (data) {
-      result = map.addGeoJson(data);
+      map.addGeoJson(data);
     });
   });
 
 </script>
+<pre>
+var file = 'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson';
+$.getJSON(file, function (data) {
+  map.addGeoJson(data);
+  });
+</pre>
 </body>
 </html>

@@ -10,6 +10,16 @@
     margin: 0px;
     padding: 0px;
   }
+
+  #mymap {
+    float: left;
+    width: 600px;
+    height: 500px;
+  }
+
+  pre {
+    float: left;
+  }
 </style>
 <body>
 <script src="../dist/map-tools.js"></script>
@@ -56,5 +66,34 @@
   }
 </script>
 <div id="mymap"></div>
+<pre>
+      map.addMarker([{
+      lat: 41.387220,
+      lng: 2.169983,
+      title: 'Plaça Catalunya',
+      move: 'bounce'
+
+    },
+      {
+        lat: 41.4036,
+        lng: 2.1744,
+        title: 'Sagrada Familia',
+        move: 'bounce'
+      },
+      {
+        lat: 41.395571,
+        lng: 2.161961,
+        title: 'Casa Milà',
+        move: 'drop'
+      },
+      {
+        lat: 41.385231,
+        lng: 2.180893,
+        title: 'Picasso Museum',
+        move: 'drop'
+      }
+
+    ]);
+</pre>
 </body>
 </html>

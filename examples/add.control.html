@@ -14,6 +14,16 @@
     li.active {
         background: rgba(0,0,0,.08) !important;
     }
+
+    #mymap {
+      float: left;
+      width: 600px;
+      height: 500px;
+    }
+
+    pre {
+      float: left;
+    }
 </style>
 <body>
 <script src="../dist/map-tools.js"></script>
@@ -65,5 +75,39 @@
     }
 </script>
 <div id="mymap"></div>
+<pre>
+          map.addControl({
+            template:   '<div>' +
+  '<button id="clickMe" class="test-button">ctrl 1</button>' +
+  '<button class="test-button">ctrl 2</button>' +
+  '</div>',
+            position:'top center',
+            style: {
+                'background-color': '#fff',
+                'border': '2px solid #fff',
+                'border-radius': '3px',
+                'box-shadow': '0 2px 6px rgba(0,0,0,.3)',
+                'cursor': 'pointer',
+                'marginBottom': '22px',
+                'text-align': 'center'
+            },
+            events: {
+                '.test-button click' : function (e) {
+                    alert('Clicked on custom control');
+                }
+            }
+        });
+
+        map.addControl({
+            templateURL: 'templates/custom.panel.html',
+            position:'right bottom',
+            events: {
+                '.menu li click' : function (e) {
+                    console.log('clicked on ', e.target);
+                    e.target.classList.toggle('active');
+                    }
+            }
+        });
+</pre>
 </body>
 </html>

@@ -6,6 +6,16 @@
       height: 100%;
       margin: 0;
     }
+
+    #mymap {
+      float: left;
+      width: 700px;
+      height: 500px;
+    }
+
+    pre {
+      float: left;
+    }
   </style>
 </head>
 <body>
@@ -71,8 +81,30 @@
     });
 
   });
-
-
 </script>
+
+<pre>
+$.getJSON('./json/us-country.json', function (data) {
+map.addTopoJson(data, [{object: 'us_country',
+        style: {
+          strokeColor: '#2c2c2c',
+          strokeWeight: 0.5,
+          fillOpacity: 0
+        },
+        filters: ['NAME']
+      }]);
+    });
+  ...
+  var feature1 = map.json.filter.NAME.filter('Colorado').top(1)[0];
+  var feature2 = map.json.filter.NAME.filter('Nevada').top(1)[0];
+  var options = {
+    style:{
+      fillOpacity: 0.4,
+      fillColor:'black',
+      strokeColor: 'black'
+    }
+  };
+  map.updateFeature([feature1,feature2], options);
+</pre>
 </body>
 </html>
