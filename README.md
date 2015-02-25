@@ -36,7 +36,7 @@ npm start
 ```
 
 ## Load a simple Map async
-No need to include the Google Maps `<script>` tag. map-tools.js will load the file for you.
+There is no need to include the Google Maps `<script>` tag. map-tools.js will load the file for you.
 Setup a callback to notify you when the Map is fully loaded.
 ```javascript
 var map = new GMP({
