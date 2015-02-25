@@ -32,8 +32,6 @@ Direct download: [map-tools.min.js](https://github.com/yagoferrer/map-tools/blob
  
 ## Run examples
 ```bash
-git pull https://github.com/yagoferrer/map-tools.git
-cd map-tools
 npm start
 ```
 
