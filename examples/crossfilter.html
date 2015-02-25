@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
+  <link href="vendors/prism/prism.css" rel="stylesheet" />
+  <script src="vendors/prism/prism.js"></script>
+  <script src="../dist/map-tools.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </head>
 <style>
   html, body, #mymap {
@@ -22,9 +26,6 @@
   }
 </style>
 <body>
-<script src="../dist/map-tools.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script>
 
   var map = new GMP({
@@ -80,6 +81,7 @@
 <h4><a href="#" class="top">Top Populated City</a></h4>
 <div id="mymap"></div>
 <pre>
+<code class="language-javascript">
    map.addMarker([
       {
         lat: 41.3833,
@@ -109,6 +111,7 @@
   }
   ...
   map.updateMarker(map.markers.filter.population.top(1), {move: 'bounce'});
+</code>
 </pre>
 </body>
 </html>

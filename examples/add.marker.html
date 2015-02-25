@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
+  <link href="vendors/prism/prism.css" rel="stylesheet" />
+  <script src="vendors/prism/prism.js"></script>
+  <script src="../dist/map-tools.js"></script>
 </head>
 <style>
   html, body, #mymap {
@@ -22,7 +25,6 @@
   }
 </style>
 <body>
-<script src="../dist/map-tools.js"></script>
 <script>
   var map = new GMP({
     id: 'mymap',
@@ -44,6 +46,7 @@
 </script>
 <div id="mymap"></div>
 <pre>
+<code class="language-javascript">
     var map = new GMP({
     id: 'mymap',
     lat: 41.3833,
@@ -61,6 +64,7 @@
       title: 'Barcelona'
     });
   }
+</code>
 </pre>
 </body>
 </html>
