@@ -34,19 +34,9 @@
           strokeColor: '#2c2c2c',
           strokeWeight: 0.5,
           fillOpacity: 0
-        }
-      },
-        /*
-        {
-          object: 'counties',
-          style: {
-            strokeColor: 'blue',
-            strokeWeight: 1,
-            fillColor: 'white'
-          }
-        }
-        */
-        ]);
+        },
+        filters: ['NAME']
+      }]);
     });
 
   });
@@ -55,8 +45,8 @@
   $(function() {
 
     $('.single').click(function (e) {
-      var feature1 = GMP.maps.mymap.json.all[Object.keys(GMP.maps.mymap.json.all)[23]]; //Colorado
-      var feature2 = GMP.maps.mymap.json.all[Object.keys(GMP.maps.mymap.json.all)[4]]; //Nevada
+      var feature1 = map.json.filter.NAME.filter('Colorado').top(1)[0]; //Colorad
+      var feature2 = map.json.filter.NAME.filter('Nevada').top(1)[0];
       map.updateFeature([feature1,feature2], {style: {fillOpacity: 0.4, fillColor:'black', strokeColor: 'black'}});
       e.preventDefault();
     });
