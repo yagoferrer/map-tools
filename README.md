@@ -262,13 +262,16 @@ You can set `style` options to specify the way a Feature should appear when disp
     fillOpacity: 0
   }
 }
+```
 
 ## Crossfilter support for Features
 
 You can use a Crossfilter result to update features. In this example it finds the State named: 'Texas' and updates the background color.
+
 ```javascript
 map.updateFeature(map.json.filter.NAME.filter('Colorado').top(1), {style: {fillOpacity: 0.4, fillColor:'black', strokeColor: 'black'}})
 ```
+
 Add more [Style Options](https://developers.google.com/maps/documentation/javascript/reference#Data.StyleOptions)
 
 Once the Features are created, you can access directly like this: `GMP.maps.mymap.json.groups.states` and `GMP.maps.mymap.json.groups.counties`
