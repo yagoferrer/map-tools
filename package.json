@@ -8,7 +8,7 @@
     "start": "browser-sync start --server --index examples/index.html",
     "test": "NODE_PATH=lib mocha -r ./test/bootstrap.js --recursive test",
     "coverage": "NODE_PATH=lib istanbul cover --report html node_modules/.bin/_mocha -r ./test/bootstrap.js test/**/*.Spec.js; browser-sync start --server --startPath coverage/ --index index.html",
-    "predist": "NODE_PATH=lib browserify lib/index.js > dist/map-tools.js",
+    "predist": "mkdir -p dist;NODE_PATH=lib browserify lib/index.js > dist/map-tools.js",
     "dist": "node ./scripts/dist.js",
     "pretest": "jshint lib/index.js",
     "benchmark": "browser-sync start --server --index benchmark/index.html",
