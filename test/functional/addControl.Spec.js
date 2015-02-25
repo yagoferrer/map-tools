@@ -44,4 +44,23 @@ describe('when calling addControl()', function () {
 
 	});
 
+  it('should load an external template URL when provided', function() {
+    global.XMLHttpRequest = function() {
+      return {
+        open: function(){},
+        send: function(){},
+        responseText: '<div><button id="clickMe" class="test-button">ctrl 1</button></div>'
+      }
+    }
+
+    var map = new GMP({async: false, id: 'mymap', lat: 41.3833, lng: 2.1833});
+
+    map.addControl({
+      templateURL: 'control-template.html',
+      position: 'top center'
+    });
+
+    expect(Object.keys(GMP.maps.mymap.instance.controls[2]).length).to.equal(1);
+  });
+
 });
