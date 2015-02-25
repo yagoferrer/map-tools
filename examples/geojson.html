@@ -17,12 +17,13 @@
       float: left;
     }
   </style>
+  <link href="vendors/prism/prism.css" rel="stylesheet" />
+  <script src="vendors/prism/prism.js"></script>
+  <script src="../dist/map-tools.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </head>
 <body>
 <div id="mymap"></div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="../dist/map-tools.js"></script>
 <script>
 
   var map = new GMP({
@@ -38,10 +39,12 @@
 
 </script>
 <pre>
+<code class="language-javascript">
 var file = 'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson';
 $.getJSON(file, function (data) {
   map.addGeoJson(data);
   });
+</code>
 </pre>
 </body>
 </html>

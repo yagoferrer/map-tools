@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
+  <link href="vendors/prism/prism.css" rel="stylesheet" />
+  <script src="vendors/prism/prism.js"></script>
+  <script src="../dist/map-tools.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </head>
 <style>
   html, body, #mymap {
@@ -27,10 +31,6 @@
 <h4><a href="#" class="update-crossfilter">Update Marker by using Crossfilter</a></h4>
 <h4><a href="#" class="update-reference">Update Marker by using it's own reference</a></h4>
 <h4><a href="#" class="update-reference-location">Update Marker to another location</a></h4>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="../dist/map-tools.js"></script>
-
 <script>
 
   var positions = [{lat: 41.3833, lng:2.1833}, {lat: 42.263177, lng: 3.178188}];
@@ -85,8 +85,10 @@
 </script>
 <div id="mymap"></div>
 <pre>
+<code class="language-javascript">
   var marker = map.markers.filter.cityName.filterExact('barcelona').top(1);
   map.updateMarker(marker, {move: 'drop'});
+</code>
 </pre>
 </body>
 </html>

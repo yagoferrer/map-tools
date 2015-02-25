@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
+  <link href="vendors/prism/prism.css" rel="stylesheet" />
+  <script src="vendors/prism/prism.js"></script>
   <script src="../dist/map-tools.js"></script>
 </head>
 <style>
@@ -35,6 +37,7 @@
 </script>
 <div id="mymap"></div>
 <pre>
+<code class="language-javascript">
   var map = new GMP({
     id: 'mymap',
     lat: 41.3833,
@@ -43,6 +46,7 @@
   }, function (err, instance) {
     console.log('Map Loaded!', instance);
   });
+</code>
 </pre>
 </body>
 </html>
