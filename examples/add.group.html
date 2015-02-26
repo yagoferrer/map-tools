@@ -7,29 +7,12 @@ Icons generated using: http://mapicons.nicolasmollet.com/
   <meta charset="UTF-8">
   <title>Document</title>
   <link href="vendors/prism/prism.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../examples/style/basic.css"/>
   <script src="vendors/prism/prism.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
   <script src="../dist/map-tools.js"></script>
 </head>
-<style>
-  html, body, #mymap {
-    height: 100%;
-    margin: 0px;
-    padding: 0px;
-  }
-
-  #mymap {
-    float: left;
-    width: 600px;
-    height: 500px;
-  }
-
-  pre {
-    float: left;
-  }
-
-
-</style>
 <body>
 <script>
   var map = new GMP({
@@ -40,6 +23,12 @@ Icons generated using: http://mapicons.nicolasmollet.com/
   }, function (err, instance) {
     if (!err) {
       addMarkers();
+
+	    map.addControl({
+		    templateURL: 'code.snippet/add.group.snippet.html',
+		    position:'right center'
+	    });
+	    Prism.highlightAll();
     }
   });
 
@@ -117,14 +106,25 @@ Icons generated using: http://mapicons.nicolasmollet.com/
     });
   });
 
+
+
+
 </script>
+
 <div><h4><a href class="places">Click to toggle Markers visibility Group: Places</a></h4></div>
 <div><h4><a href class="parks">Click to toggle Markers visibility Group: Parks</a></h4></div>
 <div id="mymap"></div>
+<script>
 
-<pre>
+
+
+</script>
+<pre class="side">
 <code class="language-javascript">
-   map.addGroup('parks', {visible: true, icon: 'images/forest2.png'});
+   map.addGroup('parks', {
+        visible: true,
+        icon: 'images/forest2.png'
+    });
 
     var parks = [
       {
@@ -147,6 +147,6 @@ Icons generated using: http://mapicons.nicolasmollet.com/
     map.addMarker(parks, {group: 'parks'});
 </code>
 </pre>
-
+</div>
 </body>
 </html>

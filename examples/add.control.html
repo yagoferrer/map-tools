@@ -5,9 +5,11 @@
     <title>Document</title>
     <script src="../dist/map-tools.js"></script>
     <link href="vendors/prism/prism.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../examples/style/basic.css"/>
     <script src="vendors/prism/prism.js"></script>
 </head>
 <style>
+
     html, body, #mymap {
         height: 100%;
         margin: 0px;
@@ -18,15 +20,6 @@
         background: rgba(0,0,0,.08) !important;
     }
 
-    #mymap {
-      float: left;
-      width: 600px;
-      height: 500px;
-    }
-
-    pre {
-      float: left;
-    }
 </style>
 <body>
 <script>
@@ -43,75 +36,25 @@
     function addControl() {
 
         map.addControl({
-            template:   '<div>' +
-                        '<button id="clickMe" class="test-button">ctrl 1</button>' +
-                        '<button class="test-button">ctrl 2</button>' +
-                        '</div>',
-            position:'top center',
-            style: {
-                'background-color': '#fff',
-                'border': '2px solid #fff',
-                'border-radius': '3px',
-                'box-shadow': '0 2px 6px rgba(0,0,0,.3)',
-                'cursor': 'pointer',
-                'marginBottom': '22px',
-                'text-align': 'center'
-            },
+            templateURL: 'templates/custom.panel.html',
+            position:'left bottom',
             events: {
-                '.test-button click' : function (e) {
-                    alert('Clicked on custom control');
+                '.menu li click' : function (e) {
+                    console.log('clicked on ', e.target);
+                    e.target.classList.toggle('active');
                 }
             }
         });
 
         map.addControl({
-            templateURL: 'templates/custom.panel.html',
-            position:'right bottom',
-            events: {
-                '.menu li click' : function (e) {
-                    console.log('clicked on ', e.target);
-                    e.target.classList.toggle('active');
-                    }
-            }
+            templateURL: 'code.snippet/add.control.snippet.html',
+            position:'right center'
         });
+        Prism.highlightAll();
+
     }
 </script>
-<div id="mymap"></div>
-<pre>
-<code class="language-javascript">
-          map.addControl({
-            template:   '<div>' +
-  '<button id="clickMe" class="test-button">ctrl 1</button>' +
-  '<button class="test-button">ctrl 2</button>' +
-  '</div>',
-            position:'top center',
-            style: {
-                'background-color': '#fff',
-                'border': '2px solid #fff',
-                'border-radius': '3px',
-                'box-shadow': '0 2px 6px rgba(0,0,0,.3)',
-                'cursor': 'pointer',
-                'marginBottom': '22px',
-                'text-align': 'center'
-            },
-            events: {
-                '.test-button click' : function (e) {
-                    alert('Clicked on custom control');
-                }
-            }
-        });
 
-        map.addControl({
-            templateURL: 'templates/custom.panel.html',
-            position:'right bottom',
-            events: {
-                '.menu li click' : function (e) {
-                    console.log('clicked on ', e.target);
-                    e.target.classList.toggle('active');
-                    }
-            }
-        });
-</code>
-</pre>
+<div id="mymap"></div>
 </body>
 </html>

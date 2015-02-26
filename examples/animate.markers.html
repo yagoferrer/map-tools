@@ -4,26 +4,10 @@
   <meta charset="UTF-8">
   <title>Document</title>
   <link href="vendors/prism/prism.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../examples/style/basic.css"/>
   <script src="vendors/prism/prism.js"></script>
   <script src="../dist/map-tools.js"></script>
 </head>
-<style>
-  html, body, #mymap {
-    height: 100%;
-    margin: 0px;
-    padding: 0px;
-  }
-
-  #mymap {
-    float: left;
-    width: 600px;
-    height: 500px;
-  }
-
-  pre {
-    float: left;
-  }
-</style>
 <body>
 <script>
   var map = new GMP({
@@ -34,6 +18,13 @@
   }, function (err, instance) {
     if (!err) {
       addMarkers();
+
+	    // snippet panel
+	    map.addControl({
+		    templateURL: 'code.snippet/animate.markers.snippet.html',
+		    position:'right center'
+	    });
+	    Prism.highlightAll();
     }
   });
 
@@ -68,36 +59,5 @@
   }
 </script>
 <div id="mymap"></div>
-<pre>
-<code class="language-javascript">
-      map.addMarker([{
-      lat: 41.387220,
-      lng: 2.169983,
-      title: 'Plaça Catalunya',
-      move: 'bounce'
-
-    },
-      {
-        lat: 41.4036,
-        lng: 2.1744,
-        title: 'Sagrada Familia',
-        move: 'bounce'
-      },
-      {
-        lat: 41.395571,
-        lng: 2.161961,
-        title: 'Casa Milà',
-        move: 'drop'
-      },
-      {
-        lat: 41.385231,
-        lng: 2.180893,
-        title: 'Picasso Museum',
-        move: 'drop'
-      }
-
-    ]);
-</code>
-</pre>
 </body>
 </html>

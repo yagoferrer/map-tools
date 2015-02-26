@@ -1,0 +1,21 @@
+<div class="map-panel" >
+  <pre class="language-javascript">
+		<code class="language-javascript">
+			map.addControl({
+        templateURL: 'templates/custom.panel.html',
+        position:'left bottom',
+        events: {
+          '.menu li click' : function (e) {
+              console.log('clicked on ', e.target);
+              e.target.classList.toggle('active');
+            }
+          }
+				});
+
+			map.addControl({
+		    templateURL: 'templates/snippet.panel.html',
+		    position:'right center'
+			});
+</code>
+	</pre>
+</div>

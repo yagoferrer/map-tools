@@ -1,23 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <style type="text/css">
-    html, body, #mymap {
-      height: 100%;
-      margin: 0;
-    }
-
-    #mymap {
-      float: left;
-      width: 600px;
-      height: 500px;
-    }
-
-    pre {
-      float: left;
-    }
-  </style>
   <link href="vendors/prism/prism.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../examples/style/basic.css"/>
   <script src="vendors/prism/prism.js"></script>
   <script src="../dist/map-tools.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -35,16 +20,17 @@
     $.getJSON('http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson', function (data) {
       map.addGeoJson(data);
     });
+
+	  // snippet panel
+	  map.addControl({
+		  templateURL: 'code.snippet/geojson.snippet.html',
+		  position:'right center'
+	  });
+	  Prism.highlightAll();
+
   });
 
 </script>
-<pre>
-<code class="language-javascript">
-var file = 'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson';
-$.getJSON(file, function (data) {
-  map.addGeoJson(data);
-  });
-</code>
-</pre>
+
 </body>
 </html>
