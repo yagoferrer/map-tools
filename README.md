@@ -266,6 +266,27 @@ You can set `style` options to specify the way a Feature should appear when disp
 }
 ```
 
+#### Update styling of existing Features
+
+You can update the `style` of the existing Feature on a map.
+
+```javascript
+ var feature1 = map.json.filter.NAME.filter('Nevada').top(1)[0];
+ var feature2 = map.json.filter.NAME.filter('Nevada').top(1)[0]
+ map.updateFeature([feature1,feature2], {style: {fillOpacity: 0.4, fillColor:'black', strokeColor: 'black'}});
+```
+
+You can also update the `style` of a group of features by a mapping function.
+
+```javascript
+	map.updateFeature([feature1,feature2], { style: function(){
+			var value = (this.data.VALUE/this.data.MAX_VALUE);
+			var l = ((value) * 50)+50;
+			return { fillColor: 'hsl(210,100%,'+l+'%)'}
+		}
+	});
+```
+
 ## Crossfilter support for Features
 
 You can use a Crossfilter result to update features. In this example it finds the State named: 'Texas' and updates the background color.
