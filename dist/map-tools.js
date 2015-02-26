@@ -5,7 +5,7 @@
 "use strict";
 window.GMP = require('map-tools/index')(window);
 
-},{"map-tools/index":11}],2:[function(require,module,exports){
+},{"map-tools/index":12}],2:[function(require,module,exports){
 /*jslint node: true */
 "use strict"
 
@@ -96,7 +96,94 @@ module.exports = function(global, that) {
 	return addPanel;
 };
 
-},{"map-tools/config":7,"map-tools/utils":16}],3:[function(require,module,exports){
+},{"map-tools/config":8,"map-tools/utils":16}],3:[function(require,module,exports){
+/*jslint node: true */
+"use strict";
+var topojson = require('topojson');
+var utils = require('map-tools/utils');
+var crossfilter = require('crossfilter');
+
+
+module.exports = function (global, that) {
+
+  var addFilter = require('map-tools/addFilter')(global, that);
+
+  /**
+   * Adds GeoJSON Feature Options like: style
+   * @param features
+   * @param options
+   * @private
+   */
+  function addFeatureOptions(features, options) {
+
+
+    var feature, x;
+    for (x in features) {
+      if (features.hasOwnProperty(x)) {
+        feature = features[x];
+
+        var data = feature.k;
+        feature.k.uid = utils.createUid();
+
+        Object.defineProperty(feature, 'data', {
+          value: data,
+          enumerable: true,
+          writable: false,
+          configurable: false
+        });
+
+        if (options) {
+          if (options.filters) {
+            // Only add filters if not defined.
+            if (!global.GMP.maps[that.id].json.filter) {
+              addFilter('json', options.filters);
+            }
+
+            global.GMP.maps[that.id].json.crossfilter.add([feature.data]);
+          }
+
+          if (options.style) {
+            that.instance.data.overrideStyle(feature, options.style);
+          }
+        }
+        global.GMP.maps[that.id].json.all[feature.data.uid] = feature;
+      }
+    }
+  }
+
+
+  /**
+   * Adds a Topo JSON file into a Map
+   * @param data The parsed JSON File
+   * @param options
+   */
+  function addTopoJson(data, options) {
+    var item, geoJson, features,  x;
+    for (x in options) {
+      if (options.hasOwnProperty(x)) {
+        item = options[x];
+        geoJson = topojson.feature(data, data.objects[item.object]);
+        features = that.instance.data.addGeoJson(geoJson);
+        addFeatureOptions(features, item);
+        global.GMP.maps[that.id].json.groups[item.object] = features;
+      }
+    }
+    return features;
+  }
+
+  function addGeoJson(data, options) {
+    var features = that.instance.data.addGeoJson(data, options);
+    addFeatureOptions(features, options);
+    return features;
+  }
+
+  return {
+    addGeoJson: addGeoJson,
+    addTopoJson: addTopoJson
+  };
+};
+
+},{"crossfilter":18,"map-tools/addFilter":4,"map-tools/utils":16,"topojson":19}],4:[function(require,module,exports){
 var crossfilter = require('crossfilter');
 
 module.exports = function(global, that) {
@@ -131,7 +218,7 @@ module.exports = function(global, that) {
 
 };
 
-},{"crossfilter":18}],4:[function(require,module,exports){
+},{"crossfilter":18}],5:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 var utils = require('map-tools/utils');
@@ -237,7 +324,7 @@ module.exports = function (global, that) {
 
 };
 
-},{"map-tools/gmaps.js":9,"map-tools/utils":16}],5:[function(require,module,exports){
+},{"map-tools/gmaps.js":10,"map-tools/utils":16}],6:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 var utils = require('map-tools/utils');
@@ -344,7 +431,7 @@ module.exports = function (global, that) {
 
 };
 
-},{"map-tools/addFilter":3,"map-tools/bubble":6,"map-tools/utils":16}],6:[function(require,module,exports){
+},{"map-tools/addFilter":4,"map-tools/bubble":7,"map-tools/utils":16}],7:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 module.exports = function (global) {
@@ -369,7 +456,7 @@ module.exports = function (global) {
 };
 
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 module.exports = {
@@ -380,7 +467,7 @@ module.exports = {
   panelPosition: 'TOP_LEFT'
 };
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 module.exports = function (global, that) {
@@ -427,7 +514,7 @@ module.exports = function (global, that) {
   return findAndUpdateMarker;
 };
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 
@@ -471,7 +558,7 @@ module.exports = function (global) {
   };
 };
 
-},{"map-tools/config":7,"map-tools/utils":16}],10:[function(require,module,exports){
+},{"map-tools/config":8,"map-tools/utils":16}],11:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 var utils = require('map-tools/utils');
@@ -518,7 +605,7 @@ module.exports = function (global, that) {
 
 };
 
-},{"map-tools/config":7,"map-tools/findUpdateMarker":8,"map-tools/utils":16}],11:[function(require,module,exports){
+},{"map-tools/config":8,"map-tools/findUpdateMarker":9,"map-tools/utils":16}],12:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 module.exports = function (global) {
@@ -532,8 +619,8 @@ module.exports = function (global) {
     var that = this;
 
     this.addMarker = require('map-tools/addMarker')(global, that);
-    this.addTopoJson = require('map-tools/topojson')(global, that).addTopoJson;
-    this.addGeoJson = require('map-tools/topojson')(global, that).addGeoJson;
+    this.addTopoJson = require('map-tools/addFeature')(global, that).addTopoJson;
+    this.addGeoJson = require('map-tools/addFeature')(global, that).addGeoJson;
     this.updateFeature = require('map-tools/updateFeature')(global, that);
     this.addControl = require('map-tools/addControl')(global, that);
     this.updateMarker = require('map-tools/updateMarker')(global, that);
@@ -554,94 +641,7 @@ module.exports = function (global) {
   return GMP;
 };
 
-},{"map-tools/addControl":2,"map-tools/addMap":4,"map-tools/addMarker":5,"map-tools/groups":10,"map-tools/topojson":12,"map-tools/updateFeature":13,"map-tools/updateMap":14,"map-tools/updateMarker":15}],12:[function(require,module,exports){
-/*jslint node: true */
-"use strict";
-var topojson = require('topojson');
-var utils = require('map-tools/utils');
-var crossfilter = require('crossfilter');
-
-
-module.exports = function (global, that) {
-
-  var addFilter = require('map-tools/addFilter')(global, that);
-
-  /**
-   * Adds GeoJSON Feature Options like: style
-   * @param features
-   * @param options
-   * @private
-   */
-  function addFeatureOptions(features, options) {
-
-
-    var feature, x;
-    for (x in features) {
-      if (features.hasOwnProperty(x)) {
-        feature = features[x];
-
-        var data = feature.k;
-        feature.k.uid = utils.createUid();
-
-        Object.defineProperty(feature, 'data', {
-          value: data,
-          enumerable: true,
-          writable: false,
-          configurable: false
-        });
-
-        if (options) {
-          if (options.filters) {
-            // Only add filters if not defined.
-            if (!global.GMP.maps[that.id].json.filter) {
-              addFilter('json', options.filters);
-            }
-
-            global.GMP.maps[that.id].json.crossfilter.add([feature.data]);
-          }
-
-          if (options.style) {
-            that.instance.data.overrideStyle(feature, options.style);
-          }
-        }
-        global.GMP.maps[that.id].json.all[feature.data.uid] = feature;
-      }
-    }
-  }
-
-
-  /**
-   * Adds a Topo JSON file into a Map
-   * @param data The parsed JSON File
-   * @param options
-   */
-  function addTopoJson(data, options) {
-    var item, geoJson, features,  x;
-    for (x in options) {
-      if (options.hasOwnProperty(x)) {
-        item = options[x];
-        geoJson = topojson.feature(data, data.objects[item.object]);
-        features = that.instance.data.addGeoJson(geoJson);
-        addFeatureOptions(features, item);
-        global.GMP.maps[that.id].json.groups[item.object] = features;
-      }
-    }
-    return features;
-  }
-
-  function addGeoJson(data, options) {
-    var features = that.instance.data.addGeoJson(data, options);
-    addFeatureOptions(features, options);
-    return features;
-  }
-
-  return {
-    addGeoJson: addGeoJson,
-    addTopoJson: addTopoJson
-  };
-};
-
-},{"crossfilter":18,"map-tools/addFilter":3,"map-tools/utils":16,"topojson":19}],13:[function(require,module,exports){
+},{"map-tools/addControl":2,"map-tools/addFeature":3,"map-tools/addMap":5,"map-tools/addMarker":6,"map-tools/groups":11,"map-tools/updateFeature":13,"map-tools/updateMap":14,"map-tools/updateMarker":15}],13:[function(require,module,exports){
 /*jslint node: true */
 "use strict"
 
@@ -711,7 +711,7 @@ module.exports = function (global, that) {
   return updateMap;
 };
 
-},{"map-tools/gmaps.js":9}],15:[function(require,module,exports){
+},{"map-tools/gmaps.js":10}],15:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 var utils = require('map-tools/utils');
@@ -745,7 +745,7 @@ module.exports = function (global, that) {
 
 };
 
-},{"map-tools/config":7,"map-tools/findUpdateMarker":8,"map-tools/utils":16}],16:[function(require,module,exports){
+},{"map-tools/config":8,"map-tools/findUpdateMarker":9,"map-tools/utils":16}],16:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 function clone(o, exceptionKeys) {
