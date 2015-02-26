@@ -10,9 +10,6 @@
 </head>
 <body>
 
-<h4><a href="#" class="single">Update Single Feature (Select Nevada & Colorado)</a></h4>
-<h4><a href="#" class="choro">Show  Census choropleth Data </a></h4>
-
 <div id="mymap"></div>
 <script>
 
@@ -36,6 +33,28 @@
       }]);
     });
 
+	  map.addControl({
+		  template: '<div class="actions">' +
+		  '<div class="single">Update Single Feature (Select Nevada & Colorado)</div>' +
+		  '<div class="choro">Show CensusArea Data (Chropleth) </div>' +
+		  '</div>',
+		  position: 'right center',
+		  events: {
+			  '.single click': function (e) {
+				  var feature1 = map.json.filter.NAME.filter('Colorado').top(1)[0];
+				  var feature2 = map.json.filter.NAME.filter('Nevada').top(1)[0];
+				  map.updateFeature([feature1,feature2], {style: {fillOpacity: 0.4, fillColor:'black', strokeColor: 'black'}});
+				  e.preventDefault();
+			  },
+
+			  '.choro click': function (e) {
+				  map.updateFeature(Object.keys(GMP.maps.mymap.json.all).map(function(k) { return GMP.maps.mymap.json.all[k] }), {style: color});
+				  e.preventDefault();
+			  }
+		  }
+	  });
+
+
 	  // snippet panel
 	  map.addControl({
 		  templateURL: 'code.snippet/topojson.snippet.html',
@@ -47,35 +66,21 @@
   });
 
 
-  $(function() {
 
-    $('.single').click(function (e) {
-      var feature1 = map.json.filter.NAME.filter('Colorado').top(1)[0];
-      var feature2 = map.json.filter.NAME.filter('Nevada').top(1)[0];
-      map.updateFeature([feature1,feature2], {style: {fillOpacity: 0.4, fillColor:'black', strokeColor: 'black'}});
-      e.preventDefault();
-    });
+  var color = function() {
+	  // Simple choropleth function based on the CENSUSAREA data
+	  var value = (this.data.CENSUSAREA/570640.95);
+	  var alpha = 5;
+	  var h = 210,
+			  s = 100,
+			  l = (Math.pow((1 - value), alpha) * 50)+50; // this is just to increase the difference on the data for much different color
 
-    $('.choro').click(function (e) {
-      var color = function() {
-        // Simple choropleth function based on the CENSUSAREA data
-        var value = (this.data.CENSUSAREA/570640.95);
-        var alpha = 5;
-        var h = 210,
-        s = 100,
-        l = (Math.pow((1 - value), alpha) * 50)+50; // this is just to increase the difference on the data for much different color
+	  return {
+		  fillColor: 'hsl('+h+','+s+'%,'+l+'%)',
+		  fillOpacity:0.7
+	  }
 
-       return {
-          fillColor: 'hsl('+h+','+s+'%,'+l+'%)',
-          fillOpacity:0.7
-        }
-
-      };
-      map.updateFeature(Object.keys(GMP.maps.mymap.json.all).map(function(k) { return GMP.maps.mymap.json.all[k] }), {style: color});
-      e.preventDefault();
-    });
-
-  });
+  };
 </script>
 </body>
 </html>
