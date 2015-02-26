@@ -17,6 +17,38 @@
     lng: 2.1833
   }, function (err, instance) {
 
+	  map.addControl({
+		  template: '<div class="actions">' +
+		  '<div class="update-terrain">Update Map View to: TERRAIN and Disable: all controls</div>' +
+		  '<div class="update-roadmap">Update Map View to: ROADMAP and Enable: all controls</div>' +
+		  '</div>',
+		  position: 'right center',
+		  events: {
+			  '.update-terrain click': function (e) {
+				  e.preventDefault();
+				  map.updateMap(
+						  {
+							  type: 'TERRAIN',
+							  mapTypeControl: false,
+							  zoomControl: false,
+							  streetViewControl: false,
+							  panControl: false
+						  });
+			  },
+
+			  '.update-roadmap click': function (e) {
+				  e.preventDefault();
+				  map.updateMap({
+					  type: 'ROADMAP',
+					  mapTypeControl: true,
+					  zoomControl: true,
+					  streetViewControl: true,
+					  panControl: true
+				  });
+			  }
+		  }
+	  });
+
 		// snippet panel
 	  map.addControl({
 		  templateURL: 'code.snippet/update.map.snippet.html',
@@ -26,37 +58,7 @@
 
   });
 
-
-  $(function() {
-
-    $('.update-terrain').click(function(e) {
-      e.preventDefault();
-      map.updateMap(
-        {
-          type: 'TERRAIN',
-          mapTypeControl: false,
-          zoomControl: false,
-          streetViewControl: false,
-          panControl: false
-        });
-    });
-
-    $('.update-roadmap').click(function(e) {
-      e.preventDefault();
-      map.updateMap({
-        type: 'ROADMAP',
-        mapTypeControl: true,
-        zoomControl: true,
-        streetViewControl: true,
-        panControl: true
-      });
-    });
-
-  });
-
 </script>
-<h4><a href class="update-terrain">Update Map View to: TERRAIN and Disable: all controls</a></h4>
-<h4><a href class="update-roadmap">Update Map View to: ROADMAP and Enable: all controls</a></h4>
 <div id="mymap"></div>
 </body>
 </html>

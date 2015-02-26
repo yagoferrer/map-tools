@@ -21,6 +21,19 @@
     if (!err) {
       addMarker();
 
+	    map.addControl({
+		    template: '<div class="actions">' +
+		    '<div class="top">Top Populated City</div>' +
+		    '</div>',
+		    position: 'right center',
+		    events: {
+			    '.top click': function (e) {
+				    map.updateMarker(map.markers.filter.population.top(1), {move: 'bounce'});
+				    e.preventDefault();
+			    }
+		    }
+	    });
+
 			// snippet panel
 	    map.addControl({
 		    templateURL: 'code.snippet/add.group.snippet.html',
@@ -59,24 +72,7 @@
     ], {filters: ['population']});
   }
 
-  $(function() {
-    $('.top').click(function(e) {
-        map.updateMarker(map.markers.filter.population.top(1), {move: 'bounce'});
-        e.preventDefault();
-    });
-
-  });
-
-
 </script>
-<div class="container"></div>
-<h4><a href="#" class="top">Top Populated City</a></h4>
-<div id="mymap" class="side"></div>
-<pre class="side">
-<code class="language-javascript">
-
-</code>
-</pre>
-</div>
+<div id="mymap"></div>
 </body>
 </html>

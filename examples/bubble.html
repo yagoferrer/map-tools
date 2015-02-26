@@ -21,6 +21,20 @@
       addMarker();
 
 	    map.addControl({
+		    template: '<div class="actions">' +
+		    '<div class="update">Update Bubble text to: "Click Me!"</div>' +
+		    '</div>',
+		    position: 'right center',
+		    events: {
+			    '.update click': function (e) {
+				    map.updateMarker(marker, {bubble: {content: '<p>Click Me!</p>'}});
+				    e.preventDefault();
+			    }
+		    }
+	    });
+
+
+	    map.addControl({
 		    templateURL: 'code.snippet/add.bubble.snippet.html',
 		    position:'right center'
 	    });
@@ -45,15 +59,7 @@
     });
   }
 
-  $(function() {
-    $('.update').click(function(e) {
-      map.updateMarker(marker, {bubble: {content: '<p>Click Me!</p>'}});
-      e.preventDefault();
-
-    });
-  })
 </script>
-<h4><a href="#" class="update">Update Bubble text to: "Click Me!"</a></h4>
 <div id="mymap"></div>
 </body>
 </html>
