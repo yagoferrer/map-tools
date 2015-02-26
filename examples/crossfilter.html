@@ -4,27 +4,11 @@
   <meta charset="UTF-8">
   <title>Document</title>
   <link href="vendors/prism/prism.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../examples/style/basic.css"/>
   <script src="vendors/prism/prism.js"></script>
   <script src="../dist/map-tools.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </head>
-<style>
-  html, body, #mymap {
-    height: 100%;
-    margin: 0px;
-    padding: 0px;
-  }
-
-  #mymap {
-    float: left;
-    width: 500px;
-    height: 500px;
-  }
-
-  pre {
-    float: right;
-  }
-</style>
 <body>
 <script>
 
@@ -36,6 +20,26 @@
   }, function (err, instance) {
     if (!err) {
       addMarker();
+
+	    map.addPanel({
+		    template: '<div class="actions">' +
+		    '<div class="top">Top Populated City</div>' +
+		    '</div>',
+		    position: 'right center',
+		    events: {
+			    '.top click': function (e) {
+				    map.updateMarker(map.markers.filter.population.top(1), {move: 'bounce'});
+				    e.preventDefault();
+			    }
+		    }
+	    });
+
+			// snippet panel
+	    map.addPanel({
+		    templateURL: 'code.snippet/add.group.snippet.html',
+		    position:'right center'
+	    });
+	    Prism.highlightAll();
     }
   });
 
@@ -68,50 +72,7 @@
     ], {filters: ['population']});
   }
 
-  $(function() {
-    $('.top').click(function(e) {
-        map.updateMarker(map.markers.filter.population.top(1), {move: 'bounce'});
-        e.preventDefault();
-    });
-
-  });
-
-
 </script>
-<h4><a href="#" class="top">Top Populated City</a></h4>
 <div id="mymap"></div>
-<pre>
-<code class="language-javascript">
-   map.addMarker([
-      {
-        lat: 41.3833,
-        lng: 2.1833,
-        data: {
-          name: 'Barcelona',
-          population: 1621000
-        }
-      },
-      {
-        lat: 40.419795,
-        lng: -3.710436,
-        data: {
-          name: 'Madrid',
-          population: 3234000
-        }
-      },
-      {
-        lat: 41.648821,
-        lng: -0.889086,
-        data: {
-          name: 'Zaragoza',
-          population: 679624
-        }
-      }
-    ], {filters: ['population']});
-  }
-  ...
-  map.updateMarker(map.markers.filter.population.top(1), {move: 'bounce'});
-</code>
-</pre>
 </body>
 </html>

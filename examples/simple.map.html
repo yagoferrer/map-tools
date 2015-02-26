@@ -4,26 +4,11 @@
   <meta charset="UTF-8">
   <title>Document</title>
   <link href="vendors/prism/prism.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../examples/style/basic.css"/>
   <script src="vendors/prism/prism.js"></script>
   <script src="../dist/map-tools.js"></script>
 </head>
-<style>
-  html, body, #mymap {
-    height: 100%;
-    margin: 0px;
-    padding: 0px;
-  }
-  #mymap {
-    float: left;
-    width: 600px;
-    height: 500px;
-  }
 
-  pre {
-    float: left;
-  }
-
-</style>
 <body>
 <script>
   var map = new GMP({
@@ -33,20 +18,16 @@
     type: 'ROADMAP'
   }, function (err, instance) {
     console.log('Map Loaded!', instance);
+
+	  // snippet panel
+	  map.addPanel({
+		  templateURL: 'code.snippet/simple.map.snippet.html',
+		  position:'right center'
+	  });
+	  Prism.highlightAll();
+
   });
 </script>
-<div id="mymap"></div>
-<pre>
-<code class="language-javascript">
-  var map = new GMP({
-    id: 'mymap',
-    lat: 41.3833,
-    lng: 2.1833,
-    type: 'ROADMAP'
-  }, function (err, instance) {
-    console.log('Map Loaded!', instance);
-  });
-</code>
-</pre>
+<div id="mymap" ></div>
 </body>
 </html>

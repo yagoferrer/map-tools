@@ -4,27 +4,11 @@
   <meta charset="UTF-8">
   <title>Document</title>
   <link href="vendors/prism/prism.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../examples/style/basic.css"/>
   <script src="vendors/prism/prism.js"></script>
   <script src="../dist/map-tools.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </head>
-<style>
-  html, body, #mymap {
-    height: 100%;
-    margin: 0px;
-    padding: 0px;
-  }
-
-  #mymap {
-    float: left;
-    width: 600px;
-    height: 500px;
-  }
-
-  pre {
-    float: left;
-  }
-</style>
 <body>
 <script>
 
@@ -35,6 +19,26 @@
   }, function (err, instance) {
     if (!err) {
       addMarker();
+
+	    map.addPanel({
+		    template: '<div class="actions">' +
+		    '<div class="update">Update Bubble text to: "Click Me!"</div>' +
+		    '</div>',
+		    position: 'right center',
+		    events: {
+			    '.update click': function (e) {
+				    map.updateMarker(marker, {bubble: {content: '<p>Click Me!</p>'}});
+				    e.preventDefault();
+			    }
+		    }
+	    });
+
+
+	    map.addPanel({
+		    templateURL: 'code.snippet/add.bubble.snippet.html',
+		    position:'right center'
+	    });
+	    Prism.highlightAll();
     }
   });
 
@@ -55,33 +59,7 @@
     });
   }
 
-  $(function() {
-    $('.update').click(function(e) {
-      map.updateMarker(marker, {bubble: {content: '<p>Click Me!</p>'}});
-      e.preventDefault();
-
-    });
-  })
 </script>
-<h4><a href="#" class="update">Update Bubble text to: "Click Me!"</a></h4>
 <div id="mymap"></div>
-<pre>
-<code class="language-javascript">
-   marker = map.addMarker({
-      lat: 41.3833,
-      lng: 2.1833,
-      title: 'Barcelona',
-      bubble: {
-        event: 'mouseover',
-        content: '<p>{city}</p>'
-      },
-      data: {
-        city: 'Barcelona!'
-      }
-    });
-    ...
-    map.updateMarker(marker, {bubble: {content: '<p>Click Me!</p>'}});
-</code>
-</pre>
 </body>
 </html>
