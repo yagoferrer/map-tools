@@ -24,7 +24,7 @@
 		if (!err) {
 			addMarker();
 
-			map.addControl({
+			map.addPanel({
 				template: '<div class="actions">' +
 				'<div class="update-crossfilter">Update Marker by using Crossfilter</div>' +
 				'<div class="update-reference">Update Marker by using it\'s own reference</div>' +
@@ -54,7 +54,7 @@
 			var toggle = false
 
 			// snippet panel
-			map.addControl({
+			map.addPanel({
 				templateURL: 'code.snippet/update.marker.snippet.html',
 				position:'right center'
 			});

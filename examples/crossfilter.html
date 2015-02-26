@@ -21,7 +21,7 @@
     if (!err) {
       addMarker();
 
-	    map.addControl({
+	    map.addPanel({
 		    template: '<div class="actions">' +
 		    '<div class="top">Top Populated City</div>' +
 		    '</div>',
@@ -35,7 +35,7 @@
 	    });
 
 			// snippet panel
-	    map.addControl({
+	    map.addPanel({
 		    templateURL: 'code.snippet/add.group.snippet.html',
 		    position:'right center'
 	    });

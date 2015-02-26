@@ -29,13 +29,13 @@
         lng: 2.1833
     }, function (err, instance) {
         if (!err) {
-            addControl();
+            addPanel();
         }
     });
 
-    function addControl() {
+    function addPanel() {
 
-        map.addControl({
+        map.addPanel({
             templateURL: 'templates/custom.panel.html',
             position:'left bottom',
             events: {
@@ -46,7 +46,7 @@
             }
         });
 
-        map.addControl({
+        map.addPanel({
             templateURL: 'code.snippet/add.control.snippet.html',
             position:'right center'
         });

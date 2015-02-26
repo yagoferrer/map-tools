@@ -7,97 +7,6 @@ window.GMP = require('map-tools/index')(window);
 
 },{"map-tools/index":12}],2:[function(require,module,exports){
 /*jslint node: true */
-"use strict"
-
-var utils = require('map-tools/utils');
-var config = require('map-tools/config');
-
-module.exports = function(global, that) {
-
-	function getPositionKey(pos) {
-		return pos.toUpperCase().match(/\S+/g).join('_');
-	}
-
-	function hy2cmml(k) {
-		return k.replace(/-(.)/g, function(m, g) {
-			return g.toUpperCase();
-		});
-	}
-
-	function HTMLParser(aHTMLString){
-		var container = window.document.createElement('div');
-
-		container.innerHTML = aHTMLString;
-
-		return container;
-	}
-
-	function addPanel(options) {
-
-		var position,
-			panel,
-			e,
-			rule;
-
-		// default position
-		options.position = options.position || config.panelPosition;
-
-		if (options.templateURL) {
-			var request = new XMLHttpRequest();
-			request.open("GET", options.templateURL, false);
-			request.send(null);
-			panel = HTMLParser(request.responseText);
-
-		}
-
-		// template options
-		if (typeof options.template === 'string') {
-			panel = HTMLParser(options.template);
-		}
-
-		// positioning options
-		if (options.position) {
-			// convert to google ControlPosition map position keys
-			options.position = getPositionKey(options.position);
-			position = google.maps.ControlPosition[options.position];
-		}
-
-		// style options
-		if (typeof options.style === 'object') {
-			for (rule in options.style) {
-				var ruleKey = hy2cmml(rule);
-				panel.style[ruleKey] = options.style[rule];
-			}
-		}
-
-		// event handler
-		if (options.events) {
-
-			for (e in options.events) {
-				var keys = e.match(/\S+/g);
-
-
-				var	event = keys.splice(-1); //event type
-				var selector = keys.join(' '); // selector string
-				var	elements = panel.querySelectorAll(selector);
-
-				[].forEach.call(elements, function(elm) {
-					google.maps.event.addDomListener( elm, event, options.events[e] );
-				});
-
-			}
-		}
-
-
-		that.instance.controls[position].push(panel);
-		return panel;
-	}
-
-	return addPanel;
-};
-
-},{"map-tools/config":8,"map-tools/utils":16}],3:[function(require,module,exports){
-/*jslint node: true */
 "use strict";
 var topojson = require('topojson');
 var utils = require('map-tools/utils');
@@ -183,7 +92,7 @@ module.exports = function (global, that) {
   };
 };
 
-},{"crossfilter":18,"map-tools/addFilter":4,"map-tools/utils":16,"topojson":19}],4:[function(require,module,exports){
+},{"crossfilter":18,"map-tools/addFilter":3,"map-tools/utils":16,"topojson":19}],3:[function(require,module,exports){
 var crossfilter = require('crossfilter');
 
 module.exports = function(global, that) {
@@ -218,7 +127,7 @@ module.exports = function(global, that) {
 
 };
 
-},{"crossfilter":18}],5:[function(require,module,exports){
+},{"crossfilter":18}],4:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 var utils = require('map-tools/utils');
@@ -324,7 +233,7 @@ module.exports = function (global, that) {
 
 };
 
-},{"map-tools/gmaps.js":10,"map-tools/utils":16}],6:[function(require,module,exports){
+},{"map-tools/gmaps.js":10,"map-tools/utils":16}],5:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 var utils = require('map-tools/utils');
@@ -431,7 +340,98 @@ module.exports = function (global, that) {
 
 };
 
-},{"map-tools/addFilter":4,"map-tools/bubble":7,"map-tools/utils":16}],7:[function(require,module,exports){
+},{"map-tools/addFilter":3,"map-tools/bubble":7,"map-tools/utils":16}],6:[function(require,module,exports){
+/*jslint node: true */
+"use strict"
+
+var utils = require('map-tools/utils');
+var config = require('map-tools/config');
+
+module.exports = function(global, that) {
+
+	function getPositionKey(pos) {
+		return pos.toUpperCase().match(/\S+/g).join('_');
+	}
+
+	function hy2cmml(k) {
+		return k.replace(/-(.)/g, function(m, g) {
+			return g.toUpperCase();
+		});
+	}
+
+	function HTMLParser(aHTMLString){
+		var container = window.document.createElement('div');
+
+		container.innerHTML = aHTMLString;
+
+		return container;
+	}
+
+	function addPanel(options) {
+
+		var position,
+			panel,
+			e,
+			rule;
+
+		// default position
+		options.position = options.position || config.panelPosition;
+
+		if (options.templateURL) {
+			var request = new XMLHttpRequest();
+			request.open("GET", options.templateURL, false);
+			request.send(null);
+			panel = HTMLParser(request.responseText);
+
+		}
+
+		// template options
+		if (typeof options.template === 'string') {
+			panel = HTMLParser(options.template);
+		}
+
+		// positioning options
+		if (options.position) {
+			// convert to google ControlPosition map position keys
+			options.position = getPositionKey(options.position);
+			position = google.maps.ControlPosition[options.position];
+		}
+
+		// style options
+		if (typeof options.style === 'object') {
+			for (rule in options.style) {
+				var ruleKey = hy2cmml(rule);
+				panel.style[ruleKey] = options.style[rule];
+			}
+		}
+
+		// event handler
+		if (options.events) {
+
+			for (e in options.events) {
+				var keys = e.match(/\S+/g);
+
+
+				var	event = keys.splice(-1); //event type
+				var selector = keys.join(' '); // selector string
+				var	elements = panel.querySelectorAll(selector);
+
+				[].forEach.call(elements, function(elm) {
+					google.maps.event.addDomListener( elm, event, options.events[e] );
+				});
+
+			}
+		}
+
+
+		that.instance.controls[position].push(panel);
+		return panel;
+	}
+
+	return addPanel;
+};
+
+},{"map-tools/config":8,"map-tools/utils":16}],7:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
 module.exports = function (global) {
@@ -622,7 +622,7 @@ module.exports = function (global) {
     this.addTopoJson = require('map-tools/addFeature')(global, that).addTopoJson;
     this.addGeoJson = require('map-tools/addFeature')(global, that).addGeoJson;
     this.updateFeature = require('map-tools/updateFeature')(global, that);
-    this.addControl = require('map-tools/addControl')(global, that);
+    this.addPanel = require('map-tools/addPanel')(global, that);
     this.updateMarker = require('map-tools/updateMarker')(global, that);
     this.addGroup = require('map-tools/groups')(global, that).addGroup;
     this.updateGroup = require('map-tools/groups')(global, that).updateGroup;
@@ -641,7 +641,7 @@ module.exports = function (global) {
   return GMP;
 };
 
-},{"map-tools/addControl":2,"map-tools/addFeature":3,"map-tools/addMap":5,"map-tools/addMarker":6,"map-tools/groups":11,"map-tools/updateFeature":13,"map-tools/updateMap":14,"map-tools/updateMarker":15}],13:[function(require,module,exports){
+},{"map-tools/addFeature":2,"map-tools/addMap":4,"map-tools/addMarker":5,"map-tools/addPanel":6,"map-tools/groups":11,"map-tools/updateFeature":13,"map-tools/updateMap":14,"map-tools/updateMarker":15}],13:[function(require,module,exports){
 /*jslint node: true */
 "use strict"
 

@@ -1,10 +1,10 @@
-describe('when calling addControl()', function () {
+describe('when calling addPanel()', function () {
 	"use strict";
 
 	it('should add a single panel on the specified position', function () {
 		var map = new GMP({async: false, id: 'mymap', lat: 41.3833, lng: 2.1833});
 
-		var result = map.addControl({
+		var result = map.addPanel({
 			template: '<div>' +
 			'<button id="clickMe" class="test-button">ctrl 1</button></div>',
 			position: 'top center'
@@ -17,7 +17,7 @@ describe('when calling addControl()', function () {
 	it('should add a single panel with the specified style options', function () {
 		var map = new GMP({async: false, id: 'mymap', lat: 41.3833, lng: 2.1833});
 
-		var panel = map.addControl({
+		var panel = map.addPanel({
 			template: '<div><button id="clickMe">ctrl 1</button></div>',
 			style: {
 				'background-color': '#fff',
@@ -34,7 +34,7 @@ describe('when calling addControl()', function () {
 		var map = new GMP({async: false, id: 'mymap', lat: 41.3833, lng: 2.1833});
 		var spy = sinon.spy();
 
-		var panel = map.addControl({
+		var panel = map.addPanel({
 			template: '<div><button id="clickMe">ctrl 1</button></div>',
 			events: {
 				'#clickMe click' : spy
@@ -55,7 +55,7 @@ describe('when calling addControl()', function () {
 
     var map = new GMP({async: false, id: 'mymap', lat: 41.3833, lng: 2.1833});
 
-    map.addControl({
+    map.addPanel({
       templateURL: 'control-template.html',
       position: 'top center'
     });

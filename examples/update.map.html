@@ -17,7 +17,7 @@
     lng: 2.1833
   }, function (err, instance) {
 
-	  map.addControl({
+	  map.addPanel({
 		  template: '<div class="actions">' +
 		  '<div class="update-terrain">Update Map View to: TERRAIN and Disable: all controls</div>' +
 		  '<div class="update-roadmap">Update Map View to: ROADMAP and Enable: all controls</div>' +
@@ -50,7 +50,7 @@
 	  });
 
 		// snippet panel
-	  map.addControl({
+	  map.addPanel({
 		  templateURL: 'code.snippet/update.map.snippet.html',
 		  position:'right center'
 	  });
