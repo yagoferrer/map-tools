@@ -1,12 +1,12 @@
 <div class="map-panel" >
 <pre class="language-javascript">
 <code class="language-javascript">
-  // Click event
+  // Click event action
   var filter = map.markers.filter.population.top(1);
   map.updateMarker(filter, {move: 'bounce'});
 
-	map.addMarker([
-		{
+  // Adding markers
+  map.addMarker([{
 			lat: 41.3833,
 			lng: 2.1833,
 			data: {
