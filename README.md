@@ -32,9 +32,7 @@ Direct download: [map-tools.min.js](https://github.com/yagoferrer/map-tools/blob
  
 ## Check out examples:
 
-Go to: [map-tools.io](http://map-tools.io/) 
-
-Or run:
+You can either go to: [map-tools.io](http://map-tools.io/) or pull the repo and run:
 ```bash
 npm start
 ```
