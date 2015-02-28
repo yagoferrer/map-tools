@@ -11,9 +11,8 @@
   },
   filters: ['NAME']
   }]);
-  var dimension = map.json.filter.NAME;
-	var colorado = dimension.filter('Colorado').top(1)[0];
-	var nevada = dimension.filter('Nevada').top(1)[0];
+  var colorado = map.filterFeature({NAME:'Colorado'}, {limit: 1});
+  var nevada = map.filterFeature({NAME:'Nevada'}, {limit: 1});
 	var options = {
 		style:{
 			fillOpacity: 0.4,
@@ -23,7 +22,7 @@
 	map.updateFeature([colorado, nevada], options);
 
   // Choropleth based on Census
-  map.updateFeature([]), {style: function() {
+  map.updateFeature(...), {style: function() {
     // Choropleth function based on the CENSUSAREA data
     var value = (this.data.CENSUSAREA/570640.95);
     var alpha = 5;

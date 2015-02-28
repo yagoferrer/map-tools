@@ -271,15 +271,15 @@ You can set `style` options to specify the way a Feature should appear when disp
 You can update the `style` of the existing Feature on a map.
 
 ```javascript
- var feature1 = map.json.filter.NAME.filter('Nevada').top(1)[0];
- var feature2 = map.json.filter.NAME.filter('Nevada').top(1)[0]
- map.updateFeature([feature1,feature2], {style: {fillOpacity: 0.4, fillColor:'black', strokeColor: 'black'}});
+ var colorado = map.filterFeature({NAME:'Colorado'}, {limit: 1});
+ var nevada = map.filterFeature({NAME:'Colorado'}, {limit: 1});
+ map.updateFeature([colorado,nevada], {style: {fillOpacity: 0.4, fillColor:'black', strokeColor: 'black'}});
 ```
 
 You can also update the `style` of a group of features by a mapping function.
 
 ```javascript
-	map.updateFeature([feature1,feature2], { style: function(){
+	map.updateFeature(..., { style: function(){
 			var value = (this.data.VALUE/this.data.MAX_VALUE);
 			var l = ((value) * 50)+50;
 			return { fillColor: 'hsl(210,100%,'+l+'%)'}
