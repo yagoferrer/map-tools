@@ -71,7 +71,7 @@ example:
 }
 ```
 
-Add more [Map Options](https://developers.google.com/maps/documentation/javascript/reference#MapOptions). It just works. For example:
+Add more [Map Options](https://developers.google.com/maps/documentation/javascript/reference#MapOptions) from the Google Maps API and it will work just fine. For example:
 ```javascript
 {
     disableDoubleClickZoom: true,
@@ -87,7 +87,7 @@ Update any option by calling the updateMap method like this example:
 map.updateMap({zoom: 6});
 ```
 
-Once instantiated: you can access directly to the Google API like this: `GMP.maps.mymap.instance`
+Once instantiated: you can access directly to the Google API like this: `map.instance`
 
 ## Markers
 
@@ -103,13 +103,11 @@ map.addMarker({
 #### Add Multiple Markers
 
 ```javascript
-map.addMarker([
-    {
+map.addMarker([{
       lat: 41.3833,
       lng: 2.1833,
       title: 'Barcelona'
-    },
-    {
+    },{
       lat: 42.5000,
       lng: 1.5167,
       title: 'Andorra'
@@ -122,7 +120,7 @@ Add any other [Marker Options](https://developers.google.com/maps/documentation/
 
 
 
-Once the Markers are created, you can access directly like this: `GMP.maps.mymap.markers.all`
+Once the Markers are created, you can access to all Markers directly like this: `map.markers.all`
 
 #### Update Marker
 Allows you to update one or multiple marker options. The 1st parameter can be: a result of Crossfilter, a Marker reference or the uid like this: `{uid: '<uid>'}`
