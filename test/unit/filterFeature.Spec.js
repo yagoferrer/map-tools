@@ -3,7 +3,8 @@ describe('Given the filterFeature Module', function () {
   var that, filterFeature, data;
 
   beforeEach(function () {
-    data = [{NAME: 'Gert'}, {NAME: 'Peter', age: 23}, {NAME: 'Peter', age: 35}, {NAME: 'Max'}]
+    data = [{NAME: 'Gert'}, {NAME: 'Peter', age: 23}, {NAME: 'Peter', age: 35}, {NAME: 'Max'}];
+
     var cf = crossfilter(data);
 
     that = {
@@ -18,15 +19,14 @@ describe('Given the filterFeature Module', function () {
   });
 
   it('should filter exact values', function () {
-
     var result = filterFeature({NAME: 'Peter'});
-
-    console.log('result...', result);
-
-    expect(result[0].age).to.eql(data[2].age);
+    expect(result).to.eql([data[2], data[1]]);
   });
 
-
-
+  it('should limit the results when using limit', function () {
+    var result = filterFeature({NAME: 'Peter'}, {limit: 1});
+    expect(result.length).to.eql(1);
+    expect(result).to.eql([data[2]]);
+  });
 
 });
