@@ -279,7 +279,7 @@ You can update the `style` of the existing Feature on a map.
 You can also update the `style` of a group of features by a mapping function.
 
 ```javascript
-	map.updateFeature([feature1,feature2], { style: function(){
+	map.updateFeature(..., { style: function(){
 			var value = (this.data.VALUE/this.data.MAX_VALUE);
 			var l = ((value) * 50)+50;
 			return { fillColor: 'hsl(210,100%,'+l+'%)'}
