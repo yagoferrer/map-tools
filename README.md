@@ -116,11 +116,13 @@ map.addMarker([
       lng: 1.5167,
       title: 'Andorra'
     }
-  ], {icon: 'images/city.png'});
+  ], {icon: 'images/city.png'}); // the 2nd parameter allows you to add options that all markers share.
 ```
+The 2nd parameter of `addMarker`, allows you to add options that apply to all the Markers within the Array.
+
 Add any other [Marker Options](https://developers.google.com/maps/documentation/javascript/reference#MarkerOptions)
 
-The 2nd parameter of `addMarker`, allows you to add options that apply to all the Markers within the Array.
+
 
 Once the Markers are created, you can access directly like this: `GMP.maps.mymap.markers.all`
 
