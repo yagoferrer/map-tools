@@ -1,8 +1,6 @@
-<div class="map-panel" >
-<pre class="language-javascript">
-<code class="language-javascript">
-	// Update Terrain
-	map.updateMap({
+<div class="map-panel"><pre class="language-javascript"><code class="language-javascript">
+  // Update to Terrain Type and disable controls.
+  map.updateMap({
 			type: 'TERRAIN',
 			mapTypeControl: false,
 			zoomControl: false,
@@ -10,7 +8,7 @@
 			panControl: false
 	});
 
-	// Update RoadMap
+	// Update to RoadMap and enable controls.
 	map.updateMap({
 			type: 'ROADMAP',
 			mapTypeControl: true,
@@ -18,6 +16,4 @@
 			streetViewControl: true,
 			panControl: true
 	});
-</code>
-</pre>
-</div>
+</code></pre></div>

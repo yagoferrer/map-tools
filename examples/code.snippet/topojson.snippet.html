@@ -1,16 +1,12 @@
-<div class="map-panel" >
-<pre class="language-javascript">
-<code class="language-javascript">
+<div class="map-panel" ><pre class="language-javascript"><code class="language-javascript">
   // Update Feature
   map.addTopoJson(data, [{
   object: 'us_country',
   style: {
-  strokeColor: '#2c2c2c',
-  strokeWeight: 0.5,
-  fillOpacity: 0
-  },
-  filters: ['NAME']
-  }]);
+    strokeColor: '#2c2c2c',
+    strokeWeight: 0.5,
+    fillOpacity: 0
+  },filters: ['NAME']}]);
   var colorado = map.filterFeature({NAME:'Colorado'}, {limit: 1});
   var nevada = map.filterFeature({NAME:'Nevada'}, {limit: 1});
 	var options = {
@@ -33,8 +29,5 @@
     fillColor: 'hsl('+h+','+s+'%,'+l+'%)',
     fillOpacity:0.7
   }
-
   }});
-</code>
-</pre>
-</div>
+</code></pre></div>
