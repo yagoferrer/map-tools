@@ -228,7 +228,8 @@ The default **event** is `click` but you can change it with the `event` property
 ```
 Now you can use the power of Crossfilter to update Markers. In this example it finds the city with larger population, Madrid, and makes the marker to bounce.
 ```javascript
-map.updateMarker(map.markers.filter.population.top(1), {move: 'bounce'});
+var marker = map.filterMarker('population', {limit: 1});
+map.updateMarker(marker, {move: 'bounce'});
 ```
 
 You can also pass custom Crossfilter dimensions to the `filters` option:
@@ -292,7 +293,8 @@ You can also update the `style` of a group of features by a mapping function.
 You can use a Crossfilter result to update features. In this example it finds the State named: 'Texas' and updates the background color.
 
 ```javascript
-map.updateFeature(map.json.filter.NAME.filter('Colorado').top(1), {style: {fillColor:'black'}})
+var feature = map.filterFeature({NAME:'Colorado'}, {limit: 1});
+map.updateFeature(feature, {style: {fillColor:'black'}})
 ```
 
 Add more [Style Options](https://developers.google.com/maps/documentation/javascript/reference#Data.StyleOptions)

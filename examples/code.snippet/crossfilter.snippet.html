@@ -2,7 +2,7 @@
 <pre class="language-javascript">
 <code class="language-javascript">
   // Click event action
-  var filter = map.markers.filter.population.top(1);
+  var filter = map.filterMarker('population', {limit: 1});
   map.updateMarker(filter, {move: 'bounce'});
 
   // Adding markers

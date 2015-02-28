@@ -28,7 +28,8 @@
 		    position: 'right center',
 		    events: {
 			    '.top click': function (e) {
-				    map.updateMarker(map.markers.filter.population.top(1), {move: 'bounce'});
+            var marker = map.filterMarker('population', {limit: 1});
+				    map.updateMarker(marker, {move: 'bounce'});
 				    e.preventDefault();
 			    }
 		    }
