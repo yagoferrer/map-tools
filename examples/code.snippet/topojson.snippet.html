@@ -1,30 +1,41 @@
 <div class="map-panel" >
 <pre class="language-javascript">
 <code class="language-javascript">
-	$.getJSON('./json/us-country.json', function (data) {
-				map.addTopoJson(data, [{
-					object: 'us_country',
-					style: {
-						strokeColor: '#2c2c2c',
-						strokeWeight: 0.5,
-						fillOpacity: 0
-					},
-					filters: ['NAME']
-				}]);
-		});
-	...
-	var feature1 = map.json.filter.NAME.filter('Colorado')
-									.top(1)[0];
-	var feature2 = map.json.filter.NAME.filter('Nevada')
-									.top(1)[0];
+  // Update Feature
+  map.addTopoJson(data, [{
+  object: 'us_country',
+  style: {
+  strokeColor: '#2c2c2c',
+  strokeWeight: 0.5,
+  fillOpacity: 0
+  },
+  filters: ['NAME']
+  }]);
+  var dimension = map.json.filter.NAME;
+	var colorado = dimension.filter('Colorado').top(1)[0];
+	var nevada = dimension.filter('Nevada').top(1)[0];
 	var options = {
 		style:{
 			fillOpacity: 0.4,
 			fillColor:'black',
 			strokeColor: 'black'
-		}
-	};
-	map.updateFeature([feature1,feature2], options);
+  }};
+	map.updateFeature([colorado, nevada], options);
+
+  // Choropleth based on Census
+  map.updateFeature([]), {style: function() {
+    // Choropleth function based on the CENSUSAREA data
+    var value = (this.data.CENSUSAREA/570640.95);
+    var alpha = 5;
+    var h = 210, s = 100,
+    l = (Math.pow((1 - value), alpha) * 50)+50; // Increase the difference
+
+  return {
+    fillColor: 'hsl('+h+','+s+'%,'+l+'%)',
+    fillOpacity:0.7
+  }
+
+  }});
 </code>
 </pre>
 </div>

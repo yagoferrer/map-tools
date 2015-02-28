@@ -1,9 +1,20 @@
 <div class="map-panel" >
 <pre class="language-javascript">
 <code class="language-javascript">
-	// crossfilter results
+  // Add Marker
+  var markerInstance = map.addMarker({
+  lat: 41.3833,
+  lng: 2.1833,
+  title: 'Barcelona',
+  data: {cityName: 'barcelona'}
+  }, {filters: ['cityName']});
+
+  // Update Marker Using Crossfilter
 	var marker = map.markers.filter.cityName.filterExact('barcelona').top(1);
 	map.updateMarker(marker, {move: 'drop'});
+
+  // Using instance
+  map.updateMarker([markerInstance], {move: 'drop'});
 </code>
 </pre>
 </div>

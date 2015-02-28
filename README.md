@@ -1,11 +1,11 @@
-## map-tools 0.4.0 
+## map-tools 0.5.0 
 [![Build](https://travis-ci.org/yagoferrer/map-tools.svg?branch=master)](https://travis-ci.org/yagoferrer/map-tools) 
 [![Coverage](https://coveralls.io/repos/yagoferrer/map-tools/badge.svg?branch=master)](https://coveralls.io/r/yagoferrer/map-tools)
 [![Code Climate](https://codeclimate.com/github/yagoferrer/map-tools/badges/gpa.svg?branch=master)](https://codeclimate.com/github/yagoferrer/map-tools)
 [![Dependency Status](https://david-dm.org/yagoferrer/map-tools.svg)](https://david-dm.org/yagoferrer/map-tools)
 [![devDependency](https://david-dm.org/yagoferrer/map-tools/dev-status.svg)](https://david-dm.org/yagoferrer/map-tools#info=devDependencies)
 
-map-tools.js is a Google Maps Feature-rich Javascript wrapper that makes things like: 
+[map-tools](http://map-tools.io/) is a Google Maps Feature-rich Javascript wrapper that makes things like: 
 [Marker filtering](#crossfilter-support-for-markers), [asynchronous loading](#load-a-simple-map-async), working with [TopoJSON](#topojson-support) or [GeoJSON](#geojson-support), [animation](#animate-markers) and more. Much simpler with an easy-to-use API.
 
 
@@ -28,11 +28,11 @@ NPM:
 ```bash
 npm install map-tools --save-dev
 ```
-Direct download: [map-tools.min.js](https://github.com/yagoferrer/map-tools/blob/0.4.0/dist/map-tools.min.js)
+Direct download: [map-tools.min.js](https://github.com/yagoferrer/map-tools/blob/0.5.0/dist/map-tools.min.js)
  
 ## Check out examples:
 
-Go to: [map-tools/examples](http://yagoferrer.github.io/map-tools/examples) 
+Go to: [map-tools.io](http://map-tools.io/) 
 
 Or run:
 ```bash
@@ -55,7 +55,7 @@ var map = new GMP({
 ```
 You can also use: `el: '.mymap'`, instead of `id` to specify a query selector.
 
-By default it will load version [3.18](https://github.com/yagoferrer/map-tools/blob/0.4.0/lib/map-tools/defaults.js) of Google Maps. You can pass a specific version using the `version` option.
+By default it will load version [3.18](https://github.com/yagoferrer/map-tools/blob/0.5.0/lib/map-tools/defaults.js) of Google Maps. You can pass a specific version using the `version` option.
 
 Add a simple HTML tag
 ```html
@@ -195,7 +195,7 @@ The default **event** is `click` but you can change it with the `event` property
 ```javascript
   var map = new GMP({
     id: 'mymap',
-    lat: 40.419795,
+    lat: 40.5.0,
     lng: -3.710436
   }, function (err, instance) {
     if (!err) {
@@ -214,7 +214,7 @@ The default **event** is `click` but you can change it with the `event` property
         }
       },
       {
-        lat: 40.419795,
+        lat: 40.5.0,
         lng: -3.710436,
         data: {
           name: 'Madrid',
@@ -264,6 +264,27 @@ You can set `style` options to specify the way a Feature should appear when disp
     fillOpacity: 0
   }
 }
+```
+
+#### Update styling of existing Features
+
+You can update the `style` of the existing Feature on a map.
+
+```javascript
+ var feature1 = map.json.filter.NAME.filter('Nevada').top(1)[0];
+ var feature2 = map.json.filter.NAME.filter('Nevada').top(1)[0]
+ map.updateFeature([feature1,feature2], {style: {fillOpacity: 0.4, fillColor:'black', strokeColor: 'black'}});
+```
+
+You can also update the `style` of a group of features by a mapping function.
+
+```javascript
+	map.updateFeature([feature1,feature2], { style: function(){
+			var value = (this.data.VALUE/this.data.MAX_VALUE);
+			var l = ((value) * 50)+50;
+			return { fillColor: 'hsl(210,100%,'+l+'%)'}
+		}
+	});
 ```
 
 ## Crossfilter support for Features
