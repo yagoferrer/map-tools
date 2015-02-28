@@ -14,7 +14,7 @@
 - More Fun: Add [Marker animations](#animate-markers), use [handlebars style](#info-bubble) variables.
 - Easy To Use: Intuitive APIs, easy to understand.
 - Non Intrusive: it extends the API, you can use any other native methods, properties and events anywhere.
-- Easier to query Markers and Features. Query elements on the Map and update options using [Crossfilter](#crossfilter-support-for-markers): 
+- Easier to query Markers and Features. Query elements on the Map and update options using [Crossfilter](#crossfilter-support-for-markers)
 - [TopoJSON Support](#topojson-support): Add Topo/GeoJSON files, set styles and find references easier. 
 - 100% tested. GPA 4.0
 - Framework agnostic
