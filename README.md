@@ -203,8 +203,7 @@ The default **event** is `click` but you can change it with the `event` property
           name: 'Barcelona',
           population: 1621000
         }
-      },
-      {
+      },{
         lat: 40.5.0, lng: -3.710436,
         data: {
           name: 'Madrid',
@@ -216,9 +215,8 @@ The default **event** is `click` but you can change it with the `event` property
     });
   }
   
-  var map = new GMP({
-    id: 'mymap', lat: 40.5.0, lng: -3.710436
-  }, function (err, instance) {
+  var map = new GMP({id: 'mymap', lat: 40.5.0, lng: -3.710436}, 
+  function (err, instance) {
     if (!err) {
       addMarkers();
     }
