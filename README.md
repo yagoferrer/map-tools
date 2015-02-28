@@ -96,10 +96,10 @@ Once instantiated: you can access directly to the Google API like this: `GMP.map
 #### Add One Marker
 ```javascript
 map.addMarker({
-     lat: 41.3833,
-     lng: 2.1833,
-     title: 'Barcelona'
-     });
+  lat: 41.3833,
+  lng: 2.1833,
+  title: 'Barcelona'
+});
 ```
 
 #### Add Multiple Markers
