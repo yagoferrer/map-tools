@@ -25,8 +25,7 @@ describe('Given the filterFeature Module', function () {
 
   it('should limit the results when using limit', function () {
     var result = filterFeature({NAME: 'Peter'}, {limit: 1});
-    expect(result.length).to.eql(1);
-    expect(result).to.eql([data[2]]);
+    expect(result).to.eql(data[2]);
   });
 
 });
