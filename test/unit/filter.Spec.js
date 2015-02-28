@@ -15,7 +15,7 @@ describe('Given the filterFeature Module', function () {
       }
     };
 
-    filterFeature = require('map-tools/filterFeature')({}, that);
+    filterFeature = require('map-tools/filter')({}, that, 'json');
   });
 
   it('should filter exact values', function () {

@@ -33,7 +33,7 @@
 				position: 'right center',
 				events: {
 					'.update-crossfilter click': function (e) {
-						var marker = map.markers.filter.cityName.filterExact('barcelona').top(1);
+						var marker = map.filterMarker({cityName: 'barcelona'}, {limit: 1});
 						map.updateMarker(marker, {move: 'drop'});
 						e.preventDefault();
 					},
