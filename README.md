@@ -164,7 +164,7 @@ map.updateGroup('myGroup', {visible: true});
 // Updates all the Markers to be visible.
 ```
 
-#### Info Bubble
+#### Info Window
 
 Adds an info window with HTML content.
 ```javascript
