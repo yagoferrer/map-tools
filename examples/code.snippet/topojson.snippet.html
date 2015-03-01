@@ -1,5 +1,4 @@
 <div class="map-panel" ><pre class="language-javascript"><code class="language-javascript">
-  // Update Feature
   map.addTopoJson(data, [{
   object: 'us_country',
   style: {
@@ -15,7 +14,8 @@
 			fillColor:'black',
 			strokeColor: 'black'
   }};
-	map.updateFeature([colorado, nevada], options);
+
+  map.updateFeature([colorado, nevada], options);
 
   // Choropleth function based on the CENSUSAREA data
   function() {
