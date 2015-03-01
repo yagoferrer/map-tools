@@ -6,7 +6,7 @@
 [![devDependency](https://david-dm.org/yagoferrer/map-tools/dev-status.svg)](https://david-dm.org/yagoferrer/map-tools#info=devDependencies)
 
 [map-tools](http://map-tools.io/) is a Google Maps Feature-rich Javascript wrapper that makes things like: 
-[Marker filtering](#crossfilter-support-for-markers), [asynchronous loading](#load-a-simple-map-async), working with [TopoJSON](#topojson-support) or [GeoJSON](#geojson-support), [animation](#animate-markers) and more. Much simpler with an easy-to-use API.
+[Marker filtering](#crossfilter-support-for-markers); [asynchronous loading](#load-a-simple-map-async), working with [TopoJSON](#topojson-support) or [GeoJSON](#geojson-support), [animation](#animate-markers) and more. Much simpler with an easy-to-use API.
 
 
 ## Benefits
@@ -14,7 +14,7 @@
 - More Fun: Add [Marker animations](#animate-markers), use [handlebars style](#info-bubble) variables.
 - Easy To Use: Intuitive APIs, easy to understand.
 - Non Intrusive: it extends the API, you can use any other native methods, properties and events anywhere.
-- [Crossfilter Support for Markers](#crossfilter-support-for-markers): Query Markers and change any options using the power of Crossfilter.
+- Query elements on the Map to update their options using [Crossfilter](#crossfilter-support-for-markers)
 - [TopoJSON Support](#topojson-support): Add Topo/GeoJSON files, set styles and find references easier. 
 - 100% tested. GPA 4.0
 - Framework agnostic
@@ -32,9 +32,7 @@ Direct download: [map-tools.min.js](https://github.com/yagoferrer/map-tools/blob
  
 ## Check out examples:
 
-Go to: [map-tools.io](http://map-tools.io/) 
-
-Or run:
+You can either go to: [map-tools.io](http://map-tools.io/) or pull the repo and run:
 ```bash
 npm start
 ```
@@ -73,7 +71,7 @@ example:
 }
 ```
 
-Add more [Map Options](https://developers.google.com/maps/documentation/javascript/reference#MapOptions). It just works. For example:
+Add more [Map Options](https://developers.google.com/maps/documentation/javascript/reference#MapOptions) from the Google Maps API and it will work just fine. For example:
 ```javascript
 {
     disableDoubleClickZoom: true,
@@ -89,7 +87,7 @@ Update any option by calling the updateMap method like this example:
 map.updateMap({zoom: 6});
 ```
 
-Once instantiated: you can access directly to the Google API like this: `GMP.maps.mymap.instance`
+Once instantiated: you can access directly to the Google API like this: `map.instance`
 
 ## Markers
 
@@ -105,13 +103,11 @@ map.addMarker({
 #### Add Multiple Markers
 
 ```javascript
-map.addMarker([
-    {
+map.addMarker([{
       lat: 41.3833,
       lng: 2.1833,
       title: 'Barcelona'
-    },
-    {
+    },{
       lat: 42.5000,
       lng: 1.5167,
       title: 'Andorra'
@@ -124,7 +120,7 @@ Add any other [Marker Options](https://developers.google.com/maps/documentation/
 
 
 
-Once the Markers are created, you can access directly like this: `GMP.maps.mymap.markers.all`
+Once the Markers are created, you can access to all Markers directly like this: `map.markers.all`
 
 #### Update Marker
 Allows you to update one or multiple marker options. The 1st parameter can be: a result of Crossfilter, a Marker reference or the uid like this: `{uid: '<uid>'}`
@@ -195,29 +191,16 @@ The default **event** is `click` but you can change it with the `event` property
 - Add what data properties you want to index into the `filters` option. That will generate default Crossfilter [dimensions](https://github.com/square/crossfilter/wiki/API-Reference#dimension).
  
 ```javascript
-  var map = new GMP({
-    id: 'mymap',
-    lat: 40.5.0,
-    lng: -3.710436
-  }, function (err, instance) {
-    if (!err) {
-      addMarker();
-    }
-  });
-
-  function addMarker() {
+  function addMarkers() {
     map.addMarker([
       {
-        lat: 41.3833,
-        lng: 2.1833,
+        lat: 41.3833, lng: 2.1833,
         data: {
           name: 'Barcelona',
           population: 1621000
         }
-      },
-      {
-        lat: 40.5.0,
-        lng: -3.710436,
+      },{
+        lat: 40.5.0, lng: -3.710436,
         data: {
           name: 'Madrid',
           population: 3234000
@@ -227,6 +210,13 @@ The default **event** is `click` but you can change it with the `event` property
       filters: ['population']
     });
   }
+  
+  var map = new GMP({id: 'mymap', lat: 40.5.0, lng: -3.710436}, 
+  function (err, instance) {
+    if (!err) {
+      addMarkers();
+    }
+  });
 ```
 Now you can use the power of Crossfilter to update Markers. In this example it finds the city with larger population, Madrid, and makes the marker to bounce.
 ```javascript
