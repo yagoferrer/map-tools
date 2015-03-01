@@ -83,8 +83,8 @@ Add more [Map Options](https://developers.google.com/maps/documentation/javascri
 
 ### Update Map 
 Update any option by calling the updateMap method like this example:
-```javavascript
-map.updateMap({zoom: 6});
+```javascript
+map.updateMap({zoom: 6, type: 'TERRAIN'});
 ```
 
 Once instantiated: you can access directly to the Google API like this: `map.instance`
