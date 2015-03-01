@@ -1,9 +1,10 @@
 <div class="map-panel" ><pre class="language-javascript"><code class="language-javascript">
-  // Click event action
-  var filter = map.filterMarker('population', {limit: 1});
-  map.updateMarker(filter, {move: 'bounce'});
+  // Click Event
+  .click(function(){
+    var filter = map.filterMarker('population', {limit: 1});
+    map.updateMarker(filter, {move: 'bounce'});
+  });
 
-  // Adding markers
   map.addMarker([{
 			lat: 41.3833,
 			lng: 2.1833,
@@ -27,5 +28,4 @@
 			}
 		}
 	], {filters: ['population']});
-	}
 </code></pre></div>

@@ -10,14 +10,15 @@
 <body>
 <div id="mymap"></div>
 <script>
-
   var map = new GMP({
     id: 'mymap',
     lat: 35,
     lng: -105,
     zoom: 4
   }, function (err, instance) {
-    $.getJSON('http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson', function (data) {
+    var domain = 'http://earthquake.usgs.gov';
+    var path = '/earthquakes/feed/v1.0/summary/all_day.geojson';
+    $.getJSON(domain + path, function (data) {
       map.addGeoJson(data);
     });
 
@@ -26,11 +27,10 @@
 		  templateURL: 'code.snippet/geojson.snippet.html',
 		  position:'right center'
 	  });
+
 	  Prism.highlightAll();
 
   });
-
 </script>
-
 </body>
 </html>
