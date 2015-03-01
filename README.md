@@ -6,7 +6,7 @@
 [![devDependency](https://david-dm.org/yagoferrer/map-tools/dev-status.svg)](https://david-dm.org/yagoferrer/map-tools#info=devDependencies)
 
 [map-tools](http://map-tools.io/) is a Google Maps Feature-rich Javascript wrapper that makes things like: 
-[Marker filtering](#crossfilter-support-for-markers); [asynchronous loading](#load-a-simple-map-async), working with [TopoJSON](#topojson-support) or [GeoJSON](#geojson-support), [animation](#animate-markers) and more. Much simpler with an easy-to-use API.
+[Marker filtering](#crossfilter-support-for-markers); [asynchronous loading](#load-a-simple-map-async), working with [TopoJSON](#topojson-support) or [GeoJSON](#geojson-support), [custom controls](#add-panel), [animation](#animate-markers) and more. Much simpler with an easy-to-use API.
 
 
 ## Benefits
@@ -112,7 +112,7 @@ map.addMarker([{
       lng: 1.5167,
       title: 'Andorra'
     }
-  ], {icon: 'images/city.png'}); // the 2nd parameter allows you to add options that all markers share.
+  ], {icon: 'images/city.png'}); // the 2nd parameter allows you to add shared options.
 ```
 The 2nd parameter of `addMarker`, allows you to add options that apply to all the Markers within the Array.
 
@@ -164,7 +164,7 @@ map.updateGroup('myGroup', {visible: true});
 // Updates all the Markers to be visible.
 ```
 
-#### Info Bubble
+#### Info Window
 
 Adds an info window with HTML content.
 ```javascript
@@ -300,6 +300,20 @@ map.updateFeature(feature, {style: {fillColor:'black'}})
 Add more [Style Options](https://developers.google.com/maps/documentation/javascript/reference#Data.StyleOptions)
 
 Once the Features are created, you can access directly like this: `GMP.maps.mymap.json.groups.states` and `GMP.maps.mymap.json.groups.counties`
+
+## Add Panel
+Adds a custom native Control to Google Maps
+
+```javascript
+ map.addPanel({
+    templateURL: 'templates/custom.panel.html',
+    position:'top center',
+    events: {
+      '.menu li click' : function (e) {
+        e.target.classList.toggle('active');
+      }}
+  });
+``` 
 
 
 ## How can you contribute?
