@@ -27,7 +27,7 @@
 		    position: 'right center',
 		    events: {
 			    '.update click': function (e) {
-				    map.updateMarker(marker, {bubble: {content: '<p>Click Me!</p>'}});
+				    map.updateMarker(marker, {infoWindow: {content: '<p>Click Me!</p>'}});
 				    e.preventDefault();
 			    }
 		    }
@@ -35,7 +35,7 @@
 
 
 	    map.addPanel({
-		    templateURL: 'code.snippet/add.bubble.snippet.html',
+		    templateURL: 'code.snippet/add.info.window.snippet.html',
 		    position:'right center'
       }, function() {
         Prism.highlightAll();
@@ -50,7 +50,7 @@
       lat: 41.3833,
       lng: 2.1833,
       title: 'Barcelona',
-      bubble: {
+      infoWindow: {
         event: 'mouseover',
         content: '<p>{city}</p>'
       },
