@@ -13,6 +13,20 @@
 <div id="mymap"></div>
 <script>
 
+  function color() {
+    // Simple choropleth function based on the CENSUSAREA data
+    var value = (this.data.CENSUSAREA/570640.95);
+    var alpha = 5;
+    var h = 210,
+      s = 100,
+    // Increase the difference between colors
+      l = (Math.pow((1 - value), alpha) * 50)+50;
+    return {
+      fillColor: 'hsl('+h+','+s+'%,'+l+'%)',
+      fillOpacity:0.7
+    }
+  };
+
   var map = new GMP({
     id: 'mymap',
     lat: 35,
@@ -62,24 +76,6 @@
 	  });
 	  Prism.highlightAll();
   });
-
-
-
-  var color = function() {
-	  // Simple choropleth function based on the CENSUSAREA data
-	  var value = (this.data.CENSUSAREA/570640.95);
-	  var alpha = 5;
-	  var h = 210,
-			  s = 100,
-    // Increase the difference between colors
-			  l = (Math.pow((1 - value), alpha) * 50)+50;
-
-	  return {
-		  fillColor: 'hsl('+h+','+s+'%,'+l+'%)',
-		  fillOpacity:0.7
-	  }
-
-  };
 </script>
 </body>
 </html>
