@@ -304,7 +304,7 @@ Once the Features are created, you can access directly like this: `GMP.maps.myma
 ## AddPanel
 Adds a custom native Control to Google Maps
 
-``javascript
+```javascript
  map.addPanel({
     templateURL: 'templates/custom.panel.html',
     position:'top center',
