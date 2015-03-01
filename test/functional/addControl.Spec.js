@@ -14,19 +14,22 @@ describe('when calling addPanel()', function () {
 
 	});
 
-	it('should add a single panel with the specified style options', function () {
+	it('should add a single panel with the specified style options', function (done) {
 		var map = new GMP({async: false, id: 'mymap', lat: 41.3833, lng: 2.1833});
 
-		var panel = map.addPanel({
+		map.addPanel({
 			template: '<div><button id="clickMe">ctrl 1</button></div>',
 			style: {
 				'background-color': '#fff',
 				'margin-bottom': '22px'
 			}
 
-		});
+		}, function(err, panel) {
+        expect(panel.style).to.eql({backgroundColor: '#fff', marginBottom: '22px'})
+        done();
+    });
 
-		expect(panel.style).to.eql({backgroundColor: '#fff', marginBottom: '22px'})
+
 
 	});
 
@@ -44,23 +47,32 @@ describe('when calling addPanel()', function () {
 
 	});
 
-  it('should load an external template URL when provided', function() {
+  it('should load an external template URL when provided', function(done) {
     global.XMLHttpRequest = function() {
-      return {
-        open: function(){},
-        send: function(){},
-        responseText: '<div><button id="clickMe" class="test-button">ctrl 1</button></div>'
+      this.readyState = 4;
+      this.status = 200;
+      this.onload = function() {}
+      this.open = function() {}
+      this.responseText =  '<div><button id="clickMe" class="test-button">ctrl 1</button></div>';
+      this.send = function(){
+        this.onload()
       }
-    }
+
+      return this;
+    };
 
     var map = new GMP({async: false, id: 'mymap', lat: 41.3833, lng: 2.1833});
 
     map.addPanel({
       templateURL: 'control-template.html',
       position: 'top center'
+    }, function() {
+
+      expect(Object.keys(GMP.maps.mymap.instance.controls[2]).length).to.equal(1);
+      done()
     });
 
-    expect(Object.keys(GMP.maps.mymap.instance.controls[2]).length).to.equal(1);
+
   });
 
 });

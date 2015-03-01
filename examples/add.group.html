@@ -53,8 +53,10 @@ Icons generated using: http://mapicons.nicolasmollet.com/
 			map.addPanel({
 				templateURL: 'code.snippet/add.group.snippet.html',
 				position: 'right top'
-			});
-			Prism.highlightAll();
+			}, function() {
+        Prism.highlightAll();
+      });
+
 		}
 	});
 

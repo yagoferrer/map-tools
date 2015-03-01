@@ -57,8 +57,9 @@
 			map.addPanel({
 				templateURL: 'code.snippet/update.marker.snippet.html',
 				position:'right center'
-			});
-			Prism.highlightAll();
+      }, function() {
+        Prism.highlightAll();
+      });
 		}
 	});
 

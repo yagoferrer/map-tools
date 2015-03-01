@@ -23,8 +23,9 @@
 	    map.addPanel({
 		    templateURL: 'code.snippet/add.multiple.markers.snippet.html',
 		    position:'right center'
-	    });
-	    Prism.highlightAll();
+      }, function() {
+        Prism.highlightAll();
+      });
 
     }
   });
