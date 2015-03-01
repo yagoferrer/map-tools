@@ -2,7 +2,7 @@ describe('Given the updateFeature Module', function() {
   var global, that;
   beforeEach(function(){
     global = {
-      GMP: {
+      mapTools: {
         maps: {
           mymap: {
             json: {

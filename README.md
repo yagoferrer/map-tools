@@ -41,7 +41,7 @@ npm start
 There is no need to include the Google Maps `<script>` tag. map-tools.js will load the file for you.
 Setup a callback to notify you when the Map is fully loaded.
 ```javascript
-var map = new GMP({
+var map = new mapTools({
   id: 'mymap',
   lat: 41.3833,
   lng: 2.1833
@@ -211,7 +211,7 @@ The default **event** is `click` but you can change it with the `event` property
     });
   }
   
-  var map = new GMP({id: 'mymap', lat: 40.5.0, lng: -3.710436}, 
+  var map = new mapTools({id: 'mymap', lat: 40.5.0, lng: -3.710436}, 
   function (err, instance) {
     if (!err) {
       addMarkers();
@@ -299,7 +299,7 @@ map.updateFeature(feature, {style: {fillColor:'black'}})
 
 Add more [Style Options](https://developers.google.com/maps/documentation/javascript/reference#Data.StyleOptions)
 
-Once the Features are created, you can access directly like this: `GMP.maps.mymap.json.groups.states` and `GMP.maps.mymap.json.groups.counties`
+Once the Features are created, you can access directly like this: `mapTools.maps.mymap.json.groups.states` and `mapTools.maps.mymap.json.groups.counties`
 
 ## Add Panel
 Adds a custom native Control to Google Maps

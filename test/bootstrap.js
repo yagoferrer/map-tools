@@ -10,9 +10,9 @@ global.sinon = require('sinon');
 var window = require('../test/mocks/window');
 window.google = require('../test/mocks/google-maps');
 
-var GMP = require('map-tools/index')(window);
-window.GMP = GMP;
-global.GMP = window.GMP;
+var mapTools = require('map-tools/index')(window);
+window.mapTools = mapTools;
+global.mapTools = window.mapTools;
 
 
 // To test independent modules.

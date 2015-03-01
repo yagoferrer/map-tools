@@ -2,7 +2,7 @@ describe('When calling the updateFeature()', function() {
   "use strict"
 
   it('should update the feature properties based on the options', function() {
-    var map = new GMP({async: false, id: 'mymap', lat: 41.3833, lng: 2.1833});
+    var map = new mapTools({async: false, id: 'mymap', lat: 41.3833, lng: 2.1833});
 
     var topojson = {
       objects: {
