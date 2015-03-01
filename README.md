@@ -11,7 +11,7 @@
 
 ## Benefits
 - Less Code: The [Google Maps API](https://developers.google.com/maps/documentation/javascript/reference) it is of considerable size. You'll be writing way **less** code with map-tools.js
-- More Fun: Add [Marker animations](#animate-markers), use [handlebars style](#info-bubble) variables.
+- More Fun: Add [Marker animations](#animate-markers), use [handlebars style](#info-window) variables.
 - Easy To Use: Intuitive APIs, easy to understand.
 - Non Intrusive: it extends the API, you can use any other native methods, properties and events anywhere.
 - Query elements on the Map to update their options using [Crossfilter](#crossfilter-support-for-markers)
@@ -166,12 +166,12 @@ map.updateGroup('myGroup', {visible: true});
 
 #### Info Bubble
 
-Adds an info bubble with HTML content.
+Adds an info window with HTML content.
 ```javascript
 map.addMarker({
   lat: 41.3833,
   lng: 2.1833,
-  bubble: {
+  infoWindow: {
     event: 'mouseover',
     content: '<p>{city} City</p>'
   },
@@ -182,7 +182,7 @@ map.addMarker({
 ```
 Use curly brackets to display variables from `data` 
 
-Add more [infoWindow options](https://developers.google.com/maps/documentation/javascript/reference#InfoWindowOptions) inside `bubble`.
+Add more [infoWindow options](https://developers.google.com/maps/documentation/javascript/reference#InfoWindowOptions) inside `infoWindow`.
 The default **event** is `click` but you can change it with the `event` property.
 
 

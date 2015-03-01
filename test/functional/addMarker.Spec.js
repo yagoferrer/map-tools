@@ -45,7 +45,7 @@ describe('when calling addMarker()', function () {
       var marker = {
         lat: 41.3833,
         lng: 2.1833,
-        bubble: {
+        infoWindow: {
           content: '{city}'
         },
         data: {
@@ -53,7 +53,7 @@ describe('when calling addMarker()', function () {
         }
       };
       var result = map.addMarker(marker);
-      expect(result.bubble.content).to.equal('barcelona');
+      expect(result.infoWindow.content).to.equal('barcelona');
     });
   });
 

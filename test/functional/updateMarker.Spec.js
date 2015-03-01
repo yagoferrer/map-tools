@@ -8,7 +8,7 @@ describe('when calling updateMarker()', function () {
       lng: 2.1833,
       title: 'Barcelona',
       visible: false,
-      bubble: {
+      infoWindow: {
         content: 'Barcelona!'
       }
     };
@@ -17,12 +17,12 @@ describe('when calling updateMarker()', function () {
     var uid = result.data.uid;
     expect(GMP.maps.mymap.markers.all[uid].visible).to.be.false;
 
-    map.updateMarker({uid: uid}, {visible: true, move: 'bounce', lat: 100, lng: 30, bubble: {content: 'click me'}});
+    map.updateMarker({uid: uid}, {visible: true, move: 'bounce', lat: 100, lng: 30, infoWindow: {content: 'click me'}});
 
     expect(GMP.maps.mymap.markers.all[uid].visible).to.be.true;
     expect(GMP.maps.mymap.markers.all[uid].position.lat()).to.eql(100);
     expect(GMP.maps.mymap.markers.all[uid].position.lng()).to.eql(30);
-    expect(GMP.maps.mymap.markers.all[uid].bubble.instance.content).to.eql('click me');
+    expect(GMP.maps.mymap.markers.all[uid].infoWindow.instance.content).to.eql('click me');
   });
 
   it('should invoke multiple Markers options setters for each property passed', function () {
