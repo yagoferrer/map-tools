@@ -60,7 +60,7 @@
 
     $scope.results = [{title: 'addMarker()'}];
 
-    var map-toolsMap = new GMP({
+    var map-toolsMap = new mapTools({
       async: false,
       id: 'map-tools',
       lat: 41.3833,
@@ -90,7 +90,7 @@
         .add('Native Google Maps: addMarker()', function() {
           new google.maps.Marker({
             position: new google.maps.LatLng(41.3833,2.1833),
-            map: GMP.maps.map-tools.instance,
+            map: mapTools.maps.map-tools.instance,
             title: 'Barcelona'
           });
         })

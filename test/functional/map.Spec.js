@@ -13,7 +13,7 @@ describe('Given the Map Module', function () {
       var result = map.load('mymap', {id: 'mymap'});
 
       expect(result.type).to.equal('text/javascript');
-      expect(result.src).to.equal('//maps.googleapis.com/maps/api/js?v=3.18&callback=GMP.maps.mymap.create');
+      expect(result.src).to.equal('//maps.googleapis.com/maps/api/js?v=3.18&callback=mapTools.maps.mymap.create');
     });
 
   });

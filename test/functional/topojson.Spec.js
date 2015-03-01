@@ -2,7 +2,7 @@ describe('when calling loadTopoJson()', function () {
   "use strict";
 
   it('should convert TopoJSON to GeoJSON and load the file into the Map', function () {
-    var map = new GMP({async: false, id: 'mymap', lat: 41.3833, lng: 2.1833});
+    var map = new mapTools({async: false, id: 'mymap', lat: 41.3833, lng: 2.1833});
     var topojson = {
       objects: {
         'states': {}
@@ -17,7 +17,7 @@ describe('when calling loadTopoJson()', function () {
   describe('with styles', function () {
 
     it('should apply the styles to each Feature', function () {
-      var map = new GMP({async: false, id: 'mymap', lat: 41.3833, lng: 2.1833});
+      var map = new mapTools({async: false, id: 'mymap', lat: 41.3833, lng: 2.1833});
 
       var topojson = {
         objects: {

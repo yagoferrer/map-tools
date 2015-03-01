@@ -16,8 +16,8 @@ module.exports = {
       appended: {},
       appendChild: function(script) {
         this.appended = script;
-        if (global.GMP.maps) {
-          global.GMP.maps.mymap.create();
+        if (global.mapTools.maps) {
+          global.mapTools.maps.mymap.create();
         }
 
         return script;
