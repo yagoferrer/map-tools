@@ -266,18 +266,26 @@ You can update the `style` of the existing Feature on a map.
 ```javascript
  var colorado = map.filterFeature({NAME:'Colorado'}, {limit: 1});
  var nevada = map.filterFeature({NAME:'Colorado'}, {limit: 1});
- map.updateFeature([colorado,nevada], {style: {fillOpacity: 0.4, fillColor:'black', strokeColor: 'black'}});
+ var style = {fillOpacity: 0.4, fillColor:'black', strokeColor: 'black'};
+ map.updateFeature([colorado,nevada], {style: style});
 ```
 
 You can also update the `style` of a group of features by a mapping function.
 
 ```javascript
-	map.updateFeature(..., { style: function(){
-			var value = (this.data.VALUE/this.data.MAX_VALUE);
-			var l = ((value) * 50)+50;
-			return { fillColor: 'hsl(210,100%,'+l+'%)'}
-		}
-	});
+function color() {
+var value = (this.data.CENSUSAREA/570640.95);
+var alpha = 5;
+var h = 210, s = 100,
+l = (Math.pow((1 - value), alpha) * 50)+50;
+return {
+	fillColor: 'hsl('+h+','+s+'%,'+l+'%)',
+	fillOpacity:0.7
+	}
+};
+
+var all = map.filterFeature('CENSUSAREA');
+map.updateFeature(all, {style: color});
 ```
 
 ## Crossfilter support for Features
