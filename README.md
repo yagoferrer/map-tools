@@ -266,7 +266,8 @@ You can update the `style` of the existing Feature on a map.
 ```javascript
  var colorado = map.filterFeature({NAME:'Colorado'}, {limit: 1});
  var nevada = map.filterFeature({NAME:'Colorado'}, {limit: 1});
- map.updateFeature([colorado,nevada], {style: {fillOpacity: 0.4, fillColor:'black', strokeColor: 'black'}});
+ var style = {fillOpacity: 0.4, fillColor:'black', strokeColor: 'black'};
+ map.updateFeature([colorado,nevada], {style: style});
 ```
 
 You can also update the `style` of a group of features by a mapping function.
