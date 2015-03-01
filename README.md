@@ -301,6 +301,20 @@ Add more [Style Options](https://developers.google.com/maps/documentation/javasc
 
 Once the Features are created, you can access directly like this: `GMP.maps.mymap.json.groups.states` and `GMP.maps.mymap.json.groups.counties`
 
+## AddPanel
+Adds a custom native Control to Google Maps
+
+``javascript
+ map.addPanel({
+    templateURL: 'templates/custom.panel.html',
+    position:'top center',
+    events: {
+      '.menu li click' : function (e) {
+        e.target.classList.toggle('active');
+      }}
+  });
+``` 
+
 
 ## How can you contribute?
 Get involved! Check out the list of [feature requests](https://github.com/yagoferrer/map-tools/issues). All PRs and ideas are welcome.
