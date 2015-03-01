@@ -301,7 +301,7 @@ Add more [Style Options](https://developers.google.com/maps/documentation/javasc
 
 Once the Features are created, you can access directly like this: `GMP.maps.mymap.json.groups.states` and `GMP.maps.mymap.json.groups.counties`
 
-## AddPanel
+## Add Panel
 Adds a custom native Control to Google Maps
 
 ```javascript
