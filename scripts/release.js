@@ -34,6 +34,7 @@ function replaceJson(location, destination, next) {
 }
 
 replaceDocs('./README.md', current, next);
+replaceDocs('./examples/index.html', current, next);
 replaceJson('../package.json', './package.json', next);
 replaceJson('../bower.json', './bower.json', next);
 
