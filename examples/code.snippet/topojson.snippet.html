@@ -17,17 +17,19 @@
   }};
 	map.updateFeature([colorado, nevada], options);
 
-  // Choropleth based on Census
-  map.updateFeature(...), {style: function() {
-    // Choropleth function based on the CENSUSAREA data
+  // Choropleth function based on the CENSUSAREA data
+  function() {
     var value = (this.data.CENSUSAREA/570640.95);
     var alpha = 5;
     var h = 210, s = 100,
-    l = (Math.pow((1 - value), alpha) * 50)+50; // Increase the difference
-
-  return {
-    fillColor: 'hsl('+h+','+s+'%,'+l+'%)',
-    fillOpacity:0.7
+    // Increase the difference between colors
+    l = (Math.pow((1 - value), alpha) * 50)+50;
+    return {
+      fillColor: 'hsl('+h+','+s+'%,'+l+'%)',
+      fillOpacity:0.7
+    }
   }
-  }});
+
+  var all = map.filterFeature('NAME');
+  map.updateFeature(all), {style: color});
 </code></pre></div>

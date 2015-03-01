@@ -16,9 +16,8 @@
   var map = new GMP({
     id: 'mymap',
     lat: 35,
-    lng: -105,
+    lng: -80.352969,
     zoom: 4
-    //mapTypeId: google.maps.MapTypeId.ROADMAP
   }, function (err, instance) {
     // topojson data example with data, (http://eric.clst.org/Stuff/USGeoJSON)
     $.getJSON('./json/us-country.json', function (data) {
@@ -48,7 +47,8 @@
 			  },
 
 			  '.choro click': function (e) {
-				  map.updateFeature(Object.keys(GMP.maps.mymap.json.all).map(function(k) { return GMP.maps.mymap.json.all[k] }), {style: color});
+          var all = map.filterFeature('NAME');
+				  map.updateFeature(all, {style: color});
 				  e.preventDefault();
 			  }
 		  }
@@ -61,8 +61,6 @@
 		  position:'right center'
 	  });
 	  Prism.highlightAll();
-
-
   });
 
 
@@ -73,7 +71,8 @@
 	  var alpha = 5;
 	  var h = 210,
 			  s = 100,
-			  l = (Math.pow((1 - value), alpha) * 50)+50; // this is just to increase the difference on the data for much different color
+    // Increase the difference between colors
+			  l = (Math.pow((1 - value), alpha) * 50)+50;
 
 	  return {
 		  fillColor: 'hsl('+h+','+s+'%,'+l+'%)',
