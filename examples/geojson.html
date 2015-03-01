@@ -26,9 +26,9 @@
 	  map.addPanel({
 		  templateURL: 'code.snippet/geojson.snippet.html',
 		  position:'right center'
-	  });
-
-	  Prism.highlightAll();
+    }, function() {
+      Prism.highlightAll();
+    });
 
   });
 </script>

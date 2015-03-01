@@ -73,8 +73,9 @@
 	  map.addPanel({
 		  templateURL: 'code.snippet/topojson.snippet.html',
 		  position:'right center'
-	  });
-	  Prism.highlightAll();
+    }, function() {
+      Prism.highlightAll();
+    });
   });
 </script>
 </body>

@@ -39,8 +39,9 @@
 	    map.addPanel({
 		    templateURL: 'code.snippet/data.querying.snippet.html',
 		    position:'right center'
-	    });
-	    Prism.highlightAll();
+      }, function() {
+        Prism.highlightAll();
+      });
     }
   });
 
