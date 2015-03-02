@@ -20,7 +20,7 @@
 - Framework agnostic
 
 ## Get Started
-Bower: 
+Bower (Recommended):
 ```bash
 bower install map-tools --save-dev
 ```
