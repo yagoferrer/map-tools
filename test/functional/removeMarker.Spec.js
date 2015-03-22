@@ -18,4 +18,28 @@ describe('when calling removeMarker()', function () {
     expect(instance.map).to.equal(null);
   });
 
+
+  it('should remove multiple Markers from the Map', function() {
+
+    var map = new mapTools({async: false, id: 'mymap', lat: 41.3833, lng: 2.1833});
+
+    var markers = [{
+      lat: 41.3833,
+      lng: 2.1833,
+      title: 'Barcelona'
+    }, {
+      lat: 41.4489,
+      lng: 2.2461,
+      title: 'Badalona'
+    }];
+
+    var result = map.addMarker(markers);
+
+    map.removeMarker(result);
+
+    expect(result[0].map).to.equal(null);
+    expect(result[1].map).to.equal(null);
+
+  });
+
 });
