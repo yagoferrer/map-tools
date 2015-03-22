@@ -4,8 +4,8 @@ describe('Given the removeMarker Module', function () {
 
   beforeEach(function () {
 
-    var global = {};
-    var that = {};
+    var global = {mapTools: {maps: {mymap: {markers: {all: {}}}}}};
+    var that = {id: 'mymap'};
 
     markerMock = function(uid) {
       this.setMap =  function(arg){
@@ -20,14 +20,13 @@ describe('Given the removeMarker Module', function () {
   });
 
   it('should remove a Marker from the Map', function () {
-
-    var marker = new markerMock(1);
+    var marker = new markerMock('markerid1');
     removeMarker(marker);
     expect(marker.map).to.equal(null);
   });
 
   it('should remove multiples markers from the Map', function () {
-    var markers = [new markerMock(1), new markerMock(2)];
+    var markers = [new markerMock('markerid1'), new markerMock('markerid2')];
     removeMarker(markers);
     expect(markers[0].map).to.equal(null);
     expect(markers[1].map).to.equal(null);
