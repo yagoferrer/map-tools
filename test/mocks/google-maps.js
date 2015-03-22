@@ -41,6 +41,7 @@ module.exports = {
     },
     Marker: function(marker) {
 
+
       marker.setAnimation = function() {
         return 'animation set';
       };
@@ -53,6 +54,10 @@ module.exports = {
         for (var option in options) {
           marker[option] = options[option];
         }
+      };
+
+      marker.setMap = function(map) {
+        marker.map = map;
       }
 
       return marker;
