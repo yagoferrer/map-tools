@@ -1,10 +1,9 @@
 describe('Given the setCenter Class', function () {
 
 
-  var setCenter, spy;
+  var center, spy;
 
   beforeEach(function () {
-
     var global = {
       google: {
         maps: {
@@ -16,7 +15,6 @@ describe('Given the setCenter Class', function () {
 
     spy = sinon.spy();
 
-
     var that = {
         instance: {
           setCenter: spy
@@ -24,27 +22,21 @@ describe('Given the setCenter Class', function () {
       options: {
         lat: 1,
         lng: 2
-      },
+      }
     };
 
-    setCenter = require('map-tools/setCenter')(global, that);
-
+    center = require('map-tools/center')(global, that);
   });
 
   it('should center the Map given coordinates', function () {
-
-    setCenter(40.416854, -3.703419);
+    center(40.416854, -3.703419);
     expect(spy).to.have.been.calledWith({ lat: 40.416854, lng: -3.703419 });
-
-
   });
 
 
   it('should center the Map using initial coordinates', function() {
-
-    setCenter();
+    center();
     expect(spy).to.have.been.calledWith({ lat: 1, lng: 2 });
-
   });
 
 
