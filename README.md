@@ -91,9 +91,15 @@ map.updateMap({zoom: 6, type: 'TERRAIN'});
 ```
 
 ### Center Map
-Call this method to center the Map. If you don't pass any coordinates it will use the initial values set to the Map
+Call this method to center the Map. If you don't pass any coordinates it will use the initial values set to the Map.
 ```javascript
 map.center(41.3833, 2.1833);
+```
+
+### Zoom Map
+Use this method to Zoom into a specific level.
+```javascript
+map.zoom(12);
 ```
 
 
