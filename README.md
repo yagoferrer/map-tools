@@ -1,4 +1,4 @@
-## map-tools 0.6.0 
+## map-tools 0.7.0 
 [![Build](https://travis-ci.org/yagoferrer/map-tools.svg?branch=master)](https://travis-ci.org/yagoferrer/map-tools) 
 [![Coverage](https://coveralls.io/repos/yagoferrer/map-tools/badge.svg?branch=master)](https://coveralls.io/r/yagoferrer/map-tools)
 [![Code Climate](https://codeclimate.com/github/yagoferrer/map-tools/badges/gpa.svg?branch=master)](https://codeclimate.com/github/yagoferrer/map-tools)
@@ -28,7 +28,7 @@ NPM:
 ```bash
 npm install map-tools --save-dev
 ```
-Direct download: [map-tools.min.js](https://github.com/yagoferrer/map-tools/blob/0.6.0/dist/map-tools.min.js)
+Direct download: [map-tools.min.js](https://github.com/yagoferrer/map-tools/blob/0.7.0/dist/map-tools.min.js)
 
 ## Meteor Users
 I'm working on a lab project for map-tools.js + Meteor integration. Please go to: [meteor-map-tools](https://github.com/yagoferrer/meteor-map-tools) for more information.
@@ -56,7 +56,7 @@ var map = new mapTools({
 ```
 You can also use: `el: '.mymap'`, instead of `id` to specify a query selector.
 
-By default it will load version [3.18](https://github.com/yagoferrer/map-tools/blob/0.6.0/lib/map-tools/defaults.js) of Google Maps. You can pass a specific version using the `version` option.
+By default it will load version [3.18](https://github.com/yagoferrer/map-tools/blob/0.7.0/lib/map-tools/defaults.js) of Google Maps. You can pass a specific version using the `version` option.
 
 Add a simple HTML tag
 ```html
@@ -216,7 +216,7 @@ The default **event** is `click` but you can change it with the `event` property
           population: 1621000
         }
       },{
-        lat: 40.6.0, lng: -3.710436,
+        lat: 40.7.0, lng: -3.710436,
         data: {
           name: 'Madrid',
           population: 3234000
@@ -227,7 +227,7 @@ The default **event** is `click` but you can change it with the `event` property
     });
   }
   
-  var map = new mapTools({id: 'mymap', lat: 40.6.0, lng: -3.710436}, 
+  var map = new mapTools({id: 'mymap', lat: 40.7.0, lng: -3.710436}, 
   function (err, instance) {
     if (!err) {
       addMarkers();
