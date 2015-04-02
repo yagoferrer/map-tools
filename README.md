@@ -90,6 +90,13 @@ Update any option by calling the updateMap method like this example:
 map.updateMap({zoom: 6, type: 'TERRAIN'});
 ```
 
+### Center Map
+Call this method to center the Map. If you don't pass any coordinates it will use the initial values set to the Map
+```javascript
+map.center(41.3833, 2.1833);
+```
+
+
 Once instantiated: you can access directly to the Google API like this: `map.instance`
 
 ## Markers
