@@ -82,7 +82,7 @@ You can also use this method to Zoom into a specific level.
 map.zoom(12);
 ```
 
-### Map Types
+## Map Types
 Default map types are : ROADMAP, SATELLITE, HYBRID and TERRAIN
 example:
 ```javascript
