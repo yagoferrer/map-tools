@@ -39,7 +39,7 @@ You can either go to: [map-tools.io](http://map-tools.io/) or pull the repo and 
 ```bash
 npm start
 ```
-## Map Methods
+
 ### Load Map async
 There is no need to include the Google Maps `<script>` tag. map-tools.js will load the file for you.
 Setup a callback to notify you when the Map is fully loaded.
@@ -62,6 +62,8 @@ Add a simple HTML tag
 ```html
 <div id="mymap"></div>
 ```
+## Map Methods
+
 #### Update Map 
 Update any option by calling the updateMap method like this example:
 ```javascript
