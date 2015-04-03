@@ -27,7 +27,7 @@
 		    position: 'right center',
 		    events: {
 			    '.update click': function (e) {
-				    map.updateMarker(marker, {infoWindow: {content: '<p>Click Me!</p>'}});
+				    map.updateMarker(marker, {infoWindow: {content: '<p>Updated!</p>'}});
 				    e.preventDefault();
 			    }
 		    }
@@ -51,7 +51,8 @@
       lng: 2.1833,
       title: 'Barcelona',
       infoWindow: {
-        event: 'mouseover',
+        openOn: 'mouseover',
+        closeOn: 'click',
         content: '<p>{city}</p>'
       },
       data: {

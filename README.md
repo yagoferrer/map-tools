@@ -192,7 +192,8 @@ map.addMarker({
   lat: 41.3833,
   lng: 2.1833,
   infoWindow: {
-    event: 'mouseover',
+    openOn: 'mouseover',
+    closeOn: 'click',
     content: '<p>{city} City</p>'
   },
   data: {

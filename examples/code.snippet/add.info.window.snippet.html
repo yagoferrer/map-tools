@@ -1,10 +1,11 @@
 <div class="map-panel" ><pre class="language-javascript"><code class="language-javascript">
-	marker = map.addMarker({
+  marker = map.addMarker({
 		lat: 41.3833,
 		lng: 2.1833,
 		title: 'Barcelona',
     infoWindow: {
-			event: 'mouseover',
+      openOn: 'mouseover',
+      closeOn: 'click',
 			content: '<p>{city}</p>'
 		},
 		data: {
@@ -13,6 +14,6 @@
 	});
 	...
 	map.updateMarker(marker, {
-    infoWindow: {content: '<p>Click Me!</p>'}
+    infoWindow: {content: '<p>Updated!</p>'}
 	});
 </code></pre></div>
