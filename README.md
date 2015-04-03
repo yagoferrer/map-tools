@@ -116,7 +116,12 @@ Once instantiated: you can access directly to the Google API like this: `map.ins
 map.addMarker({
   lat: 41.3833,
   lng: 2.1833,
-  title: 'Barcelona'
+  title: 'Barcelona',
+  on: {
+    click: function() {
+      alert('Barcelona!');
+    }
+  }  
 });
 ```
 
