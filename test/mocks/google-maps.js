@@ -37,7 +37,7 @@ module.exports = {
       return {};
     },
     InfoWindow: function() {
-      return {open: function(){}, setContent: function(x){this.content = x}};
+      return {open: function(){}, close: function(){}, setContent: function(x){this.content = x}};
     },
     Marker: function(marker) {
 
