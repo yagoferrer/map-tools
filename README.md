@@ -37,8 +37,8 @@ You can either go to: [map-tools.io](http://map-tools.io/) or pull the repo and 
 npm start
 ```
 
-### Load Map async
-There is no need to include the Google Maps `<script>` tag. map-tools.js will load the file for you.
+### Start by loading the Map Async
+There is no need to include the Google Maps `<script>` tag. **map-tools** will load the file for you.
 Setup a callback to notify you when the Map is fully loaded.
 ```javascript
 var map = new mapTools({
