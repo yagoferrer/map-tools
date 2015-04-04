@@ -30,9 +30,6 @@ npm install map-tools --save-dev
 ```
 Direct download: [map-tools.min.js](https://github.com/yagoferrer/map-tools/blob/0.7.0/dist/map-tools.min.js)
 
-## Meteor Users
-You can use map-tools as it is but I'm working on a lab project for map-tools.js + Meteor integration. Please go to: [meteor-map-tools](https://github.com/yagoferrer/meteor-map-tools) for more information.
- 
 ## Check out examples:
 
 You can either go to: [map-tools.io](http://map-tools.io/) or pull the repo and run:
@@ -341,6 +338,8 @@ Adds a custom native Control to Google Maps
   });
 ``` 
 
+## Meteor Users
+You can use map-tools as it is but I'm working on a lab project for map-tools.js + Meteor integration. Please go to: [meteor-map-tools](https://github.com/yagoferrer/meteor-map-tools) for more information.
 
 ## How can you contribute?
 Get involved! Check out the list of [feature requests](https://github.com/yagoferrer/map-tools/issues). All PRs and ideas are welcome.
