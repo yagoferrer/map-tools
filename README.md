@@ -30,7 +30,7 @@ npm install map-tools --save-dev
 ```
 Direct download: [map-tools.min.js](https://github.com/yagoferrer/map-tools/blob/0.7.0/dist/map-tools.min.js)
 
-## Check out examples:
+## Examples:
 
 You can either go to: [map-tools.io](http://map-tools.io/) or pull the repo and run:
 ```bash
