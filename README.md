@@ -39,7 +39,7 @@ npm start
 
 ### Start by loading the Map Async
 There is no need to include the Google Maps `<script>` tag. **map-tools** will load the file for you.
-Setup a callback to notify you when the Map is fully loaded.
+Setting a callback function to notify you when the Map is fully loaded it will help you to do things that depend on the Map.
 ```javascript
 var map = new mapTools({
   id: 'mymap',
