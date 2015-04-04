@@ -13,10 +13,10 @@
 - Less Code: The [Google Maps API](https://developers.google.com/maps/documentation/javascript/reference) it is of considerable size. You'll be writing way **less** code with map-tools.js
 - More Fun: Add [Marker animations](#animate-markers), use [handlebars style](#info-window) variables.
 - Easy To Use: Intuitive APIs, easy to understand.
-- Non Intrusive: it extends the API, you can use any other native methods, properties and events anywhere.
+- Non Intrusive: it extends the API; you can use any other native methods, properties and events anywhere.
 - Query elements on the Map to update their options using [Crossfilter](#crossfilter-support-for-markers)
 - [TopoJSON Support](#topojson-support): Add Topo/GeoJSON files, set styles and find references easier. 
-- 100% tested. GPA 4.0
+- Well tested. Good GPA ranting. 
 - Framework agnostic
 
 ## Get Started
