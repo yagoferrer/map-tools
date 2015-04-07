@@ -98,6 +98,10 @@ Zoom map into a specific Zoom level.
 map.zoom(12);
 ```
 
+#### Get Current Map Center Position
+```javascript
+map.locate()
+```
 
 ## Markers
 
