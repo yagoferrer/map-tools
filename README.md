@@ -98,9 +98,16 @@ Zoom map into a specific Zoom level.
 map.zoom(12);
 ```
 
+#### Get the current Zoom Level.
+```javascript
+map.zoom();
+// 8
+```
+
 #### Get Current Map Center Position
 ```javascript
 map.locate()
+// {lat: 41.3833, lng: 2.1833}
 ```
 
 ## Markers
