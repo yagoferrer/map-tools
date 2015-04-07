@@ -93,7 +93,7 @@ map.center(41.3833, 2.1833);
 ```
 
 #### Zoom Map
-You can also use this shortcut method to zoom the Map into a specific level.
+Zoom map into a specific Zoom level.
 ```javascript
 map.zoom(12);
 ```
