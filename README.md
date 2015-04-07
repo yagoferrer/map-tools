@@ -83,7 +83,11 @@ Add more [Map Options](https://developers.google.com/maps/documentation/javascri
 ```
 
 #### Center Map
-Call this method to center the Map to specific point. If you don't pass any coordinates it will center the Map using the coordinates provided during initialization.
+Call this method to center the Map.
+```javascript
+map.center();
+```
+If you pass latitude and longitude coordinates it will center the Map using the coordinates provided
 ```javascript
 map.center(41.3833, 2.1833);
 ```
