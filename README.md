@@ -61,7 +61,7 @@ Add a simple HTML tag
 ```
 
 ### Map Native Instance
-Once instantiated: you can access directly to the Google API like this: `map.instance` or `mapTools.mymap.instance`
+There are two ways to access directly to the Google Maps API: `map.instance` or `mapTools[YourMapId].instance`
 
 ## Map Methods
 
