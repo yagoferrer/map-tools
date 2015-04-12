@@ -61,7 +61,7 @@ Add a simple HTML tag
 ```
 
 ### Map Native Instance
-Once instantiated: you can access directly to the Google API like this: `map.instance` or `mapTools.mymap.instance`
+There are two ways to access directly to the Google Maps API: `map.instance` or `mapTools[YourMapId].instance`
 
 ## Map Methods
 
@@ -124,7 +124,17 @@ map.addMarker({
   }  
 });
 ```
-Once you add a Marker, it will generate a unique identifier to save a reference of the Marker under `map.markers[uid]`. If you can set your own uid by setting: data.uid = 'your unique value here' under the marker options.
+Once you add a Marker, it will generate a unique identifier to save a reference of the Marker under `map.markers.all[uid]`. You can also set your **custom uid** like this:
+
+```javascript
+map.addMarker({
+  lat: 41.3833,
+  lng: 2.1833,
+  data: {
+   uid: "257c726053"
+  }
+});
+```
 
 #### Add Multiple Markers
 
@@ -347,3 +357,7 @@ You can use map-tools as it is but I'm working on a lab project for map-tools.js
 
 ## How can you contribute?
 Get involved! Check out the list of [feature requests](https://github.com/yagoferrer/map-tools/issues). All PRs and ideas are welcome.
+
+##Sponsors
+Thank you so much to all our sponsors to provide free licenses:
+[WebStorm](https://www.jetbrains.com/webstorm/), [Code Climate](https://codeclimate.com/), [Travis](https://travis-ci.com/) and [Coveralls] (https://coveralls.io/)
