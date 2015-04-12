@@ -358,4 +358,6 @@ You can use map-tools as it is but I'm working on a lab project for map-tools.js
 ## How can you contribute?
 Get involved! Check out the list of [feature requests](https://github.com/yagoferrer/map-tools/issues). All PRs and ideas are welcome.
 
-Sponsors: [WebStorm](https://www.jetbrains.com/webstorm/), [Code Climate](https://codeclimate.com/), [Travis](https://travis-ci.com/), [Coveralls] (https://coveralls.io/)
+##Sponsors
+Thank you so much to all our sponsors to provide free licenses:
+[WebStorm](https://www.jetbrains.com/webstorm/), [Code Climate](https://codeclimate.com/), [Travis](https://travis-ci.com/) and [Coveralls] (https://coveralls.io/)
