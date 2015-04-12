@@ -17,7 +17,7 @@
 - Query elements on the Map to update their options using [Crossfilter](#crossfilter-support-for-markers)
 - [TopoJSON Support](#topojson-support): Add Topo/GeoJSON files, set styles and find references easier. 
 - Well tested. Good GPA rating. 
-- Framework agnostic
+- Framework agnostic.
 
 ## Get Started
 Bower (Recommended):
