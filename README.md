@@ -124,7 +124,7 @@ map.addMarker({
   }  
 });
 ```
-Once you add a Marker, it will generate a unique identifier to save a reference of the Marker under `map.markers[uid]`. You can also set your custom uid like this:
+Once you add a Marker, it will generate a unique identifier to save a reference of the Marker under `map.markers.all[uid]`. You can also set your **custom uid** like this:
 
 ```javascript
 map.addMarker({
