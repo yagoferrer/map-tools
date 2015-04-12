@@ -124,7 +124,17 @@ map.addMarker({
   }  
 });
 ```
-Once you add a Marker, it will generate a unique identifier to save a reference of the Marker under `map.markers[uid]`. If you can set your own uid by setting: data.uid = 'your unique value here' under the marker options.
+Once you add a Marker, it will generate a unique identifier to save a reference of the Marker under `map.markers[uid]`. You can also set your custom uid like this:
+
+```javascript
+map.addMarker({
+  lat: 41.3833,
+  lng: 2.1833,
+  data: {
+   uid: "257c726053"
+  }
+});
+```
 
 #### Add Multiple Markers
 
