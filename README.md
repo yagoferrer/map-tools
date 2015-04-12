@@ -17,7 +17,7 @@
 - Query elements on the Map to update their options using [Crossfilter](#crossfilter-support-for-markers)
 - [TopoJSON Support](#topojson-support): Add Topo/GeoJSON files, set styles and find references easier. 
 - Well tested. Good GPA rating. 
-- Framework agnostic
+- Framework agnostic.
 
 ## Get Started
 Bower (Recommended):
@@ -359,5 +359,5 @@ You can use map-tools as it is but I'm working on a lab project for map-tools.js
 Get involved! Check out the list of [feature requests](https://github.com/yagoferrer/map-tools/issues). All PRs and ideas are welcome.
 
 ##Sponsors
-Thank you so much to all our sponsors to provide free licenses:
+Thank you so much to all our sponsors for providing free licenses:
 [WebStorm](https://www.jetbrains.com/webstorm/), [Code Climate](https://codeclimate.com/), [Travis](https://travis-ci.com/) and [Coveralls] (https://coveralls.io/)
