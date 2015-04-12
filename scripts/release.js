@@ -6,7 +6,6 @@ var description = "map-tools.js is a Google Maps Feature-rich Javascript wrapper
 
 var fs = require('fs');
 
-
 function replaceDocs(location, current, next) {
   fs.readFile(location, 'utf8', function (err, data) {
     if (err) {return console.log(err);}
@@ -19,7 +18,6 @@ function replaceDocs(location, current, next) {
   });
 }
 
-
 function replaceJson(location, destination, next) {
   var json = require(location);
   json.version = next;
@@ -27,11 +25,11 @@ function replaceJson(location, destination, next) {
 
   var output = JSON.stringify(json, null, "  ");
 
-
   fs.writeFile(destination, output, 'utf8', function (err) {
-    if (err) return console.log(err);
+    if (err) {
+      return console.log(err);
+    }
   });
-
 
 }
 
