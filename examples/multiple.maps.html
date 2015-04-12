@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link href="vendors/prism/prism.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../examples/style/basic.css"/>
+  <style>
+
+    #mymap1 {
+      height: 50%;
+      margin: 0px;
+      padding: 0px;
+    }
+
+    #mymap2 {
+      height: 50%;
+      margin: 0px;
+      padding: 0px;
+    }
+
+  </style>
+  <script src="vendors/prism/prism.js"></script>
+  <script src="../dist/map-tools.js"></script>
+</head>
+
+<body>
+<script>
+  var map2;
+  var map1 = new mapTools({
+    id: 'mymap1',
+    lat: 41.3833,
+    lng: 2.1833
+  }, function (err, map) {
+   load2ndMap();
+
+    // snippet panel
+    map.addPanel({
+      templateURL: 'code.snippet/multiple.maps.html',
+      position:'right center'
+    }, function() {
+      Prism.highlightAll();
+    });
+  });
+
+  function load2ndMap() {
+    map2 = new mapTools({
+      id: 'mymap2',
+      lat: 41.3833,
+      lng: 2.1833,
+      async: false
+    }, function (err, map2) {
+    });
+  }
+
+</script>
+<div id="mymap1"></div>
+<div id="mymap2"></div>
+</body>
+</html>
