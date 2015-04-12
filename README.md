@@ -125,7 +125,7 @@ map.addMarker({
   }  
 });
 ```
-Once you add a Marker, it will generate a unique identifier to save a reference of the Marker under `map.markers[uid]`. If you can set your own uid by setting: data.$uid = 'your unique value here' under the marker options.
+Once you add a Marker, it will generate a unique identifier to save a reference of the Marker under `map.markers[uid]`. If you can set your own uid by setting: data.uid = 'your unique value here' under the marker options.
 
 #### Add Multiple Markers
 
