@@ -16,7 +16,7 @@
     id: 'mymap',
     lat: 41.3833,
     lng: 2.1833
-  }, function (err, instance) {
+  }, function (err, map) {
     if (!err) {
       addMarker();
 
@@ -32,7 +32,6 @@
 			    }
 		    }
 	    });
-
 
 	    map.addPanel({
 		    templateURL: 'code.snippet/add.info.window.snippet.html',

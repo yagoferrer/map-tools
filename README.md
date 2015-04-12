@@ -45,7 +45,7 @@ var map = new mapTools({
   id: 'mymap',
   lat: 41.3833,
   lng: 2.1833
-}, function (err, instance) {
+}, function (err, map) {
   if (!err) {
     console.log('Hey! the Map was fully loaded! Add some Markers :)');
   }
@@ -249,7 +249,7 @@ The default **event** is `click` but you can change it with the `event` property
   }
   
   var map = new mapTools({id: 'mymap', lat: 41.3833, lng: -3.710436}, 
-  function (err, instance) {
+  function (err, map) {
     if (!err) {
       addMarkers();
     }

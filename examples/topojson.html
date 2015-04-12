@@ -32,50 +32,53 @@
     lat: 35,
     lng: -80.352969,
     zoom: 4
-  }, function (err, instance) {
-    // topojson data example with data, (http://eric.clst.org/Stuff/USGeoJSON)
-    $.getJSON('./json/us-country.json', function (data) {
-      map.addTopoJson(data, [{
-        object: 'us_country',
-        style: {
-          strokeColor: '#2c2c2c',
-          strokeWeight: 0.5,
-          fillOpacity: 0
-        },
-        filters: ['NAME']
-      }]);
-    });
+  }, function (err, map) {
 
-	  map.addPanel({
-		  template: '<div class="actions">' +
-		  '<div class="single">Update Features (Select Nevada & Colorado)</div>' +
-		  '<div class="choro">Color by Census (Choropleth) </div>' +
-		  '</div>',
-		  position: 'right center',
-		  events: {
-			  '.single click': function (e) {
-				  var colorado = map.filterFeature({NAME:'Colorado'}, {limit: 1});
-				  var nevada = map.filterFeature({NAME:'Nevada'}, {limit: 1});
-				  map.updateFeature([colorado, nevada], {style: {fillOpacity: 0.4, fillColor:'black', strokeColor: 'black'}});
-				  e.preventDefault();
-			  },
+    if (!err) {
+      // topojson data example with data, (http://eric.clst.org/Stuff/USGeoJSON)
+      $.getJSON('./json/us-country.json', function (data) {
+        map.addTopoJson(data, [{
+          object: 'us_country',
+          style: {
+            strokeColor: '#2c2c2c',
+            strokeWeight: 0.5,
+            fillOpacity: 0
+          },
+          filters: ['NAME']
+        }]);
+      });
 
-			  '.choro click': function (e) {
-          var all = map.filterFeature('NAME');
-				  map.updateFeature(all, {style: color});
-				  e.preventDefault();
-			  }
-		  }
-	  });
+      map.addPanel({
+        template: '<div class="actions">' +
+        '<div class="single">Update Features (Select Nevada & Colorado)</div>' +
+        '<div class="choro">Color by Census (Choropleth) </div>' +
+        '</div>',
+        position: 'right center',
+        events: {
+          '.single click': function (e) {
+            var colorado = map.filterFeature({NAME:'Colorado'}, {limit: 1});
+            var nevada = map.filterFeature({NAME:'Nevada'}, {limit: 1});
+            map.updateFeature([colorado, nevada], {style: {fillOpacity: 0.4, fillColor:'black', strokeColor: 'black'}});
+            e.preventDefault();
+          },
 
+          '.choro click': function (e) {
+            var all = map.filterFeature('NAME');
+            map.updateFeature(all, {style: color});
+            e.preventDefault();
+          }
+        }
+      });
 
-	  // snippet panel
-	  map.addPanel({
-		  templateURL: 'code.snippet/topojson.snippet.html',
-		  position:'right center'
-    }, function() {
-      Prism.highlightAll();
-    });
+      // snippet panel
+      map.addPanel({
+        templateURL: 'code.snippet/topojson.snippet.html',
+        position:'right center'
+      }, function() {
+        Prism.highlightAll();
+      });
+    }
+
   });
 </script>
 </body>
