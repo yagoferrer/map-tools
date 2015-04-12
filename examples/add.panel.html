@@ -40,20 +40,17 @@
             position:'top center',
             events: {
                 '.menu li click' : function (e) {
-                    console.log('clicked on ', e.target);
                     e.target.classList.toggle('active');
                 }
             }
-        }, function() {
-          Prism.highlightAll();
         });
 
         map.addPanel({
             templateURL: 'code.snippet/add.panel.snippet.html',
             position:'right center'
+        }, function() {
+          Prism.highlightAll();
         });
-        Prism.highlightAll();
-
     }
 </script>
 
