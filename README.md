@@ -68,7 +68,7 @@ Once instantiated: you can access directly to the Google API like this: `map.ins
 #### Update Map 
 Update any option by calling the updateMap method like this example:
 ```javascript
-map.updateMap({zoom: 6, type: 'TERRAIN'});
+map.updateMap({type: 'TERRAIN'});
 ```
 
 Default map types are : ROADMAP, SATELLITE, HYBRID and TERRAIN.
@@ -77,8 +77,7 @@ Add more [Map Options](https://developers.google.com/maps/documentation/javascri
 {
     disableDoubleClickZoom: true,
     mapTypeControl: false,
-    streetViewControl: false,
-    zoom: 15
+    streetViewControl: false
 }
 ```
 
