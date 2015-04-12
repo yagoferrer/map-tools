@@ -12,7 +12,9 @@ function replaceDocs(location, current, next) {
     if (err) {return console.log(err);}
     var result = data.replace(current, next);
     fs.writeFile(location, result, 'utf8', function (err) {
-      if (err) return console.log(err);
+      if (err) {
+        return console.log(err);
+      }
     });
   });
 }
