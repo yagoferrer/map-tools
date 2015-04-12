@@ -15,21 +15,22 @@
     lat: 35,
     lng: -105,
     zoom: 4
-  }, function (err, instance) {
-    var domain = 'http://earthquake.usgs.gov';
-    var path = '/earthquakes/feed/v1.0/summary/all_day.geojson';
-    $.getJSON(domain + path, function (data) {
-      map.addGeoJson(data);
-    });
+  }, function (err, map) {
+    if (!err) {
+      var domain = 'http://earthquake.usgs.gov';
+      var path = '/earthquakes/feed/v1.0/summary/all_day.geojson';
+      $.getJSON(domain + path, function (data) {
+        map.addGeoJson(data);
+      });
 
-	  // snippet panel
-	  map.addPanel({
-		  templateURL: 'code.snippet/geojson.snippet.html',
-		  position:'right center'
-    }, function() {
-      Prism.highlightAll();
-    });
-
+      // snippet panel
+      map.addPanel({
+        templateURL: 'code.snippet/geojson.snippet.html',
+        position:'right center'
+      }, function() {
+        Prism.highlightAll();
+      });
+    }
   });
 </script>
 </body>
