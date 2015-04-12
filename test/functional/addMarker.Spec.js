@@ -22,7 +22,12 @@ describe('when calling addMarker()', function () {
     var markers = [{
       lat: 41.3833,
       lng: 2.1833,
-      title: 'Barcelona'
+      title: 'Barcelona',
+      on: {
+        click: function() {
+
+        }
+      }
     }, {
       lat: 41.4489,
       lng: 2.2461,

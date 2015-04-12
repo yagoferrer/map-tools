@@ -41,7 +41,6 @@ module.exports = {
     },
     Marker: function(marker) {
 
-
       marker.setAnimation = function() {
         return 'animation set';
       };
@@ -61,13 +60,13 @@ module.exports = {
       }
 
       return marker;
-
     },
     MarkerImage: function() {
       return {};
     },
     Map: function() {
       return {
+        zoom: 8,
         gm_bindings_: {},
         data: {
 					addGeoJson: function(json) {
@@ -93,7 +92,13 @@ module.exports = {
 					'10': [],
 					'11': [],
 					'12': []
-		}
+        },
+        getZoom: function() {
+          return this.zoom;
+        },
+        setZoom: function(zoom) {
+          this.zoom = zoom;
+        }
 
       };
     },
