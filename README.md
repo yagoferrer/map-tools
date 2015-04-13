@@ -169,6 +169,19 @@ map.updateMarker(<marker>, {visible: false})
 
 You can also use `lat` and `lng` to change the position of the Marker and many other options.
 
+#### Remove Marker
+Allows you to delete one or multiple Markers.
+
+```javascript
+map.removeMarker([markerInstance, markerInstance]);
+```
+
+#### Remove All Markers
+Call the method with no parameters and that will delete all the Markers in the Map.
+```javascript
+map.removeMarker()
+```
+
 
 #### Animate Markers
 Make your marker bounce `move: 'bounce'` or drop `move: 'drop'`
