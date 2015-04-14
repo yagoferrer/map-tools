@@ -124,8 +124,9 @@ map.addMarker({
   }  
 });
 ```
-Once you add a Marker, it will generate a unique identifier to save a reference of the Marker under `map.markers.all[uid]`. You can also set your **custom uid** like this:
-
+Once you add a Marker, it will generate a unique identifier to save a reference of the Marker under `map.markers.all[uid]`. 
+There are a couple of ways to setup a custom uid.
+**data.uid**
 ```javascript
 map.addMarker({
   lat: 41.3833,
@@ -135,6 +136,25 @@ map.addMarker({
   }
 });
 ```
+Or custom a property. This is handy if the only data property is a unique identifier.
+
+```javascript
+var map = new mapTools({
+  id: 'mymap',
+  lat: 41.3833,
+  lng: 2.1833,
+  uid: 'custom_id',
+}, function (err, map) {
+  if (!err) {
+    map.addMarker({
+      lat: 41.3833,
+      lng: 2.1833,
+      uid: "257c726053"
+    });
+  }
+});
+```
+
 
 #### Add Multiple Markers
 
