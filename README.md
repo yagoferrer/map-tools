@@ -399,6 +399,17 @@ Adds a custom native Control to Google Maps
   });
 ``` 
 
+## Add Angular.js template into a Map Panel.
+You can inject an Angular template and benefit from two way binding. You'll need to pre-compile the template like this:
+
+```javascript
+var template = '<div>{{scopeVar}}</div>';
+map.addPanel({
+  position: 'top right',
+  template: $compile(template)($scope)[0]	
+})
+```
+
 ## Meteor Users
 You can use map-tools as it is but I'm working on a lab project for map-tools.js + Meteor integration. Please go to: [meteor-map-tools](https://github.com/yagoferrer/meteor-map-tools) for more information.
 
