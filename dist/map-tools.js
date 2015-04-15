@@ -520,7 +520,8 @@ module.exports = {
   zoom: 8,
   customMapOptions: ['id', 'lat', 'lng', 'type', 'uid'],
   customMarkerOptions: ['lat', 'lng', 'move', 'infoWindow', 'on'],
-  panelPosition: 'TOP_LEFT'
+  panelPosition: 'TOP_LEFT',
+  customInfoWindowOptions: ['open', 'close']
 };
 
 },{}],9:[function(require,module,exports){
@@ -734,9 +735,13 @@ module.exports = function (global) {
 },{"map-tools/addFeature":2,"map-tools/addMap":4,"map-tools/addMarker":5,"map-tools/addPanel":6,"map-tools/center":7,"map-tools/filter":9,"map-tools/groups":12,"map-tools/removeMarker":15,"map-tools/updateFeature":17,"map-tools/updateMap":18,"map-tools/updateMarker":19}],14:[function(require,module,exports){
 /*jslint node: true */
 "use strict";
+
+var utils = require('map-tools/utils');
+var config = require('map-tools/config');
+
 module.exports = function (global, that) {
 
-
+  var timer = false;
 
   function infoWindow(marker, options)
   {
@@ -745,6 +750,8 @@ module.exports = function (global, that) {
         options.content = options.content.replace(/\{(\w+)\}/g, function (m, variable) {
           return marker.data[variable] || '';
         });
+
+        marker.infoWindow.content = options.content;
       }
 
        marker.infoWindow.instance = new global.google.maps.InfoWindow(options);
@@ -754,41 +761,55 @@ module.exports = function (global, that) {
   }
 
   function open(marker, options, map) {
-    if (that.infoWindow && isOpen(that.infoWindow)) {
-      that.infoWindow.close();
-    }
+    close();
     infoWindow(marker, options);
-    marker.infoWindow.instance.open(map, marker)
+    marker.infoWindow.instance.open(map, marker);
   }
   function isOpen(infoWindow){
     var map = infoWindow.getMap();
     return (map !== null && typeof map !== "undefined");
   }
 
+  function close() {
+
+    clearTimeout(timer);
+    if (that.infoWindow && isOpen(that.infoWindow)) {
+      that.infoWindow.close();
+    }
+  }
+
   function addEvents(marker, options, map) {
-    var openOn = options.openOn || 'click';
-    var closeOn = options.closeOn || 'click';
+
+    var args = utils.prepareOptions(options, config.customInfoWindowOptions);
+    var openOn = (args.custom && args.custom.open && args.custom.open.on) ?  args.custom.open.on : 'click';
+    var closeOn = (args.custom && args.custom.close && args.custom.close.on) ? args.custom.close.on : 'click';
+
 
     // Toggle Effect when using the same method to Open and Close.
     if (openOn === closeOn) {
       global.google.maps.event.addListener(marker, openOn, function () {
-
         if (!marker.infoWindow.instance || !isOpen(marker.infoWindow.instance)) {
-
-          open(marker, options, map);
-
+          open(marker, args.defaults, map);
         } else {
-          marker.infoWindow.instance.close();
+          close();
         }
       });
 
     } else {
+
       global.google.maps.event.addListener(marker, openOn, function () {
-        open(marker, options, map);
+        open(marker, args.defaults, map);
       });
 
+
       global.google.maps.event.addListener(marker, closeOn, function () {
-        marker.infoWindow.instance.close();
+        if (args.custom.close.duration) {
+          timer = setTimeout(function(){
+            close();
+          }, args.custom.close.duration);
+        } else {
+          close();
+        }
       });
     }
   }
@@ -799,7 +820,7 @@ module.exports = function (global, that) {
 };
 
 
-},{}],15:[function(require,module,exports){
+},{"map-tools/config":8,"map-tools/utils":20}],15:[function(require,module,exports){
 "use strict";
 module.exports = function(global, that) {
 
