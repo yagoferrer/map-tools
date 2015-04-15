@@ -18,6 +18,7 @@
 - [TopoJSON Support](#topojson-support): Add Topo/GeoJSON files, set styles and find references easier. 
 - Well tested. Good GPA rating. 
 - Framework agnostic.
+- My ultimate goals are performance and Google API simplification.
 
 ## Get Started
 Bower (Recommended):
