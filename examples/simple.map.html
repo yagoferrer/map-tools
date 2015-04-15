@@ -15,8 +15,15 @@
     id: 'mymap',
     lat: 41.3833,
     lng: 2.1833,
-    type: 'ROADMAP'
+    type: 'ROADMAP',
+    on: {
+      zoom_changed: function() {
+        console.log('the zoom level has changed!', map.zoom())
+      }
+    }
   }, function (err, map) {
+
+
     console.log('Map Loaded!', map.instance);
 
 	  // snippet panel

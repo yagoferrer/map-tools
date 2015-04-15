@@ -63,6 +63,20 @@ Add a simple HTML tag
 ### Map Native Instance
 There are two ways to access directly to the Google Maps API: `map.instance` or `mapTools[YourMapId].instance`
 
+### Map Events
+
+You can listen for Map events when creating a new Map.
+
+```javascript
+var map = new mapTools({
+  on: {
+      zoom_changed: function() {
+        console.log('the zoom level has changed!', map.zoom())
+      }
+  }  
+...
+
+```
 ## Map Methods
 
 #### Update Map 
