@@ -50,8 +50,8 @@
       lng: 2.1833,
       title: 'Barcelona',
       infoWindow: {
-        openOn: 'mouseover',
-        closeOn: 'click',
+        open: {on: 'mouseover'},
+        close: {on: 'mouseout', duration: 3000},
         content: '<p>{city}</p>'
       },
       data: {
