@@ -250,14 +250,15 @@ map.updateGroup('myGroup', {visible: true});
 
 #### Info Window
 
-Adds an info window with HTML content.
+You can add an infoWindow bubble with dynamic content and setup `open` and `close` events with a duration timer. 
+
 ```javascript
 map.addMarker({
   lat: 41.3833,
   lng: 2.1833,
   infoWindow: {
-    openOn: 'mouseover',
-    closeOn: 'click',
+    open: {on: 'mouseover'},
+    close: {on: 'mouseout', duration: 3000},
     content: '<p>{city} City</p>'
   },
   data: {
