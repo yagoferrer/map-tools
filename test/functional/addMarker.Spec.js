@@ -42,8 +42,7 @@ describe('when calling addMarker()', function () {
   });
 
 
-  describe('with a the "bubble" option witch "content" has a reference to a "data" variable', function () {
-
+  describe('with a the "infoWindow" option witch "content" has a reference to a "data" variable', function () {
 
     it('should replace the variable in "content" using the "data" variable', function () {
       var map = new mapTools({async: false, id: 'mymap', lat: 41.3833, lng: 2.1833});
@@ -51,7 +50,9 @@ describe('when calling addMarker()', function () {
         lat: 41.3833,
         lng: 2.1833,
         infoWindow: {
-          content: '{city}'
+          content: '{city}',
+          open: {on: 'mousever'},
+          close: {on: 'mouseout'}
         },
         data: {
           city: 'barcelona'
