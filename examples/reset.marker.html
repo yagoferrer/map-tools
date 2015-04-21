@@ -20,19 +20,34 @@
   }, function (err) {
     if (!err) {
 
-      var marker = map.addMarker({
+      var marker = map.addMarker([{
         lat: 41.3833,
         lng: 2.1833,
         title: 'Barcelona',
-        icon: 'images/blue.png',
         on: {
           click: function() {
             alert('Barcelona!');
           }
         }
-      });
+      },
+        {
+          lat: 42.5000,
+          lng: 1.5167,
+          title: 'Andorra',
+          infoWindow: {
+            content: 'Andorra'
+          }
+        }
+      ], {icon: 'images/blue.png'});
 
-      map.updateMarker(marker, {icon: 'images/orange.png', lat: 41, lng: 2});
+
+      var keys = Object.keys(map.markers.all);
+
+      var markers = [map.markers.all[keys[0]], map.markers.all[keys[1]]];
+
+      //
+
+      map.updateMarker(markers, {icon: 'images/orange.png'});
 
       map.addPanel({
         template: '<div class="actions">' +
@@ -41,7 +56,7 @@
         position: 'right center',
         events: {
           '.reset-icon click': function (e) {
-            map.resetMarker(marker, ['icon', 'lat', 'lng']);
+            map.resetMarker(markers, ['icon', 'lat', 'lng']);
             e.preventDefault();
           }
         }
