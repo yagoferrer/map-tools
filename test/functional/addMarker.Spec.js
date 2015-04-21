@@ -106,4 +106,19 @@ describe('when calling addMarker()', function () {
       expect(mapTools.maps.mymap.markers.groups.myGroup).to.have.length.of(1);
     });
   });
+
+  describe('with an empty Array as first Parameter', function() {
+
+    it('should return an empty Array', function() {
+
+      var map = new mapTools({async: false, id: 'mymap', lat: 41, lng: 2});
+      var result = map.addMarker([])
+
+      expect(result).to.be.a('array');
+      expect(result.length).to.eql(0);
+
+    });
+
+  });
+
 });
