@@ -220,6 +220,13 @@ Call the method with no parameters and that will delete all the Markers in the M
 map.removeMarker()
 ```
 
+#### Reset Marker
+Sometimes you just want to reset some Marker properties to the original value that was set on the initial creation. There is a method for that.
+The 2nd parameter can be a property name or an Array of properties to reset.
+
+```javascript
+map.resetMarker([marker], ['icon', 'lat', 'lng']);
+
 
 #### Animate Markers
 Make your marker bounce `move: 'bounce'` or drop `move: 'drop'`

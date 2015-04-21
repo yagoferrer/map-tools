@@ -30,4 +30,28 @@ describe('Given the Utils Class', function () {
     });
 
   });
+
+
+  describe('when calling isArray', function () {
+
+    var utils;
+
+    beforeEach(function() {
+      utils = require('map-tools/utils');
+    });
+
+    it('should return True when the input is an Array', function() {
+      var result = utils.isArray([]);
+      expect(result).to.eql(true);
+    });
+
+
+    it('should return False when the input is not an Array', function() {
+      var utils = require('map-tools/utils');
+      var result = utils.isArray('string');
+      expect(result).to.eql(false);
+    });
+
+
+  });
 });
