@@ -36,8 +36,16 @@ module.exports = {
     OverlayView: function() {
       return {};
     },
-    InfoWindow: function() {
-      return {open: function(){}, close: function(){}, setContent: function(x){this.content = x}, getMap: function(){}};
+    InfoWindow: function(options) {
+
+      return {
+        open: function(){},
+        close: function(){},
+        setContent: function(x){
+        this.content = x},
+        getMap: function(){},
+        content: options.content
+      };
     },
     Marker: function(marker) {
 
