@@ -1,7 +1,7 @@
 <div class="map-panel" ><pre class="language-javascript"><code class="language-javascript">
   // Click Event
   .click(function(){
-    var filter = map.filterMarker('population', {limit: 1});
+    var filter = map.findMarker('population', {limit: 1});
     map.updateMarker(filter, {move: 'bounce'});
   });
 
