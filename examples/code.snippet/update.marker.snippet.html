@@ -8,7 +8,7 @@
   }, {filters: ['cityName']});
 
   // Update Marker Using Crossfilter
-  var marker = map.filterMarker({cityName: 'barcelona'}, {limit: 1});
+  var marker = map.findMarker({cityName: 'barcelona'}, {limit: 1});
 	map.updateMarker(marker, {move: 'drop'});
 
   // Using instance
