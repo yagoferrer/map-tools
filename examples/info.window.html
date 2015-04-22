@@ -27,7 +27,7 @@
 		    position: 'right center',
 		    events: {
 			    '.update click': function (e) {
-				    map.updateMarker(marker, {infoWindow: {content: '<p>Updated!</p>'}});
+				    map.updateMarker(marker[0], {infoWindow: {content: '<p>Updated!</p>'}});
 				    e.preventDefault();
 			    }
 		    }
@@ -49,11 +49,6 @@
       lat: 41.3833,
       lng: 2.1833,
       title: 'Barcelona',
-      infoWindow: {
-        open: {on: 'mouseover'},
-        close: {on: 'mouseout', duration: 2000},
-        content: '<p>{city}</p>'
-      },
       data: {
         city: 'Barcelona!'
       }
@@ -62,16 +57,17 @@
         lat: 42.5000,
         lng: 1.5167,
         title: 'Andorra',
-        infoWindow: {
-          open: {on: 'mouseover'},
-          close: {on: 'mouseout', duration: 2000},
-          content: '<p>{city}</p>'
-        },
         data: {
           city: 'Andorra'
         }
       }
-    ]);
+    ],
+      {infoWindow: {
+          open: {on: 'mouseover'},
+          close: {on: 'mouseout', duration: 2000},
+          content: '<p>{city}</p>'
+        }
+      });
   }
 
 </script>

@@ -58,8 +58,9 @@ describe('when calling addMarker()', function () {
           city: 'barcelona'
         }
       };
-      var result = map.addMarker(marker);
-      expect(result.infoWindow.content).to.equal('barcelona');
+      map.addMarker(marker);
+
+      expect(map.infoWindow.content).to.equal('barcelona');
     });
   });
 
