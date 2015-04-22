@@ -45,19 +45,33 @@
   var marker;
 
   function addMarker() {
-    marker = map.addMarker({
+    marker = map.addMarker([{
       lat: 41.3833,
       lng: 2.1833,
       title: 'Barcelona',
       infoWindow: {
         open: {on: 'mouseover'},
-        close: {on: 'mouseout', duration: 3000},
+        close: {on: 'mouseout', duration: 2000},
         content: '<p>{city}</p>'
       },
       data: {
         city: 'Barcelona!'
       }
-    });
+    },
+      {
+        lat: 42.5000,
+        lng: 1.5167,
+        title: 'Andorra',
+        infoWindow: {
+          open: {on: 'mouseover'},
+          close: {on: 'mouseout', duration: 2000},
+          content: '<p>{city}</p>'
+        },
+        data: {
+          city: 'Andorra'
+        }
+      }
+    ]);
   }
 
 </script>
