@@ -95,7 +95,7 @@ Other types are: ROADMAP, HYBRID and TERRAIN.
 
 ## HTML
 
-Don't forget to add a simple HTML tag where to render the Map.
+Don't forget to add a simple HTML tag to indicate where to render the Map.
 
 ```html
 <div id="mymap"></div>
