@@ -264,7 +264,7 @@ map.addMarker({
 the 2nd parameter `duration` allows you to specify a delay for that event. This is really useful if you want to keep
 the infoWindow open for a few seconds before closing after you `mouseout`.
 
-In this example the `open` and `close` events are the same but you could specify exactly the same event. For example: `click`. That will trigger toggle effect.
+In this example: the `open` and `close` events are different `mouseover` and `mouseout` but you could specify exactly the same event `click`. That will trigger toggle effect on `click`
 
 The `data` property is used to store any extra information related to the Marker. You can use curly brakets, for example:
 `{city}` within the `content` property, to act as a variable that references to the `data` property.
