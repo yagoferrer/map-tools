@@ -221,10 +221,9 @@ This is one of my favorite features. Sometimes you just want to reset some Marke
 
 ```javascript
 map.resetMarker(<marker instance>, ['icon', 'lat', 'lng']);
+```
 
 The 2nd argument can be either a string or an Array of the properties that you want to *reset*
-
-
 
 
 #### Animate Markers
@@ -234,7 +233,6 @@ Make your marker bounce `move: 'bounce'` or drop `move: 'drop'`
 map.addMarker({
   lat: 41.3833,
   lng: 2.1833,
-  title: 'Barcelona',
   move: 'bounce'
 });
 ```
