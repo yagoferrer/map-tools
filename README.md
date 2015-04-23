@@ -219,7 +219,7 @@ map.removeMarker([<marker reference>, <marker reference>]);
 ```
 
 #### Reset Marker
-This is one of my favorite features. Sometimes you just want to reset some Marker properties to the original value that was set on the initial creation. This method allows you to reset *one or multiple* Markers to the initial state.
+This is one of my favorite features. Sometimes you just want to reset some Marker properties to the original value that was set on the initial creation. This method allows you to reset **one or multiple** Markers to the initial state.
 
 ```javascript
 map.resetMarker(<marker instance>, ['icon', 'lat', 'lng']);
