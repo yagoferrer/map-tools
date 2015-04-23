@@ -1,6 +1,6 @@
 ## map-tools 1.0.1 
 
-Do you like this new project? Help me to gain popularity by using the **Start** button! Thank You! :)
+Do you like this new project? Help me to gain popularity by using the **Start** button! It will help me to make it better!
 
 [![Build](https://travis-ci.org/yagoferrer/map-tools.svg?branch=master)](https://travis-ci.org/yagoferrer/map-tools) 
 [![Coverage](https://coveralls.io/repos/yagoferrer/map-tools/badge.svg?branch=master)](https://coveralls.io/r/yagoferrer/map-tools)
