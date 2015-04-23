@@ -237,26 +237,6 @@ map.addMarker({
 });
 ```
 
-#### Marker Groups
-**important** Marker Groups are going to be deprecated in favor for Marker Tagging. A new feature comming soon!
-
-Marker Groups are a persistent high level group that allows you to work with a set of Markers.
-You can create Groups and then associate Markers. Groups are great to apply options to a set of Markers.  
-```javascript
-map.addGroup('myGroup', {visible: false});
-
-map.addMarker({
-  lat: 41.3833,
-  lng: 2.1833,
-  title: 'Barcelona',
-  group: 'myGroup'
-});
-// Markers are added to the Map but not visible.
-
-map.updateGroup('myGroup', {visible: true});
-// Updates all the Markers to be visible.
-```
-
 #### Info Window
 
 You can add an infoWindow bubble with dynamic content and setup `open` and `close` events with a duration timer. 
@@ -280,6 +260,26 @@ Use curly brackets to display variables from `data`
 Add more [infoWindow options](https://developers.google.com/maps/documentation/javascript/reference#InfoWindowOptions) inside `infoWindow`.
 The default **event** is `click` but you can change it with the `event` property.
 
+
+#### Marker Groups
+**important: Marker Groups are going to be deprecated in favor for Marker Tagging. A new feature comming soon!**
+
+Marker Groups are a persistent high level group that allows you to work with a set of Markers.
+You can create Groups and then associate Markers. Groups are great to apply options to a set of Markers.  
+```javascript
+map.addGroup('myGroup', {visible: false});
+
+map.addMarker({
+  lat: 41.3833,
+  lng: 2.1833,
+  title: 'Barcelona',
+  group: 'myGroup'
+});
+// Markers are added to the Map but not visible.
+
+map.updateGroup('myGroup', {visible: true});
+// Updates all the Markers to be visible.
+```
 
 ## Crossfilter support for Markers
 - Add Marker related data into the `data` property. 
