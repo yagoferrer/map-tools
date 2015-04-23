@@ -22,6 +22,8 @@
 
 ## Get Started
 
+I recommend to use *npm* to install `map-tools` but you can also use *bower*.
+
 NPM: 
 ```bash
 npm install map-tools --save-dev
