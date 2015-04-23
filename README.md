@@ -207,7 +207,9 @@ map.updateMarker(<marker reference>, {visible: false})
 ```
 Allows you to update one or multiple marker options. The 1st argument can be: A Marker (reference) an Array of Markers or the `uid` specified like this: `{uid: '<uid>'}`
 
-The 2nd argument allows you to set any options you want to update. For example: `visible` to change the Marker visibilty.
+The 2nd argument allows you to set any options you want to update. 
+
+For example: `visible` to change the Marker visibilty.
 
 #### Remove Marker
 Allows you to delete *one or multiple* Markers. If you *don't* pass any parameter it will delete *ALL* Markers in the Map.
