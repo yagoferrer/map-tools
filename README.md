@@ -74,7 +74,7 @@ The callback function contains two arguments:
 
 `id`, `lat` and `lng` are custom helpers that added to quicky create a Map but you can add many other *native* [Map Options](https://developers.google.com/maps/documentation/javascript/reference#MapOptions) take a look to the Google Maps reference.
 
-Here are some useful options:
+Here it is what I think some other useful options:
 ```javascript
 {
   disableDoubleClickZoom: true, // Disable double click zoom in google maps while drawing.
