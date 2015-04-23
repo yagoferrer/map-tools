@@ -102,7 +102,9 @@ Don't forget to add a simple HTML tag to indicate where to render the Map.
 ```
 
 ### Map Native Instance
-Sometimes you just need to go straight to the Google Maps API. Once the Map is initialized you can either use: `map.instance` or globally `mapTools[YourMapId].instance`. Notice that if you have multiple Maps, you can access all from the global scope.
+Sometimes you just need to go straight to the Google Maps API. 
+Once the Map is initialized you can either use: `map.instance` or globally `mapTools[YourMapId].instance`. 
+Notice that if you have multiple Maps, you can access all from the global scope.
 
 ### Map Events
 Adding listeners for Map events it is easy. You can add handlers for any of the [Native Map Events] (https://developers.google.com/maps/documentation/javascript/events) using the `on` syntax.
