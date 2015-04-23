@@ -59,7 +59,14 @@ var map = new mapTools({
   }
 });
 ```
-You can also use: `el: '.mymap'`, instead of `id` to specify a query selector.
+
+The first argument `id` represents the `id` of the HTML element container where you want to display the Map. If you want to use a `class` instead use `el: '.mymap'` for example.
+
+`lat` and `lng` are the coordenates used to first load the Map. 
+
+The callback function contains two arguments: 
+- `err` it will hold an error object in case something goes wrong during Map initialization
+- `map` the mapTools instanciated object. You can use this variable to addMarkers() for example.
 
 By default it will load version [3.18](https://github.com/yagoferrer/map-tools/blob/1.0.1/lib/map-tools/defaults.js) of Google Maps. You can pass a specific version using the `version` option.
 
