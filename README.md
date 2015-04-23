@@ -186,46 +186,43 @@ map.addMarker([{
   lat: 42.5000,
   lng: 1.5167,
   title: 'Andorra'
-}], {icon: 'images/city.png'});
+}], 
+{
+  icon: 'images/city.png'
+});
+
 ```
-The 2nd parameter of `addMarker`, allows you to add options that apply to all the Markers within the Array.
+`lat` and `lng` provide the coordinates to position the Marker. 
+`title` is the hover text that appears when you mouseover the Marker.
+Use `on` to define Marker Events. 
+The 2nd argument allows you to add options **shared** between the Markers you are adding.
+And of course you can add any other [Native Marker Options](https://developers.google.com/maps/documentation/javascript/reference#MarkerOptions)
 
-Add any other [Marker Options](https://developers.google.com/maps/documentation/javascript/reference#MarkerOptions)
-
-
-
-Once the Markers are created, you can access to all Markers directly like this: `map.markers.all`
 
 #### Update Marker
-Allows you to update one or multiple marker options. The 1st parameter can be: a result of Crossfilter, a Marker reference or the uid like this: `{uid: '<uid>'}`
-
-The 2nd parameter is an object with a list of options. For example: `visible` to change the Marker visibilty.
-
 ```javascript
-map.updateMarker(<marker>, {visible: false})
+map.updateMarker(<marker reference>, {visible: false})
 ```
+Allows you to update one or multiple marker options. The 1st argument can be: A Marker (reference) an Array of Markers or the `uid` specified like this: `{uid: '<uid>'}`
 
-You can also use `lat` and `lng` to change the position of the Marker and many other options.
+The 2nd argument allows you to set any options you want to update. For example: `visible` to change the Marker visibilty.
 
 #### Remove Marker
-Allows you to delete one or multiple Markers.
+Allows you to delete *one or multiple* Markers. If you *don't* pass any parameter it will delete *ALL* Markers in the Map.
 
 ```javascript
-map.removeMarker([markerInstance, markerInstance]);
-```
-
-#### Remove All Markers
-Call the method with no parameters and that will delete all the Markers in the Map.
-```javascript
-map.removeMarker()
+map.removeMarker([<marker reference>, <marker reference>]);
 ```
 
 #### Reset Marker
-Sometimes you just want to reset some Marker properties to the original value that was set on the initial creation. There is a method for that.
-The 2nd parameter can be a property name or an Array of properties to reset.
+This is one of my favorite features. Sometimes you just want to reset some Marker properties to the original value that was set on the initial creation.
 
 ```javascript
 map.resetMarker([marker], ['icon', 'lat', 'lng']);
+
+The 2nd argument can be either a string or an Array of the properties that you want to *reset*
+
+
 
 
 #### Animate Markers
