@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link href="vendors/prism/prism.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../examples/style/basic.css"/>
+  <script src="vendors/prism/prism.js"></script>
+  <script src="../dist/map-tools.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+
+<body>
+
+<script>
+
+  var markerInstance;
+
+  var map = new mapTools({
+    id: 'mymap',
+    lat: 41.3833,
+    lng: 2.1833,
+    on: {
+      marker_visibility_changed: function(numOfVisibleMarkers) {
+        alert('Total of Visible Markers: ' + numOfVisibleMarkers);
+      }
+    }
+  }, function (err, map) {
+    if (!err) {
+      addMarker();
+
+      map.addPanel({
+        template: '<div class="actions">' +
+        '<div class="update-hide">Hide All Markers</div>' +
+        '<div class="update-show">Display All Markers</div>' +
+        '</div>',
+        position: 'right center',
+        events: {
+          '.update-hide click': function (e) {
+            map.updateMarker(markerInstance, {visible: false});
+            e.preventDefault();
+          },
+
+          '.update-show click': function (e) {
+            map.updateMarker(markerInstance, {visible: true});
+            e.preventDefault();
+          }
+        }
+      });
+
+
+
+      // snippet panel
+      map.addPanel({
+        templateURL: 'code.snippet/custom.events.snippet.html',
+        position:'right center'
+      }, function() {
+        Prism.highlightAll();
+      });
+    }
+  });
+
+
+
+  function addMarker() {
+    markerInstance = map.addMarker([{
+      lat: 41.3833,
+      lng: 2.1833,
+      title: 'Barcelona',
+      infoWindow: {
+        content: 'Barcelona'
+      }
+    },
+      {
+        lat: 42.5000,
+        lng: 1.5167,
+        title: 'Andorra',
+        infoWindow: {
+          content: 'Andorra'
+        }
+      }]);
+  }
+
+</script>
+<div id="mymap"></div>
+
+</body>
+</html>

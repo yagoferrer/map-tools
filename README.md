@@ -6,12 +6,12 @@
 [![devDependency](https://david-dm.org/yagoferrer/map-tools/dev-status.svg)](https://david-dm.org/yagoferrer/map-tools#info=devDependencies)
 
 [map-tools](http://map-tools.io/) is a Google Maps Feature-rich Javascript wrapper that makes things like: 
-[Marker filtering](#crossfilter-support-for-markers); [asynchronous loading](#start-by-loading-the-map-async), working with [TopoJSON](#topojson-support) or [GeoJSON](#geojson-support), [custom controls](#add-panel), [animation](#animate-markers) and more. Much simpler with an easy-to-use API.
+[Marker filtering](#crossfilter-support-for-markers); [asynchronous loading](#lazy-loading-the-map), working with [TopoJSON](#topojson-support) or [GeoJSON](#geojson-support), [custom controls](#add-panel), [animation](#animate-markers) and more. Much simpler with an easy-to-use API.
 
 
 ## Benefits
 - Less Code: The [Google Maps API](https://developers.google.com/maps/documentation/javascript/reference) it is of considerable size. You'll be writing way **less** code with map-tools.js
-- It helps you to keep a reference of things: For example use map.findMarker() to find the Marker(s) your are looking for.
+- It helps you to keep track of elements created on the Map.
 - More Fun: Add [Marker animations](#animate-markers), use [handlebars style](#info-window) variables.
 - Non Intrusive: it extends the API; you can use any other native methods, properties and events anywhere.
 - Query elements on the Map to update their options using [Crossfilter](#crossfilter-support-for-markers)
@@ -21,6 +21,8 @@
 - My ultimate goals are performance and Google API simplification.
 
 ## Get Started
+
+it is recommended to use [npm](https://docs.npmjs.com/getting-started/what-is-npm) to install `map-tools` but you can also use *bower*.
 
 NPM: 
 ```bash
@@ -32,18 +34,23 @@ Bower:
 bower install map-tools --save-dev
 ```
 
-Direct download: [map-tools.min.js](https://github.com/yagoferrer/map-tools/blob/1.0.1/dist/map-tools.min.js)
+Do you need to download it now? Use the direct download link. [map-tools.min.js](https://github.com/yagoferrer/map-tools/blob/1.0.1/dist/map-tools.min.js)
 
-## Examples:
+## Need Quick Examples?
 
-You can either go to: [map-tools.io](http://map-tools.io/) or pull the repo and run:
+Go to: [map-tools.io](http://map-tools.io/) 
+
+or pull the repo and run:
 ```bash
 npm start
 ```
 
-### Start by loading the Map Async
-There is no need to include the Google Maps `<script>` tag. **map-tools** will load the file for you asynchronously.
-Setting a callback function to notify you when the Map is fully loaded it will help you to do things that depend on the Map.
+### Lazy Loading the Map
+You can load the Google Maps JavaScript file asynchronously. This is useful for example: if you are planning on loading the Map on a different view from the Homepage. 
+Setting a callback function will help you to now when the Map is ready to be used. 
+
+If you don't want to lazy load the map, use the option `async: false` you can still keep the callback function to determine when the Map is ready to be used.
+
 ```javascript
 var map = new mapTools({
   id: 'mymap',
@@ -55,21 +62,52 @@ var map = new mapTools({
   }
 });
 ```
-You can also use: `el: '.mymap'`, instead of `id` to specify a query selector.
 
-By default it will load version [3.18](https://github.com/yagoferrer/map-tools/blob/1.0.1/lib/map-tools/defaults.js) of Google Maps. You can pass a specific version using the `version` option.
+The first argument `id` represents the `id` of the HTML element container where you want to display the Map. If you want to use a `class` instead use `el: '.mymap'` to indicate the class name.
 
-Add a simple HTML tag
+
+`lat` and `lng` are the coordenates used to first load the Map. 
+
+The callback function contains two arguments: 
+- `err` it will contain an error object in case something goes wrong during Map initialization.
+- `map` the mapTools instanciated object. You can use this to trigger further API calls.
+
+`id`, `lat` and `lng` are custom helpers that added to quicky create a Map but you can add many other *native* [Map Options](https://developers.google.com/maps/documentation/javascript/reference#MapOptions) take a look to the Google Maps reference.
+
+Here are some useful options:
+```javascript
+{
+  disableDoubleClickZoom: true, // Disable double click zoom in google maps while drawing.
+  streetViewControl: false // Disables the street view mode.
+  scaleControl: true // Scale control that provides a simple map scale.
+}
+```
+
+#### Map Option Helpers
+This is silly: `google.maps.MapTypeId.SATELLITE`. With map-tools, you can simple use:
+```javascript
+{
+  type: 'SATELLITE'
+}  
+```
+Other types are: ROADMAP, HYBRID and TERRAIN.
+
+
+## HTML
+
+Don't forget to add a simple HTML tag to indicate where to render the Map.
+
 ```html
 <div id="mymap"></div>
 ```
 
 ### Map Native Instance
-There are two ways to access directly to the Google Maps API: `map.instance` or `mapTools[YourMapId].instance`
+Sometimes you just need to go straight to the Google Maps API. 
+Once the Map is initialized you can either use: `map.instance` or globally `mapTools[YourMapId].instance`. 
+Notice that if you have multiple Maps, you can access all from the global scope.
 
 ### Map Events
-
-You can listen for Map events when creating a new Map.
+Adding listeners for Map events it is easy. You can add handlers for any of the [Native Map Events] (https://developers.google.com/maps/documentation/javascript/events) using the `on` syntax.
 
 ```javascript
 var map = new mapTools({
@@ -78,47 +116,50 @@ var map = new mapTools({
         console.log('the zoom level has changed!', map.zoom())
       }
   }  
-...
-
 ```
+### Custom Map Events
+- `marker_visibility_changed` it will get trigger anytime that any Marker changes visibility state.
+
+```javascript
+var map = new mapTools({
+  on: {
+      marker_visibility_changed: function(numOfVisibleMarkers) {
+        console.log('we have a total of %d visible Markers', numOfVisibleMarkers)
+      }
+  } 
+```
+This event it is very useful if you are planning for example on clustering based on this value.
+
 ## Map Methods
 
 #### Update Map 
-Update any option by calling the updateMap method like this example:
+Apply *ANY* option to the Map by calling the `updateMap()` method like this example:
+
 ```javascript
 map.updateMap({type: 'TERRAIN'});
 ```
 
-Default map types are : ROADMAP, SATELLITE, HYBRID and TERRAIN.
-Add more [Map Options](https://developers.google.com/maps/documentation/javascript/reference#MapOptions) from the Google Maps API and it will work just fine. For example:
-```javascript
-{
-    disableDoubleClickZoom: true,
-    mapTypeControl: false,
-    streetViewControl: false
-}
-```
-
 #### Center Map
-Call this method to center the Map.
+There are two ways you can use this method:
+- Center the current Map using coordinates provided during initialitation.
 ```javascript
 map.center();
 ```
-If you pass latitude and longitude coordinates it will center the Map using the coordinates provided
+- Pass specific latitude and longitude coordinates to jump into a location.
 ```javascript
 map.center(41.3833, 2.1833);
 ```
 
 #### Zoom Map
-Zoom map into a specific Zoom level.
-```javascript
-map.zoom(12);
-```
-
-#### Get the current Zoom Level.
+With this method you can either:
+- Retrive the current Map Zoom Level
 ```javascript
 map.zoom();
 // Result: 8
+```
+- Set the Map to specific Zoom level.
+```javascript
+map.zoom(12);
 ```
 
 #### Get Current Map Center Position
@@ -128,65 +169,24 @@ map.locate()
 ```
 
 ## Markers
+Adding Markers is simple. Use the `addMarker()` method to add **one or multiple** Markers at the same time. The method will return a reference of the Marker(s) added. It will also save a reference under `map.markers.all[uid]` The uid is either
+an unique value that you can provide under `data.uid` or a self-generated value created by map-tools.
 
-#### Add One Marker
 ```javascript
-map.addMarker({
+map.addMarker([{
   lat: 41.3833,
   lng: 2.1833,
   title: 'Barcelona',
   on: {
     click: function() {
       alert('Barcelona!');
-    }
-  }  
-});
-```
-Once you add a Marker, it will generate a unique identifier to save a reference of the Marker under `map.markers.all[uid]`. 
-There are a couple of ways to setup a custom uid.
-**data.uid**
-```javascript
-map.addMarker({
-  lat: 41.3833,
-  lng: 2.1833,
-  data: {
-   uid: "257c726053"
-  }
-});
-```
-Or custom a property. This is handy if the only data property is a unique identifier.
-
-```javascript
-var map = new mapTools({
-  id: 'mymap',
-  lat: 41.3833,
-  lng: 2.1833,
-  uid: 'custom_id',
-}, function (err, map) {
-  if (!err) {
-    map.addMarker({
-      lat: 41.3833,
-      lng: 2.1833,
-      uid: "257c726053"
-    });
-  }
-});
-```
-
-
-#### Add Multiple Markers
-
-```javascript
-map.addMarker([{
-      lat: 41.3833,
-      lng: 2.1833,
-      title: 'Barcelona'
-    },{
-      lat: 42.5000,
-      lng: 1.5167,
-      title: 'Andorra'
-    }
-  ], {icon: 'images/city.png'}); // the 2nd parameter allows you to add shared options.
+    }}      
+},
+{
+  lat: 42.5000,
+  lng: 1.5167,
+  title: 'Andorra'
+}], {icon: 'images/city.png'});
 ```
 The 2nd parameter of `addMarker`, allows you to add options that apply to all the Markers within the Array.
 
@@ -241,6 +241,8 @@ map.addMarker({
 ```
 
 #### Marker Groups
+**important** Marker Groups are going to be deprecated in favor for Marker Tagging. A new feature comming soon!
+
 Marker Groups are a persistent high level group that allows you to work with a set of Markers.
 You can create Groups and then associate Markers. Groups are great to apply options to a set of Markers.  
 ```javascript
