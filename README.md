@@ -74,6 +74,17 @@ The callback function contains two arguments:
 
 `id`, `lat` and `lng` are custom helpers that added to quicky create a Map but you can add many other *native* [Map Options](https://developers.google.com/maps/documentation/javascript/reference#MapOptions) take a look to the Google Maps reference.
 
+#### Map Option Helpers
+This is silly: `google.maps.MapTypeId.SATELLITE` I wanted to have an easier way to change the Map Type.
+You can simple use:
+```javascript
+{
+  type: 'SATELLITE'
+}  
+```
+Other types are: ROADMAP, HYBRID and TERRAIN.
+
+
 Here are some useful options:
 ```javascript
 {
@@ -104,8 +115,7 @@ var map = new mapTools({
   }  
 ```
 ### Custom Map Events
-- `marker_visibility_changed` that will give you the total of current visible Markers on the Map. This is very useful if you are planning on Cluster/Uncluster
-based on that value.
+- `marker_visibility_changed` it will get trigger anytime that any Marker changes visibility state.
 
 ```javascript
 var map = new mapTools({
@@ -115,17 +125,16 @@ var map = new mapTools({
       }
   } 
 ```
+This event it is very useful if you are planning for example on clustering based on this value.
 
 ## Map Methods
 
 #### Update Map 
 Update any option by calling the updateMap method like this example:
+
 ```javascript
 map.updateMap({type: 'TERRAIN'});
 ```
-
-Default map types are : ROADMAP, SATELLITE, HYBRID and TERRAIN.
-
 
 #### Center Map
 Call this method to center the Map.
