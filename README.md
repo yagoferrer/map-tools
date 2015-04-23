@@ -44,7 +44,7 @@ npm start
 ```
 
 ### Start by loading the Map Async
-You can load the Google Maps JavaScript file asynchronously. This is useful if you are planning on loading the Map on a different view from the Homepage. Setting a callback function will help you to now when the Map is ready to be used.
+You can load the Google Maps JavaScript <script> file asynchronously. This is useful if you are planning on loading the Map on a different view from the Homepage. Setting a callback function will help you to now when the Map is ready to be used.
 
 ```javascript
 var map = new mapTools({
