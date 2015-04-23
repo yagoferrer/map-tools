@@ -46,7 +46,7 @@ npm start
 ```
 
 ### Lazy Loading the Map
-You can load the Google Maps JavaScript file asynchronously. This is useful, for example: if you are planning on loading the Map on a different view from the Homepage. 
+You can load the Google Maps JavaScript file asynchronously. This is useful for example: if you are planning on loading the Map on a different view from the Homepage. 
 Setting a callback function will help you to now when the Map is ready to be used. 
 
 If you don't want to lazy load the map, use the option `async: false` you can still keep the callback function to determine when the Map is ready to be used.
