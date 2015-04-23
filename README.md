@@ -101,7 +101,7 @@ Don't forget to add a simple HTML tag to indicate where to render the Map.
 <div id="mymap"></div>
 ```
 
-### Map Native Instance
+### Google Maps Native Instance
 Sometimes you just need to go straight to the Google Maps API. 
 Once the Map is initialized you can either use: `map.instance` or globally `mapTools[YourMapId].instance`. 
 Notice that if you have multiple Maps, you can access all from the global scope.
