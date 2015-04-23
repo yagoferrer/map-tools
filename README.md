@@ -179,7 +179,7 @@ map.addMarker([{
   title: 'Barcelona',
   on: {
     click: function() {
-      alert('Barcelona!');
+      alert(this.title);
     }}      
 },
 {
