@@ -94,9 +94,6 @@ var map = new mapTools({
   } 
 ```
 
-
-
-```
 ## Map Methods
 
 #### Update Map 
