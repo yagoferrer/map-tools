@@ -45,8 +45,9 @@ or pull the repo and run:
 npm start
 ```
 
-### Start by loading the Map Async
-You can load the Google Maps JavaScript file asynchronously. This is useful if you are planning on loading the Map on a different view from the Homepage. Setting a callback function will help you to now when the Map is ready to be used.
+### Lazy Loading the Map
+You can load the Google Maps JavaScript file asynchronously. This is useful, for example: if you are planning on loading the Map on a different view from the Homepage. 
+Setting a callback function will help you to now when the Map is ready to be used. If you don't want to lazy load the map, use the option `async: false`
 
 ```javascript
 var map = new mapTools({
