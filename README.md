@@ -151,12 +151,13 @@ map.center(41.3833, 2.1833);
 ```
 
 #### Zoom Map
-You can either retrive the current Map Zoom Level
+With this method you can either:
+- Retrive the current Map Zoom Level
 ```javascript
 map.zoom();
 // Result: 8
 ```
-Or set the Map to specific Zoom level.
+- Set the Map to specific Zoom level.
 ```javascript
 map.zoom(12);
 ```
