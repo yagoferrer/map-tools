@@ -242,9 +242,9 @@ map.addMarker({
 });
 ```
 
-#### Info Window
-
-You can add an infoWindow bubble with dynamic content and setup `open` and `close` events with a duration timer. 
+#### InfoWindow
+The infoWindow is the hover bubble to provide more information about the Marker. The `open` and `close` properties
+allow you to specify what Marker event to use to display or hide the infoWindow.
 
 ```javascript
 map.addMarker({
@@ -252,7 +252,7 @@ map.addMarker({
   lng: 2.1833,
   infoWindow: {
     open: {on: 'mouseover'},
-    close: {on: 'mouseout', duration: 3000},
+    close: {on: 'mouseout', duration: 2000},
     content: '<p>{city} City</p>'
   },
   data: {
@@ -260,14 +260,23 @@ map.addMarker({
   }
 });
 ```
-Use curly brackets to display variables from `data` 
 
-Add more [infoWindow options](https://developers.google.com/maps/documentation/javascript/reference#InfoWindowOptions) inside `infoWindow`.
-The default **event** is `click` but you can change it with the `event` property.
+the 2nd parameter `duration` allows you to specify a delay for that event. This is really useful if you want to keep
+the infoWindow open for a few seconds before closing after you `mouseout`.
+
+In this example the `open` and `close` events are the same but you could specify exactly the same event. For example: `click`. That will trigger toggle effect.
+
+The `data` property is used to store any extra information related to the Marker. You can use curly brakets, for example:
+`{city}` within the `content` property, to act as a variable that references to the `data` property.
+
+
+You can add more [native infoWindow options](https://developers.google.com/maps/documentation/javascript/reference#InfoWindowOptions) inside `infoWindow`.
+
 
 
 #### Marker Groups
-**important: Marker Groups are going to be deprecated in favor for Marker Tagging. A [new feature](https://github.com/yagoferrer/map-tools/issues/237) comming soon!**
+
+**important: Marker Groups might be deprecated in favor for Marker Tagging. A [new feature](https://github.com/yagoferrer/map-tools/issues/237) comming soon!**
 
 Marker Groups are a persistent high level group that allows you to work with a set of Markers.
 You can create Groups and then associate Markers. Groups are great to apply options to a set of Markers.  
@@ -337,7 +346,6 @@ map.addGeoJson(<parsed JSON>)
 ```
 
 ## TopoJSON support
-
 Once the Map is loaded, you can add a TopoJSON file. Pass an Array of objects containing the **object** to load into the Map.
 
 ```javascript
