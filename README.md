@@ -65,15 +65,16 @@ var map = new mapTools({
 
 The first argument `id` represents the `id` of the HTML element container where you want to display the Map. If you want to use a `class` instead use `el: '.mymap'` to indicate the class name.
 
+
 `lat` and `lng` are the coordenates used to first load the Map. 
 
 The callback function contains two arguments: 
-- `err` it will hold an error object in case something goes wrong during Map initialization
-- `map` the mapTools instanciated object. You can use this variable to addMarkers() for example.
+- `err` it will contain an error object in case something goes wrong during Map initialization.
+- `map` the mapTools instanciated object. You can use this to trigger further API calls.
 
-`id`, `lat` and `lng` are custom helpers that I added to quicky create a Map but you can add many more *native* [Map Options](https://developers.google.com/maps/documentation/javascript/reference#MapOptions) take a look to the reference.
+`id`, `lat` and `lng` are custom helpers that added to quicky create a Map but you can add many other *native* [Map Options](https://developers.google.com/maps/documentation/javascript/reference#MapOptions) take a look to the Google Maps reference.
 
-Some examples:
+Here are some useful options:
 ```javascript
 {
   disableDoubleClickZoom: true, // Disable double click zoom in google maps while drawing
