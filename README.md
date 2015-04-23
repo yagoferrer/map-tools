@@ -79,7 +79,7 @@ Here are some useful options:
 {
   disableDoubleClickZoom: true, // Disable double click zoom in google maps while drawing.
   streetViewControl: false // Disables the street view mode.
-  scaleControl: true // Scale control that provides a simple map scale. By default, this control is not visible.
+  scaleControl: true // Scale control that provides a simple map scale.
 }
 ```
 
