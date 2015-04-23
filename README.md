@@ -80,6 +80,22 @@ var map = new mapTools({
   }  
 ...
 
+Here you can find a list of all the [Native Map Events] (https://developers.google.com/maps/documentation/javascript/events)
+
+You can also listen for this custom event: `marker_visibility_changed` that will give you the total of current visible Markers on the Map. This is very useful if you are planning on Cluster/Uncluster
+based on that value.
+
+```javascript
+var map = new mapTools({
+  on: {
+      marker_visibility_changed: function(numOfVisibleMarkers) {
+        console.log('we have a total of %d visible Markers', numOfVisibleMarkers)
+      }
+  } 
+```
+
+
+
 ```
 ## Map Methods
 
