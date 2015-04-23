@@ -63,7 +63,7 @@ var map = new mapTools({
 });
 ```
 
-The first argument `id` represents the `id` of the HTML element container where you want to display the Map. If you want to use a `class` instead use `el: '.mymap'` for example.
+The first argument `id` represents the `id` of the HTML element container where you want to display the Map. If you want to use a `class` instead use `el: '.mymap'` to indicate the class name.
 
 `lat` and `lng` are the coordenates used to first load the Map. 
 
