@@ -262,7 +262,7 @@ The default **event** is `click` but you can change it with the `event` property
 
 
 #### Marker Groups
-**important: Marker Groups are going to be deprecated in favor for Marker Tagging. A new feature comming soon!**
+**important: Marker Groups are going to be deprecated in favor for Marker Tagging. A [new feature](https://github.com/yagoferrer/map-tools/issues/237) comming soon!**
 
 Marker Groups are a persistent high level group that allows you to work with a set of Markers.
 You can create Groups and then associate Markers. Groups are great to apply options to a set of Markers.  
