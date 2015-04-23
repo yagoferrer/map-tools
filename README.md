@@ -169,7 +169,7 @@ map.locate()
 ```
 
 ## Markers
-Adding Markers is simple. Use the `addMarker()` method to add one or multiple Markers at the same time. The method will return a reference of the Marker(s) added. It will also save a reference under `map.markers.all[uid]` The uid is either
+Adding Markers is simple. Use the `addMarker()` method to add **one or multiple** Markers at the same time. The method will return a reference of the Marker(s) added. It will also save a reference under `map.markers.all[uid]` The uid is either
 an unique value that you can provide under `data.uid` or a self-generated value created by map-tools.
 
 ```javascript
