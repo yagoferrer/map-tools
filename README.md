@@ -36,9 +36,11 @@ bower install map-tools --save-dev
 
 Do you need to download it now? Use the direct download link. [map-tools.min.js](https://github.com/yagoferrer/map-tools/blob/1.0.1/dist/map-tools.min.js)
 
-## Examples:
+## Need Examples?
 
-You can either go to: [map-tools.io](http://map-tools.io/) or pull the repo and run:
+Go to: [map-tools.io](http://map-tools.io/) 
+
+or pull the repo and run:
 ```bash
 npm start
 ```
