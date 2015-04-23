@@ -93,6 +93,8 @@ This is silly: `google.maps.MapTypeId.SATELLITE`. With map-tools, you can simple
 Other types are: ROADMAP, HYBRID and TERRAIN.
 
 
+## HTML
+
 Don't forget to add a simple HTML tag,
 
 ```html
