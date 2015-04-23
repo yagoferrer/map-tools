@@ -22,7 +22,7 @@
 
 ## Get Started
 
-I recommend to use *npm* to install `map-tools` but you can also use *bower*.
+it is recommended to use *npm* to install `map-tools` but you can also use *bower*.
 
 NPM: 
 ```bash
