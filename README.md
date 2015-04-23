@@ -169,65 +169,24 @@ map.locate()
 ```
 
 ## Markers
+Adding Markers is simple. Use the `addMarker()` method to add one or multiple Markers at the same time. The method will return a reference of the Marker(s) added. It will also save a reference under `map.markers.all[uid]` The uid is either
+an unique value that you can provide under `data.uid` or a self-generated value created by map-tools.
 
-#### Add One Marker
 ```javascript
-map.addMarker({
+map.addMarker([{
   lat: 41.3833,
   lng: 2.1833,
   title: 'Barcelona',
   on: {
     click: function() {
       alert('Barcelona!');
-    }
-  }  
-});
-```
-Once you add a Marker, it will generate a unique identifier to save a reference of the Marker under `map.markers.all[uid]`. 
-There are a couple of ways to setup a custom uid.
-**data.uid**
-```javascript
-map.addMarker({
-  lat: 41.3833,
-  lng: 2.1833,
-  data: {
-   uid: "257c726053"
-  }
-});
-```
-Or custom a property. This is handy if the only data property is a unique identifier.
-
-```javascript
-var map = new mapTools({
-  id: 'mymap',
-  lat: 41.3833,
-  lng: 2.1833,
-  uid: 'custom_id',
-}, function (err, map) {
-  if (!err) {
-    map.addMarker({
-      lat: 41.3833,
-      lng: 2.1833,
-      uid: "257c726053"
-    });
-  }
-});
-```
-
-
-#### Add Multiple Markers
-
-```javascript
-map.addMarker([{
-      lat: 41.3833,
-      lng: 2.1833,
-      title: 'Barcelona'
-    },{
-      lat: 42.5000,
-      lng: 1.5167,
-      title: 'Andorra'
-    }
-  ], {icon: 'images/city.png'}); // the 2nd parameter allows you to add shared options.
+    }}      
+},
+{
+  lat: 42.5000,
+  lng: 1.5167,
+  title: 'Andorra'
+}], {icon: 'images/city.png'});
 ```
 The 2nd parameter of `addMarker`, allows you to add options that apply to all the Markers within the Array.
 
