@@ -75,8 +75,7 @@ The callback function contains two arguments:
 `id`, `lat` and `lng` are custom helpers that added to quicky create a Map but you can add many other *native* [Map Options](https://developers.google.com/maps/documentation/javascript/reference#MapOptions) take a look to the Google Maps reference.
 
 #### Map Option Helpers
-This is silly: `google.maps.MapTypeId.SATELLITE` I wanted to have an easier way to change the Map Type.
-You can simple use:
+This is silly: `google.maps.MapTypeId.SATELLITE`. With map-tools, you can simple use:
 ```javascript
 {
   type: 'SATELLITE'
