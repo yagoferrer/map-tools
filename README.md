@@ -133,32 +133,32 @@ This event it is very useful if you are planning for example on clustering based
 ## Map Methods
 
 #### Update Map 
-Update any option by calling the updateMap method like this example:
+Apply *ANY* option to the Map by calling the `updateMap()` method like this example:
 
 ```javascript
 map.updateMap({type: 'TERRAIN'});
 ```
 
 #### Center Map
-Call this method to center the Map.
+There are two ways you can use this method:
+- Center the current Map using coordinates provided during initialitation.
 ```javascript
 map.center();
 ```
-If you pass latitude and longitude coordinates it will center the Map using the coordinates provided
+- Pass specific latitude and longitude coordinates to jump into a location.
 ```javascript
 map.center(41.3833, 2.1833);
 ```
 
 #### Zoom Map
-Zoom map into a specific Zoom level.
-```javascript
-map.zoom(12);
-```
-
-#### Get the current Zoom Level.
+You can either retrive the current Map Zoom Level
 ```javascript
 map.zoom();
 // Result: 8
+```
+Or set the Map to specific Zoom level.
+```javascript
+map.zoom(12);
 ```
 
 #### Get Current Map Center Position
