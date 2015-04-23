@@ -77,25 +77,23 @@ The callback function contains two arguments:
 Here are some useful options:
 ```javascript
 {
-  disableDoubleClickZoom: true, // Disable double click zoom in google maps while drawing
+  disableDoubleClickZoom: true, // Disable double click zoom in google maps while drawing.
   streetViewControl: false // Disables the street view mode.
+  scaleControl: true // Scale control that provides a simple map scale. By default, this control is not visible.
 }
 ```
 
+Don't forget to add a simple HTML tag,
 
-By default it will load version [3.18](https://github.com/yagoferrer/map-tools/blob/1.0.1/lib/map-tools/defaults.js) of Google Maps. You can pass a specific version using the `version` option.
-
-Add a simple HTML tag
 ```html
 <div id="mymap"></div>
 ```
 
 ### Map Native Instance
-There are two ways to access directly to the Google Maps API: `map.instance` or `mapTools[YourMapId].instance`
+Sometimes you just need to go straight to the Google Maps API. Once the Map is initialized you can either use: `map.instance` or globally `mapTools[YourMapId].instance`. Notice that if you have multiple Maps, you can access all from the global scope.
 
 ### Map Events
-
-You can listen for Map events when creating a new Map.
+Adding listeners for Map events it is easy. You can add handlers for any of the [Native Map Events] (https://developers.google.com/maps/documentation/javascript/events) using the `on` syntax.
 
 ```javascript
 var map = new mapTools({
@@ -105,10 +103,8 @@ var map = new mapTools({
       }
   }  
 ```
-
-Here you can find a list of all the [Native Map Events] (https://developers.google.com/maps/documentation/javascript/events)
-
-You can also listen for this custom event: `marker_visibility_changed` that will give you the total of current visible Markers on the Map. This is very useful if you are planning on Cluster/Uncluster
+### Custom Map Events
+- `marker_visibility_changed` that will give you the total of current visible Markers on the Map. This is very useful if you are planning on Cluster/Uncluster
 based on that value.
 
 ```javascript
