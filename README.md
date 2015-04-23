@@ -192,11 +192,13 @@ map.addMarker([{
 });
 
 ```
-`lat` and `lng` provide the coordinates to position the Marker. 
-`title` is the hover text that appears when you mouseover the Marker.
-Use `on` to define Marker Events. 
+`lat` and `lng` provides the coordinates to position the Marker. 
+
+Use `on` to define any Marker Events. 
+
 The 2nd argument allows you to add options **shared** between the Markers you are adding.
-And of course you can add any other [Native Marker Options](https://developers.google.com/maps/documentation/javascript/reference#MarkerOptions)
+
+You can also add any other [Native Marker Options](https://developers.google.com/maps/documentation/javascript/reference#MarkerOptions)
 
 
 #### Update Marker
