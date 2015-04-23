@@ -84,7 +84,7 @@ Here are some useful options:
 ```
 
 #### Map Option Helpers
-This is silly: `google.maps.MapTypeId.SATELLITE`. With map-tools, you can simple use:
+This Google property is silly: `google.maps.MapTypeId.SATELLITE`. With map-tools, you can simple use:
 ```javascript
 {
   type: 'SATELLITE'
