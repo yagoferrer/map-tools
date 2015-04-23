@@ -282,6 +282,8 @@ map.addMarker({
 ```
 
 #### Marker Groups
+**important** Marker Groups are going to be deprecated in favor for Marker Tagging. A new feature comming soon!
+
 Marker Groups are a persistent high level group that allows you to work with a set of Markers.
 You can create Groups and then associate Markers. Groups are great to apply options to a set of Markers.  
 ```javascript
