@@ -54,7 +54,7 @@ Setting a callback function will help you to now when the Map is ready to be use
 
 If you don't want to lazy load the map, use the option `async: false` you can still keep the callback function to determine when the Map is ready to be used.
 
-[live example] (http://map-tools.io/examples/simple.map.html)
+[Live example] (http://map-tools.io/examples/simple.map.html)
 
 ```javascript
 var map = new mapTools({
