@@ -34,7 +34,7 @@ Bower:
 bower install map-tools --save-dev
 ```
 
-Direct download: [map-tools.min.js](https://github.com/yagoferrer/map-tools/blob/1.0.1/dist/map-tools.min.js)
+Do you need to download it now? Use the direct download link. [map-tools.min.js](https://github.com/yagoferrer/map-tools/blob/1.0.1/dist/map-tools.min.js)
 
 ## Examples:
 
