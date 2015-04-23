@@ -68,6 +68,17 @@ The callback function contains two arguments:
 - `err` it will hold an error object in case something goes wrong during Map initialization
 - `map` the mapTools instanciated object. You can use this variable to addMarkers() for example.
 
+`id`, `lat` and `lng` are custom helpers that I added to quicky create a Map but you can add many more *native* [Map Options](https://developers.google.com/maps/documentation/javascript/reference#MapOptions) take a look to the reference.
+
+Some examples:
+```javascript
+{
+  disableDoubleClickZoom: true, // Disable double click zoom in google maps while drawing
+  streetViewControl: false // Disables the street view mode.
+}
+```
+
+
 By default it will load version [3.18](https://github.com/yagoferrer/map-tools/blob/1.0.1/lib/map-tools/defaults.js) of Google Maps. You can pass a specific version using the `version` option.
 
 Add a simple HTML tag
@@ -114,14 +125,7 @@ map.updateMap({type: 'TERRAIN'});
 ```
 
 Default map types are : ROADMAP, SATELLITE, HYBRID and TERRAIN.
-Add more [Map Options](https://developers.google.com/maps/documentation/javascript/reference#MapOptions) from the Google Maps API and it will work just fine. For example:
-```javascript
-{
-    disableDoubleClickZoom: true,
-    mapTypeControl: false,
-    streetViewControl: false
-}
-```
+
 
 #### Center Map
 Call this method to center the Map.
