@@ -114,6 +114,8 @@ Notice that if you have multiple Maps, you can access all from the global scope.
 ### Map Events
 Adding listeners for Map events it is easy. You can add handlers for any of the [Native Map Events] (https://developers.google.com/maps/documentation/javascript/events) using the `on` syntax.
 
+[Live example](http://map-tools.io/examples/simple.map.html)
+
 ```javascript
 var map = new mapTools({
   on: {
