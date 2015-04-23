@@ -74,6 +74,15 @@ The callback function contains two arguments:
 
 `id`, `lat` and `lng` are custom helpers that added to quicky create a Map but you can add many other *native* [Map Options](https://developers.google.com/maps/documentation/javascript/reference#MapOptions) take a look to the Google Maps reference.
 
+Here are some useful options:
+```javascript
+{
+  disableDoubleClickZoom: true, // Disable double click zoom in google maps while drawing.
+  streetViewControl: false // Disables the street view mode.
+  scaleControl: true // Scale control that provides a simple map scale.
+}
+```
+
 #### Map Option Helpers
 This is silly: `google.maps.MapTypeId.SATELLITE`. With map-tools, you can simple use:
 ```javascript
@@ -83,15 +92,6 @@ This is silly: `google.maps.MapTypeId.SATELLITE`. With map-tools, you can simple
 ```
 Other types are: ROADMAP, HYBRID and TERRAIN.
 
-
-Here are some useful options:
-```javascript
-{
-  disableDoubleClickZoom: true, // Disable double click zoom in google maps while drawing.
-  streetViewControl: false // Disables the street view mode.
-  scaleControl: true // Scale control that provides a simple map scale.
-}
-```
 
 Don't forget to add a simple HTML tag,
 
