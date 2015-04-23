@@ -1,0 +1,12 @@
+<div class="map-panel" ><pre class="language-javascript"><code class="language-javascript">
+  var map = new mapTools({
+    id: 'mymap',
+    lat: 41.3833,
+    lng: 2.1833,
+    on: {
+      marker_visibility_changed: function(numOfVisibleMarkers) {
+        alert('Total of Visible Markers: ' + numOfVisibleMarkers);
+      }
+    }
+  });
+</code></pre></div>

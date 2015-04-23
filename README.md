@@ -78,7 +78,7 @@ var map = new mapTools({
         console.log('the zoom level has changed!', map.zoom())
       }
   }  
-...
+```
 
 Here you can find a list of all the [Native Map Events] (https://developers.google.com/maps/documentation/javascript/events)
 
