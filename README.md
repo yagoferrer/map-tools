@@ -386,8 +386,8 @@ You can set `style` options to specify the way a Feature should appear when disp
 You can update the `style` of the existing Feature on a map.
 
 ```javascript
- var colorado = map.filterFeature({NAME:'Colorado'}, {limit: 1});
- var nevada = map.filterFeature({NAME:'Colorado'}, {limit: 1});
+ var colorado = map.findFeature({NAME:'Colorado'}, {limit: 1});
+ var nevada = map.findFeature({NAME:'Colorado'}, {limit: 1});
  var style = {fillOpacity: 0.4, fillColor:'black', strokeColor: 'black'};
  map.updateFeature([colorado,nevada], {style: style});
 ```
@@ -406,7 +406,7 @@ return {
 	}
 };
 
-var all = map.filterFeature('CENSUSAREA');
+var all = map.findFeature();
 map.updateFeature(all, {style: color});
 ```
 
@@ -415,7 +415,7 @@ map.updateFeature(all, {style: color});
 You can use a Crossfilter result to update features. In this example it finds the State named: 'Texas' and updates the background color.
 
 ```javascript
-var feature = map.filterFeature({NAME:'Colorado'}, {limit: 1});
+var feature = map.findFeature({NAME:'Colorado'}, {limit: 1});
 map.updateFeature(feature, {style: {fillColor:'black'}})
 ```
 
