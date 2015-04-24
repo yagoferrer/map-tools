@@ -14,7 +14,7 @@ Do you like this new project? Help me to gain popularity by using the **Start** 
 
 ## Benefits
 - Less Code: The [Google Maps API](https://developers.google.com/maps/documentation/javascript/reference) it is of considerable size. You'll be writing way **less** code with map-tools.js
-- It helps you to keep track of elements created on the Map.
+- It helps you to keep track of elements created on the Map. Use [findMarker()](#find-marker) to run queries.
 - More Fun: Add [Marker animations](#animate-markers), use [handlebars style](#info-window) variables.
 - Non Intrusive: it extends the API; you can use any other native methods, properties and events anywhere.
 - Query elements on the Map to update their options using [Crossfilter](#crossfilter-support-for-markers)
