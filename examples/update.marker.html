@@ -26,15 +26,15 @@
 
 			map.addPanel({
 				template: '<div class="actions">' +
-				'<div class="update-crossfilter">Update Marker by using markerFilter()</div>' +
+				'<div class="update-find">Update Marker by using findMarker()</div>' +
 				'<div class="update-reference">Update Marker by using it\'s own reference</div>' +
 				'<div class="update-reference-location">Update Marker to another location</div>' +
 				'</div>',
 				position: 'right center',
 				events: {
-					'.update-crossfilter click': function (e) {
-						var marker = map.findMarker({cityName: 'barcelona'}, {limit: 1});
-						map.updateMarker(marker, {move: 'drop'});
+					'.update-find click': function (e) {
+						var marker = map.findMarker({data: {cityName: 'barcelona'}}, {limit: 1});
+						map.updateMarker([marker], {move: 'drop'});
 						e.preventDefault();
 					},
 

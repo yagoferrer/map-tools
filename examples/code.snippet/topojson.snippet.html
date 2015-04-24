@@ -6,8 +6,8 @@
     strokeWeight: 0.5,
     fillOpacity: 0
   },filters: ['NAME']}]);
-  var colorado = map.filterFeature({NAME:'Colorado'}, {limit: 1});
-  var nevada = map.filterFeature({NAME:'Nevada'}, {limit: 1});
+  var colorado = map.findFeature({NAME:'Colorado'}, {limit: 1});
+  var nevada = map.findFeature({NAME:'Nevada'}, {limit: 1});
 	var options = {
 		style:{
 			fillOpacity: 0.4,
@@ -30,6 +30,6 @@
     }
   }
 
-  var all = map.filterFeature('NAME');
+  var all = map.findFeature();
   map.updateFeature(all), {style: color});
 </code></pre></div>
