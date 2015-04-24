@@ -219,10 +219,14 @@ The callback property allows to set a callback function that contains the instan
 
 
 #### Update Marker
+Allows you to update one or multiple marker options. 
+[Live example](http://map-tools.io/examples/update.marker.html)
+
 ```javascript
 map.updateMarker(<marker reference>, {visible: false})
 ```
-Allows you to update one or multiple marker options. The 1st argument can be: A Marker (reference) an Array of Markers or the `uid` specified like this: `{uid: '<uid>'}`
+
+The 1st argument can be: A Marker (reference) an Array of Markers or the `uid` specified like this: `{uid: '<uid>'}`
 
 The 2nd argument allows you to set any options you want to update. 
 
