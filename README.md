@@ -125,6 +125,7 @@ var map = new mapTools({
 ### Custom Map Events
 - `marker_visibility_changed` it will get trigger anytime that any Marker changes visibility state.
 
+[Live example](http://map-tools.io/examples/custom.events.html)
 ```javascript
 var map = new mapTools({
   on: {
