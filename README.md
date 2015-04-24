@@ -1,4 +1,4 @@
-## map-tools 1.0.1 
+## map-tools 1.1.0 
 
 Do you like this new project? Help me to gain popularity by using the **Start** button! It will help me to make it better!
 
@@ -37,7 +37,7 @@ Bower:
 bower install map-tools --save-dev
 ```
 
-Do you need to download it now? Use the direct download link. [map-tools.min.js](https://github.com/yagoferrer/map-tools/blob/1.0.1/dist/map-tools.min.js)
+Do you need to download it now? Use the direct download link. [map-tools.min.js](https://github.com/yagoferrer/map-tools/blob/1.1.0/dist/map-tools.min.js)
 
 ## Need Quick Examples?
 
