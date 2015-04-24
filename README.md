@@ -241,8 +241,8 @@ This example will return all the Markers visible on the Map.
 map.findMarker({visible: true})
 ```
 
-```javascript
 This example will find the Marker that the lowest `data.population` value
+```javascript
 map.findMarker('population', {order: 'DESC', limit: 1})
 ```
 You can test this query at this [Live example](http://map-tools.io/examples/data.querying.html)
