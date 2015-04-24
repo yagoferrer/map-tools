@@ -187,7 +187,11 @@ map.addMarker([{
   on: {
     click: function() {
       alert(this.title);
-    }}      
+    }
+  },
+  data: {
+    population: 1700000
+  }
 },
 {
   lat: 42.5000,
@@ -195,7 +199,10 @@ map.addMarker([{
   title: 'Andorra'
 }], 
 {
-  icon: 'images/city.png'
+  icon: 'images/city.png',
+  callback: function(instance) {
+    console.log('Marker Added', instance);
+  }
 });
 
 ```
@@ -206,6 +213,9 @@ Use `on` to define any Marker Events.
 The 2nd argument allows you to add options **shared** between the Markers you are adding.
 
 You can also add any other [Native Marker Options](https://developers.google.com/maps/documentation/javascript/reference#MarkerOptions)
+
+The callback property allows to set a callback function that contains the instance of the Marker. This is useful if for example: You add many Markers at once, but you need to do some additional logic once the Marker is added.
+
 
 
 #### Update Marker

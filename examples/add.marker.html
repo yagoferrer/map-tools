@@ -37,6 +37,9 @@
         click: function() {
           alert(this.title);
         }
+      },
+      callback: function(instance) {
+        console.log('The Marker was Added', instance);
       }
     });
   }
