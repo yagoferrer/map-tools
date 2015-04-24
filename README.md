@@ -179,6 +179,8 @@ map.locate()
 Adding Markers is simple. Use the `addMarker()` method to add **one or multiple** Markers at the same time. The method will return a reference of the Marker(s) added. It will also save a reference under `map.markers.all[uid]` The uid is either
 an unique value that you can provide under `data.uid` or a self-generated value created by map-tools.
 
+[Live example](http://map-tools.io/examples/add.marker.html)
+
 ```javascript
 map.addMarker([{
   lat: 41.3833,
