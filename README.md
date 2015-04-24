@@ -235,6 +235,21 @@ Allows you to delete *one or multiple* Markers. If you *don't* pass any paramete
 map.removeMarker([<marker reference>, <marker reference>]);
 ```
 
+#### Find Marker
+Allows you to find a Marker using a Marker property or a Marker.data property value.
+
+This example will return all the Markers visible on the Map.
+```javascript
+map.findMarker({visible: true})
+```
+
+```javascript
+This example will find the Marker that the lowest `data.population` value
+map.findMarker('population', {order: 'DESC', limit: 1})
+```
+You can test this query at this [Live example](http://map-tools.io/examples/data.querying.html)
+
+
 #### Reset Marker
 This is one of my favorite features. Sometimes you just want to reset some Marker properties to the original value that was set on the initial creation. This method allows you to reset **one or multiple** Markers to the initial state.
 
