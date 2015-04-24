@@ -27,7 +27,10 @@
 		    position: 'right center',
 		    events: {
 			    '.update click': function (e) {
-				    map.updateMarker(marker[0], {infoWindow: {content: '<p>Updated!</p>'}});
+
+
+				    map.updateMarker(map.findMarker({data: {city: 'Barcelona'}}), {infoWindow: {content: '<p>Updated!</p>'}});
+
 				    e.preventDefault();
 			    }
 		    }
