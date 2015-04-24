@@ -234,7 +234,7 @@ map.removeMarker([<marker reference>, <marker reference>]);
 ```
 
 #### Find Marker
-Allows you to find a Marker using a Marker property or a Marker.data property value.
+With the power of Crossfilter, findMarker() allows you to find any Marker based on a `property` or a `Marker.data` property value.
 
 This example will return all the Markers visible on the Map.
 ```javascript
