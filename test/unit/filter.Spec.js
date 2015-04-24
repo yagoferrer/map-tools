@@ -3,17 +3,28 @@ describe('Given the filterFeature Module', function () {
   var that, filterFeature, data;
 
   beforeEach(function () {
-    data = [{NAME: 'Gert'}, {NAME: 'Peter', age: 23}, {NAME: 'Peter', age: 35}, {NAME: 'Max'}];
+    data = [
+      {data: {NAME: 'Gert'}, uid: 1},
+      {data: {NAME: 'Peter', age: 23}, uid: 2},
+      {data: {NAME: 'Peter', age: 35}, uid: 3},
+      {data: {NAME: 'Max'}, uid: 4}
+    ];
 
     var cf = crossfilter(data);
 
+
     that = {
       json: {
+        all: {},
         filter: {
-          NAME: cf.dimension(function(d) {return d.NAME;})
+          NAME: cf.dimension(function(d) {return d.data.NAME;})
         }
       }
     };
+
+    for (var x in data) {
+      that.json.all[data[x].uid] = data[x];
+    }
 
     filterFeature = require('map-tools/filter')({}, that, 'json');
   });
