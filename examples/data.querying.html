@@ -28,8 +28,7 @@
 		    position: 'right center',
 		    events: {
 			    '.top click': function (e) {
-            var marker = map.findMarker('population', {limit: 1});
-            console.log('result', marker);
+            var marker = map.findMarker('population', {limit: 1, order: 'ASC'});
 				    map.updateMarker(marker, {move: 'bounce'});
 				    e.preventDefault();
 			    }
