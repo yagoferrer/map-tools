@@ -141,6 +141,7 @@ This event it is very useful if you are planning for example on clustering based
 #### Update Map 
 Apply *ANY* option to the Map by calling the `updateMap()` method like this example:
 
+[Live example](http://map-tools.io/examples/update.map.html)
 ```javascript
 map.updateMap({type: 'TERRAIN'});
 ```
