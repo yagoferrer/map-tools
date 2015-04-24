@@ -220,6 +220,7 @@ The callback property allows to set a callback function that contains the instan
 
 #### Update Marker
 Allows you to update one or multiple marker options. 
+
 [Live example](http://map-tools.io/examples/update.marker.html)
 
 ```javascript
