@@ -22,7 +22,12 @@ describe('when calling addMarker()', function () {
     var markers = [{
       lat: 41.3833,
       lng: 2.1833,
-      title: 'Barcelona'
+      title: 'Barcelona',
+      on: {
+        click: function() {
+
+        }
+      }
     }, {
       lat: 41.4489,
       lng: 2.2461,
@@ -37,8 +42,7 @@ describe('when calling addMarker()', function () {
   });
 
 
-  describe('with a the "bubble" option witch "content" has a reference to a "data" variable', function () {
-
+  describe('with a the "infoWindow" option witch "content" has a reference to a "data" variable', function () {
 
     it('should replace the variable in "content" using the "data" variable', function () {
       var map = new mapTools({async: false, id: 'mymap', lat: 41.3833, lng: 2.1833});
@@ -46,14 +50,17 @@ describe('when calling addMarker()', function () {
         lat: 41.3833,
         lng: 2.1833,
         infoWindow: {
-          content: '{city}'
+          content: '{city}',
+          open: {on: 'mousever'},
+          close: {on: 'mouseout'}
         },
         data: {
           city: 'barcelona'
         }
       };
-      var result = map.addMarker(marker);
-      expect(result.infoWindow.content).to.equal('barcelona');
+      map.addMarker(marker);
+
+      expect(map.infoWindow.content).to.equal('barcelona');
     });
   });
 
@@ -100,4 +107,19 @@ describe('when calling addMarker()', function () {
       expect(mapTools.maps.mymap.markers.groups.myGroup).to.have.length.of(1);
     });
   });
+
+  describe('with an empty Array as first Parameter', function() {
+
+    it('should return an empty Array', function() {
+
+      var map = new mapTools({async: false, id: 'mymap', lat: 41, lng: 2});
+      var result = map.addMarker([])
+
+      expect(result).to.be.a('array');
+      expect(result.length).to.eql(0);
+
+    });
+
+  });
+
 });

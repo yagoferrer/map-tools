@@ -1,0 +1,20 @@
+<div class="map-panel" ><pre class="language-javascript"><code class="language-javascript">
+  var map2;
+  var map1 = new mapTools({
+  id: 'mymap1',
+  lat: 41.3833,
+  lng: 2.1833
+  }, function () {
+  load2ndMap();
+  });
+
+  function load2ndMap() {
+  map2 = new mapTools({
+  id: 'mymap2',
+  lat: 41.3833,
+  lng: 2.1833,
+  async: false
+  }, function (err, map2) {
+  });
+  }
+</code></pre></div>

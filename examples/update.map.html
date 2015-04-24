@@ -15,56 +15,58 @@
     el: '#mymap',
     lat: 41.3833,
     lng: 2.1833
-  }, function (err, instance) {
+  }, function (err, map) {
 
-	  map.addPanel({
-		  template: '<div class="actions">' +
-		  '<div class="update-terrain">Update to type TERRAIN and disable controls</div>' +
-		  '<div class="update-roadmap">Update to type ROADMAP and enable controls</div>' +
-      '<div class="center-map">Center Map</div>' +
-      '<div class="zoom-map">Zoom Map</div>' +
-		  '</div>',
-		  position: 'right center',
-		  events: {
-			  '.update-terrain click': function (e) {
-				  e.preventDefault();
-				  map.updateMap(
-						  {
-							  type: 'TERRAIN',
-							  mapTypeControl: false,
-							  zoomControl: false,
-							  streetViewControl: false,
-							  panControl: false
-						  });
-			  },
-			  '.update-roadmap click': function (e) {
-				  e.preventDefault();
-				  map.updateMap({
-					  type: 'ROADMAP',
-					  mapTypeControl: true,
-					  zoomControl: true,
-					  streetViewControl: true,
-					  panControl: true
-				  });
-			  },
-        '.center-map click': function(e) {
-          e.preventDefault();
-          map.center(40.416854, -3.703419);
-        },
-        '.zoom-map click': function(e) {
-          e.preventDefault();
-          map.zoom(12);
+    if (!err) {
+      map.addPanel({
+        template: '<div class="actions">' +
+        '<div class="update-terrain">Update to type TERRAIN and disable controls</div>' +
+        '<div class="update-roadmap">Update to type ROADMAP and enable controls</div>' +
+        '<div class="center-map">Center Map</div>' +
+        '<div class="zoom-map">Zoom Map</div>' +
+        '</div>',
+        position: 'right center',
+        events: {
+          '.update-terrain click': function (e) {
+            e.preventDefault();
+            map.updateMap(
+              {
+                type: 'TERRAIN',
+                mapTypeControl: false,
+                zoomControl: false,
+                streetViewControl: false,
+                panControl: false
+              });
+          },
+          '.update-roadmap click': function (e) {
+            e.preventDefault();
+            map.updateMap({
+              type: 'ROADMAP',
+              mapTypeControl: true,
+              zoomControl: true,
+              streetViewControl: true,
+              panControl: true
+            });
+          },
+          '.center-map click': function(e) {
+            e.preventDefault();
+            map.center(40.416854, -3.703419);
+          },
+          '.zoom-map click': function(e) {
+            e.preventDefault();
+            map.zoom(12);
+          }
         }
-		  }
-	  });
+      });
 
-		// snippet panel
-	  map.addPanel({
-		  templateURL: 'code.snippet/update.map.snippet.html',
-		  position:'right center'
-    }, function() {
-      Prism.highlightAll();
-    });
+      // snippet panel
+      map.addPanel({
+        templateURL: 'code.snippet/update.map.snippet.html',
+        position:'right center'
+      }, function() {
+        Prism.highlightAll();
+      });
+    }
 
   });
 

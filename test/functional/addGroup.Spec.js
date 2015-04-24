@@ -17,7 +17,7 @@ describe('when calling addGroup()', function () {
       title: 'Barcelona'
     };
     map.addMarker(markers, {group: 'myGroup'});
-    expect(mapTools.maps.mymap.markers.groups.myGroup[0].myGroupProp).to.be.true();
+    expect(mapTools.maps.mymap.markers.groups.myGroup[0].myGroupProp).to.be.true;
   });
 
 

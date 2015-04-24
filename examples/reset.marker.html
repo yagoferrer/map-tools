@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link href="vendors/prism/prism.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../examples/style/basic.css"/>
+  <script src="vendors/prism/prism.js"></script>
+  <script src="../dist/map-tools.js"></script>
+</head>
+<body>
+<script>
+
+
+
+  var map = new mapTools({
+    id: 'mymap',
+    lat: 41.3833,
+    lng: 2.1833
+  }, function (err) {
+    if (!err) {
+
+      var marker = map.addMarker([{
+        lat: 41.3833,
+        lng: 2.1833,
+        title: 'Barcelona',
+        on: {
+          click: function() {
+            alert('Barcelona!');
+          }
+        }
+      },
+        {
+          lat: 42.5000,
+          lng: 1.5167,
+          title: 'Andorra',
+          infoWindow: {
+            content: 'Andorra'
+          }
+        }
+      ], {icon: 'images/blue.png'});
+
+
+      var keys = Object.keys(map.markers.all);
+
+      var markers = [map.markers.all[keys[0]], map.markers.all[keys[1]]];
+
+      //
+
+      map.updateMarker(markers, {icon: 'images/orange.png'});
+
+      map.addPanel({
+        template: '<div class="actions">' +
+        '<div class="reset-icon">Reset Marker Icon</div>' +
+        '</div>',
+        position: 'right center',
+        events: {
+          '.reset-icon click': function (e) {
+            map.resetMarker(markers, ['icon', 'lat', 'lng']);
+            e.preventDefault();
+          }
+        }
+      });
+
+      // snippet panel
+      map.addPanel({
+        templateURL: 'code.snippet/marker.reset.snippet.html',
+        position:'right center'
+      }, function() {
+        Prism.highlightAll();
+      });
+
+    }
+  });
+
+</script>
+
+<div id="mymap" class="side"></div>
+
+</body>
+</html>

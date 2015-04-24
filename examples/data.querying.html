@@ -17,7 +17,7 @@
     lat: 40.419795,
     lng: 1.507907,
     zoom: 6
-  }, function (err, instance) {
+  }, function (err) {
     if (!err) {
       addMarker();
 
@@ -28,7 +28,7 @@
 		    position: 'right center',
 		    events: {
 			    '.top click': function (e) {
-            var marker = map.filterMarker('population', {limit: 1});
+            var marker = map.findMarker('population', {limit: 1, order: 'ASC'});
 				    map.updateMarker(marker, {move: 'bounce'});
 				    e.preventDefault();
 			    }
@@ -71,7 +71,7 @@
           population: 679624
         }
       }
-    ], {filters: ['population']});
+    ]);
   }
 
 </script>

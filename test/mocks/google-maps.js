@@ -36,11 +36,18 @@ module.exports = {
     OverlayView: function() {
       return {};
     },
-    InfoWindow: function() {
-      return {open: function(){}, close: function(){}, setContent: function(x){this.content = x}};
+    InfoWindow: function(options) {
+
+      return {
+        open: function(){},
+        close: function(){},
+        setContent: function(x){
+        this.content = x},
+        getMap: function(){},
+        content: options.content
+      };
     },
     Marker: function(marker) {
-
 
       marker.setAnimation = function() {
         return 'animation set';
@@ -61,13 +68,13 @@ module.exports = {
       }
 
       return marker;
-
     },
     MarkerImage: function() {
       return {};
     },
     Map: function() {
       return {
+        zoom: 8,
         gm_bindings_: {},
         data: {
 					addGeoJson: function(json) {
@@ -93,7 +100,13 @@ module.exports = {
 					'10': [],
 					'11': [],
 					'12': []
-		}
+        },
+        getZoom: function() {
+          return this.zoom;
+        },
+        setZoom: function(zoom) {
+          this.zoom = zoom;
+        }
 
       };
     },

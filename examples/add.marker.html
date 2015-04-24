@@ -14,7 +14,7 @@
     id: 'mymap',
     lat: 41.3833,
     lng: 2.1833
-  }, function (err, instance) {
+  }, function (err) {
     if (!err) {
       addMarker();
 
@@ -35,8 +35,11 @@
       title: 'Barcelona',
       on: {
         click: function() {
-          alert('Barcelona!');
+          alert(this.title);
         }
+      },
+      callback: function(instance) {
+        console.log('The Marker was Added', instance);
       }
     });
   }

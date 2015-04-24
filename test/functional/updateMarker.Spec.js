@@ -22,7 +22,7 @@ describe('when calling updateMarker()', function () {
     expect(mapTools.maps.mymap.markers.all[uid].visible).to.be.true;
     expect(mapTools.maps.mymap.markers.all[uid].position.lat()).to.eql(100);
     expect(mapTools.maps.mymap.markers.all[uid].position.lng()).to.eql(30);
-    expect(mapTools.maps.mymap.markers.all[uid].infoWindow.instance.content).to.eql('click me');
+    expect(mapTools.maps.mymap.markers.all[uid].infoWindow.content).to.eql('click me');
   });
 
   it('should invoke multiple Markers options setters for each property passed', function () {

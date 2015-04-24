@@ -1,8 +1,12 @@
 {
   "name": "map-tools",
-  "version": "0.8.0",
+  "version": "1.1.3",
   "description": "map-tools.js is a Google Maps Feature-rich Javascript wrapper that makes things like: Marker filtering, asynchronous loading, working with TopoJSON or GeoJSON, animation and more. Much simpler with an easy-to-use API.",
-  "main": "lib/index.js",
+  "main": "dist/map-tools.js",
+  "files": [
+    "dist/map-tools.min.js",
+    "dist/map-tools.js"
+  ],
   "scripts": {
     "prestart": "npm install; npm run dist",
     "start": "browser-sync start --server --index index.html",
@@ -40,8 +44,8 @@
     "benchmark": "^1.0.0",
     "bower": "^1.3.12",
     "browser-sync": "^2.0.1",
-    "browserify": "^8.1.1",
-    "chai": "^1.10.0",
+    "browserify": "^9.0.8",
+    "chai": "^2.2.0",
     "codeclimate-test-reporter": "0.0.4",
     "coveralls": "^2.11.2",
     "gmaps": "^0.4.12",
@@ -56,7 +60,7 @@
     "npm": "^2.2.0",
     "platform": "^1.3.0",
     "sinon": "^1.12.2",
-    "sinon-chai": "^2.6.0",
+    "sinon-chai": "^2.7.0",
     "uglify-js": "^2.4.16"
   },
   "dependencies": {

@@ -16,7 +16,7 @@
     id: 'mymap',
     lat: 41.3833,
     lng: 2.1833
-  }, function (err, instance) {
+  }, function (err, map) {
     if (!err) {
       addMarker();
 
@@ -27,12 +27,12 @@
 		    position: 'right center',
 		    events: {
 			    '.update click': function (e) {
-				    map.updateMarker(marker, {infoWindow: {content: '<p>Updated!</p>'}});
+            map.updateMarker(map.findMarker({city: 'Barcelona'}), {infoWindow: {content: '<p>Updated!</p>'}});
+
 				    e.preventDefault();
 			    }
 		    }
 	    });
-
 
 	    map.addPanel({
 		    templateURL: 'code.snippet/add.info.window.snippet.html',
@@ -46,19 +46,29 @@
   var marker;
 
   function addMarker() {
-    marker = map.addMarker({
+    marker = map.addMarker([{
       lat: 41.3833,
       lng: 2.1833,
       title: 'Barcelona',
-      infoWindow: {
-        openOn: 'mouseover',
-        closeOn: 'click',
-        content: '<p>{city}</p>'
-      },
       data: {
-        city: 'Barcelona!'
+        city: 'Barcelona'
       }
-    });
+    },
+      {
+        lat: 42.5000,
+        lng: 1.5167,
+        title: 'Andorra',
+        data: {
+          city: 'Andorra'
+        }
+      }
+    ],
+      {infoWindow: {
+          open: {on: 'mouseover'},
+          close: {on: 'mouseout', duration: 2000},
+          content: '<p>{city}</p>'
+        }
+      });
   }
 
 </script>
