@@ -1,10 +1,17 @@
 describe('when calling addPanel()', function () {
 	"use strict";
 
-	it('should add a single panel on the specified position', function () {
-		var map = new mapTools({async: false, id: 'mymap', lat: 41.3833, lng: 2.1833});
+  var map;
+  beforeEach(function () {
+    if (mapTools.maps && mapTools.maps.mymap) {
+      delete mapTools.maps.mymap;
+    }
+    map = new mapTools({async: false, id: 'mymap', lat: 41.3833, lng: 2.1833});
+  });
 
-		var result = map.addPanel({
+	it('should add a single panel on the specified position', function () {
+
+		map.addPanel({
 			template: '<div>' +
 			'<button id="clickMe" class="test-button">ctrl 1</button></div>',
 			position: 'top center'
@@ -15,7 +22,6 @@ describe('when calling addPanel()', function () {
 	});
 
 	it('should add a single panel with the specified style options', function (done) {
-		var map = new mapTools({async: false, id: 'mymap', lat: 41.3833, lng: 2.1833});
 
 		map.addPanel({
 			template: '<div><button id="clickMe">ctrl 1</button></div>',
@@ -34,7 +40,7 @@ describe('when calling addPanel()', function () {
 	});
 
 	it('should add a single panel with the specified events options', function () {
-		var map = new mapTools({async: false, id: 'mymap', lat: 41.3833, lng: 2.1833});
+
 		var spy = sinon.spy();
 
 		var panel = map.addPanel({
@@ -61,8 +67,6 @@ describe('when calling addPanel()', function () {
       return this;
     };
 
-    var map = new mapTools({async: false, id: 'mymap', lat: 41.3833, lng: 2.1833});
-
     map.addPanel({
       templateURL: 'control-template.html',
       position: 'top center'
@@ -71,8 +75,5 @@ describe('when calling addPanel()', function () {
       expect(Object.keys(mapTools.maps.mymap.instance.controls[2]).length).to.equal(1);
       done()
     });
-
-
   });
-
 });

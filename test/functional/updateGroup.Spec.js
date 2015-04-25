@@ -1,8 +1,15 @@
 describe('when calling updateGroup()', function () {
   "use strict";
 
+  var map;
+  beforeEach(function () {
+    if (mapTools.maps && mapTools.maps.mymap) {
+      delete mapTools.maps.mymap;
+    }
+    map = new mapTools({async: false, id: 'mymap', lat: 41.3833, lng: 2.1833});
+  });
+
   it('should invoke the setter of the Marker option with the new value', function () {
-    var map = new mapTools({async: false, id: 'mymap', lat: 41.3833, lng: 2.1833});
     map.addGroup('myGroup', {visible: true});
 
     var marker = {

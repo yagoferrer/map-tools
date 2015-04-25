@@ -1,9 +1,14 @@
 "use strict";
 describe('Given the Zoom API', function () {
+
   var map;
   beforeEach(function () {
+    if (mapTools.maps && mapTools.maps.mymap) {
+      delete mapTools.maps.mymap;
+    }
     map = new mapTools({async: false, id: 'mymap', lat: 41.3833, lng: 2.1833});
   });
+
   describe('When calling Zoom', function () {
     it('should  return the current Zoom level', function () {
       expect(map.zoom()).to.equal(8);

@@ -1,6 +1,12 @@
 describe('Given map-tools.js', function () {
   "use strict";
 
+  beforeEach(function () {
+    if (mapTools.maps && mapTools.maps.mymap) {
+      delete mapTools.maps.mymap;
+    }
+  });
+
   describe('when instantiating', function () {
 
 

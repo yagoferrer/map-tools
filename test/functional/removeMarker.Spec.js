@@ -1,8 +1,15 @@
 describe('when calling removeMarker()', function () {
   "use strict";
-  it('should remove the Marker from the Map', function () {
-    var map = new mapTools({async: false, id: 'mymap', lat: 41.3833, lng: 2.1833});
 
+  var map;
+  beforeEach(function () {
+    if (mapTools.maps && mapTools.maps.mymap) {
+      delete mapTools.maps.mymap;
+    }
+    map = new mapTools({async: false, id: 'mymap', lat: 41.3833, lng: 2.1833});
+  });
+
+  it('should remove the Marker from the Map', function () {
     var options = {
       lat: 41.3833,
       lng: 2.1833,
@@ -20,9 +27,6 @@ describe('when calling removeMarker()', function () {
 
 
   it('should remove multiple Markers from the Map', function() {
-
-    var map = new mapTools({async: false, id: 'mymap', lat: 41.3833, lng: 2.1833});
-
     var markers = [{
       lat: 41.3833,
       lng: 2.1833,
@@ -34,19 +38,13 @@ describe('when calling removeMarker()', function () {
     }];
 
     var result = map.addMarker(markers);
-
     map.removeMarker(result);
-
     expect(result[0].map).to.equal(null);
     expect(result[1].map).to.equal(null);
-
   });
 
 
   it('should remove all the Markers from the Map', function() {
-
-    var map = new mapTools({async: false, id: 'mymap', lat: 41.3833, lng: 2.1833});
-
     var markers = [{
       lat: 41.3833,
       lng: 2.1833,
@@ -58,9 +56,7 @@ describe('when calling removeMarker()', function () {
     }];
 
     var result = map.addMarker(markers);
-
     map.removeMarker();
-
     expect(result[0].map).to.equal(null);
     expect(result[1].map).to.equal(null);
 

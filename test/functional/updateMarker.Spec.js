@@ -1,8 +1,16 @@
 describe('when calling updateMarker()', function () {
   "use strict";
-  it('should invoke the Marker options setter for each property passed', function () {
-    var map = new mapTools({async: false, id: 'mymap', lat: 41.3833, lng: 2.1833});
 
+  var map;
+  beforeEach(function () {
+    if (mapTools.maps && mapTools.maps.mymap) {
+      delete mapTools.maps.mymap;
+    }
+    map = new mapTools({async: false, id: 'mymap', lat: 41.3833, lng: 2.1833});
+  });
+
+
+  it('should invoke the Marker options setter for each property passed', function () {
     var options = {
       lat: 41.3833,
       lng: 2.1833,
@@ -26,8 +34,6 @@ describe('when calling updateMarker()', function () {
   });
 
   it('should invoke multiple Markers options setters for each property passed', function () {
-    var map = new mapTools({async: false, id: 'mymap', lat: 41.3833, lng: 2.1833});
-
     var markers = [{
       lat: 41.3833,
       lng: 2.1833,
