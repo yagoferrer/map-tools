@@ -46,6 +46,14 @@ describe('Given map-tools.js', function () {
       });
     });
 
+
+    it('should append a  Map instance when you pass: ".el", "lat" and "lng" and async:true', function (done) {
+      var map = new mapTools({el: '#mymap', lat: 41.3833, lng: 2.1833}, function (err, self) {
+        expect(self.instance.gm_bindings_).to.be.a('object');
+        done();
+      });
+    });
+
     describe('with crossfilter', function () {
       it('should add the marker data to the filters', function () {
         var spy = sinon.spy();
