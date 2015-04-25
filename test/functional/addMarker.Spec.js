@@ -56,6 +56,26 @@ describe('when using the addMarker() method', function () {
     });
   });
 
+  describe('With a custom UID set as Marker data.property', function () {
+
+    it('should add the Marker using the custom UID', function () {
+
+      map.addMarker({
+        lat: 42,
+        lng: 2,
+        title: 'Andorra',
+        data: {
+          uid: 'A1'
+        }
+      });
+
+      expect(map.markers.all['A1'].lat).to.eql(42);
+      expect(map.markers.all['A1'].lng).to.eql(2);
+
+    });
+
+  });
+
 
 
 
