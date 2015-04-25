@@ -11,7 +11,6 @@ module.exports = {
       },
       addListener: function(instance, event, cb)
       {
-        console.log('addListener', instance, event, cb)
         cb()
       },
 			addDomListener: function(instance, event, cb)

@@ -28,6 +28,17 @@ describe('Given map-tools.js', function () {
           done();
         });
       });
+
+      it('should return an error if you are trying to initialize the map twice with the same name', function (done) {
+
+        var map1 = new mapTools({id: 'mymap', lat: 41, lng: 1, async: false});
+        var map2 = new mapTools({id: 'mymap', lat: 41, lng: 1, async: false}, function(err) {
+          expect(err).to.eql(new Error());
+          done();
+
+        });
+      });
+
     });
 
 
