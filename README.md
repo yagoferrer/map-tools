@@ -1,7 +1,5 @@
 ## map-tools 1.1.3 
 
-Do you like this new project? Help me to gain popularity by using the **Start** button! It will help me to make it better!
-
 [![Build](https://travis-ci.org/yagoferrer/map-tools.svg?branch=master)](https://travis-ci.org/yagoferrer/map-tools) 
 [![Coverage](https://coveralls.io/repos/yagoferrer/map-tools/badge.svg?branch=master)](https://coveralls.io/r/yagoferrer/map-tools)
 [![Code Climate](https://codeclimate.com/github/yagoferrer/map-tools/badges/gpa.svg?branch=master)](https://codeclimate.com/github/yagoferrer/map-tools)
@@ -14,7 +12,7 @@ Do you like this new project? Help me to gain popularity by using the **Start** 
 
 ## Benefits
 - Less Code: The [Google Maps API](https://developers.google.com/maps/documentation/javascript/reference) it is of considerable size. You'll be writing way **less** code with map-tools.js
-- It helps you to keep track of elements created on the Map.
+- It helps you to keep track of elements created on the Map. Use [findMarker()](#find-marker) to run queries.
 - More Fun: Add [Marker animations](#animate-markers), use [handlebars style](#info-window) variables.
 - Non Intrusive: it extends the API; you can use any other native methods, properties and events anywhere.
 - Query elements on the Map to update their options using [Crossfilter](#crossfilter-support-for-markers)
@@ -127,6 +125,7 @@ var map = new mapTools({
 ### Custom Map Events
 - `marker_visibility_changed` it will get trigger anytime that any Marker changes visibility state.
 
+[Live example](http://map-tools.io/examples/custom.events.html)
 ```javascript
 var map = new mapTools({
   on: {
@@ -142,6 +141,7 @@ This event it is very useful if you are planning for example on clustering based
 #### Update Map 
 Apply *ANY* option to the Map by calling the `updateMap()` method like this example:
 
+[Live example](http://map-tools.io/examples/update.map.html)
 ```javascript
 map.updateMap({type: 'TERRAIN'});
 ```
@@ -178,6 +178,8 @@ map.locate()
 ## Markers
 Adding Markers is simple. Use the `addMarker()` method to add **one or multiple** Markers at the same time. The method will return a reference of the Marker(s) added. It will also save a reference under `map.markers.all[uid]` The uid is either
 an unique value that you can provide under `data.uid` or a self-generated value created by map-tools.
+
+[Live example](http://map-tools.io/examples/add.marker.html)
 
 ```javascript
 map.addMarker([{
@@ -219,10 +221,15 @@ The callback property allows to set a callback function that contains the instan
 
 
 #### Update Marker
+Allows you to update one or multiple marker options. 
+
+[Live example](http://map-tools.io/examples/update.marker.html)
+
 ```javascript
 map.updateMarker(<marker reference>, {visible: false})
 ```
-Allows you to update one or multiple marker options. The 1st argument can be: A Marker (reference) an Array of Markers or the `uid` specified like this: `{uid: '<uid>'}`
+
+The 1st argument can be: A Marker (reference) an Array of Markers or the `uid` specified like this: `{uid: '<uid>'}`
 
 The 2nd argument allows you to set any options you want to update. 
 
@@ -234,6 +241,21 @@ Allows you to delete *one or multiple* Markers. If you *don't* pass any paramete
 ```javascript
 map.removeMarker([<marker reference>, <marker reference>]);
 ```
+
+#### Find Marker
+With the power of Crossfilter, findMarker() allows you to find any Marker based on a `property` or a `Marker.data` property value.
+
+This example will return all the Markers visible on the Map.
+```javascript
+map.findMarker({visible: true})
+```
+
+This example will find the Marker that the lowest `data.population` value
+```javascript
+map.findMarker('population', {order: 'DESC', limit: 1})
+```
+You can test this query at this [Live example](http://map-tools.io/examples/data.querying.html)
+
 
 #### Reset Marker
 This is one of my favorite features. Sometimes you just want to reset some Marker properties to the original value that was set on the initial creation. This method allows you to reset **one or multiple** Markers to the initial state.
