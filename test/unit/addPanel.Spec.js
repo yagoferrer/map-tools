@@ -30,6 +30,20 @@ describe('Given the addPanel module', function () {
 
   });
 
+  describe('with an Angular.js template', function () {
+    it('should add the template', function () {
+      var that = {
+        instance: {controls: {
+          '1': []
+        }}
+      };
 
+      var addPanel = require('map-tools/addPanel')(window, that);
+      var template = {};
+      addPanel({template: template});
+      expect(that.instance.controls['1']).to.eql([{}])
+    });
+
+  });
 
 });
