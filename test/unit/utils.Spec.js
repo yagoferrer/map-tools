@@ -45,10 +45,6 @@ describe('Given the Utils Class', function () {
       var result1 = utils.isArray([]);
       expect(result1).to.eql(true);
 
-      // Old browsers
-      Array.isArray = false;
-      var result2 = utils.isArray([]);
-      expect(result2).to.eql(true);
     });
 
 
