@@ -4,7 +4,6 @@ describe('Given the filterFeature Module', function () {
 
   beforeEach(function () {
 
-
     data = [
       {data: {NAME: 'Gert', age: 21}, uid: 1},
       {data: {NAME: 'Peter', age: 23}, uid: 2},
@@ -12,23 +11,16 @@ describe('Given the filterFeature Module', function () {
       {data: {NAME: 'Max', age: 44}, uid: 4}
     ];
 
-    var cf = crossfilter(data);
-
-
     that = {
       markers: {
-        all: {},
-        filter: {
-          NAME: cf.dimension(function(d) {return d.data.NAME;}),
-          age: cf.dimension(function(d) {return d.data.age;})
-        }
+        all: {}, filter: {},
+        crossfilter: crossfilter(data)
       }
     };
 
     for (var x in data) {
       that.markers.all[data[x].uid] = data[x];
     }
-
 
     filterFeature = require('map-tools/filter')({}, that, 'markers');
   });
