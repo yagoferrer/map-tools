@@ -21,8 +21,9 @@ describe('When initializing the Map with Events', function() {
       }
     });
 
-    var marker = map.addMarker({lat: 41, lng: 1, visible: true});
-    map.updateMarker(marker, {visible: false});
+    var marker1 = map.addMarker({lat: 41, lng: 1, visible: true});
+    var marker2 = map.addMarker({lat: 41, lng: 2, visible: true});
+    map.updateMarker(marker1, {visible: false});
     expect(spy).to.have.been.called;
   })
 
