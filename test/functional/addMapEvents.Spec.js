@@ -6,9 +6,10 @@ describe('When initializing the Map with Events', function() {
     }
   });
 
-  it('should listen for Map events', function() {
+  it('should trigger marker_visibility_event when changing Markers visibility', function() {
 
-    var spy1 = sinon.spy();
+    var spy = sinon.spy();
+    window.google.maps.event.trigger = spy;
 
     var map = new mapTools({
       id: 'mymap',
@@ -16,11 +17,13 @@ describe('When initializing the Map with Events', function() {
       lng: 2.1833,
       async: false,
       on: {
-        marker_visibility_changed: spy1
+        marker_visibility_changed: function() {}
       }
     });
 
-    expect(spy1).to.have.been.called;
+    var marker = map.addMarker({lat: 41, lng: 1, visible: true});
+    map.updateMarker(marker, {visible: false});
+    expect(spy).to.have.been.called;
   })
 
 });
