@@ -41,8 +41,14 @@ describe('Given the Utils Class', function () {
     });
 
     it('should return True when the input is an Array', function() {
-      var result = utils.isArray([]);
-      expect(result).to.eql(true);
+
+      var result1 = utils.isArray([]);
+      expect(result1).to.eql(true);
+
+      // Old browsers
+      Array.isArray = false;
+      var result2 = utils.isArray([]);
+      expect(result2).to.eql(true);
     });
 
 
@@ -51,6 +57,8 @@ describe('Given the Utils Class', function () {
       var result = utils.isArray('string');
       expect(result).to.eql(false);
     });
+
+
 
 
   });

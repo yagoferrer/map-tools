@@ -1,4 +1,4 @@
-describe('when calling addMarker()', function () {
+describe('when using the addMarker() method', function () {
   "use strict";
 
   var map;
@@ -19,6 +19,24 @@ describe('when calling addMarker()', function () {
     expect(result.title).to.equal('Andorra');
     expect(Object.keys(mapTools.maps.mymap.markers.all).length).to.equal(1);
   });
+
+  describe('With a "callback" property', function () {
+    it('should call the "callback" function if provided with an instance of the Marker', function (done) {
+      map.addMarker({
+        lat: 42.5000,
+        lng: 1.5167,
+        title: 'Andorra',
+        callback: function(instance) {
+          expect(instance.lat).to.eql(42.5000);
+          expect(instance.lng).to.eql(1.5167);
+          done();
+        }
+      });
+    });
+  });
+
+
+
 
   it('should add multiple Markers to the Map', function () {
     var markers = [{
