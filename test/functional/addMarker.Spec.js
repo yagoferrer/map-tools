@@ -36,6 +36,27 @@ describe('when using the addMarker() method', function () {
   });
 
 
+  describe('With a custom UID set as Map option', function () {
+    it('should add the Marker using the custom UID', function () {
+
+      delete mapTools.maps.mymap;
+
+      map = new mapTools({async: false, id: 'mymap', lat: 41, lng: 1, uid: 'custom_uid'});
+
+      map.addMarker({
+        lat: 42,
+        lng: 2,
+        title: 'Andorra',
+        custom_uid: 'A1'
+      });
+
+      expect(map.markers.all['A1'].lat).to.eql(42);
+      expect(map.markers.all['A1'].lng).to.eql(2);
+
+    });
+  });
+
+
 
 
   it('should add multiple Markers to the Map', function () {
@@ -124,4 +145,5 @@ describe('when using the addMarker() method', function () {
       expect(result.length).to.eql(0);
     });
   });
+
 });
