@@ -258,7 +258,7 @@ You can test this query at this [Live example](http://map-tools.io/examples/data
 
 
 #### Tags
-Tags are a useful helpter to **tag** Markers to later search for them.
+Allows you to Tag a specific Marker to later search or update based on that tag value.
 
 You can set a `tags` property to a Marker
 ```javascript
@@ -276,9 +276,14 @@ And then find the Marker's reference that have this tag.
 map.findMarker({tags: 'cities'})
 ```
 
-You can also update the `tags` property:
+You could also update a Marker using their tag.
 ```javascript
-map.updateMarker(<marker>, {tags: 'countries'})
+map.updateMarker({tags: 'countries'}, {visible: false})
+```
+
+At any moment you can add or remove tags from a Marker.
+```javascript
+map.updateMarker({tags: 'countries'}, {tags: ['countries', 'EU']})
 ```
 
 
