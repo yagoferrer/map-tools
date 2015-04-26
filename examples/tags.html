@@ -1,0 +1,123 @@
+<!--
+Icons generated using: http://mapicons.nicolasmollet.com/
+-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link href="vendors/prism/prism.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="../examples/style/basic.css"/>
+  <script src="vendors/prism/prism.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <script src="../dist/map-tools.js"></script>
+  <style>
+
+  </style>
+</head>
+<body>
+<script>
+  var map = new mapTools({
+    id: 'mymap',
+    lat: 41.3833,
+    lng: 2.1833,
+    zoom: 12
+  }, function (err, map) {
+
+    if (!err) {
+      addMarkers();
+
+      map.addPanel({
+        template: '<div class="actions">' +
+        '<div class="places">Click to toggle Markers visibility Group: Places</div>' +
+        '<div class="parks">Click to toggle Markers visibility Group: Parks</div>' +
+        '</div>',
+        position: 'right top',
+        events: {
+          '.places click': function (e) {
+            e.preventDefault();
+            placesVisible = !placesVisible;
+            map.updateMarker(map.findMarker({tags: 'places'}), {visible: placesVisible});
+          },
+
+          '.parks click': function (e) {
+            e.preventDefault();
+            parksVisible = !parksVisible;
+            map.updateMarker(map.findMarker({tags: 'parks'}), {visible: parksVisible});
+          }
+        }
+      });
+
+
+      map.addPanel({
+        templateURL: 'code.snippet/tags.snippet.html',
+        position: 'right top'
+      }, function() {
+        Prism.highlightAll();
+      });
+
+    }
+  });
+
+  function addMarkers() {
+
+
+    var places = [{
+      lat: 41.387220,
+      lng: 2.169983,
+      title: 'Plaça Catalunya',
+      icon: 'images/citysquare.png'
+    },
+      {
+        lat: 41.4036,
+        lng: 2.1744,
+        title: 'Sagrada Familia',
+        icon: 'images/icon-sevilla.png'
+      },
+      {
+        lat: 41.395571,
+        lng: 2.161961,
+        title: 'Casa Milà',
+        icon: 'images/palace-2.png'
+      },
+      {
+        lat: 41.385231,
+        lng: 2.180893,
+        title: 'Picasso Museum',
+        icon: 'images/art-museum-2.png'
+      }
+    ];
+
+    map.addMarker(places, {tags: 'places', visible: false});
+
+    var parks = [
+      {
+        lat: 41.414724,
+        lng: 2.152646,
+        title: 'Parc Guell'
+      },
+      {
+        lat: 41.389483,
+        lng: 2.186650,
+        title: 'Ciütadella Park'
+      },
+      {
+        lat: 41.420384,
+        lng: 2.167424,
+        title: 'Park del Guinardó'
+      }
+    ]
+
+    map.addMarker(parks, {tags: 'parks', visible: true, icon: 'images/forest2.png'});
+
+  }
+
+  var placesVisible = false;
+  var parksVisible = true;
+
+
+</script>
+<div id="mymap"></div>
+</body>
+</html>

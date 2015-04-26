@@ -1,0 +1,29 @@
+<div class="map-panel" ><pre class="language-javascript"><code class="language-javascript">
+  var parks;
+
+  parks = [{
+    lat: 41.414724,
+    lng: 2.152646,
+    title: 'Parc Guell'
+  },{
+    lat: 41.389483,
+    lng: 2.186650,
+    title: 'Ciütadella Park'
+  },{
+    lat: 41.420384,
+    lng: 2.167424,
+    title: 'Park del Guinardó'
+  }
+  ];
+
+  var options = {
+    visible: true,
+    icon: 'images/forest2.png',
+    tags: 'parks'
+  };
+
+  map.addMarker(parks, options);
+
+  var find = map.findMarker({tags: 'parks'});
+  map.updateMarker(find, {visible: false});
+</code></pre></div>
