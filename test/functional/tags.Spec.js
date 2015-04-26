@@ -56,7 +56,7 @@ describe('Given the Tag Feature', function () {
 
       it('should return an empty Array', function () {
 
-        var marker = map.addMarker({
+        map.addMarker({
           lat: 42,
           lng: 1,
           title: 'Andorra',
@@ -88,6 +88,37 @@ describe('Given the Tag Feature', function () {
 
       var markers = map.findMarker({tags: 'myTag2'});
       expect(markers[0]).to.eql(marker);
+
+    });
+
+
+    describe('with an Array of tags', function () {
+      it('should apply the new tags and remove the old ones', function () {
+
+        var marker = map.addMarker({
+          lat: 42,
+          lng: 1,
+          title: 'Andorra',
+          tags: ['tag1', 'tag2']
+        });
+
+        var tags = mapTools.maps.mymap.markers.tags;
+
+        expect(tags.tag1[Object.keys(tags.tag1)[0]]).to.eql(marker);
+        expect(tags.tag2[Object.keys(tags.tag2)[0]]).to.eql(marker);
+
+        map.updateMarker(marker, {tags: ['tag3', 'tag4']});
+
+        expect(tags.tag3[Object.keys(tags.tag3)[0]]).to.eql(marker);
+        expect(tags.tag4[Object.keys(tags.tag4)[0]]).to.eql(marker);
+
+        expect(tags.tag1).to.eql({});
+        expect(tags.tag2).to.eql({});
+
+        var markers = map.findMarker({tags: 'tag3'});
+
+        expect(markers[0]).to.eql(marker);
+      });
 
     });
 
