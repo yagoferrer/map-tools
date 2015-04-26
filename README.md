@@ -257,6 +257,30 @@ map.findMarker('population', {order: 'DESC', limit: 1})
 You can test this query at this [Live example](http://map-tools.io/examples/data.querying.html)
 
 
+#### Tags
+Tags are a useful helpter to **tag** Markers to later search for them.
+
+You can set a `tag` property to a Marker
+```javascript
+map.addMarker({
+  lat: 42.5000,
+  lng: 1.5167,
+  title: 'Andorra'
+  tag: 'cities'
+});
+```
+
+And then find the Marker's reference that have this tag.
+```javascript
+map.findMarker({tag: 'cities'})
+```
+
+You can also update the `tag` property:
+```javascript
+map.updateMarker(<marker>, {tag: 'countries'})
+```
+
+
 #### Reset Marker
 This is one of my favorite features. Sometimes you just want to reset some Marker properties to the original value that was set on the initial creation. This method allows you to reset **one or multiple** Markers to the initial state.
 
