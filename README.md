@@ -262,7 +262,7 @@ Allows you to Tag a specific Marker to later search or update based on that tag 
 
 You can set a `tags` property to a Marker
 
-[Live demo](http://map-tools.io/examples/tags.html)
+[Live example](http://map-tools.io/examples/tags.html)
 
 ```javascript
 map.addMarker({
