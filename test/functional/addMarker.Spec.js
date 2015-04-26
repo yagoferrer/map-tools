@@ -100,26 +100,7 @@ describe('when using the addMarker() method', function () {
   });
 
 
-  describe('with a the "infoWindow" option witch "content" has a reference to a "data" variable', function () {
 
-    it('should replace the variable in "content" using the "data" variable', function () {
-      var marker = {
-        lat: 41.3833,
-        lng: 2.1833,
-        infoWindow: {
-          content: '{city}',
-          open: {on: 'mousever'},
-          close: {on: 'mouseout'}
-        },
-        data: {
-          city: 'barcelona'
-        }
-      };
-      map.addMarker(marker);
-
-      expect(map.infoWindow.content).to.equal('barcelona');
-    });
-  });
 
 
   describe('with extra options as a second parameter', function () {
