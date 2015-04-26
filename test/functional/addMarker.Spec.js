@@ -94,7 +94,7 @@ describe('when using the addMarker() method', function () {
       move: 'bounce'
     }];
 
-    var result = map.addMarker(markers, {group: 'myGroup'});
+    var result = map.addMarker(markers);
     expect(result).to.have.length.of(2);
     expect(Object.keys(mapTools.maps.mymap.markers.all).length).to.equal(2);
   });
@@ -125,19 +125,6 @@ describe('when using the addMarker() method', function () {
 
   });
 
-
-  describe('with a "group" property but the Group was not added yet', function () {
-    it('should add the Marker to the Group anyway', function () {
-      map.addMarker({
-        lat: 42.5000,
-        lng: 1.5167,
-        title: 'Andorra',
-        group: 'myGroup'
-      });
-
-      expect(mapTools.maps.mymap.markers.groups.myGroup).to.have.length.of(1);
-    });
-  });
 
   describe('with an empty Array as first Parameter', function() {
     it('should return an empty Array', function() {

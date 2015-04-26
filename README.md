@@ -309,28 +309,6 @@ The `data` property is used to store any extra information related to the Marker
 You can add more [native infoWindow options](https://developers.google.com/maps/documentation/javascript/reference#InfoWindowOptions) inside `infoWindow`.
 
 
-
-#### Marker Groups
-
-**important: Marker Groups might be deprecated in favor for Marker Tagging. A [new feature](https://github.com/yagoferrer/map-tools/issues/237) comming soon!**
-
-Marker Groups are a persistent high level group that allows you to work with a set of Markers.
-You can create Groups and then associate Markers. Groups are great to apply options to a set of Markers.  
-```javascript
-map.addGroup('myGroup', {visible: false});
-
-map.addMarker({
-  lat: 41.3833,
-  lng: 2.1833,
-  title: 'Barcelona',
-  group: 'myGroup'
-});
-// Markers are added to the Map but not visible.
-
-map.updateGroup('myGroup', {visible: true});
-// Updates all the Markers to be visible.
-```
-
 ## Crossfilter support for Markers
 - Add Marker related data into the `data` property. 
 - Add what data properties you want to index into the `filters` option. That will generate default Crossfilter [dimensions](https://github.com/square/crossfilter/wiki/API-Reference#dimension).
@@ -443,7 +421,7 @@ map.updateFeature(feature, {style: {fillColor:'black'}})
 
 Add more [Style Options](https://developers.google.com/maps/documentation/javascript/reference#Data.StyleOptions)
 
-Once the Features are created, you can access directly like this: `mapTools.maps.mymap.json.groups.states` and `mapTools.maps.mymap.json.groups.counties`
+
 
 ## Add Panel
 Adds a custom native Control to Google Maps

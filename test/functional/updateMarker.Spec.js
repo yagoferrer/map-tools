@@ -44,7 +44,6 @@ describe('when calling updateMarker()', function () {
         lat: 42.5000,
         lng: 1.5167,
         title: 'Andorra',
-        group: 'myGroup',
         visible: false
       }
     ];
