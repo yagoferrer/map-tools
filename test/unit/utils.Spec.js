@@ -60,9 +60,9 @@ describe('Given the Utils Class', function () {
       var utils = require('map-tools/utils');
       var result = utils.isArray('string');
       expect(result).to.eql(false);
-      Array.isArray = false;
-      var result = utils.isArray('string');
-      expect(result).to.eql(false);
+      //Array.isArray = false;
+      //var result = utils.isArray('string');
+      //expect(result).to.eql(false);
     });
 
   });
