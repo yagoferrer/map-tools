@@ -9,18 +9,40 @@ describe('when using the addMarker() method', function () {
     map = new mapTools({async: false, id: 'mymap', lat: 41.3833, lng: 2.1833});
   });
 
-  it('should add one individual Marker to the Map', function () {
-    var result = map.addMarker({
-      lat: 42.5000,
-      lng: 1.5167,
-      title: 'Andorra'
+  describe('to add one single Marker', function () {
+    it('should add the marker to the Map', function () {
+      var result = map.addMarker({
+        lat: 42.5000,
+        lng: 1.5167,
+        title: 'Andorra'
+      });
+
+      expect(result.title).to.equal('Andorra');
+      expect(Object.keys(mapTools.maps.mymap.markers.all).length).to.equal(1);
     });
-
-    expect(result.title).to.equal('Andorra');
-    expect(Object.keys(mapTools.maps.mymap.markers.all).length).to.equal(1);
   });
+  describe('to add Multiple Markers', function () {
+    it('should add multiple Markers to the Map', function () {
+      var markers = [{
+        lat: 41.3833,
+        lng: 2.1833,
+        title: 'Barcelona',
+        on: {
+          click: function() {}
+        }
+      }, {
+        lat: 41.4489,
+        lng: 2.2461,
+        title: 'Badalona',
+        move: 'bounce'
+      }];
 
-  describe('With a "callback" property', function () {
+      var result = map.addMarker(markers);
+      expect(result).to.have.length.of(2);
+      expect(Object.keys(mapTools.maps.mymap.markers.all).length).to.equal(2);
+    });
+  });
+  describe('with a "callback" property', function () {
     it('should call the "callback" function if provided with an instance of the Marker', function (done) {
       map.addMarker({
         lat: 42.5000,
@@ -34,9 +56,7 @@ describe('when using the addMarker() method', function () {
       });
     });
   });
-
-
-  describe('With a custom UID set as Map option', function () {
+  describe('with a custom UID set as Map option', function () {
     it('should add the Marker using the custom UID', function () {
 
       delete mapTools.maps.mymap;
@@ -55,11 +75,8 @@ describe('when using the addMarker() method', function () {
 
     });
   });
-
-  describe('With a custom UID set as Marker data.property', function () {
-
+  describe('with a custom UID set as Marker data.property', function () {
     it('should add the Marker using the custom UID', function () {
-
       map.addMarker({
         lat: 42,
         lng: 2,
@@ -71,40 +88,15 @@ describe('when using the addMarker() method', function () {
 
       expect(map.markers.all['A1'].lat).to.eql(42);
       expect(map.markers.all['A1'].lng).to.eql(2);
-
     });
-
   });
 
-
-
-
-  it('should add multiple Markers to the Map', function () {
-    var markers = [{
-      lat: 41.3833,
-      lng: 2.1833,
-      title: 'Barcelona',
-      on: {
-        click: function() {}
-      }
-    }, {
-      lat: 41.4489,
-      lng: 2.2461,
-      title: 'Badalona',
-      move: 'bounce'
-    }];
-
-    var result = map.addMarker(markers);
-    expect(result).to.have.length.of(2);
-    expect(Object.keys(mapTools.maps.mymap.markers.all).length).to.equal(2);
-  });
 
 
 
 
 
   describe('with extra options as a second parameter', function () {
-
     it('should merge the options with the Marker options', function () {
       var markers = [{
         lat: 41.3833,
@@ -122,7 +114,6 @@ describe('when using the addMarker() method', function () {
       expect(mapTools.maps.mymap.markers.all[Object.keys(mapTools.maps.mymap.markers.all)[0]].myGroupProp).to.be.ok;
       expect(mapTools.maps.mymap.markers.all[Object.keys(mapTools.maps.mymap.markers.all)[1]].myGroupProp).to.be.ok;
     });
-
   });
 
 
