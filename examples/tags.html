@@ -38,13 +38,13 @@ Icons generated using: http://mapicons.nicolasmollet.com/
           '.places click': function (e) {
             e.preventDefault();
             placesVisible = !placesVisible;
-            map.updateMarker(map.findMarker({tags: 'places'}), {visible: placesVisible});
+            map.updateMarker({tags: 'places'}, {visible: placesVisible});
           },
 
           '.parks click': function (e) {
             e.preventDefault();
             parksVisible = !parksVisible;
-            map.updateMarker(map.findMarker({tags: 'parks'}), {visible: parksVisible});
+            map.updateMarker({tags: 'parks'}, {visible: parksVisible});
           }
         }
       });
