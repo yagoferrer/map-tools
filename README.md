@@ -260,8 +260,10 @@ You can test this query at this [Live example](http://map-tools.io/examples/data
 #### Tags
 Allows you to Tag a specific Marker to later search or update based on that tag value.
 
-[Live demo](http://map-tools.io/examples/tags.html)
 You can set a `tags` property to a Marker
+
+[Live demo](http://map-tools.io/examples/tags.html)
+
 ```javascript
 map.addMarker({
   lat: 42.5000,
