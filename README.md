@@ -260,24 +260,25 @@ You can test this query at this [Live example](http://map-tools.io/examples/data
 #### Tags
 Tags are a useful helpter to **tag** Markers to later search for them.
 
-You can set a `tag` property to a Marker
+You can set a `tags` property to a Marker
 ```javascript
 map.addMarker({
   lat: 42.5000,
   lng: 1.5167,
   title: 'Andorra'
-  tag: 'cities'
+  tags: 'cities'
 });
 ```
+You can either set a **string** or an Array of tags
 
 And then find the Marker's reference that have this tag.
 ```javascript
-map.findMarker({tag: 'cities'})
+map.findMarker({tags: 'cities'})
 ```
 
-You can also update the `tag` property:
+You can also update the `tags` property:
 ```javascript
-map.updateMarker(<marker>, {tag: 'countries'})
+map.updateMarker(<marker>, {tags: 'countries'})
 ```
 
 

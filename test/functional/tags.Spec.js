@@ -14,10 +14,26 @@ describe('Given the Tag Feature', function () {
         lat: 42,
         lng: 1,
         title: 'Andorra',
-        tag: 'myTag'
+        tags: 'myTag'
       });
 
       expect(mapTools.maps.mymap.markers.tags.myTag[marker.uid]).to.eql(marker);
+    });
+
+  });
+
+  describe('When adding a Marker with multiple tags', function () {
+
+    it('should add a Marker to markers.tags<tag>', function () {
+      var marker = map.addMarker({
+        lat: 42,
+        lng: 1,
+        title: 'Andorra',
+        tags: ['tag1', 'tag2']
+      });
+
+      expect(mapTools.maps.mymap.markers.tags.tag1[marker.uid]).to.eql(marker);
+      expect(mapTools.maps.mymap.markers.tags.tag2[marker.uid]).to.eql(marker);
     });
 
   });
@@ -29,10 +45,10 @@ describe('Given the Tag Feature', function () {
         lat: 42,
         lng: 1,
         title: 'Andorra',
-        tag: 'myTag'
+        tags: 'myTag'
       });
 
-      var markers = map.findMarker({tag: 'myTag'});
+      var markers = map.findMarker({tags: 'myTag'});
       expect(markers[0]).to.eql(marker);
     });
 
@@ -44,10 +60,10 @@ describe('Given the Tag Feature', function () {
           lat: 42,
           lng: 1,
           title: 'Andorra',
-          tag: 'myTag2'
+          tags: 'myTag2'
         });
 
-        var markers = map.findMarker({tag: 'myTag'});
+        var markers = map.findMarker({tags: 'myTag'});
         expect(markers).to.eql([]);
 
       });
@@ -65,12 +81,12 @@ describe('Given the Tag Feature', function () {
         lat: 42,
         lng: 1,
         title: 'Andorra',
-        tag: 'myTag'
+        tags: 'myTag'
       });
 
-      map.updateMarker(marker, {tag: 'myTag2'});
+      map.updateMarker(marker, {tags: 'myTag2'});
 
-      var markers = map.findMarker({tag: 'myTag2'});
+      var markers = map.findMarker({tags: 'myTag2'});
       expect(markers[0]).to.eql(marker);
 
     });
