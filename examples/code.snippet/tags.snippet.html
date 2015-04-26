@@ -23,7 +23,5 @@
   };
 
   map.addMarker(parks, options);
-
-  var find = map.findMarker({tags: 'parks'});
-  map.updateMarker(find, {visible: false});
+  map.updateMarker({tags: 'parks'}, {visible: false});
 </code></pre></div>

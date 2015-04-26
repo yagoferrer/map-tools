@@ -122,5 +122,22 @@ describe('Given the Tag Feature', function () {
 
     });
 
+
+    describe('when calling updateMarker() with tags', function () {
+
+      it('should find the Marker and update one tag for another', function() {
+        map.addMarker({
+          lat: 42,
+          lng: 1,
+          title: 'Andorra',
+          tags: 'myTag'
+        });
+
+        map.updateMarker({tags: 'myTag'}, {tags: 'myTag2'});
+      });
+
+
+    });
+
   });
 });
