@@ -1,7 +1,7 @@
 'use strict';
 
-var current = new RegExp(/1.1.3+/g);
-var next = '1.2.0';
+var current = new RegExp(/1.2.0+/g);
+var next = '1.2.1';
 var description = "map-tools.js is a Google Maps Feature-rich Javascript wrapper that makes things like: Marker filtering, asynchronous loading, working with TopoJSON or GeoJSON, animation and more. Much simpler with an easy-to-use API.";
 
 var fs = require('fs');
