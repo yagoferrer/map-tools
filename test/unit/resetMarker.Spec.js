@@ -17,7 +17,7 @@ describe('Given the resetMarker() Module', function () {
     };
 
     g.google = window.google;
-     var that = {id: 'mymap'};
+     var that = {id: 'mymap', markers: {dataChanged: false}};
      resetMarker = require('map-tools/resetMarker')(g, that);
   });
 

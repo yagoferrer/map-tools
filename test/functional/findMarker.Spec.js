@@ -24,16 +24,13 @@ describe('Given the findMarker()', function () {
 
       // When running the same query: it should not find the Marker.
       var result2 = map.findMarker({visible: false});
+
       expect(result2.length).to.eql(0);
 
       var result3 = map.findMarker({visible: true});
       expect(result3[0].uid).to.eql('f1');
-
-
     });
 
-
   });
-
 
 });
