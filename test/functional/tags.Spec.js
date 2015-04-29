@@ -72,6 +72,52 @@ describe('Given the Tag Feature', function () {
 
   });
 
+  describe('when finding a Marker by multiple tags', function() {
+
+    it('should return Markers that belong to both tags', function() {
+
+      map.addMarker([{
+        lat: 42,
+        lng: 1,
+        title: 'Barcelona',
+        tags: 'tag1'
+      },
+
+        {
+          lat: 42,
+          lng: 2,
+          title: 'Andorra',
+          tags: ['tag1', 'tag2']
+        },
+
+        {
+          lat: 42,
+          lng: 2,
+          title: 'Zaragoza',
+          tags: ['tag1', 'tag2', 'tag3']
+        },
+
+        {
+          lat: 42,
+          lng: 3,
+          title: 'Sevilla',
+          tags: 'tag2'
+        }
+      ]);
+
+      var result1 = map.findMarker({tags: ['tag1', 'tag2']});
+      expect(result1[0].title).to.eql('Andorra');
+
+      var result2 = map.findMarker({tags: ['tag1', 'tag2', 'tag3']});
+      expect(result2[0].title).to.eql('Zaragoza');
+
+      var result3 = map.findMarker({tags: 'tag1'});
+      expect(result3.length).to.eql(3);
+
+    });
+
+  });
+
 
   describe('when updating the tag of a Marker', function () {
 
