@@ -104,26 +104,17 @@ describe('Given the Tag Feature', function () {
           tags: ['tag2']
         }
       ]);
-/*
+
       var result1 = map.findMarker({tags: ['tag1', 'tag2']});
-
-
-
       expect(result1[0].title).to.eql('Barcelona');
       expect(result1[1].title).to.eql('Andorra');
       expect(result1[2].title).to.eql('Zaragoza');
       expect(result1.length).to.eql(3);
 
-*/
       var result2 = map.findMarker({tags: ['tag2', 'tag3']});
-
-      //console.log(result2);
-
       expect(result2[0].title).to.eql('Barcelona');
       expect(result2[1].title).to.eql('Zaragoza');
       expect(result2.length).to.eql(2);
-
-
 
     });
 
