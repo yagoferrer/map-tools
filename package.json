@@ -48,6 +48,7 @@
     "chai": "^2.2.0",
     "codeclimate-test-reporter": "0.0.4",
     "coveralls": "^2.11.2",
+    "eslint": "^0.20.0",
     "gmaps": "^0.4.12",
     "install": "^0.1.8",
     "istanbul": "^0.3.5",
