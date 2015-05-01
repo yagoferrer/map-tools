@@ -116,6 +116,41 @@ describe('Given the Tag Feature', function () {
       expect(result2[1].title).to.eql('Zaragoza');
       expect(result2.length).to.eql(2);
 
+    });
+
+  }); describe('when finding a Marker by one tag', function() {
+
+    it('should return Markers that belong to that tags', function() {
+
+      map.addMarker([{
+        lat: 42,
+        lng: 1,
+        title: 'Barcelona',
+        tags: ['tag1', 'tag2', 'tag3']
+      },
+
+        {
+          lat: 42,
+          lng: 2,
+          title: 'Andorra',
+          tags: ['tag1', 'tag2']
+        },
+
+        {
+          lat: 42,
+          lng: 2,
+          title: 'Zaragoza',
+          tags: ['tag1', 'tag2', 'tag3']
+        },
+
+        {
+          lat: 42,
+          lng: 3,
+          title: 'Sevilla',
+          tags: ['tag2']
+        }
+      ]);
+
       var result3 = map.findMarker({tags: ['tag3']});
       expect(result3[0].title).to.eql('Barcelona');
       expect(result3[1].title).to.eql('Zaragoza');
