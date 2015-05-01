@@ -116,6 +116,10 @@ describe('Given the Tag Feature', function () {
       expect(result2[1].title).to.eql('Zaragoza');
       expect(result2.length).to.eql(2);
 
+      var result3 = map.findMarker({tags: ['tag3']});
+      expect(result3[0].title).to.eql('Barcelona');
+      expect(result3[1].title).to.eql('Zaragoza');
+      expect(result3.length).to.eql(2);
     });
 
   });
