@@ -17,7 +17,7 @@
     "pretest": "jshint lib/index.js",
     "benchmark": "browser-sync start --server --index benchmark/index.html",
     "release": "node ./scripts/release.js",
-    "typescript": "tsc lib/**/*.ts"
+    "typescript": "node_modules/.bin/tsc lib/**/*.ts"
   },
   "repository": {
     "type": "git",
