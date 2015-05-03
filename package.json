@@ -16,7 +16,8 @@
     "dist": "node ./scripts/dist.js",
     "pretest": "jshint lib/index.js",
     "benchmark": "browser-sync start --server --index benchmark/index.html",
-    "release": "node ./scripts/release.js"
+    "release": "node ./scripts/release.js",
+    "typescript": "tsc lib/**/*.ts"
   },
   "repository": {
     "type": "git",
@@ -62,6 +63,7 @@
     "platform": "^1.3.0",
     "sinon": "^1.12.2",
     "sinon-chai": "^2.7.0",
+    "typescript": "^1.4.1",
     "uglify-js": "^2.4.16"
   },
   "dependencies": {
