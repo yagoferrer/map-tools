@@ -1,5 +1,19 @@
 /*jslint node: true */
 /// <reference path="../typings/node.d.ts"/>
+
+interface mapOptions {
+  id: string;
+  lat: number;
+  lng: number;
+  async?: boolean;
+  on?: {}
+}
+
+interface mapCallback {
+  (err: boolean, instance: {}): void;
+  (err: {}): any;
+}
+
 class mapTools {
 
     addMarker;
@@ -14,23 +28,27 @@ class mapTools {
     findMarker;
     updateMap;
     center;
-    instance = false;
+    instance: {
+      getZoom: () => number;
+      setZoom: (zoom: number) => void;
+      getCenter: () => {lat: () => number; lng: () => number};
+    };
 
-
-  zoom = function(zoom?: number) {
+    zoom(zoom?: number): number {
       if (typeof zoom === 'undefined') {
         return this.instance.getZoom();
       } else {
         this.instance.setZoom(zoom);
       }
-    };
+    }
 
-    locate = function() {
+    locate(): {lat: number; lng: number} {
       var center = this.instance.getCenter();
       return {lat: center.lat(), lng: center.lng()};
-    };
+    }
 
-    constructor(options, cb) {
+    constructor(options: mapOptions, cb: mapCallback) {
+
       var that = this;
       this.addMarker = require('map-tools/addMarker')(window, that);
       this.removeMarker = require('map-tools/removeMarker')(window, that);
