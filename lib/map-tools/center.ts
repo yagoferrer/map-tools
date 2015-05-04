@@ -1,8 +1,8 @@
 /*jslint node: true */
-module.exports = function (global, that) {
-  'use strict';
+/// <reference path="../typings/node.d.ts"/>
+module.exports = function(global, that) {
 
-  function center(lat, lng) {
+  function pos(lat: number, lng: number): void {
     var position;
     if (lat && lng) {
       position = new global.google.maps.LatLng(lat, lng);
@@ -13,5 +13,6 @@ module.exports = function (global, that) {
     that.instance.setCenter(position);
   }
 
-  return center;
+  return pos;
+
 };
