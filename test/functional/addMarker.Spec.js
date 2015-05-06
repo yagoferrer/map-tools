@@ -56,6 +56,7 @@ describe('when using the addMarker() method', function () {
       });
     });
   });
+
   describe('with a custom UID set as Map option', function () {
     it('should add the Marker using the custom UID', function () {
 
@@ -75,6 +76,7 @@ describe('when using the addMarker() method', function () {
 
     });
   });
+
   describe('with a custom UID set as Marker data.property', function () {
     it('should add the Marker using the custom UID', function () {
       map.addMarker({
@@ -91,6 +93,34 @@ describe('when using the addMarker() method', function () {
     });
   });
 
+  describe('with a custom duplicated UID', function () {
+
+    it('should NOT add the Marker', function () {
+
+      delete mapTools.maps.mymap;
+      map = new mapTools({async: false, id: 'mymap', lat: 41, lng: 1, uid: 'custom_uid'});
+
+      map.addMarker({
+        lat: 42,
+        lng: 2,
+        title: 'Andorra',
+        custom_uid: 'A1'
+      });
+
+
+      map.addMarker({
+        lat: 40,
+        lng: 1,
+        title: 'Barcelona',
+        custom_uid: 'A1'
+      });
+
+      expect(map.markers.all['A1'].lat).to.eql(42);
+      expect(map.markers.all['A1'].lng).to.eql(2);
+
+    });
+
+  });
 
 
 
