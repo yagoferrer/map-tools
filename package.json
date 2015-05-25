@@ -16,7 +16,7 @@
     "dist": "node ./scripts/dist.js",
     "benchmark": "browser-sync start --server --index benchmark/index.html",
     "release": "node ./scripts/release.js",
-    "declaration": "node_modules/.bin/tsc --declaration lib/**/*.ts"
+    "declaration": "node_modules/.bin/tsc --declaration lib/index.ts -out dist/map-tools.d.ts"
 
   },
   "repository": {
