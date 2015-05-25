@@ -1,6 +1,6 @@
 /// <reference path="typings/tsd.d.ts"/>
-/// <reference path="Utils.ts"/>
-/// <reference path="Config.ts"/>
+/// <reference path="utils.ts"/>
+/// <reference path="config.ts"/>
 /// <reference path="findMarkerById.ts"/>
 /// <reference path="filter.ts"/>
 
