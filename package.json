@@ -11,7 +11,7 @@
     "start": "browser-sync start --server --index index.html",
     "pretest": "make clean; make compile",
     "test": "NODE_PATH=build mocha -r ./test/bootstrap.js --recursive test",
-    "coverage": "NODE_PATH=lib istanbul cover --report html node_modules/.bin/_mocha -r ./test/bootstrap.js test/**/*.Spec.js; browser-sync start --server --startPath coverage/ --index index.html",
+    "coverage": "NODE_PATH=build/index istanbul cover --report html node_modules/.bin/_mocha -r ./test/bootstrap.js test/**/*.Spec.js; browser-sync start --server --startPath coverage/ --index index.html",
     "predist": "mkdir -p dist;NODE_PATH=lib browserify lib/index.js > dist/map-tools.js",
     "dist": "node ./scripts/dist.js",
     "benchmark": "browser-sync start --server --index benchmark/index.html",
