@@ -1,5 +1,5 @@
 /// <reference path="typings/tsd.d.ts"/>
-/// <reference path="AddFilter.ts"/>
+/// <reference path="addFilter.ts"/>
 /// <reference path="utils.ts"/>
 
 
