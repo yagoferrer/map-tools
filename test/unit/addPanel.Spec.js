@@ -19,11 +19,12 @@ describe('Given the addPanel module', function () {
         return this;
       };
 
-      var addPanel = require('map-tools/addPanel')(window, that);
+      var addPanel = require('addPanel');
+      addPanel = new addPanel(that);
 
-      addPanel({templateURL: 'test/fake-test.html'}, function(err) {
+      addPanel.addPanel({templateURL: 'test/fake-test.html'}, function(err) {
         expect(err).to.eql(new Error());
-        done()
+        done();
       });
 
     });
@@ -38,10 +39,11 @@ describe('Given the addPanel module', function () {
         }}
       };
 
-      var addPanel = require('map-tools/addPanel')(window, that);
+      var addPanel = require('addPanel');
+      addPanel = new addPanel(that);
       var template = {};
-      addPanel({template: template});
-      expect(that.instance.controls['1']).to.eql([{}])
+      addPanel.addPanel({template: template});
+      expect(that.instance.controls['1']).to.eql([{}]);
     });
 
   });

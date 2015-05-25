@@ -30,18 +30,20 @@ describe('Given the template Module', function () {
     it('should return the value from cache', function () {
 
       that.templates.panel['template.html'] = '<div></div>';
-
-
-      template = require('map-tools/template')(global, that);
-      var result = template('panel', 'template.html');
+      template = require('template');
+      template = new template(that);
+      var result = template.load('panel', 'template.html');
       expect(result).to.eql(that.templates.panel['template.html']);
     });
   });
 
   describe('when loading a template that does not exist', function () {
     it('should return an error in the first callback argument', function (done) {
-      template = require('map-tools/template')(global, that);
-      template('panel', 'fake.html', function(err) {
+
+      template = require('template');
+      template = new template(that);
+
+      template.load('panel', 'fake.html', function(err) {
         done();
         expect(err).to.eql(new Error());
       });

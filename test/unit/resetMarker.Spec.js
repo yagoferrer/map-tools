@@ -4,21 +4,13 @@ describe('Given the resetMarker() Module', function () {
 
   beforeEach(function () {
 
-    g = {
-      mapTools: {
-        maps: {
-          mymap: {
-            markers: {
-              all: {}
-            }
-          }
-        }
-      }
-    };
+    mapTools.maps.mymap.markers.all = {};
 
-    g.google = window.google;
-     var that = {id: 'mymap', markers: {dataChanged: false}};
-     resetMarker = require('map-tools/resetMarker')(g, that);
+    var that = {id: 'mymap', markers: {dataChanged: false}};
+
+    resetMarker = require('resetMarker');
+    resetMarker = new resetMarker(that);
+
   });
 
 
@@ -30,12 +22,12 @@ describe('Given the resetMarker() Module', function () {
       data: {
         uid: 'marker',
         _self: {icon: 'x.png'}
-    },
+      },
       setOptions: spy
     };
 
-    g.mapTools.maps.mymap.markers.all.marker = marker;
-    resetMarker(marker, 'icon');
+    mapTools.maps.mymap.markers.all.marker = marker;
+    resetMarker.resetMarker(marker, 'icon');
     expect(spy).to.have.been.calledWith({ icon: 'x.png' });
 
   });
@@ -65,10 +57,10 @@ describe('Given the resetMarker() Module', function () {
       setPosition: spy4
     };
 
-    g.mapTools.maps.mymap.markers.all.marker1 = marker1;
-    g.mapTools.maps.mymap.markers.all.marker2 = marker2;
+    mapTools.maps.mymap.markers.all.marker1 = marker1;
+    mapTools.maps.mymap.markers.all.marker2 = marker2;
 
-    resetMarker([marker1, marker2], ['icon', 'lat', 'lng']);
+    resetMarker.resetMarker([marker1, marker2], ['icon', 'lat', 'lng']);
     expect(spy1).to.have.been.calledWith({ icon: 'x.png' });
     expect(spy2).to.have.been.called;
     expect(spy3).to.have.been.calledWith({ icon: 'x.png' });

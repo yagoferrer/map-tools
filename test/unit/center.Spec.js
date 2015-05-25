@@ -1,42 +1,40 @@
 describe('Given the setCenter Class', function () {
 
-
-  var center, spy;
+  var center, spy, that;
 
   beforeEach(function () {
-    var global = {
-      google: {
-        maps: {
-          LatLng: function(a,b) { return {lat: a, lng: b}}
-        }
-      }
-    };
-
 
     spy = sinon.spy();
 
-    var that = {
-        instance: {
-          setCenter: spy
-        },
+    var center = require('center');
+
+    that = {
+      instance: {
+        setCenter: spy
+      },
       options: {
         lat: 1,
         lng: 2
-      }
+      },
+
+      center: new center().pos
     };
 
-    center = require('map-tools/center')(global, that);
   });
 
   it('should center the Map given coordinates', function () {
-    center(40.416854, -3.703419);
-    expect(spy).to.have.been.calledWith({ lat: 40.416854, lng: -3.703419 });
+    that.center(40.416854, -3.703419);
+
+
+    expect(spy.args[0][0].lat()).to.equal(40.416854);
+    expect(spy.args[0][0].lng()).to.equal(-3.703419);
   });
 
 
   it('should center the Map using initial coordinates', function() {
-    center();
-    expect(spy).to.have.been.calledWith({ lat: 1, lng: 2 });
+    that.center();
+    expect(spy.args[0][0].lat()).to.equal(1);
+    expect(spy.args[0][0].lng()).to.equal(2);
   });
 
 

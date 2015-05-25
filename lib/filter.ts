@@ -1,27 +1,38 @@
-var utils = require('map-tools/utils');
-
-module.exports = function(global, that, type) {
+/// <reference path="typings/tsd.d.ts"/>
+/// <reference path="utils.ts"/>
+/// <reference path="addFilter.ts"/>
+class Filter {
   'use strict';
 
-  var addFilter = require('map-tools/addFilter')(global, that, type);
+  addFilter;
 
-  var orderLookup = {
+  orderLookup = {
     ASC: 'top',
     DESC: 'bottom'
   };
 
+  constructor(public that, public type) {
+
+    var addFilter = new AddFilter(that, type);
+
+    this.addFilter = function(filters) {
+      return addFilter.addFilter(filters);
+    };
+
+  }
+
   // cf has it's own state, for each dimension
   // before each new filtering we need to clear this state
-  function clearAll(dimensionSet){
+  clearAll(dimensionSet){
     var i, dimension;
     for (i in dimensionSet){
 
       if (dimensionSet.hasOwnProperty(i)) {
         dimension = dimensionSet[i];
 
-        if (that[type].dataChanged === true) {
+        if (this.that[this.type].dataChanged === true) {
           dimension.dispose();
-          addFilter(i);
+          this.addFilter(i);
         } else {
           dimension.filterAll();
         }
@@ -30,44 +41,45 @@ module.exports = function(global, that, type) {
     }
   }
 
-  function filterByTag(query) {
+  filterByTag(query) {
     // if the search query is an array with only one item then just use that string
-    if(utils.isArray(query) && query.length === 1){
+    if(Utils.isArray(query) && query.length === 1){
       query = query[0];
     }
     if (typeof query === "string"){
-      if (that[type].tags[query]) {
-        return utils.toArray(that[type].tags[query]);
+      if (this.that[this.type].tags[query]) {
+        return Utils.toArray(this.that[this.type].tags[query]);
       } else {
         return [];
       }
     } else {
-      var markers =  fetchByTag(query);
+      var markers =  this.fetchByTag(query);
       if(typeof markers === "object"){
-        markers = utils.toArray(markers);
+        markers = Utils.toArray(markers);
       }
       return markers;
     }
   }
 
-  function fetchByTag(query){
+  fetchByTag(query){
     var markers; // store first set of markers to compare
 
-    for (var i=0; i<query.length-1; i++) {
+    var i: number;
+
+    for (i=0; i<query.length-1; i++) {
       var tag = query[i];
-      var nextTag = query[parseInt(i)+parseInt(1)];
+      var nextTag = query[i+1];
       // null check kicks in when we get to the end of the for loop
-      markers = utils.getCommonObject(that[type].tags[tag],that[type].tags[nextTag])
+      markers = Utils.getCommonObject(this.that[this.type].tags[tag],this.that[this.type].tags[nextTag])
     }
     return markers;
   }
 
-
-  function filter(args, options) {
+  public filter(args, options?) {
 
     // Return All items if no arguments are supplied
     if (typeof args === 'undefined' && typeof options === 'undefined') {
-      return utils.toArray(that[type].all);
+      return Utils.toArray(this.that[this.type].all);
     }
 
 
@@ -80,20 +92,20 @@ module.exports = function(global, that, type) {
       query = args[dimension];
 
       if (dimension === 'tags') {
-        return filterByTag(query);
+        return this.filterByTag(query);
       }
     }
 
-    clearAll(that[type].filter);
+    this.clearAll(this.that[this.type].filter);
 
     // Add Crossfilter Dimension if it does not exist.
-    if (!that[type].filter[dimension]) {
-      addFilter(dimension);
+    if (!this.that[this.type].filter[dimension]) {
+      this.addFilter(dimension);
     }
 
-    order = (options && options.order && orderLookup[options.order]) ?
-      orderLookup[options.order]
-      : orderLookup[Object.keys(orderLookup)[0]];
+    order = (options && options.order && this.orderLookup[options.order]) ?
+      this.orderLookup[options.order]
+      : this.orderLookup[Object.keys(this.orderLookup)[0]];
 
     limit = (options && options.limit) ? options.limit : Infinity;
 
@@ -102,9 +114,9 @@ module.exports = function(global, that, type) {
       query = null;
     }
 
-    var result = that[type].filter[dimension].filter(query)[order](limit);
+    var result = this.that[this.type].filter[dimension].filter(query)[order](limit);
 
-    that[type].dataChanged = false;
+    this.that[this.type].dataChanged = false;
 
     if (limit === 1) {
       return result[0];
@@ -114,5 +126,4 @@ module.exports = function(global, that, type) {
 
   }
 
-  return filter;
-};
+}

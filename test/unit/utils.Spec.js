@@ -4,7 +4,7 @@ describe('Given the Utils Class', function () {
   var utils;
 
   beforeEach(function () {
-    utils = require('map-tools/utils');
+    utils = require('utils');
   });
 
 
@@ -14,7 +14,6 @@ describe('Given the Utils Class', function () {
         property1: 'value1'
       };
 
-      var utils = require('map-tools/utils');
       var output = utils.clone(obj);
       expect(output).to.eql(obj);
       obj.property1 = 'value2';
@@ -42,12 +41,6 @@ describe('Given the Utils Class', function () {
 
   describe('when calling isArray', function () {
 
-    var utils;
-
-    beforeEach(function() {
-      utils = require('map-tools/utils');
-    });
-
     it('should return True when the input is an Array', function() {
 
       var result1 = utils.isArray([]);
@@ -57,12 +50,8 @@ describe('Given the Utils Class', function () {
 
 
     it('should return False when the input is not an Array', function() {
-      var utils = require('map-tools/utils');
       var result = utils.isArray('string');
       expect(result).to.eql(false);
-      //Array.isArray = false;
-      //var result = utils.isArray('string');
-      //expect(result).to.eql(false);
     });
 
   });
@@ -91,9 +80,5 @@ describe('Given the Utils Class', function () {
       });
 
     });
-
-
-
-
   });
 });

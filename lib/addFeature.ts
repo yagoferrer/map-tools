@@ -1,8 +1,6 @@
-/*jslint node: true */
-/// <reference path="../typings/node.d.ts"/>
-var topojson = require('topojson');
-var utils = require('map-tools/utils');
-
+/// <reference path="typings/tsd.d.ts"/>
+/// <reference path="addFilter.ts"/>
+/// <reference path="utils.ts"/>
 
 
 interface featureOption {
@@ -33,10 +31,18 @@ interface GeoJsonData {
   type: string;
 }
 
-module.exports = function (global, that) {
-  'use strict';
+class AddFeature {
 
-  var addFilter = require('map-tools/addFilter')(global, that, 'json');
+  addFilter;
+  public topojson = require('topojson');
+
+  constructor(public that) {
+
+    var addFilter = new AddFilter(that, 'json');
+    this.addFilter = function(filters) {
+      return addFilter.addFilter(filters);
+    }
+  }
 
   /**
    * Adds GeoJSON Feature Options like: style
@@ -44,14 +50,14 @@ module.exports = function (global, that) {
    * @param options
    * @private
    */
-  function addFeatureOptions(features:{}[], options?: featureOption): void {
+  addFeatureOptions(features:{}[], options?:featureOption):void {
 
     var feature, x;
     for (x in features) {
       if (features.hasOwnProperty(x)) {
         feature = features[x];
 
-        var uid = utils.createUid();
+        var uid = Utils.createUid();
         feature.uid = uid;
         var data = feature.k;
         feature.k.uid = uid;
@@ -68,22 +74,21 @@ module.exports = function (global, that) {
           if (options.filters) {
 
             // Add filters if not defined.
-            if (!that.json.filter) {
-              addFilter(options.filters);
+            if (!this.that.json.filter) {
+              this.addFilter(options.filters);
             }
 
-            that.json.crossfilter.add([feature]);
+            this.that.json.crossfilter.add([feature]);
           }
 
           if (options.style) {
-            that.instance.data.overrideStyle(feature, options.style);
+            this.that.instance.data.overrideStyle(feature, options.style);
           }
         }
-        that.json.all[feature.data.uid] = feature;
+        this.that.json.all[feature.data.uid] = feature;
       }
     }
   }
-
 
 
   /**
@@ -91,28 +96,25 @@ module.exports = function (global, that) {
    * @param data The parsed JSON File
    * @param options
    */
-  function addTopoJson(data, options:TopoJsonOption[]): {}[] {
+
+  public addTopoJson(data, options:TopoJsonOption[]):{}[] {
     var item, geoJson, features, x;
     for (x in options) {
       if (options.hasOwnProperty(x)) {
         item = options[x];
-        geoJson = topojson.feature(data, data.objects[item.object]);
-        features = that.instance.data.addGeoJson(geoJson);
-        addFeatureOptions(features, item);
-        global.mapTools.maps[that.id].json.all[item.object] = features;
+        geoJson = this.topojson.feature(data, data.objects[item.object]);
+        features = this.that.instance.data.addGeoJson(geoJson);
+        this.addFeatureOptions(features, item);
+        mapTools.maps[this.that.id].json.all[item.object] = features;
       }
     }
     return features;
   }
 
-  function addGeoJson(data: GeoJsonData, options) {
-    var features = that.instance.data.addGeoJson(data, options);
-    addFeatureOptions(features, options);
+  public addGeoJson(data:GeoJsonData, options) {
+    var features = this.that.instance.data.addGeoJson(data, options);
+    this.addFeatureOptions(features, options);
     return features;
   }
 
-  return {
-    addGeoJson: addGeoJson,
-    addTopoJson: addTopoJson
-  };
-};
+}

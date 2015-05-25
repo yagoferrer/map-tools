@@ -13,7 +13,7 @@ module.exports = {
       {
         cb()
       },
-			addDomListener: function(instance, event, cb)
+      addDomListener: function(instance, event, cb)
       {
         cb()
       },
@@ -44,7 +44,7 @@ module.exports = {
         open: function(){},
         close: function(){},
         setContent: function(x){
-        this.content = x},
+          this.content = x},
         getMap: function(){},
         content: options.content
       };
@@ -79,14 +79,14 @@ module.exports = {
         zoom: 8,
         gm_bindings_: {},
         data: {
-					addGeoJson: function(json) {
-        		return [{ag: {D: 53}, forEachProperty: function(){}, k: {}}, {ag: {D: 30}, forEachProperty: function(){}, k: {}}]
-        	},
-        	overrideStyle: function(feature, style) {
-          	return feature.style = style;
-        	}
-      	},
-				setOptions: function(options) {
+          addGeoJson: function(json) {
+            return [{ag: {D: 53}, forEachProperty: function(){}, k: {}}, {ag: {D: 30}, forEachProperty: function(){}, k: {}}]
+          },
+          overrideStyle: function(feature, style) {
+            return feature.style = style;
+          }
+        },
+        setOptions: function(options) {
           this.options = options;
         },
         getCenter: function() {
@@ -105,19 +105,19 @@ module.exports = {
             }
           }
         },
-				controls:{
-					'1': [], //TOP_LEFT
-					'2': [], //TOP_CENTER
-					'3': [], //TOP_RIGHT
-					'4': [],
-					'5': [],
-					'6': [],
-					'7': [],
-					'8': [],
-					'9': [],
-					'10': [],
-					'11': [],
-					'12': []
+        controls:{
+          '1': [], //TOP_LEFT
+          '2': [], //TOP_CENTER
+          '3': [], //TOP_RIGHT
+          '4': [],
+          '5': [],
+          '6': [],
+          '7': [],
+          '8': [],
+          '9': [],
+          '10': [],
+          '11': [],
+          '12': []
         },
         getZoom: function() {
           return this.zoom;
@@ -139,23 +139,23 @@ module.exports = {
       TERRAIN: 'TERRAIN'
     },
     ControlPosition: {
-	    BOTTOM: 11,
-	    BOTTOM_CENTER: 11,
-	    BOTTOM_LEFT: 10,
-	    BOTTOM_RIGHT: 12,
-	    CENTER: 13,
-	    LEFT: 5,
-	    LEFT_BOTTOM: 6,
-	    LEFT_CENTER: 4,
-	    LEFT_TOP: 5,
-	    RIGHT: 7,
-	    RIGHT_BOTTOM: 9,
-	    RIGHT_CENTER: 8,
-	    RIGHT_TOP: 7,
-	    TOP: 2,
-	    TOP_CENTER: 2,
-	    TOP_LEFT: 1,
-	    TOP_RIGHT: 3
+      BOTTOM: 11,
+      BOTTOM_CENTER: 11,
+      BOTTOM_LEFT: 10,
+      BOTTOM_RIGHT: 12,
+      CENTER: 13,
+      LEFT: 5,
+      LEFT_BOTTOM: 6,
+      LEFT_CENTER: 4,
+      LEFT_TOP: 5,
+      RIGHT: 7,
+      RIGHT_BOTTOM: 9,
+      RIGHT_CENTER: 8,
+      RIGHT_TOP: 7,
+      TOP: 2,
+      TOP_CENTER: 2,
+      TOP_LEFT: 1,
+      TOP_RIGHT: 3
     }
   }
 };

@@ -2,9 +2,9 @@ language: node_js
 node_js:
     - "0.10.33"
 before_script:
-    - npm run typescript
+    - make compile
 script:
-    - NODE_PATH=lib ./node_modules/.bin/istanbul cover --report lcov node_modules/.bin/_mocha -r ./test/bootstrap.js test/**/*.Spec.js
+    - NODE_PATH=build ./node_modules/.bin/istanbul cover --report lcov node_modules/.bin/_mocha -r ./test/bootstrap.js test/**/*.Spec.js
 after_success:
     - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
     - cat ./coverage/lcov.info | ./node_modules/.bin/codeclimate

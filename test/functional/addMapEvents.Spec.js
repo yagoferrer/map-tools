@@ -9,7 +9,7 @@ describe('When initializing the Map with Events', function() {
   it('should trigger marker_visibility_event when changing Markers visibility', function() {
 
     var spy = sinon.spy();
-    window.google.maps.event.trigger = spy;
+    google.maps.event.trigger = spy;
 
     var map = new mapTools({
       id: 'mymap',
