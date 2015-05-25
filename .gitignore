@@ -80,3 +80,8 @@ crashlytics-build.properties
 # Code Coverage Report
 coverage
 
+lib/*.js
+build
+*.orig
+dist
+tmp
