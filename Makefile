@@ -55,8 +55,11 @@ include make/node.browserify.mk
 clean: ts-clean browser-clean
 	@printf '\e[1;32m  %-10s\e[m%s\n' 'done'
 
-compile: ts browser modules
+compile: ts browser modules coverage
 	@printf '\e[1;32m  %-10s\e[m%s\n' 'done'
 
 modules:
 	./modules.sh
+
+coverage:
+	./coverage.sh
