@@ -33,7 +33,7 @@ NPM  ?= npm
 BUILD_DIR     := build
 SOURCE_DIR    := lib
 
-TS_FLAGS   := --sourceMap --target ES5 --module commonjs
+TS_FLAGS   := --target ES5 --module commonjs
 
 BSF_FLAGS  := --standalone mapTools --debug --verbose
 BSF_DIR    := $(BUILD_DIR)/
