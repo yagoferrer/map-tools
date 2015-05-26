@@ -1,5 +1,6 @@
 /// <reference path="maps.ts"/>
 /// <reference path="typings/tsd.d.ts"/>
+/// <reference path="interfaces.ts"/>
 class AddMap {
 
   private id: string;
@@ -83,7 +84,7 @@ class AddMap {
     return true;
   }
 
-  load(options, cb) {
+  load(options: mapToolsOptions, cb: mapToolsCallback) {
 
     if (this.validOptions(options, cb)) {
 

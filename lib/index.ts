@@ -1,4 +1,6 @@
 /// <reference path="references.ts"/>
+/// <reference path="interfaces.ts"/>
+
 class Index {
 
   public instance;
@@ -26,7 +28,7 @@ class Index {
     }
   }
 
-  constructor(options, cb) {
+  constructor(options: mapToolsOptions, cb: mapToolsCallback) {
     var addMarker = new AddMarker(this);
 
     this.addMarker = function(marker, options) {
