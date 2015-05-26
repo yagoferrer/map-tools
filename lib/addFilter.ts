@@ -3,7 +3,6 @@
 
 class AddFilter {
 
-
   constructor(public that, public type) {}
 
   public addFilter(filters) {

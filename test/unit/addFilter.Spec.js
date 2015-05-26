@@ -12,8 +12,8 @@ describe('Given the addFilter Module', function () {
       }
     };
 
-    var module = require('addFilter');
-    addFilter = new module(that, 'markers');
+    addFilter = require('addFilter');
+    addFilter = new addFilter(that, 'markers');
   });
 
   it('should add a filter to Markers', function () {
