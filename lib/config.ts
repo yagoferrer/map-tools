@@ -1,5 +1,5 @@
 /// <reference path="typings/tsd.d.ts"/>
-class Config {
+export class Config {
   public static version: string = '3.18'; // Released: May 15, 201
   public static url: string =  '//maps.googleapis.com/maps/api/js';
   public static zoom: number = 8;

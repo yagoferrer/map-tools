@@ -1,7 +1,7 @@
-/// <reference path="references.ts"/>
+/// <reference path="typings/tsd.d.ts"/>
 /// <reference path="interfaces.ts"/>
 
-class Index {
+export class mapTools {
 
   public instance;
   public addMarker;
@@ -29,13 +29,13 @@ class Index {
   }
 
   constructor(options: mapToolsOptions, cb: mapToolsCallback) {
-    var addMarker = new AddMarker(this);
+    var addMarker = require('./addMarker')(this);
 
     this.addMarker = function(marker, options) {
       return addMarker.addMarker(marker, options);
     };
 
-    var addFeature = new AddFeature(this);
+    var addFeature = require('./addFeature')(this);
 
     this.addTopoJson = function(data, options) {
       return addFeature.addTopoJson(data, options);
@@ -45,63 +45,60 @@ class Index {
       return addFeature.addGeoJson(data, options);
     };
 
-    var addPanel = new AddPanel(this);
+    var addPanel = require('./addPanel')(this);
 
     this.addPanel = function(options, cb) {
       return addPanel.addPanel(options, cb);
     };
 
-    this.center = new Center().pos;
+    this.center = require('./center').pos;
 
-    this.locate = new Locate().locate;
+    this.locate = require('./locate').locate;
 
 
-    var updateMarker = new UpdateMarker(this);
+    var updateMarker = require('./updateMarker')(this);
 
     this.updateMarker = function(args, options) {
       return updateMarker.update(args, options);
     };
 
-    var updateMap = new UpdateMap(this);
+    var updateMap = require('./updateMap')(this);
 
     this.updateMap = function(args) {
       updateMap.updateMap(args)
     };
 
-    var updateFeature = new UpdateFeature(this);
+    var updateFeature = require('./updateFeature')(this);
 
     this.updateFeature = function(args, options) {
       return updateFeature.update(args, options);
     };
 
 
-    var removeMarker = new RemoveMarker(this);
+    var removeMarker = require('./removeMarker')(this);
     this.removeMarker = function(args) {
       return removeMarker.removeMarker(args)
     };
 
 
-    var resetMarker = new ResetMarker(this);
+    var resetMarker = require('./resetMarker')(this);
     this.resetMarker = function(args, options) {
       return resetMarker.resetMarker(args, options)
     };
 
 
-    var findMarker = new Filter(this, 'markers');
+    var findMarker = require('./filter')(this, 'markers');
     this.findMarker = function(args, options) {
       return findMarker.filter(args, options);
     };
 
     // Unit Tests?
-    var findFeature = new Filter(this, 'json');
+    var findFeature = require('./filter')(this, 'json');
     this.findFeature = function(args, options) {
       return findFeature.filter(args, options);
     };
 
-    var map = new AddMap(this);
+    var map = require('./addMap')(this);
     map.load(options, cb);
   }
 }
-
-// Node
-module.exports = Index;

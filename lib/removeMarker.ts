@@ -1,12 +1,12 @@
-/// <reference path="findMarkerById.ts"/>
-class RemoveMarker {
+/// <reference path="typings/tsd.d.ts"/>
+export class RemoveMarker {
   'use strict';
 
   findMarker;
 
   constructor(public that) {
 
-    var findMarker = new FindMarkerById(that);
+    var findMarker = require('./findMarkerById')(that);
 
     this.findMarker = function(marker) {
       return findMarker.find(marker)

@@ -1,10 +1,11 @@
 /// <reference path="typings/tsd.d.ts"/>
-/// <reference path="utils.ts"/>
-/// <reference path="config.ts"/>
-class InfoWindow {
+
+export class InfoWindow {
   'use strict';
 
   private timer;
+  private utils = require('./utils');
+  private config = require('./config')
 
   constructor(public that) {
 
@@ -26,7 +27,7 @@ class InfoWindow {
       content = content || marker.infoWindow.content;
     }
 
-    var options: any = Utils.clone(args);
+    var options: any = this.utils.clone(args);
     options.content = content;
 
     this.that.infoWindow = new google.maps.InfoWindow(options);
@@ -51,7 +52,7 @@ class InfoWindow {
   }
 
   public addEvents(marker, options, map) {
-    var args = Utils.prepareOptions(options, Config.customInfoWindowOptions);
+    var args = this.utils.prepareOptions(options, this.config.customInfoWindowOptions);
     var openOn = (args.custom && args.custom.open && args.custom.open.on) ?  args.custom.open.on : 'click';
     var closeOn = (args.custom && args.custom.close && args.custom.close.on) ? args.custom.close.on : 'click';
 

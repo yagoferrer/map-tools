@@ -1,24 +1,21 @@
 /// <reference path="typings/tsd.d.ts"/>
-/// <reference path="config.ts"/>
-/// <reference path="utils.ts"/>
-/// <reference path="findMarkerById.ts"/>
-/// <reference path="updateMarker.ts"/>
-
-class ResetMarker {
+export class ResetMarker {
   'use strict';
 
   findMarker;
   updateMarker;
 
+  private utils = require('./utils');
+  private config = require('./config');
 
   constructor(public that) {
 
-    var findMarker = new FindMarkerById(that);
+    var findMarker = require('./findMarkerById')(that);
     this.findMarker = function(marker) {
       return findMarker.find(marker);
     };
 
-    this.updateMarker = new UpdateMarker(that);
+    this.updateMarker = require('./updateMarker')(that);
 
   }
 
@@ -71,7 +68,7 @@ class ResetMarker {
 
 
   private reset(marker, options) {
-    var preparedOptions = Utils.prepareOptions(this.formatOptions(marker, options), Config.customMarkerOptions);
+    var preparedOptions = this.utils.prepareOptions(this.formatOptions(marker, options), this.config.customMarkerOptions);
     this.updateMarker.customUpdate(marker, preparedOptions);
     return marker;
   }

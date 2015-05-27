@@ -1,5 +1,5 @@
 /// <reference path="typings/tsd.d.ts"/>
-class UpdateFeature {
+export class UpdateFeature {
   'use strict';
 
   constructor(public that) {}

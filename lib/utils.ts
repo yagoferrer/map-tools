@@ -4,7 +4,7 @@ interface utilsClone {
   mapTypeId: any;
 }
 
-class Utils {
+export class Utils {
 
   public static clone(o: {}, exceptionKeys?: string[]): utilsClone {
     var out, v, key;

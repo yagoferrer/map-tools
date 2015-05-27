@@ -1,18 +1,15 @@
 /// <reference path="typings/tsd.d.ts"/>
-/// <reference path="utils.ts"/>
-/// <reference path="config.ts"/>
-/// <reference path="findMarkerById.ts"/>
-/// <reference path="filter.ts"/>
 
-
-class UpdateMarker {
+export class UpdateMarker {
 
 
   findMarker;
+  private utils = require('./utils');
+  private config = require('./config');
 
   constructor(public that) {
 
-    var findMarker = new FindMarkerById(that);
+    var findMarker = require('./findMarkerById')(that);
 
     this.findMarker = function(marker) {
       return findMarker.find(marker);
@@ -20,7 +17,7 @@ class UpdateMarker {
   }
 
   removeTags(marker) {
-    if (Utils.isArray(marker.tags)) {
+    if (this.utils.isArray(marker.tags)) {
       var i, tag;
       for (i in marker.tags) {
         if (marker.tags.hasOwnProperty(i)) {
@@ -37,7 +34,7 @@ class UpdateMarker {
 
   addTags(marker, options) {
 
-    if (Utils.isArray(options.custom.tags)) {
+    if (this.utils.isArray(options.custom.tags)) {
       var i, tag;
       for (i in options.custom.tags) {
         tag = options.custom.tags[i];
@@ -117,7 +114,7 @@ class UpdateMarker {
   public update(args, options) {
 
     var visibilityFlag = false;
-    var preparedOptions = Utils.prepareOptions(options, Config.customMarkerOptions);
+    var preparedOptions = this.utils.prepareOptions(options, this.config.customMarkerOptions);
     if (preparedOptions.defaults && preparedOptions.defaults.hasOwnProperty('visible') && this.that.events.indexOf('marker_visibility_changed') > -1) {
       visibilityFlag = true;
     }
@@ -129,7 +126,7 @@ class UpdateMarker {
     if (type === '[object Object]') {
       if (Object.keys(args).length === 1 && args.tags) {
 
-        var filter = new Filter(this.that, 'markers');
+        var filter = require('./filter')(this.that, 'markers');
 
         result = this.bulkUpdate(filter.filter(args), preparedOptions);
 

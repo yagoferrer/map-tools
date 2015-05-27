@@ -1,9 +1,11 @@
-/// <reference path="utils.ts"/>
 /// <reference path="typings/tsd.d.ts"/>
 
-class AddFilter {
+export class AddFilter {
 
-  constructor(public that, public type) {}
+  public utils = require('./utils');
+
+  constructor(public that, public type) {
+  }
 
   public addFilter(filters) {
 
@@ -21,7 +23,7 @@ class AddFilter {
       if (filters.hasOwnProperty(dimension)) {
         item = filters[dimension];
         if (typeof item === 'string') {
-          this.that[this.type].filter[item] = this.that[this.type].crossfilter.dimension(Utils.defaultDimension(item));
+          this.that[this.type].filter[item] = this.that[this.type].crossfilter.dimension(this.utils.defaultDimension(item));
         } else {
           this.that[this.type].filter[Object.keys(item)[0]] = this.that[this.type].crossfilter.dimension(item[Object.keys(item)[0]]);
         }

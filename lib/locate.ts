@@ -1,4 +1,4 @@
-class Locate {
+export class Locate {
 
   private instance;
 

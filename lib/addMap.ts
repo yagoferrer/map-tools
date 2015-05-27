@@ -1,9 +1,11 @@
-/// <reference path="maps.ts"/>
 /// <reference path="typings/tsd.d.ts"/>
 /// <reference path="interfaces.ts"/>
-class AddMap {
+
+export class AddMap {
 
   private id: string;
+  private maps = require('./maps');
+  private config = require('./config');
 
   constructor(public that) {
 
@@ -25,7 +27,7 @@ class AddMap {
 
     cb = cb || function () {};
 
-    var mapOptions = Maps.mapOptions(args);
+    var mapOptions = this.maps.mapOptions(args);
 
     args.id = args.id || args.el.substring(1);
     this.that.id = args.id;
@@ -39,7 +41,7 @@ class AddMap {
       for (i in args.on) {
         if (args.on.hasOwnProperty(i)) {
 
-          if (Config.customEvents.indexOf(i) > - 1) {
+          if (this.config.customEvents.indexOf(i) > - 1) {
             this.that.events.push(i);
           }
 
@@ -117,7 +119,7 @@ class AddMap {
       this.that.json = mapTools.maps[id].json;
 
       if (options.async !== false || options.sync === true) {
-        Maps.load(id, options);
+        this.maps.load(id, options);
       } else {
         mapTools.maps[id].create();
       }

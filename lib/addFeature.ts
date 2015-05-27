@@ -1,7 +1,4 @@
 /// <reference path="typings/tsd.d.ts"/>
-/// <reference path="addFilter.ts"/>
-/// <reference path="utils.ts"/>
-
 
 interface featureOption {
   filters?: {};
@@ -31,14 +28,15 @@ interface GeoJsonData {
   type: string;
 }
 
-class AddFeature {
+export class AddFeature {
 
   addFilter;
   public topojson = require('topojson');
+  public utils = require('./utils');
 
   constructor(public that) {
 
-    var addFilter = new AddFilter(that, 'json');
+    var addFilter = require('addFilter')(that, 'json');
     this.addFilter = function(filters) {
       return addFilter.addFilter(filters);
     }
@@ -57,7 +55,7 @@ class AddFeature {
       if (features.hasOwnProperty(x)) {
         feature = features[x];
 
-        var uid = Utils.createUid();
+        var uid = this.utils.createUid();
         feature.uid = uid;
         var data = feature.k;
         feature.k.uid = uid;

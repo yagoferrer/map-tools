@@ -1,6 +1,6 @@
 /// <reference path="typings/tsd.d.ts"/>
 
-class FindMarkerById {
+export class FindMarkerById {
   'use strict';
 
   constructor(public that) {}
