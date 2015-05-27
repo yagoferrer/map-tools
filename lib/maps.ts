@@ -1,5 +1,5 @@
 /// <reference path="typings/tsd.d.ts"/>
-export class Maps {
+class Maps {
 
 
   public static utils = require('./utils');
@@ -38,3 +38,5 @@ export class Maps {
   }
 
 }
+
+export = Maps;

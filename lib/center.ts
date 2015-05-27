@@ -1,6 +1,6 @@
 /// <reference path="typings/tsd.d.ts"/>
 
-export class Center {
+class Center {
 
   private options;
   private instance;
@@ -17,3 +17,5 @@ export class Center {
   }
 
 }
+
+export = Center;

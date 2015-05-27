@@ -1,6 +1,6 @@
 /// <reference path="typings/tsd.d.ts"/>
 
-export class AddFilter {
+class AddFilter {
 
   public utils = require('./utils');
 
@@ -32,3 +32,5 @@ export class AddFilter {
 }
 
 }
+
+export = AddFilter;

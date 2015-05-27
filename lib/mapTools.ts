@@ -1,7 +1,20 @@
 /// <reference path="typings/tsd.d.ts"/>
-/// <reference path="interfaces.ts"/>
+interface mapToolsOptions {
+  id?: string;
+  el?: string;
+  lat: number;
+  lng: number;
+  type?: string;
+  async?: boolean;
+  sync?: boolean;
+  on?: {}
+}
 
-export class mapTools {
+interface mapToolsCallback {
+  (err: {}, instance?: {}): void;
+}
+
+class mapTools {
 
   public instance;
   public addMarker;
@@ -102,3 +115,5 @@ export class mapTools {
     map.load(options, cb);
   }
 }
+
+export = mapTools;

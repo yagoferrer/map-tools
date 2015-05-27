@@ -3,9 +3,9 @@
 BUILD_DIR   ?= build
 SOURCE_DIR  ?= lib
 
-BSF_FLAGS := --standalone 'mapTools' --debug
-BSF_EXE   := ./node_modules/browserify/bin/cmd.js
-BSF_DIR   := $(BUILD_DIR)
+BSF_FLAGS   ?= --standalone 'mapTools' --debug
+BSF_EXE     ?= ./node_modules/browserify/bin/cmd.js
+BSF_DIR     ?= $(BUILD_DIR)
 
 # see main Makefile which
 #BSF_SRC   := build/empty.js

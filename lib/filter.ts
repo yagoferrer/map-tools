@@ -1,6 +1,6 @@
 /// <reference path="typings/tsd.d.ts"/>
 
-export class Filter {
+class Filter {
   'use strict';
 
   addFilter;
@@ -128,3 +128,5 @@ export class Filter {
   }
 
 }
+
+export = Filter;

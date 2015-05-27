@@ -1,5 +1,5 @@
 /// <reference path="typings/tsd.d.ts"/>
-export class ResetMarker {
+class ResetMarker {
   'use strict';
 
   findMarker;
@@ -66,7 +66,6 @@ export class ResetMarker {
     return op;
   }
 
-
   private reset(marker, options) {
     var preparedOptions = this.utils.prepareOptions(this.formatOptions(marker, options), this.config.customMarkerOptions);
     this.updateMarker.customUpdate(marker, preparedOptions);
@@ -74,3 +73,5 @@ export class ResetMarker {
   }
 
 }
+
+export = ResetMarker;

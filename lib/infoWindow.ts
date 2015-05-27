@@ -1,6 +1,6 @@
 /// <reference path="typings/tsd.d.ts"/>
 
-export class InfoWindow {
+class InfoWindow {
   'use strict';
 
   private timer;
@@ -10,8 +10,6 @@ export class InfoWindow {
   constructor(public that) {
 
   }
-
-
 
   private infoWindow(map, marker, args) {
     var content = false;
@@ -85,7 +83,7 @@ export class InfoWindow {
       });
     }
   }
+}
 
-
-};
+export = InfoWindow;
 

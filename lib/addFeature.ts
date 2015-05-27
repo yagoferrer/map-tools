@@ -28,7 +28,7 @@ interface GeoJsonData {
   type: string;
 }
 
-export class AddFeature {
+class AddFeature {
 
   addFilter;
   public topojson = require('topojson');
@@ -36,7 +36,7 @@ export class AddFeature {
 
   constructor(public that) {
 
-    var addFilter = require('addFilter')(that, 'json');
+    var addFilter = require('./addFilter')(that, 'json');
     this.addFilter = function(filters) {
       return addFilter.addFilter(filters);
     }
@@ -116,3 +116,5 @@ export class AddFeature {
   }
 
 }
+
+export = AddFeature;

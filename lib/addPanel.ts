@@ -2,7 +2,7 @@
 /// <reference path="config.ts"/>
 /// <reference path="typings/tsd.d.ts"/>
 
-export class AddPanel {
+class AddPanel {
   'use strict';
 
   template;
@@ -118,8 +118,6 @@ export class AddPanel {
     }
 
   }
-
-
-
-
 }
+
+export = AddPanel;

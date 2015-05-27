@@ -1,5 +1,5 @@
 /// <reference path="typings/tsd.d.ts"/>
-export class Config {
+class Config {
   public static version: string = '3.18'; // Released: May 15, 201
   public static url: string =  '//maps.googleapis.com/maps/api/js';
   public static zoom: number = 8;
@@ -9,3 +9,5 @@ export class Config {
   public static customInfoWindowOptions: string[] = ['open', 'close'];
   public static customEvents: string[] = ['marker_visibility_changed'];
 }
+
+export = Config;

@@ -1,5 +1,5 @@
 /// <reference path="typings/tsd.d.ts"/>
-export class AddMarker {
+class AddMarker {
   'use strict';
 
   private addFilter;
@@ -9,12 +9,12 @@ export class AddMarker {
   constructor(public that) {
 
 
-    var addFilter = require('addFilter')(that, 'markers');
+    var addFilter = require('./addFilter')(that, 'markers');
     this.addFilter = function(filters) {
       return addFilter.addFilter(filters);
     };
 
-    var infoWindow = require('infoWindow')(that);
+    var infoWindow = require('./infoWindow')(that);
 
     this.infoWindow.addEvents = function(marker, options, map) {
         infoWindow.addEvents(marker, options, map);
@@ -175,4 +175,6 @@ export class AddMarker {
     return this._addMarker(args, options);
   }
 
-};
+}
+
+export = AddMarker;

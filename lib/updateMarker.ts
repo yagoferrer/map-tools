@@ -1,7 +1,6 @@
 /// <reference path="typings/tsd.d.ts"/>
 
-export class UpdateMarker {
-
+class UpdateMarker {
 
   findMarker;
   private utils = require('./utils');
@@ -148,3 +147,5 @@ export class UpdateMarker {
   }
 
 }
+
+export = UpdateMarker;

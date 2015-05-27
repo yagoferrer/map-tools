@@ -4,7 +4,7 @@ interface utilsClone {
   mapTypeId: any;
 }
 
-export class Utils {
+class Utils {
 
   public static clone(o: {}, exceptionKeys?: string[]): utilsClone {
     var out, v, key;
@@ -19,7 +19,6 @@ export class Utils {
     }
     return out;
   }
-
 
   public static createUid(): string {
     return 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
@@ -83,3 +82,5 @@ export class Utils {
     return result;
   }
 }
+
+export = Utils;

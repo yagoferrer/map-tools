@@ -1,6 +1,6 @@
 /// <reference path="maps.ts"/>
 
-export class UpdateMap {
+class UpdateMap {
   'use strict';
 
   private maps = require('./maps');
@@ -12,4 +12,6 @@ export class UpdateMap {
     return this.that.instance.setOptions(mapOptions);
   }
 
-};
+}
+
+export = UpdateMap;

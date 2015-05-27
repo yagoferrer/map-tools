@@ -1,4 +1,4 @@
-export class Template {
+class Template {
   constructor(public that) {
   }
 
@@ -29,3 +29,5 @@ export class Template {
 }
 
 }
+
+export = Template;

@@ -1,5 +1,5 @@
 /// <reference path="typings/tsd.d.ts"/>
-export class RemoveMarker {
+class RemoveMarker {
   'use strict';
 
   findMarker;
@@ -47,3 +47,5 @@ export class RemoveMarker {
   }
 
 }
+
+export = RemoveMarker;

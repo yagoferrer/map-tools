@@ -1,7 +1,21 @@
 /// <reference path="typings/tsd.d.ts"/>
-/// <reference path="interfaces.ts"/>
+interface mapToolsOptions {
+  id?: string;
+  el?: string;
+  lat: number;
+  lng: number;
+  type?: string;
+  async?: boolean;
+  sync?: boolean;
+  on?: {}
+}
 
-export class AddMap {
+interface mapToolsCallback {
+  (err: {}, instance?: {}): void;
+}
+
+
+class AddMap {
 
   private id: string;
   private maps = require('./maps');
@@ -86,7 +100,7 @@ export class AddMap {
     return true;
   }
 
-  load(options: mapToolsOptions, cb: mapToolsCallback) {
+  public load(options: mapToolsOptions, cb: mapToolsCallback) {
 
     if (this.validOptions(options, cb)) {
 
@@ -125,6 +139,7 @@ export class AddMap {
       }
     }
   }
-
 }
+
+export = AddMap;
 
