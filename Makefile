@@ -37,7 +37,7 @@ SOURCE_DIR    := lib
 
 TS_FLAGS   := --target ES5 --module commonjs
 TS_SRC     := lib/*.ts
-BSF_FLAGS  := --standalone mapTools --debug --verbose --list
+BSF_FLAGS  := --standalone mapTools --debug --verbose --require ./build/addMap --full-paths
 BSF_DIR    := $(BUILD_DIR)/
 BSF_SRC    := $(BUILD_DIR)/mapTools.js
 BSF_OUT    := dist/map-tools.js

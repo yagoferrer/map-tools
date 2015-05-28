@@ -2,19 +2,21 @@
 /// <reference path="config.ts"/>
 /// <reference path="typings/tsd.d.ts"/>
 
+import config = require('./config');
+import template = require('./template');
+
+
 class AddPanel {
   'use strict';
 
   template;
 
-  private config = require('./config');
-
   constructor(public that) {
 
-    var template = require('./template')(that);
+    var templateInstance = new template(that);
 
     this.template = function(type, url, cb) {
-      return template.load(type, url, cb)
+      return templateInstance.load(type, url, cb)
     };
 
   }
@@ -90,7 +92,7 @@ class AddPanel {
       panel;
 
     // default position
-    options.position = options.position || this.config.panelPosition;
+    options.position = options.position || config.panelPosition;
 
 
     if (options.templateURL) {

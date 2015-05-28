@@ -14,16 +14,14 @@ interface mapToolsCallback {
   (err: {}, instance?: {}): void;
 }
 
+import maps = require('./maps');
+import config = require('./config');
 
 class AddMap {
 
   private id: string;
-  private maps = require('./maps');
-  private config = require('./config');
 
-  constructor(public that) {
-
-  }
+  constructor(public that) {}
 
   private getElement(args) {
 
@@ -41,7 +39,7 @@ class AddMap {
 
     cb = cb || function () {};
 
-    var mapOptions = this.maps.mapOptions(args);
+    var mapOptions = maps.mapOptions(args);
 
     args.id = args.id || args.el.substring(1);
     this.that.id = args.id;
@@ -55,7 +53,7 @@ class AddMap {
       for (i in args.on) {
         if (args.on.hasOwnProperty(i)) {
 
-          if (this.config.customEvents.indexOf(i) > - 1) {
+          if (config.customEvents.indexOf(i) > - 1) {
             this.that.events.push(i);
           }
 
@@ -133,7 +131,7 @@ class AddMap {
       this.that.json = mapTools.maps[id].json;
 
       if (options.async !== false || options.sync === true) {
-        this.maps.load(id, options);
+        maps.load(id, options);
       } else {
         mapTools.maps[id].create();
       }

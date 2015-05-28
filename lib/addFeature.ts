@@ -28,11 +28,13 @@ interface GeoJsonData {
   type: string;
 }
 
+var topojson = require('topojson');
+import utils = require('./utils');
+
 class AddFeature {
 
   addFilter;
-  public topojson = require('topojson');
-  public utils = require('./utils');
+
 
   constructor(public that) {
 
@@ -55,7 +57,7 @@ class AddFeature {
       if (features.hasOwnProperty(x)) {
         feature = features[x];
 
-        var uid = this.utils.createUid();
+        var uid = utils.createUid();
         feature.uid = uid;
         var data = feature.k;
         feature.k.uid = uid;
@@ -100,7 +102,7 @@ class AddFeature {
     for (x in options) {
       if (options.hasOwnProperty(x)) {
         item = options[x];
-        geoJson = this.topojson.feature(data, data.objects[item.object]);
+        geoJson = topojson.feature(data, data.objects[item.object]);
         features = this.that.instance.data.addGeoJson(geoJson);
         this.addFeatureOptions(features, item);
         mapTools.maps[this.that.id].json.all[item.object] = features;

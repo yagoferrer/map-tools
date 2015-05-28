@@ -14,6 +14,16 @@ interface mapToolsCallback {
   (err: {}, instance?: {}): void;
 }
 
+import addMarker = require('./addMarker');
+import addFeature = require('./addFeature');
+import addPanel = require('./addPanel');
+import center = require('./center');
+import locate = require('./locate');
+import updateMarker = require('./updateMarker');
+import updateMap = require('./updateMap');
+import updateFeature = require('./updateFeature');
+import addMap = require('./addMap');
+
 class mapTools {
 
   public instance;
@@ -42,49 +52,51 @@ class mapTools {
   }
 
   constructor(options: mapToolsOptions, cb: mapToolsCallback) {
-    var addMarker = require('./addMarker')(this);
+
+
+    var addMarkerInstance = new addMarker(this);
 
     this.addMarker = function(marker, options) {
-      return addMarker.addMarker(marker, options);
+      return addMarkerInstance.addMarker(marker, options);
     };
 
-    var addFeature = require('./addFeature')(this);
+    var addFeatureInstance = new addFeature(this);
 
     this.addTopoJson = function(data, options) {
-      return addFeature.addTopoJson(data, options);
+      return addFeatureInstance.addTopoJson(data, options);
     };
 
     this.addGeoJson = function(data, options) {
-      return addFeature.addGeoJson(data, options);
+      return addFeatureInstance.addGeoJson(data, options);
     };
 
-    var addPanel = require('./addPanel')(this);
+    var addPanelInstance = new addPanel(this);
 
     this.addPanel = function(options, cb) {
-      return addPanel.addPanel(options, cb);
+      return addPanelInstance.addPanel(options, cb);
     };
 
-    this.center = require('./center').pos;
+    this.center = new center().pos;
 
-    this.locate = require('./locate').locate;
+    this.locate = new locate().locate;
 
 
-    var updateMarker = require('./updateMarker')(this);
+    var updateMarkerInstance = new updateMarker(this);
 
     this.updateMarker = function(args, options) {
-      return updateMarker.update(args, options);
+      return updateMarkerInstance.update(args, options);
     };
 
-    var updateMap = require('./updateMap')(this);
+    var updateMapInstance = new updateMap(this);
 
     this.updateMap = function(args) {
-      updateMap.updateMap(args)
+      updateMapInstance.updateMap(args)
     };
 
-    var updateFeature = require('./updateFeature')(this);
+    var updateFeatureInstance = new updateFeature(this);
 
     this.updateFeature = function(args, options) {
-      return updateFeature.update(args, options);
+      return updateFeatureInstance.update(args, options);
     };
 
 
@@ -111,7 +123,8 @@ class mapTools {
       return findFeature.filter(args, options);
     };
 
-    var map = require('./addMap')(this);
+    var map = new addMap(this);
+
     map.load(options, cb);
   }
 }

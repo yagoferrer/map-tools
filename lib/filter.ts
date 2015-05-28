@@ -1,5 +1,8 @@
 /// <reference path="typings/tsd.d.ts"/>
 
+
+import addFilter = require('./addFilter');
+
 class Filter {
   'use strict';
 
@@ -14,10 +17,10 @@ class Filter {
 
   constructor(public that, public type) {
 
-    var addFilter = require('./addFilter')(that, type);
+    var addFilterInstance = new addFilter(that, type);
 
     this.addFilter = function(filters) {
-      return addFilter.addFilter(filters);
+      return addFilterInstance.addFilter(filters);
     };
 
   }
