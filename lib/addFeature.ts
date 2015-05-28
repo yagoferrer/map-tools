@@ -1,7 +1,4 @@
 /// <reference path="typings/tsd.d.ts"/>
-/// <reference path="addFilter.ts"/>
-/// <reference path="utils.ts"/>
-
 
 interface featureOption {
   filters?: {};
@@ -31,16 +28,19 @@ interface GeoJsonData {
   type: string;
 }
 
+var topojson = require('topojson');
+import utils = require('./utils');
+import addFilter = require('./addFilter');
+
 class AddFeature {
 
   addFilter;
-  public topojson = require('topojson');
 
   constructor(public that) {
 
-    var addFilter = new AddFilter(that, 'json');
+    var addFilterInstance = new addFilter(that, 'json');
     this.addFilter = function(filters) {
-      return addFilter.addFilter(filters);
+      return addFilterInstance.addFilter(filters);
     }
   }
 
@@ -57,7 +57,7 @@ class AddFeature {
       if (features.hasOwnProperty(x)) {
         feature = features[x];
 
-        var uid = Utils.createUid();
+        var uid = utils.createUid();
         feature.uid = uid;
         var data = feature.k;
         feature.k.uid = uid;
@@ -102,7 +102,7 @@ class AddFeature {
     for (x in options) {
       if (options.hasOwnProperty(x)) {
         item = options[x];
-        geoJson = this.topojson.feature(data, data.objects[item.object]);
+        geoJson = topojson.feature(data, data.objects[item.object]);
         features = this.that.instance.data.addGeoJson(geoJson);
         this.addFeatureOptions(features, item);
         mapTools.maps[this.that.id].json.all[item.object] = features;
@@ -118,3 +118,5 @@ class AddFeature {
   }
 
 }
+
+export = AddFeature;

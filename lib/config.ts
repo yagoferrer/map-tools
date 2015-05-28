@@ -9,3 +9,5 @@ class Config {
   public static customInfoWindowOptions: string[] = ['open', 'close'];
   public static customEvents: string[] = ['marker_visibility_changed'];
 }
+
+export = Config;

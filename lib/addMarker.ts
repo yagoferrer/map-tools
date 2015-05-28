@@ -1,30 +1,33 @@
-/// <reference path="infoWindow.ts"/>
-/// <reference path="addFilter.ts"/>
+/// <reference path="typings/tsd.d.ts"/>
+
+import utils = require('./utils');
+import addFilter = require('./addFilter');
+import infoWindow = require('./infoWindow');
 
 class AddMarker {
   'use strict';
 
   private addFilter;
-
-
   private infoWindow: any = {};
+
+  private add;
+
 
   constructor(public that) {
 
-
-    var addFilter = new AddFilter(that, 'markers');
+    var addFilterInstance = new addFilter(that, 'markers');
     this.addFilter = function(filters) {
-      return addFilter.addFilter(filters);
-    }
+      return addFilterInstance.addFilter(filters);
+    };
 
-
-    var infoWindow = new InfoWindow(that);
+    var infoWindowInstance = new infoWindow(that);
 
     this.infoWindow.addEvents = function(marker, options, map) {
-        infoWindow.addEvents(marker, options, map);
+      infoWindowInstance.addEvents(marker, options, map);
     }
 
   }
+
 
   addExtraOptions(marker, options) {
     var i;
@@ -119,14 +122,14 @@ class AddMarker {
 
 
     if (!marker.uid) {
-      marker.data.uid = Utils.createUid();
+      marker.data.uid = utils.createUid();
       marker.uid = marker.data.uid;
     }
   }
 
   addMarkerByTag(marker, instance) {
 
-    if (Utils.isArray(marker.tags)) {
+    if (utils.isArray(marker.tags)) {
       var i, tag;
       for (i in marker.tags) {
         if (marker.tags.hasOwnProperty(i)) {
@@ -158,7 +161,7 @@ class AddMarker {
    * @returns {Array} all the instances of the markers.
    */
   public addMarker(args, options) {
-    if (Utils.isArray(args)) {
+    if (utils.isArray(args)) {
       if (args.length >= 1) {
         var marker, markers = [];
         for (var i in args) {
@@ -179,4 +182,6 @@ class AddMarker {
     return this._addMarker(args, options);
   }
 
-};
+}
+
+export = AddMarker;

@@ -1,13 +1,27 @@
-/// <reference path="maps.ts"/>
 /// <reference path="typings/tsd.d.ts"/>
-/// <reference path="interfaces.ts"/>
+interface mapToolsOptions {
+  id?: string;
+  el?: string;
+  lat: number;
+  lng: number;
+  type?: string;
+  async?: boolean;
+  sync?: boolean;
+  on?: {}
+}
+
+interface mapToolsCallback {
+  (err: {}, instance?: {}): void;
+}
+
+import maps = require('./maps');
+import config = require('./config');
+
 class AddMap {
 
   private id: string;
 
-  constructor(public that) {
-
-  }
+  constructor(public that) {}
 
   private getElement(args) {
 
@@ -25,7 +39,7 @@ class AddMap {
 
     cb = cb || function () {};
 
-    var mapOptions = Maps.mapOptions(args);
+    var mapOptions = maps.mapOptions(args);
 
     args.id = args.id || args.el.substring(1);
     this.that.id = args.id;
@@ -39,7 +53,7 @@ class AddMap {
       for (i in args.on) {
         if (args.on.hasOwnProperty(i)) {
 
-          if (Config.customEvents.indexOf(i) > - 1) {
+          if (config.customEvents.indexOf(i) > - 1) {
             this.that.events.push(i);
           }
 
@@ -84,7 +98,7 @@ class AddMap {
     return true;
   }
 
-  load(options: mapToolsOptions, cb: mapToolsCallback) {
+  public load(options: mapToolsOptions, cb: mapToolsCallback) {
 
     if (this.validOptions(options, cb)) {
 
@@ -117,12 +131,13 @@ class AddMap {
       this.that.json = mapTools.maps[id].json;
 
       if (options.async !== false || options.sync === true) {
-        Maps.load(id, options);
+        maps.load(id, options);
       } else {
         mapTools.maps[id].create();
       }
     }
   }
-
 }
+
+export = AddMap;
 

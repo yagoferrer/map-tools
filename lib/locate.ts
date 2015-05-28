@@ -11,3 +11,6 @@ class Locate {
     return {lat: center.lat(), lng: center.lng()};
   }
 }
+
+
+export = Locate;

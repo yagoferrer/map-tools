@@ -1,4 +1,7 @@
-/// <reference path="findMarkerById.ts"/>
+/// <reference path="typings/tsd.d.ts"/>
+
+import findMarker = require('./findMarkerById');
+
 class RemoveMarker {
   'use strict';
 
@@ -6,10 +9,10 @@ class RemoveMarker {
 
   constructor(public that) {
 
-    var findMarker = new FindMarkerById(that);
+    var findMarkerInstance = new findMarker(that);
 
     this.findMarker = function(marker) {
-      return findMarker.find(marker)
+      return findMarkerInstance.find(marker)
     };
   }
 
@@ -47,3 +50,5 @@ class RemoveMarker {
   }
 
 }
+
+export = RemoveMarker;

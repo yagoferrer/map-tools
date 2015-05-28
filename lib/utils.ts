@@ -20,7 +20,6 @@ class Utils {
     return out;
   }
 
-
   public static createUid(): string {
     return 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
       var r, v;
@@ -83,3 +82,5 @@ class Utils {
     return result;
   }
 }
+
+export = Utils;

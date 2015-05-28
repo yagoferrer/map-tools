@@ -15,3 +15,5 @@ class FindMarkerById {
     }
   }
 }
+
+export = FindMarkerById;

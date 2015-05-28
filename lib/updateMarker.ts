@@ -1,26 +1,25 @@
 /// <reference path="typings/tsd.d.ts"/>
-/// <reference path="utils.ts"/>
-/// <reference path="config.ts"/>
-/// <reference path="findMarkerById.ts"/>
-/// <reference path="filter.ts"/>
 
+import utils = require('./utils');
+import config = require('./config');
+import findMarker = require('./findMarkerById');
+import filter = require('./filter');
 
 class UpdateMarker {
-
 
   findMarker;
 
   constructor(public that) {
 
-    var findMarker = new FindMarkerById(that);
+    var findMarkerInstance = new findMarker(that);
 
     this.findMarker = function(marker) {
-      return findMarker.find(marker);
+      return findMarkerInstance.find(marker);
     }
   }
 
   removeTags(marker) {
-    if (Utils.isArray(marker.tags)) {
+    if (utils.isArray(marker.tags)) {
       var i, tag;
       for (i in marker.tags) {
         if (marker.tags.hasOwnProperty(i)) {
@@ -37,7 +36,7 @@ class UpdateMarker {
 
   addTags(marker, options) {
 
-    if (Utils.isArray(options.custom.tags)) {
+    if (utils.isArray(options.custom.tags)) {
       var i, tag;
       for (i in options.custom.tags) {
         tag = options.custom.tags[i];
@@ -117,7 +116,7 @@ class UpdateMarker {
   public update(args, options) {
 
     var visibilityFlag = false;
-    var preparedOptions = Utils.prepareOptions(options, Config.customMarkerOptions);
+    var preparedOptions = utils.prepareOptions(options, config.customMarkerOptions);
     if (preparedOptions.defaults && preparedOptions.defaults.hasOwnProperty('visible') && this.that.events.indexOf('marker_visibility_changed') > -1) {
       visibilityFlag = true;
     }
@@ -129,9 +128,9 @@ class UpdateMarker {
     if (type === '[object Object]') {
       if (Object.keys(args).length === 1 && args.tags) {
 
-        var filter = new Filter(this.that, 'markers');
+        var filterInstance = new filter(this.that, 'markers');
 
-        result = this.bulkUpdate(filter.filter(args), preparedOptions);
+        result = this.bulkUpdate(filterInstance.filter(args), preparedOptions);
 
       } else {
         result = this.customUpdate(this.findMarker(args), preparedOptions);
@@ -151,3 +150,5 @@ class UpdateMarker {
   }
 
 }
+
+export = UpdateMarker;

@@ -1,6 +1,8 @@
-/// <reference path="utils.ts"/>
-/// <reference path="config.ts"/>
 /// <reference path="typings/tsd.d.ts"/>
+
+import utils = require('./utils');
+import config = require('./config');
+
 class Maps {
 
   /**
@@ -11,18 +13,18 @@ class Maps {
    * @returns the element appended
    */
   public static load(id, args): {} {
-    var version = args.version || Config.version;
+    var version = args.version || config.version;
     var script = window.document.createElement('script');
     script.type = 'text/javascript';
-    script.src = Config.url + '?v=' + version + '&callback=mapTools.maps.' + id + '.create';
+    script.src = config.url + '?v=' + version + '&callback=mapTools.maps.' + id + '.create';
     return window.document.body.appendChild(script);
   }
 
   public static mapOptions(args): {} {
     // To clone Arguments excluding customMapOptions
-    var result = Utils.clone(args, Config.customMapOptions);
+    var result = utils.clone(args, config.customMapOptions);
 
-    result.zoom = args.zoom || Config.zoom;
+    result.zoom = args.zoom || config.zoom;
 
     if (args.lat && args.lng) {
       result.center = new google.maps.LatLng(args.lat, args.lng);
@@ -36,3 +38,5 @@ class Maps {
   }
 
 }
+
+export = Maps;

@@ -47,4 +47,6 @@ class UpdateFeature {
     }
   }
 
-};
+}
+
+export = UpdateFeature;

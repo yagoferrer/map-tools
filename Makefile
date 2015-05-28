@@ -27,6 +27,8 @@ CWD  := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 NODE ?= node
 NPM  ?= npm
 
+NODE_PATH=build
+
 # Project specific vars
 # ----------------------------------------------------------------------------------------------------------------------
 
@@ -34,10 +36,10 @@ BUILD_DIR     := build
 SOURCE_DIR    := lib
 
 TS_FLAGS   := --target ES5 --module commonjs
-
+TS_SRC     := lib/*.ts
 BSF_FLAGS  := --standalone mapTools --debug --verbose
 BSF_DIR    := $(BUILD_DIR)/
-BSF_SRC    := $(BUILD_DIR)/index.js
+BSF_SRC    := $(BUILD_DIR)/mapTools.js
 BSF_OUT    := dist/map-tools.js
 
 # include sub Makefiles
@@ -55,8 +57,5 @@ include make/node.browserify.mk
 clean: ts-clean browser-clean
 	@printf '\e[1;32m  %-10s\e[m%s\n' 'done'
 
-compile: ts browser modules
+compile: ts browser
 	@printf '\e[1;32m  %-10s\e[m%s\n' 'done'
-
-modules:
-	./modules.sh

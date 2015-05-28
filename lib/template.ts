@@ -29,3 +29,5 @@ class Template {
 }
 
 }
+
+export = Template;

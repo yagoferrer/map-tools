@@ -3,9 +3,9 @@
 BUILD_DIR  ?= build
 SOURCE_DIR ?= lib
 
-TS_EXE   := node_modules/typescript/bin/tsc
-TS_SRC   := $(filter-out $(wildcard $(SOURCE_DIR)/*/*.d.ts), $(wildcard $(SOURCE_DIR)/*.ts $(SOURCE_DIR)/*/*.ts))
-TS_DST   := $(patsubst $(SOURCE_DIR)/%.ts,$(BUILD_DIR)/%.js,$(TS_SRC))
+TS_EXE   ?= node_modules/typescript/bin/tsc
+TS_SRC   ?= $(filter-out $(wildcard $(SOURCE_DIR)/*/*.d.ts), $(wildcard $(SOURCE_DIR)/*.ts $(SOURCE_DIR)/*/*.ts))
+TS_DST   ?= build/
 
 # RULES: $@: $<
 
@@ -28,7 +28,7 @@ $(BUILD_DIR):
 # 2. %.js is older than %.ts
 $(BUILD_DIR)/%.js: $(SOURCE_DIR)/%.ts
 	@printf '\e[1;32m  %-10s\e[m%s > %s\n' 'compiling' '$<' '$@'
-	@$(TS_EXE) $(TS_FLAGS) --out $@ $<
+	@echo $(TS_EXE) $(TS_FLAGS) --outDir $(BUILD_DIR) $<
 
 # compile and delete output if error
 #	@$(TS_EXE) $(TS_FLAGS) --out $@ $< || case $$? in \
@@ -41,7 +41,10 @@ $(BUILD_DIR)/%.js: $(SOURCE_DIR)/%.ts
 .PHONY: ts ts-clean
 
 # compile *.ts --> *.js
-ts: $(BUILD_DIR) $(TS_EXE) $(TS_DST)
+ts: $(BUILD_DIR)
+ts: $(TS_EXE)
+ts:
+	$(TS_EXE) $(TS_FLAGS) --outDir $(BUILD_DIR) lib/*.ts
 
 ts-clean:
 	rm -f lib/*.js*

@@ -1,6 +1,8 @@
 /// <reference path="typings/tsd.d.ts"/>
-/// <reference path="utils.ts"/>
-/// <reference path="addFilter.ts"/>
+
+
+import addFilter = require('./addFilter');
+
 class Filter {
   'use strict';
 
@@ -11,12 +13,14 @@ class Filter {
     DESC: 'bottom'
   };
 
+  private utils = require('./utils');
+
   constructor(public that, public type) {
 
-    var addFilter = new AddFilter(that, type);
+    var addFilterInstance = new addFilter(that, type);
 
     this.addFilter = function(filters) {
-      return addFilter.addFilter(filters);
+      return addFilterInstance.addFilter(filters);
     };
 
   }
@@ -43,19 +47,19 @@ class Filter {
 
   filterByTag(query) {
     // if the search query is an array with only one item then just use that string
-    if(Utils.isArray(query) && query.length === 1){
+    if(this.utils.isArray(query) && query.length === 1){
       query = query[0];
     }
     if (typeof query === "string"){
       if (this.that[this.type].tags[query]) {
-        return Utils.toArray(this.that[this.type].tags[query]);
+        return this.utils.toArray(this.that[this.type].tags[query]);
       } else {
         return [];
       }
     } else {
       var markers =  this.fetchByTag(query);
       if(typeof markers === "object"){
-        markers = Utils.toArray(markers);
+        markers = this.utils.toArray(markers);
       }
       return markers;
     }
@@ -70,7 +74,7 @@ class Filter {
       var tag = query[i];
       var nextTag = query[i+1];
       // null check kicks in when we get to the end of the for loop
-      markers = Utils.getCommonObject(this.that[this.type].tags[tag],this.that[this.type].tags[nextTag])
+      markers = this.utils.getCommonObject(this.that[this.type].tags[tag],this.that[this.type].tags[nextTag])
     }
     return markers;
   }
@@ -79,7 +83,7 @@ class Filter {
 
     // Return All items if no arguments are supplied
     if (typeof args === 'undefined' && typeof options === 'undefined') {
-      return Utils.toArray(this.that[this.type].all);
+      return this.utils.toArray(this.that[this.type].all);
     }
 
 
@@ -127,3 +131,5 @@ class Filter {
   }
 
 }
+
+export = Filter;

@@ -17,3 +17,5 @@ class Center {
   }
 
 }
+
+export = Center;
