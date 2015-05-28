@@ -1,4 +1,4 @@
-## map-tools 1.3.0 
+## map-tools 2.0.0 
 
 [![Build](https://travis-ci.org/yagoferrer/map-tools.svg?branch=master)](https://travis-ci.org/yagoferrer/map-tools) 
 [![Coverage](https://coveralls.io/repos/yagoferrer/map-tools/badge.svg?branch=master)](https://coveralls.io/r/yagoferrer/map-tools)
@@ -35,7 +35,7 @@ Bower:
 bower install map-tools --save-dev
 ```
 
-Do you need to download it now? Use the direct download link. [map-tools.min.js](https://github.com/yagoferrer/map-tools/blob/1.3.0/dist/map-tools.min.js)
+Do you need to download it now? Use the direct download link. [map-tools.min.js](https://github.com/yagoferrer/map-tools/blob/2.0.0/dist/map-tools.min.js)
 
 ## Need Quick Examples?
 
