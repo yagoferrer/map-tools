@@ -23,6 +23,9 @@ import updateMarker = require('./updateMarker');
 import updateMap = require('./updateMap');
 import updateFeature = require('./updateFeature');
 import addMap = require('./addMap');
+import removeMarker = require('./removeMarker');
+import resetMarker = require('./resetMarker');
+import filter = require('./filter');
 
 class mapTools {
 
@@ -100,25 +103,25 @@ class mapTools {
     };
 
 
-    var removeMarker = require('./removeMarker')(this);
+    var removeMarkerInstance = new removeMarker(this);
     this.removeMarker = function(args) {
-      return removeMarker.removeMarker(args)
+      return removeMarkerInstance.removeMarker(args)
     };
 
 
-    var resetMarker = require('./resetMarker')(this);
+    var resetMarkerInstance = new resetMarker(this);
     this.resetMarker = function(args, options) {
-      return resetMarker.resetMarker(args, options)
+      return resetMarkerInstance.resetMarker(args, options)
     };
 
 
-    var findMarker = require('./filter')(this, 'markers');
+    var findMarker = new filter(this, 'markers');
     this.findMarker = function(args, options) {
       return findMarker.filter(args, options);
     };
 
     // Unit Tests?
-    var findFeature = require('./filter')(this, 'json');
+    var findFeature = new filter(this, 'json');
     this.findFeature = function(args, options) {
       return findFeature.filter(args, options);
     };
