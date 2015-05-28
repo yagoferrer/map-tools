@@ -3,6 +3,7 @@
 import utils = require('./utils');
 import config = require('./config');
 import findMarker = require('./findMarkerById');
+import filter = require('./filter');
 
 class UpdateMarker {
 
@@ -127,9 +128,9 @@ class UpdateMarker {
     if (type === '[object Object]') {
       if (Object.keys(args).length === 1 && args.tags) {
 
-        var filter = require('./filter')(this.that, 'markers');
+        var filterInstance = new filter(this.that, 'markers');
 
-        result = this.bulkUpdate(filter.filter(args), preparedOptions);
+        result = this.bulkUpdate(filterInstance.filter(args), preparedOptions);
 
       } else {
         result = this.customUpdate(this.findMarker(args), preparedOptions);

@@ -30,17 +30,17 @@ interface GeoJsonData {
 
 var topojson = require('topojson');
 import utils = require('./utils');
+import addFilter = require('./addFilter');
 
 class AddFeature {
 
   addFilter;
 
-
   constructor(public that) {
 
-    var addFilter = require('./addFilter')(that, 'json');
+    var addFilterInstance = new addFilter(that, 'json');
     this.addFilter = function(filters) {
-      return addFilter.addFilter(filters);
+      return addFilterInstance.addFilter(filters);
     }
   }
 
