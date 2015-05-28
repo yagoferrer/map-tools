@@ -2,6 +2,7 @@
 
 import utils = require('./utils');
 import addFilter = require('./addFilter');
+import infoWindow = require('./infoWindow');
 
 class AddMarker {
   'use strict';
@@ -19,10 +20,10 @@ class AddMarker {
       return addFilterInstance.addFilter(filters);
     };
 
-    var infoWindow = require('./infoWindow')(that);
+    var infoWindowInstance = new infoWindow(that);
 
     this.infoWindow.addEvents = function(marker, options, map) {
-      infoWindow.addEvents(marker, options, map);
+      infoWindowInstance.addEvents(marker, options, map);
     }
 
   }

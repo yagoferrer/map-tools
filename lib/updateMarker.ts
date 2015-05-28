@@ -1,22 +1,24 @@
 /// <reference path="typings/tsd.d.ts"/>
 
+import utils = require('./utils');
+import config = require('./config');
+import findMarker = require('./findMarkerById');
+
 class UpdateMarker {
 
   findMarker;
-  private utils = require('./utils');
-  private config = require('./config');
 
   constructor(public that) {
 
-    var findMarker = require('./findMarkerById')(that);
+    var findMarkerInstance = new findMarker(that);
 
     this.findMarker = function(marker) {
-      return findMarker.find(marker);
+      return findMarkerInstance.find(marker);
     }
   }
 
   removeTags(marker) {
-    if (this.utils.isArray(marker.tags)) {
+    if (utils.isArray(marker.tags)) {
       var i, tag;
       for (i in marker.tags) {
         if (marker.tags.hasOwnProperty(i)) {
@@ -33,7 +35,7 @@ class UpdateMarker {
 
   addTags(marker, options) {
 
-    if (this.utils.isArray(options.custom.tags)) {
+    if (utils.isArray(options.custom.tags)) {
       var i, tag;
       for (i in options.custom.tags) {
         tag = options.custom.tags[i];
@@ -113,7 +115,7 @@ class UpdateMarker {
   public update(args, options) {
 
     var visibilityFlag = false;
-    var preparedOptions = this.utils.prepareOptions(options, this.config.customMarkerOptions);
+    var preparedOptions = utils.prepareOptions(options, config.customMarkerOptions);
     if (preparedOptions.defaults && preparedOptions.defaults.hasOwnProperty('visible') && this.that.events.indexOf('marker_visibility_changed') > -1) {
       visibilityFlag = true;
     }

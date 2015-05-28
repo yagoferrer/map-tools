@@ -5,10 +5,9 @@ class InfoWindow {
 
   private timer;
   private utils = require('./utils');
-  private config = require('./config')
+  private config = require('./config');
 
   constructor(public that) {
-
   }
 
   private infoWindow(map, marker, args) {
