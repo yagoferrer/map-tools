@@ -83,5 +83,4 @@ coverage
 lib/*.js
 build
 *.orig
-dist
 tmp
