@@ -81,6 +81,5 @@ crashlytics-build.properties
 coverage
 
 lib/*.js
-build
 *.orig
 tmp
