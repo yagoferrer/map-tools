@@ -1,12 +1,12 @@
-## map-tools 2.0.0 
+## map-tools 2.0.0
 
-[![Build](https://travis-ci.org/yagoferrer/map-tools.svg?branch=master)](https://travis-ci.org/yagoferrer/map-tools) 
+[![Build](https://travis-ci.org/yagoferrer/map-tools.svg?branch=master)](https://travis-ci.org/yagoferrer/map-tools)
 [![Coverage](https://coveralls.io/repos/yagoferrer/map-tools/badge.svg?branch=master)](https://coveralls.io/r/yagoferrer/map-tools)
 [![Code Climate](https://codeclimate.com/github/yagoferrer/map-tools/badges/gpa.svg?branch=master)](https://codeclimate.com/github/yagoferrer/map-tools)
 [![Dependency Status](https://david-dm.org/yagoferrer/map-tools.svg)](https://david-dm.org/yagoferrer/map-tools)
 [![devDependency](https://david-dm.org/yagoferrer/map-tools/dev-status.svg)](https://david-dm.org/yagoferrer/map-tools#info=devDependencies)
 
-[map-tools](http://map-tools.io/) is a Google Maps Feature-rich Javascript wrapper that makes things like: 
+[map-tools](http://map-tools.io/) is a Google Maps Feature-rich Javascript wrapper that makes things like:
 [Marker Tagging](#tags); [asynchronous loading](#lazy-loading-the-map), working with [TopoJSON](#topojson-support) or [GeoJSON](#geojson-support), [custom controls](#add-panel), [animation](#animate-markers) and more. Much simpler with an easy-to-use API.
 
 
@@ -16,8 +16,8 @@
 - More Fun: Add [Marker animations](#animate-markers), use [handlebars style](#info-window) variables.
 - Non Intrusive: it extends the API; you can use any other native methods, properties and events anywhere.
 - Query elements on the Map to update their options using [Crossfilter](#crossfilter-support-for-markers)
-- [TopoJSON Support](#topojson-support): Add Topo/GeoJSON files, set styles and find references easier. 
-- Well tested. Good GPA rating. 
+- [TopoJSON Support](#topojson-support): Add Topo/GeoJSON files, set styles and find references easier.
+- Well tested. Good GPA rating.
 - Framework agnostic.
 - My ultimate goals are performance and Google API simplification.
 
@@ -25,7 +25,7 @@
 
 it is recommended to use [npm](https://docs.npmjs.com/getting-started/what-is-npm) to install `map-tools` but you can also use *bower*.
 
-NPM: 
+NPM:
 ```bash
 npm install map-tools --save-dev
 ```
@@ -39,7 +39,7 @@ Do you need to download it now? Use the direct download link. [map-tools.min.js]
 
 ## Need Quick Examples?
 
-Go to: [map-tools.io](http://map-tools.io/) 
+Go to: [map-tools.io](http://map-tools.io/)
 
 or pull the repo and run:
 ```bash
@@ -47,8 +47,8 @@ npm start
 ```
 
 ### Lazy Loading the Map
-You can load the Google Maps JavaScript file asynchronously. This is useful for example: if you are planning on loading the Map on a different view from the Homepage. 
-Setting a callback function will help you to now when the Map is ready to be used. 
+You can load the Google Maps JavaScript file asynchronously. This is useful for example: if you are planning on loading the Map on a different view from the Homepage.
+Setting a callback function will help you to now when the Map is ready to be used.
 
 If you don't want to lazy load the map, use the option `async: false` you can still keep the callback function to determine when the Map is ready to be used.
 
@@ -69,9 +69,9 @@ var map = new mapTools({
 The first argument `id` represents the `id` of the HTML element container where you want to display the Map. If you want to use a `class` instead use `el: '.mymap'` to indicate the class name.
 
 
-`lat` and `lng` are the coordenates used to first load the Map. 
+`lat` and `lng` are the coordenates used to first load the Map.
 
-The callback function contains two arguments: 
+The callback function contains two arguments:
 - `err` it will contain an error object in case something goes wrong during Map initialization.
 - `map` the mapTools instanciated object. You can use this to trigger further API calls.
 
@@ -105,8 +105,8 @@ Don't forget to add a simple HTML tag to indicate where to render the Map.
 ```
 
 ### Google Maps Native Instance
-Sometimes you just need to go straight to the Google Maps API. 
-Once the Map is initialized you can either use: `map.instance` or globally `mapTools[YourMapId].instance`. 
+Sometimes you just need to go straight to the Google Maps API.
+Once the Map is initialized you can either use: `map.instance` or globally `mapTools[YourMapId].instance`.
 Notice that if you have multiple Maps, you can access all from the global scope.
 
 ### Map Events
@@ -132,13 +132,13 @@ var map = new mapTools({
       marker_visibility_changed: function(numOfVisibleMarkers) {
         console.log('we have a total of %d visible Markers', numOfVisibleMarkers)
       }
-  } 
+  }
 ```
 This event it is very useful if you are planning for example on clustering based on this value.
 
 ## Map Methods
 
-#### Update Map 
+#### Update Map
 Apply *ANY* option to the Map by calling the `updateMap()` method like this example:
 
 [Live example](http://map-tools.io/examples/update.map.html)
@@ -199,7 +199,7 @@ map.addMarker([{
   lat: 42.5000,
   lng: 1.5167,
   title: 'Andorra'
-}], 
+}],
 {
   icon: 'images/city.png',
   callback: function(instance) {
@@ -208,9 +208,9 @@ map.addMarker([{
 });
 
 ```
-`lat` and `lng` provides the coordinates to position the Marker. 
+`lat` and `lng` provides the coordinates to position the Marker.
 
-Use `on` to define any Marker Events. 
+Use `on` to define any Marker Events.
 
 The 2nd argument allows you to add options **shared** between the Markers you are adding.
 
@@ -221,7 +221,7 @@ The callback property allows to set a callback function that contains the instan
 
 
 #### Update Marker
-Allows you to update one or multiple marker options. 
+Allows you to update one or multiple marker options.
 
 [Live example](http://map-tools.io/examples/update.marker.html)
 
@@ -231,7 +231,7 @@ map.updateMarker(<marker reference>, {visible: false})
 
 The 1st argument can be: A Marker (reference) an Array of Markers or the `uid` specified like this: `{uid: '<uid>'}`
 
-The 2nd argument allows you to set any options you want to update. 
+The 2nd argument allows you to set any options you want to update.
 
 For example: `visible` to change the Marker visibilty.
 
@@ -343,9 +343,9 @@ You can add more [native infoWindow options](https://developers.google.com/maps/
 
 
 ## Crossfilter support for Markers
-- Add Marker related data into the `data` property. 
+- Add Marker related data into the `data` property.
 - Add what data properties you want to index into the `filters` option. That will generate default Crossfilter [dimensions](https://github.com/square/crossfilter/wiki/API-Reference#dimension).
- 
+
 ```javascript
   function addMarkers() {
     map.addMarker([
@@ -366,8 +366,8 @@ You can add more [native infoWindow options](https://developers.google.com/maps/
       filters: ['population']
     });
   }
-  
-  var map = new mapTools({id: 'mymap', lat: 41.3833, lng: -3.710436}, 
+
+  var map = new mapTools({id: 'mymap', lat: 41.3833, lng: -3.710436},
   function (err, map) {
     if (!err) {
       addMarkers();
@@ -420,7 +420,7 @@ You can update the `style` of the existing Feature on a map.
 
 ```javascript
  var colorado = map.findFeature({NAME:'Colorado'}, {limit: 1});
- var nevada = map.findFeature({NAME:'Colorado'}, {limit: 1});
+ var nevada = map.findFeature({NAME:'Nevada'}, {limit: 1});
  var style = {fillOpacity: 0.4, fillColor:'black', strokeColor: 'black'};
  map.updateFeature([colorado,nevada], {style: style});
 ```
@@ -468,7 +468,7 @@ Adds a custom native Control to Google Maps
         e.target.classList.toggle('active');
       }}
   });
-``` 
+```
 
 ## Add Angular.js template into a Map Panel.
 You can inject an Angular template and benefit from two way binding. You'll need to pre-compile the template like this:
@@ -477,7 +477,7 @@ You can inject an Angular template and benefit from two way binding. You'll need
 var template = '<div>{{scopeVar}}</div>';
 map.addPanel({
   position: 'top right',
-  template: $compile(template)($scope)[0]	
+  template: $compile(template)($scope)[0]
 })
 ```
 
