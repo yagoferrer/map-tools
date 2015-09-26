@@ -23,13 +23,9 @@ var AddFeature = (function () {
                 feature = features[x];
                 var uid = utils.createUid();
                 feature.uid = uid;
-                var data = feature.k;
-                feature.k.uid = uid;
-                Object.defineProperty(feature, 'data', {
-                    value: data,
-                    enumerable: true,
-                    writable: false,
-                    configurable: false
+                feature.data = { uid: uid };
+                feature.forEachProperty(function (key, value) {
+                    feature.data[key] = value;
                 });
                 if (options) {
                     if (options.filters) {

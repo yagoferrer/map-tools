@@ -59,15 +59,11 @@ class AddFeature {
 
         var uid = utils.createUid();
         feature.uid = uid;
-        var data = feature.k;
-        feature.k.uid = uid;
 
+        feature.data = {uid: uid};
 
-        Object.defineProperty(feature, 'data', {
-          value: data,
-          enumerable: true,
-          writable: false,
-          configurable: false
+        feature.forEachProperty(function(key, value) {
+          feature.data[key] = value;
         });
 
         if (options) {
@@ -85,6 +81,9 @@ class AddFeature {
             this.that.instance.data.overrideStyle(feature, options.style);
           }
         }
+
+
+
         this.that.json.all[feature.data.uid] = feature;
       }
     }
