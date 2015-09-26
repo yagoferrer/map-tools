@@ -1,4 +1,4 @@
-## map-tools 2.0.0
+## map-tools 2.0.1
 
 [![Build](https://travis-ci.org/yagoferrer/map-tools.svg?branch=master)](https://travis-ci.org/yagoferrer/map-tools)
 [![Coverage](https://coveralls.io/repos/yagoferrer/map-tools/badge.svg?branch=master)](https://coveralls.io/r/yagoferrer/map-tools)
@@ -35,7 +35,7 @@ Bower:
 bower install map-tools --save-dev
 ```
 
-Do you need to download it now? Use the direct download link. [map-tools.min.js](https://github.com/yagoferrer/map-tools/blob/2.0.0/dist/map-tools.min.js)
+Do you need to download it now? Use the direct download link. [map-tools.min.js](https://github.com/yagoferrer/map-tools/blob/2.0.1/dist/map-tools.min.js)
 
 ## Need Quick Examples?
 
@@ -353,7 +353,7 @@ You can add more [native infoWindow options](https://developers.google.com/maps/
         lat: 41.3833, lng: 2.1833,
         data: {
           name: 'Barcelona',
-          population: 1621000
+          population: 162.0.1
         }
       },{
         lat: 41.3833, lng: -3.710436,
