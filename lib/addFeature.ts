@@ -62,7 +62,7 @@ class AddFeature {
 
         feature.data = {uid: uid};
 
-        feature.forEachProperty(function(key, value) {
+        feature.forEachProperty(function(value, key) {
           feature.data[key] = value;
         });
 
