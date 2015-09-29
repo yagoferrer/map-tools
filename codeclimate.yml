@@ -2,4 +2,3 @@ languages:
   JavaScript: true
 exclude_paths:
 - "dist/map-tools.js"
-- "dist/map-tools.min.js"
