@@ -9,7 +9,7 @@ MAKE  := /usr/bin/make
 
 SHELL := bash
 .SHELLFLAGS := -eu -o pipefail -c
-.DEFAULT_GOAL := help
+.DEFAULT_GOAL := compile
 .SUFFIXES:
 
 
