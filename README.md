@@ -58,7 +58,8 @@ If you don't want to lazy load the map, use the option `async: false` you can st
 var map = new mapTools({
   id: 'mymap',
   lat: 41.3833,
-  lng: 2.1833
+  lng: 2.1833,
+  key: 'Your Google Maps API Key'
 }, function (err, map) {
   if (!err) {
     console.log('Map Loaded!', map.instance);
