@@ -9,7 +9,7 @@ describe('Given the Maps module', function () {
   describe('when calling maps.load()', function () {
     it('should you load a map', function() {
       var response = maps.load('myId', {key: 'mykey'});
-      expect(response.src).to.equal('//maps.googleapis.com/maps/api/js?v=3.18&key=mykey&callback=mapTools.maps.myId.create');
+      expect(response.src).to.equal('//maps.googleapis.com/maps/api/js?v=3.39&key=mykey&callback=mapTools.maps.myId.create');
       expect(response.type).to.equal('text/javascript');
     });
   });

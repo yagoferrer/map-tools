@@ -2,7 +2,7 @@
 var Config = (function () {
     function Config() {
     }
-    Config.version = '3.18'; // Released: May 15, 201
+    Config.version = '3.39';
     Config.url = '//maps.googleapis.com/maps/api/js';
     Config.zoom = 8;
     Config.customMapOptions = ['id', 'lat', 'lng', 'type', 'uid'];
