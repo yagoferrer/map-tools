@@ -355,7 +355,7 @@ You can add more [native infoWindow options](https://developers.google.com/maps/
         lat: 41.3833, lng: 2.1833,
         data: {
           name: 'Barcelona',
-          population: 162.0.1
+          population: 5515000
         }
       },{
         lat: 41.3833, lng: -3.710436,
