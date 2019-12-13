@@ -15,7 +15,7 @@ var Maps = (function () {
         var version = args.version || config.version;
         var script = window.document.createElement('script');
         script.type = 'text/javascript';
-        script.src = config.url + '?v=' + version + '&callback=mapTools.maps.' + id + '.create';
+        script.src = "" + config.url + "?v=" + version + "&key=" + args.key + "&callback=mapTools.maps." + id + ".create";
         return window.document.body.appendChild(script);
     };
     Maps.mapOptions = function (args) {

@@ -1,4 +1,4 @@
-## map-tools 2.0.1
+## map-tools 2.0.2
 
 [![Build](https://travis-ci.org/yagoferrer/map-tools.svg?branch=master)](https://travis-ci.org/yagoferrer/map-tools)
 [![Coverage](https://coveralls.io/repos/yagoferrer/map-tools/badge.svg?branch=master)](https://coveralls.io/r/yagoferrer/map-tools)
@@ -35,7 +35,7 @@ Bower:
 bower install map-tools --save-dev
 ```
 
-Do you need to download it now? Use the direct download link. [map-tools.min.js](https://github.com/yagoferrer/map-tools/blob/2.0.1/dist/map-tools.min.js)
+Do you need to download it now? Use the direct download link. [map-tools.min.js](https://github.com/yagoferrer/map-tools/blob/2.0.2/dist/map-tools.min.js)
 
 ## Need Quick Examples?
 
@@ -91,7 +91,7 @@ This Google property is silly: `google.maps.MapTypeId.SATELLITE`. With map-tools
 ```javascript
 {
   type: 'SATELLITE'
-}  
+}
 ```
 Other types are: ROADMAP, HYBRID and TERRAIN.
 
@@ -120,7 +120,7 @@ var map = new mapTools({
       zoom_changed: function() {
         console.log('the zoom level has changed!', map.zoom())
       }
-  }  
+  }
 ```
 ### Custom Map Events
 - `marker_visibility_changed` it will get trigger anytime that any Marker changes visibility state.
@@ -185,6 +185,7 @@ an unique value that you can provide under `data.uid` or a self-generated value 
 map.addMarker([{
   lat: 41.3833,
   lng: 2.1833,
+  key: 'The Google API Key',
   title: 'Barcelona',
   on: {
     click: function() {
