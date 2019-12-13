@@ -3,3 +3,4 @@ languages:
 exclude_paths:
 - "dist/*.js"
 - "lib/typings/*.d.ts"
+- "test"
