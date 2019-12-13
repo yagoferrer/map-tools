@@ -186,7 +186,6 @@ an unique value that you can provide under `data.uid` or a self-generated value 
 map.addMarker([{
   lat: 41.3833,
   lng: 2.1833,
-  key: 'The Google API Key',
   title: 'Barcelona',
   on: {
     click: function() {
